@@ -3,24 +3,19 @@
 @tailwind utilities;
 @layer base {
 *{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
-html{scroll-behavior:smooth} body{font-family:'Inter',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.65;letter-spacing:-.011em;background:#f0fdfa;color:#0f172a}
-::selection{background:#14b8a655} :focus-visible{outline:2px solid #14b8a6;outline-offset:2px}
+html{scroll-behavior:smooth} body{font-family:'Inter',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;line-height:1.7;letter-spacing:-.012em;background:#06111f;color:#e2e8f0}
+::selection{background:#38bdf855;color:#fff} :focus-visible{outline:2px solid #38bdf8;outline-offset:3px}
 }
 @layer components {
-.container{@apply max-w-6xl mx-auto px-5 sm:px-6 lg:px-8}
-.btn{@apply inline-flex items-center justify-center px-4 py-2.5 text-sm font-semibold rounded-xl transition-all duration-150 ease-out}
-.btn-primary{background:#042f2e;@apply text-white shadow-lg} .btn-primary:hover{background:#134e4a}
-.btn-secondary{@apply bg-white border text-slate-800 hover:bg-slate-50}
-.card{@apply rounded-3xl border bg-white p-6 shadow-sm transition; border-color:#134e4a22; box-shadow:0 12px 40px #134e4a0f} .card:hover{transform:translateY(-2px)}
-.badge{@apply inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold; color:#134e4a; background:#f0fdfa; border-color:#134e4a33}
-.hero-title{font-family:'Instrument Serif',Georgia,serif;@apply text-5xl md:text-7xl font-normal tracking-tight text-slate-950}
-.muted{@apply text-slate-600}
-.data-table{@apply w-full text-sm}
-.data-table th{@apply px-4 py-3 text-left text-xs font-bold uppercase tracking-wide; color:#042f2e; background:#f0fdfa}
-.data-table td{@apply border-t px-4 py-3 text-slate-700; border-color:#134e4a22}
-.prose-shopify h2{@apply mt-10 text-3xl font-bold tracking-tight text-slate-950}
-.prose-shopify h3{@apply mt-7 text-xl font-bold text-slate-950}
-.prose-shopify p{@apply mt-4 text-slate-700}
-.prose-shopify ul{@apply mt-4 list-disc space-y-2 pl-6 text-slate-700}
-.link{font-weight:700;color:#134e4a} .link:hover{color:#042f2e}
+.container{@apply max-w-7xl mx-auto px-5 sm:px-6 lg:px-8}
+.btn{@apply inline-flex items-center justify-center px-5 py-3 text-sm font-black rounded-full transition-all duration-150 ease-out}
+.btn-primary{background:#67e8f9;color:#06111f;box-shadow:0 0 32px #22d3ee55}.btn-primary:hover{background:#a5f3fc;transform:translateY(-1px)}
+.btn-secondary{background:#0f172acc;color:#e2e8f0;border:1px solid #38bdf855}.btn-secondary:hover{background:#172554}
+.card{border:1px solid #38bdf82e;background:linear-gradient(180deg,#0f172acc,#020617cc);@apply rounded-[2rem] p-6 shadow-2xl transition;box-shadow:0 20px 80px #0008}.card:hover{transform:translateY(-3px);border-color:#67e8f966}
+.badge{@apply inline-flex items-center rounded-full px-3 py-1 text-xs font-black uppercase tracking-[.22em];color:#67e8f9;background:#082f49;border:1px solid #38bdf84d}
+.hero-title{font-family:'Instrument Serif',Georgia,serif;@apply text-5xl md:text-7xl lg:text-8xl font-normal tracking-tight text-white}
+.section-title{font-family:'Instrument Serif',Georgia,serif;@apply text-4xl md:text-6xl font-normal tracking-tight text-white}
+.muted{@apply text-slate-300}.ink{@apply text-white}.panel{background:linear-gradient(135deg,#020617,#0f172a 45%,#082f49);border:1px solid #38bdf833}
+.data-table{@apply w-full text-sm}.data-table th{@apply px-4 py-3 text-left text-xs font-black uppercase tracking-wide;color:#67e8f9;background:#082f49}.data-table td{@apply border-t px-4 py-4 text-slate-200;border-color:#38bdf822}
+.prose-shopify h2{@apply mt-12 text-3xl md:text-4xl font-black tracking-tight text-white}.prose-shopify h3{@apply mt-8 text-2xl font-black text-cyan-100}.prose-shopify p{@apply mt-5 text-lg text-slate-300}.prose-shopify ul{@apply mt-5 list-disc space-y-3 pl-6 text-slate-300}.prose-shopify strong{@apply text-cyan-100}.link{font-weight:900;color:#67e8f9}.link:hover{color:#a5f3fc}.stat{@apply rounded-3xl border border-cyan-300/20 bg-cyan-300/10 p-5}
 }
