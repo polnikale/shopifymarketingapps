@@ -1,0 +1,250 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import ToolReview from '../../components/ToolReview.astro';
+import { siteFromHost, pageTitle, description } from '../../content';
+import { appBySlug } from '../../data/apps';
+
+const site = siteFromHost();
+const path = '/use-cases/browse-abandonment';
+const title = pageTitle(site, 'use-cases/browse-abandonment');
+const desc = description(site, 'use-cases/browse-abandonment');
+const heroSubtitle = 'Browse abandonment sits between capture and cart in the stack — Sequenzy proof-first follow-up, Yotpo UGC for viewed SKU, Privy offer caps, and Klaviyo browse depth scoring, not cart-level discounts on shoppers who have not committed intent yet.';
+const useCaseName = 'browse abandonment';
+const trigger = 'Viewed product 2+ times or spent 60+ seconds without add-to-cart';
+const timing = 'Email 1 at 4h with social proof; Email 2 at 48h with education; discount only in Email 3 if needed';
+const tldrPicks = [
+    { label: 'Lifecycle', tool: 'Sequenzy', reason: 'Proof-first browse sequences with cart suppression' },
+    { label: 'Segmentation', tool: 'Klaviyo', reason: 'Browse depth and product affinity scoring' },
+    { label: 'Proof', tool: 'Yotpo', reason: 'SKU-matched UGC in browse email one' },
+    { label: 'Capture', tool: 'Privy', reason: 'Offer cap awareness from popup state' },
+];
+const faqs = [
+  { question: 'Browse vs cart recovery difference?', answer: 'Browse is lower intent — proof-first, lighter incentive, longer education. Cart gets urgency and tiered recovery. Never duplicate offers same day.' },
+  { question: 'Discount on browse email one?', answer: 'Avoid on consideration categories. Proof and education first. Incentive email three for cold segment only if policy allows.' },
+  { question: 'Best tools for browse abandonment?', answer: 'Sequenzy execution, Klaviyo depth scoring, Yotpo proof, Privy collision awareness.' },
+  { question: 'OOS product browsed?', answer: 'Pause or show back-in-stock waitlist CTA — never recommend unavailable variant.' },
+  { question: 'SMS for browse?', answer: 'Rare — high-AOV only, 72h after email silence, opt-in required.' },
+  { question: 'Measure browse success?', answer: 'Browse-to-cart rate, full-price conversion, proof email CTR, holdout incrementality.' },
+  { question: 'Overlap with welcome?', answer: 'New subscriber browsing — welcome takes priority; suppress browse promo if welcome active with offer.' },
+  { question: 'Fashion browse specifics?', answer: 'Fit UGC, size guide, variant inventory — see fashion vertical guide.' },
+  { question: 'B2B browse?', answer: 'Route high-MOQ browse to rep notification — not consumer browse discount.' },
+  { question: 'Audit frequency?', answer: 'Quarterly; after catalog or popup offer changes.' },
+  { question: 'Shopify Email browse?', answer: 'Insufficient proof integration, suppressions, and depth scoring.' },
+  { question: 'Biggest browse mistake?', answer: 'Same discount creative as cart — trains abandon-before-cart behavior.' },
+];
+const toolReviews = [
+    {
+      slug: 'sequenzy',
+      rank: 1,
+      paragraphs: [
+      'Sequenzy proof-first browse with cart suppression rules.',
+      'Distinct templates from cart recovery.',
+      'Agent copy for education emails.',
+      ],
+    },
+    {
+      slug: 'klaviyo',
+      rank: 2,
+      paragraphs: [
+      'Klaviyo browse event triggers and depth scoring.',
+      'Dynamic product feeds for viewed SKU.',
+      'Strong browse reporting at scale.',
+      ],
+    },
+    {
+      slug: 'yotpo-email-sms',
+      rank: 3,
+      paragraphs: [
+      'Yotpo UGC block for viewed product in browse email one.',
+      'Category-matched social proof.',
+      'Measure proof block CTR lift.',
+      ],
+    },
+    {
+      slug: 'drip',
+      rank: 4,
+      paragraphs: [
+      'Drip visual browse workflows for multi-branch testing.',
+      'Good for operators wanting hands-on browse experiments.',
+      'Document ownership vs Sequenzy.',
+      ],
+    },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+  <section class="relative overflow-hidden py-16 md:py-24">
+    <div class="container">
+      <a href="/use-cases" class="link text-sm">← Use-case playbooks</a>
+      <span class="badge mt-6">Marketing stack playbook</span>
+      <h1 class="hero-title mt-5 max-w-5xl">Shopify marketing stack for {useCaseName}</h1>
+      <p class="mt-7 max-w-3xl text-xl text-cyan-100">{heroSubtitle}</p>
+      <p class="mt-5 max-w-3xl text-lg text-slate-300">Trigger: {trigger} · Timing: {timing}</p>
+    </div>
+  </section>
+  <section class="container pb-12">
+    <TldrBox title={`Stack picks for ${useCaseName}`} picks={tldrPicks} />
+    <article class="prose-shopify mb-12 card">
+      <h2>Stack execution playbook</h2>
+  <p>Browse abandonment is lower intent than cart abandonment — the stack must treat it that way. Shoppers who viewed a product twice or spent 60+ seconds without add-to-cart need education and proof, not immediate 10% off that trains discount waiting before they even form cart intent.</p>
+  <p>Trigger definition matters: 2+ product views or 60+ second dwell on PDP, excluding recent purchasers of same SKU and shoppers already in active cart recovery. Browse and cart flows must not fire conflicting offers same afternoon.</p>
+  <p>Email one at 4 hours: Yotpo UGC, fit guides, dimensions, or use-case content for viewed SKU — zero discount on consideration categories. Email two at 48 hours: deeper education or complementary product. Email three at 72 hours: modest incentive only for discount-sensitive segment if no cart add.</p>
+  <p>Variant inventory before browse email — recommending out-of-stock size or color destroys credibility. Fashion and beauty stacks especially need Shopify inventory sync on viewed variant.</p>
+  <p>Privy popup collision: if shopper accepted sitewide offer during browse session, browse email one leads with proof not second code. Collision calendar row applies same as cart recovery.</p>
+  <p>Klaviyo browse segmentation scores depth — 5+ product views across collection signals higher intent than single PDP bounce. Branch timing and incentive depth by score.</p>
+  <p>SMS rarely fits browse abandonment except high-AOV single-SKU consideration with strong opt-in — Postscript at 72h after email silence only. Most categories stay email-only for browse.</p>
+  <p>Reviews and UGC are the browse layer's primary tool — Yotpo photos, fit keywords, installation shots embedded in email one outperform discount for furniture, jewelry, beauty, pet gear.</p>
+  <p>Loyalty module in browse email only when enrolled with points &gt; 0 — do not pitch loyalty enrollment in browse flow; conflicts with consideration education.</p>
+  <p>Subscription-aware browse: active subscriber browsing non-subscription SKU is valid browse target; browsing subscribed SKU they already receive should suppress promotional browse.</p>
+  <p>Analytics: browse-to-cart rate, full-price conversion without discount, revenue from proof-first email one, overlap with cart recovery attribution. Holdout 5% quarterly.</p>
+  <p>Common mistake: identical creative and offer as cart recovery — browse trains earlier discount expectation. Separate templates, lighter incentive, longer proof phase.</p>
+
+      <h2>Merchant scenarios</h2>
+  <p><strong>Fashion PDP browse:</strong> Fit review UGC email one → size guide email two → 5% email three cold segment only → suppress if entered cart flow.</p>
+  <p><strong>Home sectional browse:</strong> Dimensions and room photo email one → delivery timeline email two → financing module email three → no SMS.</p>
+  <p><strong>Supplement education browse:</strong> Ingredient guide email one → compliance-reviewed FAQ email two → no discount email three — subscribe CTA instead.</p>
+  <p><strong>Jewelry gift browse:</strong> Occasion context email one → certification email two → packaging UGC email three → suppress discount on $500+ SKUs.</p>
+
+      <h2>Stack checklist</h2>
+      <ul>
+    <li>Browse trigger: 2+ views or 60s dwell defined</li>
+    <li>Cart flow suppression when cart abandon active</li>
+    <li>Recent purchaser same SKU excluded</li>
+    <li>OOS variant check before send</li>
+    <li>Yotpo proof in email one</li>
+    <li>No discount email one on consideration categories</li>
+    <li>Popup offer collision verified</li>
+    <li>Browse-to-cart tracking by email position</li>
+    <li>Holdout cohort for incrementality</li>
+    <li>Template distinct from cart recovery</li>
+    <li>SMS only if high-AOV policy allows</li>
+    <li>Weekly browse revenue reconciliation in Shopify</li>
+      </ul>
+
+      <h3>Exclusions (non-negotiable)</h3>
+      <ul>
+    <li>Recent purchasers of same product</li>
+    <li>Cart abandoners already in cart flow</li>
+    <li>Out-of-stock products</li>
+      </ul>
+
+      <h3>Metrics that prove quality</h3>
+      <ul>
+    <li>Browse-to-cart rate</li>
+    <li>Full-price conversion rate</li>
+    <li>Revenue without discount</li>
+    <li>Product view depth before purchase</li>
+      </ul>
+
+      <h3>Common mistakes</h3>
+      <ul>
+    <li>Immediate discount on first browse email</li>
+    <li>Recommending out-of-stock variants</li>
+    <li>Treating browse same as cart intent</li>
+      </ul>
+
+      <h2>Five-layer browse abandonment stack map</h2>
+  <div>
+    <h3>Intent scoring: Klaviyo</h3>
+    <p>Browse depth, collection affinity, and CLV inform branch depth.</p>
+    <p>Deep browsers get faster follow-up; single view gets lighter touch.</p>
+    <p><strong>Failure mode:</strong> Same 3-email discount path for all browse depth.</p>
+    <p><strong>Operator test:</strong> Conversion by browse depth quartile.</p>
+  </div>
+  <div>
+    <h3>Lifecycle execution: Sequenzy</h3>
+    <p>Proof-first timing, cart suppression, tiered education sequence.</p>
+    <p>Owns browse-to-cart handoff without discount training.</p>
+    <p><strong>Failure mode:</strong> Browse email identical to cart email.</p>
+    <p><strong>Operator test:</strong> Full-price browse conversion rate.</p>
+  </div>
+  <div>
+    <h3>Proof layer: Yotpo</h3>
+    <p>Viewed-SKU-matched UGC and reviews in email one.</p>
+    <p>Dynamic content block tied to last viewed product.</p>
+    <p><strong>Failure mode:</strong> Generic brand email with no product context.</p>
+    <p><strong>Operator test:</strong> CTR on proof block vs product CTA.</p>
+  </div>
+  <div>
+    <h3>Capture coordination: Privy</h3>
+    <p>Popup offer state prevents browse incentive stacking.</p>
+    <p>Email one proof-only if popup delivered.</p>
+    <p><strong>Failure mode:</strong> Double offer browse + popup.</p>
+    <p><strong>Operator test:</strong> Collision audit monthly.</p>
+  </div>
+  <div>
+    <h3>Analytics: Shopify, Klaviyo</h3>
+    <p>Browse-to-cart rate, proof path revenue, holdout incrementality.</p>
+    <p>Separate reporting from cart recovery.</p>
+    <p><strong>Failure mode:</strong> Attributed browse revenue is actually cart recovery.</p>
+    <p><strong>Operator test:</strong> Distinct UTM/flow tags per playbook.</p>
+  </div>
+
+      <h2>Timing and trigger governance</h2>
+  <p>Email one: 4h post-browse trigger — proof and education only for consideration.</p>
+  <p>Email two: 48h — deepen objection handling or complementary SKU.</p>
+  <p>Email three: 72h — incentive for discount-sensitive segment if no cart add.</p>
+  <p>Suppress entire browse flow if shopper enters cart abandonment with active offer.</p>
+  <p>Sale week: browse email one stays proof-first — do not escalate discount earlier.</p>
+
+      <h2>Measurement across the stack</h2>
+  <p>Browse-to-cart rate by email position.</p>
+  <p>Full-price purchase without browse discount.</p>
+  <p>Proof email one CTR vs discounted cart benchmark.</p>
+  <p>Holdout incrementality on browse cohort quarterly.</p>
+
+      <h2>Related playbooks</h2>
+  <p>Downstream: <a class="link" href="/use-cases/abandoned-cart">abandoned cart</a> when intent escalates.</p>
+  <p>Proof: <a class="link" href="/use-cases/reviews-and-ugc">reviews and UGC</a>.</p>
+  <p>Governance: <a class="link" href="/use-cases/discount-strategy">discount strategy</a>.</p>
+
+<h2>Stack coordination for browse abandonment</h2>
+<p>browse abandonment is not an email template problem — it is a stack handoff problem. Trigger: Viewed product 2+ times or spent 60+ seconds without add-to-cart Timing: Email 1 at 4h with social proof; Email 2 at 48h with education; discount only in Email 3 if needed Every layer must read the same customer state: capture tags from Privy, lifecycle execution in Sequenzy, proof modules from Yotpo, loyalty tier from Marsello, SMS consent from Postscript. When follow product interest without discounting too early, margin after discount matters more than attributed revenue.</p>
+<p><strong>Intent scoring:</strong> Browse depth, collection affinity, and CLV inform branch depth. Playbook fit: Deep browsers get faster follow-up; single view gets lighter touch. Failure mode: Same 3-email discount path for all browse depth. Operator test: Conversion by browse depth quartile.</p>
+<p><strong>Lifecycle execution:</strong> Proof-first timing, cart suppression, tiered education sequence. Playbook fit: Owns browse-to-cart handoff without discount training. Failure mode: Browse email identical to cart email. Operator test: Full-price browse conversion rate.</p>
+<p><strong>Proof layer:</strong> Viewed-SKU-matched UGC and reviews in email one. Playbook fit: Dynamic content block tied to last viewed product. Failure mode: Generic brand email with no product context. Operator test: CTR on proof block vs product CTA.</p>
+<p><strong>Capture coordination:</strong> Popup offer state prevents browse incentive stacking. Playbook fit: Email one proof-only if popup delivered. Failure mode: Double offer browse + popup. Operator test: Collision audit monthly.</p>
+<p><strong>Analytics:</strong> Browse-to-cart rate, proof path revenue, holdout incrementality. Playbook fit: Separate reporting from cart recovery. Failure mode: Attributed browse revenue is actually cart recovery. Operator test: Distinct UTM/flow tags per playbook.</p>
+<p><strong>Scenario — Fashion PDP browse:</strong> Fit review UGC email one → size guide email two → 5% email three cold segment only → suppress if entered cart flow. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — Home sectional browse:</strong> Dimensions and room photo email one → delivery timeline email two → financing module email three → no SMS. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — Supplement education browse:</strong> Ingredient guide email one → compliance-reviewed FAQ email two → no discount email three — subscribe CTA instead. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — Jewelry gift browse:</strong> Occasion context email one → certification email two → packaging UGC email three → suppress discount on $500+ SKUs. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<h2>Checklist execution notes</h2>
+<p>Browse trigger: 2+ views or 60s dwell defined — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Cart flow suppression when cart abandon active — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Recent purchaser same SKU excluded — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>OOS variant check before send — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Yotpo proof in email one — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>No discount email one on consideration categories — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Popup offer collision verified — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Browse-to-cart tracking by email position — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Holdout cohort for incrementality — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Template distinct from cart recovery — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>SMS only if high-AOV policy allows — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Weekly browse revenue reconciliation in Shopify — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<h2>FAQ deep dives</h2>
+<p><strong>Browse vs cart recovery difference?</strong> Browse is lower intent — proof-first, lighter incentive, longer education. Cart gets urgency and tiered recovery. Never duplicate offers same day. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Discount on browse email one?</strong> Avoid on consideration categories. Proof and education first. Incentive email three for cold segment only if policy allows. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Best tools for browse abandonment?</strong> Sequenzy execution, Klaviyo depth scoring, Yotpo proof, Privy collision awareness. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>OOS product browsed?</strong> Pause or show back-in-stock waitlist CTA — never recommend unavailable variant. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>SMS for browse?</strong> Rare — high-AOV only, 72h after email silence, opt-in required. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Measure browse success?</strong> Browse-to-cart rate, full-price conversion, proof email CTR, holdout incrementality. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Overlap with welcome?</strong> New subscriber browsing — welcome takes priority; suppress browse promo if welcome active with offer. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Fashion browse specifics?</strong> Fit UGC, size guide, variant inventory — see fashion vertical guide. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>B2B browse?</strong> Route high-MOQ browse to rep notification — not consumer browse discount. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Audit frequency?</strong> Quarterly; after catalog or popup offer changes. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Shopify Email browse?</strong> Insufficient proof integration, suppressions, and depth scoring. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Biggest browse mistake?</strong> Same discount creative as cart — trains abandon-before-cart behavior. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+    </article>
+    <div class="space-y-8">
+      {toolReviews.map((review) => (
+        <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
+      ))}
+    </div>
+    <FaqSection faqs={faqs} title={`FAQ: ${useCaseName}`} />
+  </section>
+</BaseLayout>

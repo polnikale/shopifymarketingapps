@@ -1,0 +1,272 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import ToolReview from '../../components/ToolReview.astro';
+import { siteFromHost, pageTitle, description } from '../../content';
+import { appBySlug } from '../../data/apps';
+
+const site = siteFromHost();
+const path = '/use-cases/abandoned-cart';
+const title = pageTitle(site, 'use-cases/abandoned-cart');
+const desc = description(site, 'use-cases/abandoned-cart');
+const heroSubtitle = 'Cart recovery is a cross-stack coordination play — Sequenzy lifecycle owns timing and suppressions while Privy offer caps, Postscript SMS urgency, Yotpo proof, and Marsello loyalty state determine what the shopper sees, not three independent discounts firing on the same cart.';
+const useCaseName = 'abandoned cart recovery';
+const trigger = 'Added to cart without checkout completion within 1–4 hours';
+const timing = 'Email 1 at 1h; Email 2 at 24h; SMS at 4h if opted in; stop on purchase';
+const tldrPicks = [
+    { label: 'Lifecycle', tool: 'Sequenzy', reason: 'Tiered cart recovery with stack suppressions' },
+    { label: 'Data depth', tool: 'Klaviyo', reason: 'Variant inventory and CLV-tiered incentives' },
+    { label: 'SMS urgency', tool: 'Postscript', reason: 'Cart nudge after email silence only' },
+    { label: 'Proof', tool: 'Yotpo', reason: 'UGC in cart email one before discount' },
+];
+const faqs = [
+  { question: 'Best stack for Shopify cart recovery?', answer: 'Sequenzy lifecycle execution with Privy offer awareness, Klaviyo inventory/CLV depth, Postscript SMS after silence, Yotpo proof in email one. Governance doc mandatory.' },
+  { question: 'When should cart recovery email fire?', answer: 'Email one at 1h, email two at 24h, SMS at 4h after email one unopened if opted in. Adjust for high-AOV — slower incentive.' },
+  { question: 'Should cart recovery always discount?', answer: 'No. Email one proof-first for consideration categories. Tier incentive by cart value and segment. Popup collision check always.' },
+  { question: 'How prevent popup + cart double discount?', answer: 'Collision calendar + Privy offer state in lifecycle trigger. Cart email one skips code if popup already delivered.' },
+  { question: 'SMS cart recovery rules?', answer: 'After email silence, same offer cap, quiet hours, opt-in only. One SMS per cart intent window.' },
+  { question: 'Out-of-stock cart items?', answer: 'Pause send or recommend in-stock substitute — never email OOS variant.' },
+  { question: 'Cart vs welcome overlap?', answer: 'Suppress cart promo if subscriber in welcome with same offer. Priority: welcome completes or offer cap applies.' },
+  { question: 'Measure cart recovery how?', answer: 'Recovery rate, margin after discount, holdout incrementality, Shopify-reconciled revenue.' },
+  { question: 'Shopify Email enough?', answer: 'No production-grade suppressions, inventory checks, SMS coordination, or popup collision handling.' },
+  { question: 'B2B cart recovery?', answer: 'Suppress consumer recovery on trade accounts — notify rep instead for MOQ carts.' },
+  { question: 'Subscription cart abandon?', answer: 'Recover one-time add-ons; suppress if cart duplicates active subscription SKU.' },
+  { question: 'Audit frequency?', answer: 'Quarterly timing and discount review; immediately after popup, catalog, or subscription logic changes.' },
+];
+const toolReviews = [
+    {
+      slug: 'sequenzy',
+      rank: 1,
+      paragraphs: [
+      'Sequenzy cart recovery with cross-stack suppressions and tiered incentive defaults.',
+      'Agent iteration on objection-handling copy without workflow rebuild.',
+      'Measure margin per recovery not volume.',
+      ],
+    },
+    {
+      slug: 'klaviyo',
+      rank: 2,
+      paragraphs: [
+      'Klaviyo dynamic cart feeds and CLV-tiered segments at scale.',
+      'Native inventory triggers when configured. Strong recovery reporting.',
+      'Profile hygiene before BFCM cart volume spikes.',
+      ],
+    },
+    {
+      slug: 'postscript',
+      rank: 3,
+      paragraphs: [
+      'Postscript cart SMS after email silence — compliance and quiet hours built in.',
+      'Never parallel discount blast. Pair with Sequenzy timing rules.',
+      'Requires checkout opt-in investment.',
+      ],
+    },
+    {
+      slug: 'privy',
+      rank: 4,
+      paragraphs: [
+      'Privy offer state must feed cart layer — popup code collision is weekly failure without it.',
+      'Audit popup default discount against cart incentive depth.',
+      'Capture tags inform cart creative context.',
+      ],
+    },
+    {
+      slug: 'yotpo-email-sms',
+      rank: 5,
+      paragraphs: [
+      'Yotpo UGC in cart email one for consideration SKUs.',
+      'Proof-before-discount increases full-price recovery.',
+      'Integrate review photos into Sequenzy cart template slot.',
+      ],
+    },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+  <section class="relative overflow-hidden py-16 md:py-24">
+    <div class="container">
+      <a href="/use-cases" class="link text-sm">← Use-case playbooks</a>
+      <span class="badge mt-6">Marketing stack playbook</span>
+      <h1 class="hero-title mt-5 max-w-5xl">Shopify marketing stack for {useCaseName}</h1>
+      <p class="mt-7 max-w-3xl text-xl text-cyan-100">{heroSubtitle}</p>
+      <p class="mt-5 max-w-3xl text-lg text-slate-300">Trigger: {trigger} · Timing: {timing}</p>
+    </div>
+  </section>
+  <section class="container pb-12">
+    <TldrBox title={`Stack picks for ${useCaseName}`} picks={tldrPicks} />
+    <article class="prose-shopify mb-12 card">
+      <h2>Stack execution playbook</h2>
+  <p>Abandoned cart recovery on a full marketing stack is not a single automation checkbox — it is the highest-collision moment in your entire retention system. The shopper may have accepted a Privy popup offer, entered a welcome series, browsed three SKUs with Yotpo reviews loaded, and holds Marsello points — then abandons cart. Cart recovery only works when Sequenzy (or your lifecycle layer) reads all of that state before email one fires.</p>
+  <p>Timing standard for most Shopify categories: email one at 1 hour with product proof and cart contents, email two at 24 hours with objection handling, SMS at 4 hours only if opted in and email one unopened, stop immediately on purchase. High-AOV stores delay incentive to email three; impulse low-AOV may compress timing but still respect offer caps.</p>
+  <p>Variant inventory check is non-negotiable before any cart send. Fashion, beauty, and home goods stacks that email out-of-stock cart variants destroy trust faster than no email. Klaviyo and Sequenzy both need Shopify inventory sync at variant level — cart recovery pauses or swaps SKU when stock hits zero.</p>
+  <p>Discount tiering by cart value prevents margin leaks. $35 cart and $350 cart should not receive identical 15% codes. Segment: under $50 modest or no incentive, $50–200 proof-first, $200+ education and financing before discount. Document max discount depth in collision calendar.</p>
+  <p>Suppression rules define stack maturity. Cart recovery excludes: recent purchasers (7 days), active welcome series with same offer, wholesale/trade tags, employees, out-of-stock carts, VIP segments with pending personal outreach, gift registry edge cases, subscription first orders.</p>
+  <p>Privy popup offer collision is the weekly failure mode. If popup delivered 10% and cart email offers 10%, shopper learns to abandon intentionally. Collision calendar row: popup code active → cart email one shows social proof only, no duplicate code.</p>
+  <p>Postscript SMS after email silence — never parallel 15% on email and SMS same hour. One intent window, one offer maximum. TCPA quiet hours and opt-in status gate every text. SMS cart recovery justified when mobile purchase rate exceeds 40% for category.</p>
+  <p>Yotpo proof in cart email one for consideration categories — installation photos for furniture, fit reviews for apparel, taste testimonials for food gifts. Proof before discount increases full-price recovery rate on email one measurably in A/B tests across verticals.</p>
+  <p>Marsello loyalty points display only when enrolled and points balance &gt; 0 — showing empty loyalty module to first-time cart abandoners adds noise. Loyalty-earn reminder acceptable in email two for enrolled profiles only.</p>
+  <p>Subscription and replenishment collision: active Recharge subscriber abandoning one-time add-on cart is valid recovery target; abandoning subscribed SKU they already receive monthly is not. Read subscription status before send.</p>
+  <p>Analytics measure recovery rate, margin after discount, revenue per abandoned cart, SMS vs email recovery split, and incremental recovery on holdout cohort — not platform last-click alone. Finance reconciles recovered orders in Shopify weekly.</p>
+  <p>BFCM week: tighten cart discount caps, extend SMS quiet hours, suppress cart for recent full-price purchasers, document VIP exclusions. Cart recovery volume spikes — deliverability and collision risk spike with it.</p>
+
+      <h2>Merchant scenarios</h2>
+  <p><strong>Fashion variant cart:</strong> Inventory check → Yotpo fit review in email one → related in-stock variant if primary OOS → Postscript at 4h if unopened → no discount email one.</p>
+  <p><strong>Beauty replenishment cart:</strong> Subscription status check → routine reminder tone if replenishment SKU → exclude if active subscriber → modest incentive email two only for cold segment.</p>
+  <p><strong>High-AOV sectional:</strong> Dimensions module email one → financing badge email two → 5% max email three for 7+ day consideration → Postscript only after 48h silence.</p>
+  <p><strong>POD personalized cart:</strong> Personalized preview image email one → complete design CTA → 10% margin cap email two → no SMS unless high opt-in.</p>
+  <p><strong>B2B trade account:</strong> Suppress consumer cart recovery entirely — route to rep notification in ActiveCampaign if cart value exceeds MOQ threshold.</p>
+  <p><strong>Subscription box add-on:</strong> Recover one-time add-on only → suppress if abandoning duplicate of subscribed SKU → preview content not discount in email one.</p>
+
+      <h2>Stack checklist</h2>
+      <ul>
+    <li>Variant inventory verified before every cart send</li>
+    <li>Popup offer collision checked — no duplicate code email one</li>
+    <li>Recent purchaser suppression 7 days active</li>
+    <li>Welcome series overlap exclusion documented</li>
+    <li>Wholesale/trade/employee tags excluded</li>
+    <li>Cart value tier discount rules configured</li>
+    <li>Yotpo proof block in email one for consideration categories</li>
+    <li>SMS branch at 4h post-email-one if opt-in and unopened</li>
+    <li>SMS quiet hours and frequency cap enforced</li>
+    <li>Stop trigger on purchase within 1 hour</li>
+    <li>Holdout 5% monthly for incrementality measurement</li>
+    <li>Shopify reconciliation of recovered revenue weekly</li>
+      </ul>
+
+      <h3>Exclusions (non-negotiable)</h3>
+      <ul>
+    <li>Recent purchasers</li>
+    <li>Out-of-stock items in cart</li>
+    <li>Customers in active support case</li>
+    <li>VIP segments with better offers pending</li>
+      </ul>
+
+      <h3>Metrics that prove quality</h3>
+      <ul>
+    <li>Recovery rate by cart value</li>
+    <li>Margin after discount</li>
+    <li>Revenue per abandoned cart</li>
+    <li>SMS vs email recovery split</li>
+      </ul>
+
+      <h3>Common mistakes</h3>
+      <ul>
+    <li>Same discount for $30 and $300 carts</li>
+    <li>No inventory check before send</li>
+    <li>Overlapping with welcome series</li>
+      </ul>
+
+      <h2>Six-layer abandoned cart stack map</h2>
+  <div>
+    <h3>Capture offer state: Privy, Justuno</h3>
+    <p>Know if popup offer already delivered before cart incentive fires.</p>
+    <p>Cart email one suppresses duplicate discount if popup code redeemed or shown in session.</p>
+    <p><strong>Failure mode:</strong> Popup 10% + cart 10% same session — trains intentional abandonment.</p>
+    <p><strong>Operator test:</strong> Collision audit: zero duplicate offers same session last month.</p>
+  </div>
+  <div>
+    <h3>Lifecycle execution: Sequenzy</h3>
+    <p>Tiered cart emails, inventory gates, suppression orchestration, stop-on-purchase.</p>
+    <p>Sequenzy owns timing, branches, and cross-layer suppressions.</p>
+    <p><strong>Failure mode:</strong> Static 3-email discount escalation regardless of cart value or category.</p>
+    <p><strong>Operator test:</strong> Recovery margin after discount — not just recovery rate.</p>
+  </div>
+  <div>
+    <h3>Inventory and catalog: Klaviyo, Shopify</h3>
+    <p>Variant stock check, dynamic cart contents, substitute SKU logic.</p>
+    <p>OOS primary variant triggers alternate recommendation or pause.</p>
+    <p><strong>Failure mode:</strong> Email shows abandoned SKU that is out of stock.</p>
+    <p><strong>Operator test:</strong> Zero OOS cart emails sent last 30 days.</p>
+  </div>
+  <div>
+    <h3>SMS urgency: Postscript, Omnisend</h3>
+    <p>Single cart text after email silence with same offer cap rules.</p>
+    <p>4h post-email-one if unopened; quiet hours; opt-in only.</p>
+    <p><strong>Failure mode:</strong> SMS discount duplicates email discount same afternoon.</p>
+    <p><strong>Operator test:</strong> SMS recovery margin positive vs SMS cost.</p>
+  </div>
+  <div>
+    <h3>Proof layer: Yotpo</h3>
+    <p>Social proof in email one before incentive layer.</p>
+    <p>Category-matched UGC/reviews for cart SKU.</p>
+    <p><strong>Failure mode:</strong> Discount-first cart with no trust assets on high-consideration SKU.</p>
+    <p><strong>Operator test:</strong> Email one full-price recovery rate with proof block.</p>
+  </div>
+  <div>
+    <h3>Analytics: Shopify, Klaviyo</h3>
+    <p>Recovery rate, margin after discount, holdout incrementality, SMS split.</p>
+    <p>Weekly finance reconciliation of recovered orders.</p>
+    <p><strong>Failure mode:</strong> Platform-attributed recovery without margin context.</p>
+    <p><strong>Operator test:</strong> Holdout cohort documented monthly.</p>
+  </div>
+
+      <h2>Timing and trigger governance</h2>
+  <p>Email one: 1 hour post-abandon — proof and cart contents, no discount unless cold low-AOV segment policy.</p>
+  <p>Email two: 24 hours — objection handling, loyalty state if enrolled, tiered incentive if policy allows.</p>
+  <p>Email three: 48–72 hours — final incentive for discount-sensitive segment only; exclude full-price loyalists.</p>
+  <p>SMS: 4 hours after email one if unopened and opted in — never before email one.</p>
+  <p>Sale week: reduce max discount depth; extend suppressions for recent full-price buyers.</p>
+
+      <h2>Measurement across the stack</h2>
+  <p>Primary: recovery rate × margin after discount = recovery contribution.</p>
+  <p>Secondary: email one recovery without incentive — proof path performance.</p>
+  <p>SMS split: incremental recovery from SMS vs email-only holdout.</p>
+  <p>Guardrail: intentional abandonment proxy — recovery rate spike with margin drop signals over-discounting.</p>
+
+      <h2>Related playbooks</h2>
+  <p>Upstream: <a class="link" href="/use-cases/browse-abandonment">browse abandonment</a> — suppress cart if browse flow active with conflicting offer.</p>
+  <p>Governance: <a class="link" href="/use-cases/discount-strategy">discount strategy</a>, <a class="link" href="/guides/cross-channel-coordination">cross-channel coordination</a>.</p>
+  <p>Vertical: <a class="link" href="/for/fashion">fashion</a>, <a class="link" href="/for/high-aov">high-AOV</a> cart variants.</p>
+
+<h2>Stack coordination for abandoned cart recovery</h2>
+<p>abandoned cart recovery is not an email template problem — it is a stack handoff problem. Trigger: Added to cart without checkout completion within 1–4 hours Timing: Email 1 at 1h; Email 2 at 24h; SMS at 4h if opted in; stop on purchase Every layer must read the same customer state: capture tags from Privy, lifecycle execution in Sequenzy, proof modules from Yotpo, loyalty tier from Marsello, SMS consent from Postscript. When bring shoppers back before intent disappears, margin after discount matters more than attributed revenue.</p>
+<p><strong>Capture offer state:</strong> Know if popup offer already delivered before cart incentive fires. Playbook fit: Cart email one suppresses duplicate discount if popup code redeemed or shown in session. Failure mode: Popup 10% + cart 10% same session — trains intentional abandonment. Operator test: Collision audit: zero duplicate offers same session last month.</p>
+<p><strong>Lifecycle execution:</strong> Tiered cart emails, inventory gates, suppression orchestration, stop-on-purchase. Playbook fit: Sequenzy owns timing, branches, and cross-layer suppressions. Failure mode: Static 3-email discount escalation regardless of cart value or category. Operator test: Recovery margin after discount — not just recovery rate.</p>
+<p><strong>Inventory and catalog:</strong> Variant stock check, dynamic cart contents, substitute SKU logic. Playbook fit: OOS primary variant triggers alternate recommendation or pause. Failure mode: Email shows abandoned SKU that is out of stock. Operator test: Zero OOS cart emails sent last 30 days.</p>
+<p><strong>SMS urgency:</strong> Single cart text after email silence with same offer cap rules. Playbook fit: 4h post-email-one if unopened; quiet hours; opt-in only. Failure mode: SMS discount duplicates email discount same afternoon. Operator test: SMS recovery margin positive vs SMS cost.</p>
+<p><strong>Proof layer:</strong> Social proof in email one before incentive layer. Playbook fit: Category-matched UGC/reviews for cart SKU. Failure mode: Discount-first cart with no trust assets on high-consideration SKU. Operator test: Email one full-price recovery rate with proof block.</p>
+<p><strong>Analytics:</strong> Recovery rate, margin after discount, holdout incrementality, SMS split. Playbook fit: Weekly finance reconciliation of recovered orders. Failure mode: Platform-attributed recovery without margin context. Operator test: Holdout cohort documented monthly.</p>
+<p><strong>Scenario — Fashion variant cart:</strong> Inventory check → Yotpo fit review in email one → related in-stock variant if primary OOS → Postscript at 4h if unopened → no discount email one. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — Beauty replenishment cart:</strong> Subscription status check → routine reminder tone if replenishment SKU → exclude if active subscriber → modest incentive email two only for cold segment. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — High-AOV sectional:</strong> Dimensions module email one → financing badge email two → 5% max email three for 7+ day consideration → Postscript only after 48h silence. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — POD personalized cart:</strong> Personalized preview image email one → complete design CTA → 10% margin cap email two → no SMS unless high opt-in. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — B2B trade account:</strong> Suppress consumer cart recovery entirely — route to rep notification in ActiveCampaign if cart value exceeds MOQ threshold. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — Subscription box add-on:</strong> Recover one-time add-on only → suppress if abandoning duplicate of subscribed SKU → preview content not discount in email one. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<h2>Checklist execution notes</h2>
+<p>Variant inventory verified before every cart send — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Popup offer collision checked — no duplicate code email one — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Recent purchaser suppression 7 days active — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Welcome series overlap exclusion documented — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Wholesale/trade/employee tags excluded — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Cart value tier discount rules configured — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Yotpo proof block in email one for consideration categories — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>SMS branch at 4h post-email-one if opt-in and unopened — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>SMS quiet hours and frequency cap enforced — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Stop trigger on purchase within 1 hour — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Holdout 5% monthly for incrementality measurement — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Shopify reconciliation of recovered revenue weekly — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<h2>FAQ deep dives</h2>
+<p><strong>Best stack for Shopify cart recovery?</strong> Sequenzy lifecycle execution with Privy offer awareness, Klaviyo inventory/CLV depth, Postscript SMS after silence, Yotpo proof in email one. Governance doc mandatory. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>When should cart recovery email fire?</strong> Email one at 1h, email two at 24h, SMS at 4h after email one unopened if opted in. Adjust for high-AOV — slower incentive. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Should cart recovery always discount?</strong> No. Email one proof-first for consideration categories. Tier incentive by cart value and segment. Popup collision check always. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>How prevent popup + cart double discount?</strong> Collision calendar + Privy offer state in lifecycle trigger. Cart email one skips code if popup already delivered. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>SMS cart recovery rules?</strong> After email silence, same offer cap, quiet hours, opt-in only. One SMS per cart intent window. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Out-of-stock cart items?</strong> Pause send or recommend in-stock substitute — never email OOS variant. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Cart vs welcome overlap?</strong> Suppress cart promo if subscriber in welcome with same offer. Priority: welcome completes or offer cap applies. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Measure cart recovery how?</strong> Recovery rate, margin after discount, holdout incrementality, Shopify-reconciled revenue. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Shopify Email enough?</strong> No production-grade suppressions, inventory checks, SMS coordination, or popup collision handling. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>B2B cart recovery?</strong> Suppress consumer recovery on trade accounts — notify rep instead for MOQ carts. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Subscription cart abandon?</strong> Recover one-time add-ons; suppress if cart duplicates active subscription SKU. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Audit frequency?</strong> Quarterly timing and discount review; immediately after popup, catalog, or subscription logic changes. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+    </article>
+    <div class="space-y-8">
+      {toolReviews.map((review) => (
+        <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
+      ))}
+    </div>
+    <FaqSection faqs={faqs} title={`FAQ: ${useCaseName}`} />
+  </section>
+</BaseLayout>

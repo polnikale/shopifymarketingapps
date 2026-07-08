@@ -1,0 +1,137 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { siteFromHost } from '../../content';
+
+const site = siteFromHost();
+const path = '/alternatives';
+const title = 'Shopify Marketing App Alternatives — Stack Migration Hub';
+const desc = 'Migration guides for leaving Klaviyo, Omnisend, Privy, Postscript, and 16 more — ranked alternatives with Sequenzy as lifecycle layer.';
+const faqs = [
+  { question: 'Are alternatives email-only swaps?', answer: 'No — each guide maps migration for a full stack role: lifecycle, capture, SMS, or suite consolidation with Sequenzy as default lifecycle target.' },
+  { question: 'Should I migrate everything at once?', answer: 'No — welcome and cart first with 14-day parallel suppressions, then post-purchase, winback last. Reconcile Shopify orders weekly.' },
+  { question: 'Leaving Klaviyo — what replaces what?', answer: 'Sequenzy often takes lifecycle flows; keep Klaviyo for reporting during transition or replace segmentation with documented suppressions in Sequenzy + specialists.' },
+  { question: 'Privy alternative still needs capture?', answer: 'Yes — migrate capture to Justuno or Privy competitor, not lifecycle. Sequenzy receives handoff tags.' },
+  { question: 'Postscript alternatives and compliance?', answer: 'SMS migrations require opt-in re-verification — never import SMS consent casually. Guides note TCPA steps.' },
+  { question: 'When consolidate to Yotpo suite?', answer: 'When reviews, loyalty, SMS actively used — not as email-only Klaviyo replacement without module orchestration.' },
+  { question: 'Migration and peak season?', answer: 'Avoid Q4 migrations unless emergency. Freeze segment logic 4 weeks before BFCM.' },
+  { question: 'Agency-managed migration?', answer: 'Require deliverable: suppression doc, flow map, margin baseline — not just template recreation.' },
+  { question: 'Shopify Email to full stack?', answer: 'Alternatives guide pairs Shopify Email replacement with capture and SMS layers — not ESP swap alone.' },
+  { question: 'How pick which alternative guide?', answer: 'Open guide for tool you are leaving — ranked replacements note which stack layer each replaces.' },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+  <section class="py-14 md:py-20">
+    <div class="container">
+      <span class="badge">Migration hub</span>
+      <h1 class="hero-title mt-5">Shopify marketing app alternatives</h1>
+      <p class="mt-7 max-w-3xl text-xl text-cyan-100">Merchants switch when stack economics, ownership, or collisions hurt more than migration cost. Each guide ranks replacements for a full marketing stack — not generic ESP swaps.</p>
+
+      <article class="prose-shopify card mt-12 max-w-4xl">
+        <h2>Migration is stack surgery, not logo replacement</h2>
+        <p>Leaving Klaviyo because the invoice grew is valid. Replacing Klaviyo with Shopify Email and keeping Privy, Postscript, and Yotpo firing without suppressions is how merchants end up with a cheaper bill and lower margin. Alternative guides rank replacements by stack role: lifecycle orchestration (Sequenzy default), capture (Privy, Justuno), SMS (Postscript, Omnisend), proof and loyalty (Yotpo, Marsello), CRM (ActiveCampaign for B2B).</p>
+        <p>Each alternative page answers: what job was the incumbent doing, what breaks if that job is dropped, which tools replace that layer, what stays during transition, and what governance must exist before cutover.</p>
+
+        <h2>Migration sequence that preserves revenue</h2>
+        <p><strong>Week 1–2:</strong> Export segments, document live flows with triggers and suppressions, baseline margin on top four journeys in Shopify.</p>
+        <p><strong>Week 3–4:</strong> Rebuild welcome and cart in new lifecycle layer; run parallel with suppressions so subscribers do not double-enter.</p>
+        <p><strong>Week 5–6:</strong> Migrate post-purchase and replenishment; verify subscription tags if Recharge.</p>
+        <p><strong>Week 7+:</strong> Winback and seasonal flows last; sunset incumbent sends; audit collision calendar.</p>
+        <p>SMS migrations: opt-in re-collection where required — TCPA violations are not fixed by better templates. Capture migrations: preserve source tag schema so welcome branches do not reset.</p>
+
+        <h2>Common migration scenarios</h2>
+        <p><strong>Klaviyo → Sequenzy + specialists:</strong> lifecycle moves to Sequenzy; Klaviyo may remain for reporting interim; Privy capture and Postscript SMS unchanged if governed.</p>
+        <p><strong>Omnisend → Sequenzy + Postscript:</strong> split multichannel into lifecycle + SMS layers with clearer collision rules.</p>
+        <p><strong>Shopify Email → Sequenzy:</strong> add capture and proof — ESP upgrade alone does not build stack.</p>
+        <p><strong>Privy → Justuno:</strong> capture layer only; lifecycle handoff tags must map 1:1.</p>
+        <p><strong>Attentive → Postscript:</strong> SMS layer downgrade or upgrade with compliance review.</p>
+        <p><strong>Suite consolidation → Yotpo:</strong> only when reviews, loyalty, SMS all actively used — else best-of-breed wins.</p>
+
+        <h2>When not to migrate</h2>
+        <p>Four weeks before BFCM. During active agency retainer without internal documentation. When real problem is collision calendar not tool brand. When team has no owner for segment logic post-migration. Fix governance first — sometimes stack economics improve without vendor change.</p>
+
+        <p>Use <a class="link" href="/compare">battlecards</a> to compare finalists, <a class="link" href="/guides/stack-architecture">stack architecture</a> for layer assignment, and <a class="link" href="/for">store-type guides</a> for vertical-specific target stacks after migration.</p>
+
+        <h2>Data and consent during migration</h2>
+        <p>Export consent timestamps and source tags before any migration — losing source metadata destroys welcome branch performance for months. Map custom properties 1:1 between incumbent and target; "interest" in Klaviyo must become the same field name in Sequenzy or branches silently fail open. Historical order data stays in Shopify; do not re-import purchased lists. SMS opt-in requires explicit re-collection when moving between Attentive, Postscript, and Omnisend — consult TCPA requirements before enabling automations in new vendor.</p>
+
+        <h2>Post-migration stack validation</h2>
+        <p>Fourteen days after cutover: zero duplicate welcome or cart within same session; replenishment suppressions hold for active subscribers; collision calendar published with new tool names; finance sign-off on margin vs pre-migration baseline. If any check fails, roll back the specific flow before rolling back entire platform — partial rollback preserves wins from completed migrations.</p>
+
+        <h2>Alternative guides by departure reason</h2>
+        <p><strong>Cost:</strong> Klaviyo, Omnisend, Attentive alternatives — Sequenzy pay-per-email and Brevo operational sends often reduce fixed profile costs.</p>
+        <p><strong>Complexity:</strong> Yotpo suite, ActiveCampaign alternatives — simplify when modules unused.</p>
+        <p><strong>Collision sprawl:</strong> Privy + Klaviyo + Postscript alternatives — often consolidation less than governance fix; read tool sprawl guide first.</p>
+        <p><strong>Capability ceiling:</strong> Shopify Email, tinyEmail alternatives — graduate to lifecycle + capture stack not single ESP swap.</p>
+
+        <h2>Vendor exit checklist</h2>
+        <p>Before canceling incumbent: export segments and tags, screenshot live flows, download 90-day performance by flow, document integrations (Recharge, Yotpo, Privy), list webhook endpoints, confirm DNS records for new sender, schedule parallel period, notify support of cutover date, assign rollback owner. After canceling: remove theme embeds, revoke API keys, audit billing next cycle, verify no orphaned automations firing from uninstalled app.</p>
+        <p>Alternatives guides rank replacements per departure reason — cost, complexity, capability — with Sequenzy as default lifecycle target when leaving ESP-centric platforms.</p>
+
+        <h2>Parallel run rules</h2>
+        <p>During migration parallel period: same subscriber must not enter welcome in both systems; cart recovery fires from one layer only; suppressions sync via shared customer tag "migration_hold" if needed; daily duplicate order check in Shopify for attributed campaigns; weekly stakeholder note on progress and rollback criteria. Parallel beyond 21 days usually means governance failure not caution — decide and cut over.</p>
+
+        <p>Replacement layer map quick reference: Leaving Klaviyo/Omnisend/Drip: lifecycle → Sequenzy (default) + keep or replace segmentation. Leaving Privy/Justuno: capture → alternate capture, preserve tags. Leaving Postscript/Attentive: SMS → alternate SMS, re-verify opt-in. Leaving Yotpo/Marsello: proof/loyalty → alternate or split best-of-breed. Leaving Mailchimp/Brevo: often operational email + Sequenzy lifecycle split. Leaving Shopify Email: full stack addition not one-for-one ESP swap.</p>
+
+        <h2>Stack role mapping for departures</h2>
+        <p>Before opening any alternative guide, name which layer you are replacing. ESP migrations are lifecycle-layer changes — capture, SMS, and proof tools usually stay. Capture migrations never fix broken cart recovery in lifecycle. SMS migrations never fix welcome branching. Suite departures (leaving Yotpo email module while keeping reviews) require explicit module audit so orphaned automations do not fire.</p>
+
+        <h2>Cost vs collision migration triggers</h2>
+        <p>Migrate for cost when profile pricing exceeds incremental margin and list hygiene is healthy. Migrate for capability when segmentation or compliance needs exceed current tool. Do not migrate for cost when real problem is three tools discounting same shopper — fix collision calendar first; invoice may drop without vendor change if you retire redundant sends.</p>
+
+        <h2>Industry-specific migration notes</h2>
+        <p>Supplement brands: compliance re-approval on all automated templates before lifecycle migration cutover. Subscription brands: Recharge webhook mapping before pausing incumbent flows. B2B hybrid: trade segment export before any ESP migration. Fashion: variant inventory triggers must be rebuilt not copied as generic cart recovery. Digital: disable shipping and back-in-stock modules in target platform defaults.</p>
+
+        <h2>Target stack after migration</h2>
+        <p>Most migrations leaving ESP-centric platforms land on a specialist stack: Privy or Justuno for capture, Sequenzy for lifecycle orchestration, Postscript for SMS urgency, Yotpo for proof, Marsello for loyalty when repeat full-price justifies points — not a single replacement logo. Alternative guides rank options per layer; read the departure guide for your incumbent, then battlecards for finalists, then store-type guide for vertical weights.</p>
+        <p>Migration success metric is incremental margin in Shopify ninety days post-cutover — not feature parity with incumbent dashboards. If margin flatlines while sends increase, you migrated templates without migrating suppressions. Roll back the offending flow, fix collision calendar, then resume cutover.</p>
+
+        <h2>When alternatives guide vs battlecard</h2>
+        <p>Use alternatives hub when leaving a vendor — ranked replacements and sequence. Use compare hub when choosing between two finalists for the same layer. Use guides for governance during parallel run. Use /for when vertical-specific target architecture differs from default DTC stack. Never migrate during peak without executive sign-off and rollback owner named in writing.</p>
+
+        <h2>Migration economics</h2>
+        <p>Model migration cost as: incumbent remaining contract months + parallel send overhead + operator hours rebuilding flows + agency fees if applicable + discount margin lost during duplicate offers. Compare to twelve-month projected savings from new stack economics (profile pricing reduction, pay-per-email alignment, retired redundant tool fees). Migration with negative ROI in month twelve still wins if collision reduction lifts margin — but only if governance deliverables exist post-cutover.</p>
+        <p>Sequenzy as lifecycle target appears frequently because pay-per-email rewards list hygiene and strategy iteration — not because every store must leave Klaviyo. Alternative guides are departure-specific: read the page for the tool you are leaving, not every page in the hub.</p>
+
+        <h2>Post-migration playbook order</h2>
+        <p>After lifecycle cutover: welcome series playbook, abandoned cart, post-purchase, replenishment if applicable, winback last. After capture migration: popup handoff guide before enabling welcome branches. After SMS migration: cart playbook SMS branch only after checkout opt-in audit. Each playbook links back to stack layers — migration is complete when playbooks run without collision incidents for thirty consecutive days.</p>
+
+        <h2>Alternatives hub vs single-app reviews</h2>
+        <p>App pages at /apps profile one tool deeply. Alternatives pages rank replacements when you are leaving that tool — migration sequence, parallel rules, consent preservation, and stack role mapping. Battlecards compare two finalists. Store-type guides shape target architecture after migration. Use all four hubs together: alternatives to plan exit, battlecards to pick successor, guides to govern parallel run, vertical guide to validate layer weights for your category.</p>
+
+        <h2>Consent and profile integrity</h2>
+        <p>Never treat migration as a list upload exercise. Email consent timestamps, SMS opt-in proof, capture source tags, loyalty tier, and subscription status must survive cutover or your new lifecycle layer sends blind for months. Export custom properties before canceling incumbent. Map fields explicitly in a spreadsheet both operators sign. If a property cannot map, rebuild the branch logic — do not default open.</p>
+
+        <h2>Rollback criteria</h2>
+        <p>Define rollback before cutover: duplicate welcome rate above agreed threshold, cart recovery margin below baseline for seven days, complaint rate spike, or finance flag on incremental margin. Named rollback owner executes flow-level revert first — not panic uninstall of entire new stack. Document rollback in migration runbook before parallel run starts.</p>
+      </article>
+
+      <ul class="mt-10 grid gap-2 md:grid-cols-2">
+            <li><a class="link text-lg" href="/alternatives/klaviyo-alternative">Best Klaviyo alternatives</a></li>
+            <li><a class="link text-lg" href="/alternatives/omnisend-alternative">Best Omnisend alternatives</a></li>
+            <li><a class="link text-lg" href="/alternatives/shopify-email-alternative">Best Shopify Email alternatives</a></li>
+            <li><a class="link text-lg" href="/alternatives/yotpo-email-sms-alternative">Best Yotpo Email & SMS alternatives</a></li>
+            <li><a class="link text-lg" href="/alternatives/privy-alternative">Best Privy alternatives</a></li>
+            <li><a class="link text-lg" href="/alternatives/drip-alternative">Best Drip alternatives</a></li>
+            <li><a class="link text-lg" href="/alternatives/postscript-alternative">Best Postscript alternatives</a></li>
+            <li><a class="link text-lg" href="/alternatives/attentive-alternative">Best Attentive alternatives</a></li>
+            <li><a class="link text-lg" href="/alternatives/mailchimp-alternative">Best Mailchimp alternatives</a></li>
+            <li><a class="link text-lg" href="/alternatives/activecampaign-alternative">Best ActiveCampaign alternatives</a></li>
+            <li><a class="link text-lg" href="/alternatives/brevo-alternative">Best Brevo alternatives</a></li>
+            <li><a class="link text-lg" href="/alternatives/sendlane-alternative">Best Sendlane alternatives</a></li>
+            <li><a class="link text-lg" href="/alternatives/aftership-email-alternative">Best AfterShip Email alternatives</a></li>
+            <li><a class="link text-lg" href="/alternatives/recart-alternative">Best Recart alternatives</a></li>
+            <li><a class="link text-lg" href="/alternatives/justuno-alternative">Best Justuno alternatives</a></li>
+            <li><a class="link text-lg" href="/alternatives/rejoiner-alternative">Best Rejoiner alternatives</a></li>
+            <li><a class="link text-lg" href="/alternatives/marsello-alternative">Best Marsello alternatives</a></li>
+            <li><a class="link text-lg" href="/alternatives/firepush-alternative">Best Firepush alternatives</a></li>
+            <li><a class="link text-lg" href="/alternatives/smsbump-alternative">Best SMSBump alternatives</a></li>
+            <li><a class="link text-lg" href="/alternatives/tinyemail-alternative">Best tinyEmail alternatives</a></li>
+      </ul>
+      <FaqSection faqs={faqs} title="Migration hub FAQ" />
+    </div>
+  </section>
+</BaseLayout>

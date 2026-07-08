@@ -1,0 +1,262 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import ToolReview from '../../components/ToolReview.astro';
+import { siteFromHost, pageTitle, description } from '../../content';
+import { appBySlug } from '../../data/apps';
+
+const site = siteFromHost();
+const path = '/use-cases/holiday-gifting';
+const title = pageTitle(site, 'use-cases/holiday-gifting');
+const desc = description(site, 'use-cases/holiday-gifting');
+const heroSubtitle = 'Holiday gifting coordinates gift-guide capture, shipping-deadline urgency in Sequenzy, gift-card last-minute SMS via Postscript, and loyalty exclusions — while suppressing self-purchase replenishment copy from gift recipient messaging.';
+const useCaseName = 'holiday gifting';
+const trigger = 'Holiday calendar; gift guide engagement; shipping deadline proximity';
+const timing = 'Gift guide 4 weeks out; shipping deadline reminders; last-minute digital gift cards';
+const tldrPicks = [
+    { label: 'Lifecycle', tool: 'Sequenzy', reason: 'Gift guide and deadline orchestration' },
+    { label: 'Capture', tool: 'Privy', reason: 'Gift intent quiz and guide opt-ins' },
+    { label: 'Multichannel', tool: 'Omnisend', reason: 'Deadline email+SMS for SMB' },
+    { label: 'Segmentation', tool: 'Klaviyo', reason: 'Gift buyer vs self-purchase splits' },
+];
+const faqs = [
+  { question: 'Best stack for holiday gifting campaigns?', answer: 'Privy gift capture, Sequenzy guide and deadline orchestration, Klaviyo gift/self segments, Omnisend/Postscript final SMS, Yotpo gift UGC, collision calendar mandatory.' },
+  { question: 'When start holiday gift emails?', answer: 'Gift guide ~4 weeks before primary holiday; deadline series intensifies final 14 days.' },
+  { question: 'Gift vs self-purchase segmentation?', answer: 'Separate flows with suppressions — replenishment and self-promo off for gift-tagged profiles during peak.' },
+  { question: 'Shipping deadline emails?', answer: 'Dynamic by zone; too-late branches show gift card; test dates before Dec 1.' },
+  { question: 'SMS holiday gifting?', answer: 'Final 48h once per opted-in gift intender — not daily marketing texts.' },
+  { question: 'VIP holiday treatment?', answer: 'Early gift guide access 48h — not necessarily bigger discounts.' },
+  { question: 'Subscription boxes holiday?', answer: 'Gift subscription offer on separate calendar from subscriber renewal preview.' },
+  { question: 'International gifting?', answer: 'Geo suppress when regional cutoff passed; separate deadline content.' },
+  { question: 'Post-holiday gift buyer emails?', answer: 'Thank-you and Jan nurture — not immediate winback discount.' },
+  { question: 'Metrics for holiday gifting?', answer: 'Gift revenue %, gift card sales, deadline conversion, gift return rate.' },
+  { question: 'BFCM vs gift guide collision?', answer: 'Collision calendar — VIP early access sequenced before general BFCM; gift guide can parallel if segments distinct.' },
+  { question: 'Biggest holiday gifting mistake?', answer: 'Same replenishment and gift messaging to one subscriber — confuses and unsubscribes.' },
+];
+const toolReviews = [
+    {
+      slug: 'sequenzy',
+      rank: 1,
+      paragraphs: [
+      'Sequenzy gift guide and dynamic deadline orchestration.',
+      'Gift card last-minute modules and post-gift branches.',
+      'Collision-aware send scheduling.',
+      ],
+    },
+    {
+      slug: 'privy',
+      rank: 2,
+      paragraphs: [
+      'Privy gift intent capture and guide opt-in tags.',
+      'Quiz for recipient relationship.',
+      'Hand off to lifecycle before guide send.',
+      ],
+    },
+    {
+      slug: 'klaviyo',
+      rank: 3,
+      paragraphs: [
+      'Klaviyo gift vs self segments and geo splits.',
+      'Q4 reporting by gift cohort.',
+      'Predictive gift buyer identification.',
+      ],
+    },
+    {
+      slug: 'omnisend',
+      rank: 4,
+      paragraphs: [
+      'Omnisend deadline email+SMS for SMB gift peaks.',
+      'Quick deployment before Q4.',
+      'Monitor SMS volume costs in December.',
+      ],
+    },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+  <section class="relative overflow-hidden py-16 md:py-24">
+    <div class="container">
+      <a href="/use-cases" class="link text-sm">← Use-case playbooks</a>
+      <span class="badge mt-6">Marketing stack playbook</span>
+      <h1 class="hero-title mt-5 max-w-5xl">Shopify marketing stack for {useCaseName}</h1>
+      <p class="mt-7 max-w-3xl text-xl text-cyan-100">{heroSubtitle}</p>
+      <p class="mt-5 max-w-3xl text-lg text-slate-300">Trigger: {trigger} · Timing: {timing}</p>
+    </div>
+  </section>
+  <section class="container pb-12">
+    <TldrBox title={`Stack picks for ${useCaseName}`} picks={tldrPicks} />
+    <article class="prose-shopify mb-12 card">
+      <h2>Stack execution playbook</h2>
+  <p>Holiday gifting is a stack coordination peak — not a single campaign blast. Gift buyers, self-purchasers, VIPs, subscribers, and wholesale accounts need different message types in the same four-week window. Without collision calendar and segment priority rules, subscribers receive gift guide, replenishment reminder, and 30% BFCM promo same afternoon.</p>
+  <p>Gift guide emails launch 4 weeks before primary holiday — segmented by category (for him, for her, under $50) from Privy gift-intent capture tags. Self-purchasers on replenishment flows suppress gift messaging unless they opt into gift guide separately.</p>
+  <p>Shipping deadline urgency is the highest-converting gift email type — dynamic cutoff dates by shipping zone from Shopify or carrier API. Sequenzy branches: still-arrives-by-Christmas vs express vs too-late-show-gift-card.</p>
+  <p>Gift card last-minute option saves revenue after physical cutoff — prominent module in Dec 18–23 sends. Digital delivery instant; design distinct from physical product templates.</p>
+  <p>Jewelry and high-AOV gift paths emphasize arrival certainty and gift packaging — not deepest discount. Financing and gift receipt options in email two.</p>
+  <p>SMS for shipping deadline final 48h — Postscript or Omnisend to opted-in gift buyers who clicked guide but did not purchase. One SMS per holiday season per subscriber cap.</p>
+  <p>Yotpo gift-appropriate reviews and UGC in gift guide modules — unboxing photos outperform spec sheets for gift confidence.</p>
+  <p>Loyalty tier early gift guide access for VIP — 48h before general list. Suppress loyalty points pitch during gift deadline week — focus on arrival.</p>
+  <p>Subscriber box brands: gift subscription offer separate branch from subscriber renewal preview — collision kills both if combined.</p>
+  <p>International markets: suppress gift emails when regional shipping cutoff passed — geo segment required.</p>
+  <p>Post-holiday: gift purchasers enter thank-you and Jan self-purchase nurture, not immediate winback discount.</p>
+  <p>Analytics: gift revenue attribution, gift card sales from email, shipping tier conversion, return rate on gift purchases.</p>
+
+      <h2>Merchant scenarios</h2>
+  <p><strong>Jewelry Q4:</strong> Privy gift quiz → Sequenzy guide by recipient → deadline series by zone → gift card module Dec 20+. No lead discount.</p>
+  <p><strong>Beauty gift sets:</strong> Bundle gift sets in guide; subscriber suppressions; Yotpo gift wrap UGC; SMS Dec 21 cutoff opt-in only.</p>
+  <p><strong>Food corporate gifting:</strong> B2B tag for corporate bulk — separate from consumer gift guide. MOQ and delivery date in template.</p>
+  <p><strong>Home decor:</strong> Large item shipping deadline prominent; room gift guide segments; extended return policy module for gift purchases.</p>
+  <p><strong>Pet gift buyers:</strong> Gift guide by pet type; self-purchaser replenishment suppressed; cute UGC modules.</p>
+  <p><strong>Digital gift cards only:</strong> Last-minute Dec 23–25 email series; no shipping modules; instant delivery CTA.</p>
+
+      <h2>Stack checklist</h2>
+      <ul>
+    <li>Gift vs self segments defined with mutual suppressions</li>
+    <li>Shipping deadline dynamic content tested per zone</li>
+    <li>Gift card module live before physical cutoff passes</li>
+    <li>VIP early access 48h before general gift guide</li>
+    <li>Subscriber renewal and gift subscription on separate calendar rows</li>
+    <li>Wholesale/B2B excluded from consumer gift promos</li>
+    <li>International geo suppressions after regional cutoff</li>
+    <li>SMS deadline cap one per subscriber per season</li>
+    <li>Replenishment flows paused or branched for gift season</li>
+    <li>Return policy gift-specific module in post-purchase</li>
+    <li>Collision calendar published for Nov 15 – Dec 31</li>
+    <li>Post-holiday thank-you branch for gift buyers</li>
+      </ul>
+
+      <h3>Exclusions (non-negotiable)</h3>
+      <ul>
+    <li>Self-purchase segments from gift messaging</li>
+    <li>Markets past shipping cutoff</li>
+    <li>Out-of-stock gift bundles</li>
+      </ul>
+
+      <h3>Metrics that prove quality</h3>
+      <ul>
+    <li>Gift purchase revenue</li>
+    <li>Shipping deadline conversion</li>
+    <li>Gift card sales from email</li>
+    <li>Return rate on gift purchases</li>
+      </ul>
+
+      <h3>Common mistakes</h3>
+      <ul>
+    <li>Gift messaging to self-purchasers</li>
+    <li>Missing shipping deadline urgency</li>
+    <li>No gift card last-minute option</li>
+      </ul>
+
+      <h2>Holiday gifting across stack layers</h2>
+  <div>
+    <h3>Gift capture: Privy, Justuno</h3>
+    <p>Gift intent quiz, recipient relationship, guide opt-in tags.</p>
+    <p>Tags drive guide segmentation and deadline series branch.</p>
+    <p><strong>Failure mode:</strong> Self-purchasers tagged gift by default.</p>
+    <p><strong>Operator test:</strong> Gift vs self revenue split in Shopify reports.</p>
+  </div>
+  <div>
+    <h3>Lifecycle orchestration: Sequenzy</h3>
+    <p>Gift guide series, deadline urgency, gift card last-minute, post-gift thank-you.</p>
+    <p>Dynamic shipping dates; gift card fallback module.</p>
+    <p><strong>Failure mode:</strong> Replenishment email with gift guide same week.</p>
+    <p><strong>Operator test:</strong> Deadline email conversion by days-to-cutoff.</p>
+  </div>
+  <div>
+    <h3>Multichannel urgency: Omnisend, Postscript</h3>
+    <p>Final 48h SMS to opted-in gift intenders.</p>
+    <p>One SMS cap per season; quiet hours maintained.</p>
+    <p><strong>Failure mode:</strong> Daily SMS countdown spam.</p>
+    <p><strong>Operator test:</strong> Gift SMS opt-out under 2%.</p>
+  </div>
+  <div>
+    <h3>Proof modules: Yotpo</h3>
+    <p>Gift-appropriate UGC in guide emails.</p>
+    <p>Unboxing and gift reaction photos in templates.</p>
+    <p><strong>Failure mode:</strong> Generic product shots without gift context.</p>
+    <p><strong>Operator test:</strong> Guide CTR with gift UGC vs without.</p>
+  </div>
+  <div>
+    <h3>VIP + loyalty: Klaviyo, Marsello</h3>
+    <p>Early guide access; points messaging paused during deadline week.</p>
+    <p>VIP gets early access not deeper discount.</p>
+    <p><strong>Failure mode:</strong> Double points + gift sale stack.</p>
+    <p><strong>Operator test:</strong> VIP gift revenue vs general list margin.</p>
+  </div>
+  <div>
+    <h3>Analytics: Shopify</h3>
+    <p>Gift attribution, gift card %, return rate on gifts, deadline conversion curve.</p>
+    <p>Daily dashboard Dec 10–24.</p>
+    <p><strong>Failure mode:</strong> Total revenue without gift margin context.</p>
+    <p><strong>Operator test:</strong> Gift return rate vs self-purchase benchmark.</p>
+  </div>
+
+      <h2>Timing and trigger governance</h2>
+  <p>Gift guide: T-28 days primary holiday.</p>
+  <p>Deadline reminders: T-14, T-7, T-3, T-1 by zone.</p>
+  <p>Gift card push: after physical cutoff per zone.</p>
+  <p>SMS final 48h: once per opted-in gift intender.</p>
+  <p>Pause replenishment and winback promos for gift-tagged Dec 1–25 unless opted out.</p>
+
+      <h2>Measurement across the stack</h2>
+  <p>Gift revenue % of Q4 email attribution.</p>
+  <p>Gift card sales from last-minute series.</p>
+  <p>Conversion by deadline email tranche.</p>
+  <p>Return rate gift vs non-gift orders.</p>
+
+      <h2>Related playbooks</h2>
+  <p>Peak: <a class="link" href="/use-cases/black-friday">Black Friday campaigns</a>.</p>
+  <p>Segments: <a class="link" href="/for/jewelry">jewelry</a>, <a class="link" href="/guides/seasonal-campaigns">seasonal governance</a>.</p>
+  <p>Post: <a class="link" href="/use-cases/post-purchase">post-purchase</a> gift branch.</p>
+
+<h2>Stack coordination for holiday gifting</h2>
+<p>holiday gifting is not an email template problem — it is a stack handoff problem. Trigger: Holiday calendar; gift guide engagement; shipping deadline proximity Timing: Gift guide 4 weeks out; shipping deadline reminders; last-minute digital gift cards Every layer must read the same customer state: capture tags from Privy, lifecycle execution in Sequenzy, proof modules from Yotpo, loyalty tier from Marsello, SMS consent from Postscript. When match gift timing, deadlines, and bundles, margin after discount matters more than attributed revenue.</p>
+<p><strong>Gift capture:</strong> Gift intent quiz, recipient relationship, guide opt-in tags. Playbook fit: Tags drive guide segmentation and deadline series branch. Failure mode: Self-purchasers tagged gift by default. Operator test: Gift vs self revenue split in Shopify reports.</p>
+<p><strong>Lifecycle orchestration:</strong> Gift guide series, deadline urgency, gift card last-minute, post-gift thank-you. Playbook fit: Dynamic shipping dates; gift card fallback module. Failure mode: Replenishment email with gift guide same week. Operator test: Deadline email conversion by days-to-cutoff.</p>
+<p><strong>Multichannel urgency:</strong> Final 48h SMS to opted-in gift intenders. Playbook fit: One SMS cap per season; quiet hours maintained. Failure mode: Daily SMS countdown spam. Operator test: Gift SMS opt-out under 2%.</p>
+<p><strong>Proof modules:</strong> Gift-appropriate UGC in guide emails. Playbook fit: Unboxing and gift reaction photos in templates. Failure mode: Generic product shots without gift context. Operator test: Guide CTR with gift UGC vs without.</p>
+<p><strong>VIP + loyalty:</strong> Early guide access; points messaging paused during deadline week. Playbook fit: VIP gets early access not deeper discount. Failure mode: Double points + gift sale stack. Operator test: VIP gift revenue vs general list margin.</p>
+<p><strong>Analytics:</strong> Gift attribution, gift card %, return rate on gifts, deadline conversion curve. Playbook fit: Daily dashboard Dec 10–24. Failure mode: Total revenue without gift margin context. Operator test: Gift return rate vs self-purchase benchmark.</p>
+<p><strong>Scenario — Jewelry Q4:</strong> Privy gift quiz → Sequenzy guide by recipient → deadline series by zone → gift card module Dec 20+. No lead discount. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — Beauty gift sets:</strong> Bundle gift sets in guide; subscriber suppressions; Yotpo gift wrap UGC; SMS Dec 21 cutoff opt-in only. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — Food corporate gifting:</strong> B2B tag for corporate bulk — separate from consumer gift guide. MOQ and delivery date in template. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — Home decor:</strong> Large item shipping deadline prominent; room gift guide segments; extended return policy module for gift purchases. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — Pet gift buyers:</strong> Gift guide by pet type; self-purchaser replenishment suppressed; cute UGC modules. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — Digital gift cards only:</strong> Last-minute Dec 23–25 email series; no shipping modules; instant delivery CTA. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<h2>Checklist execution notes</h2>
+<p>Gift vs self segments defined with mutual suppressions — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Shipping deadline dynamic content tested per zone — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Gift card module live before physical cutoff passes — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>VIP early access 48h before general gift guide — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Subscriber renewal and gift subscription on separate calendar rows — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Wholesale/B2B excluded from consumer gift promos — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>International geo suppressions after regional cutoff — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>SMS deadline cap one per subscriber per season — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Replenishment flows paused or branched for gift season — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Return policy gift-specific module in post-purchase — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Collision calendar published for Nov 15 – Dec 31 — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Post-holiday thank-you branch for gift buyers — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<h2>FAQ deep dives</h2>
+<p><strong>Best stack for holiday gifting campaigns?</strong> Privy gift capture, Sequenzy guide and deadline orchestration, Klaviyo gift/self segments, Omnisend/Postscript final SMS, Yotpo gift UGC, collision calendar mandatory. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>When start holiday gift emails?</strong> Gift guide ~4 weeks before primary holiday; deadline series intensifies final 14 days. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Gift vs self-purchase segmentation?</strong> Separate flows with suppressions — replenishment and self-promo off for gift-tagged profiles during peak. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Shipping deadline emails?</strong> Dynamic by zone; too-late branches show gift card; test dates before Dec 1. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>SMS holiday gifting?</strong> Final 48h once per opted-in gift intender — not daily marketing texts. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>VIP holiday treatment?</strong> Early gift guide access 48h — not necessarily bigger discounts. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Subscription boxes holiday?</strong> Gift subscription offer on separate calendar from subscriber renewal preview. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>International gifting?</strong> Geo suppress when regional cutoff passed; separate deadline content. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Post-holiday gift buyer emails?</strong> Thank-you and Jan nurture — not immediate winback discount. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Metrics for holiday gifting?</strong> Gift revenue %, gift card sales, deadline conversion, gift return rate. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>BFCM vs gift guide collision?</strong> Collision calendar — VIP early access sequenced before general BFCM; gift guide can parallel if segments distinct. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Biggest holiday gifting mistake?</strong> Same replenishment and gift messaging to one subscriber — confuses and unsubscribes. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+    </article>
+    <div class="space-y-8">
+      {toolReviews.map((review) => (
+        <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
+      ))}
+    </div>
+    <FaqSection faqs={faqs} title={`FAQ: ${useCaseName}`} />
+  </section>
+</BaseLayout>

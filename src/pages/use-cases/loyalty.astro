@@ -1,0 +1,261 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import ToolReview from '../../components/ToolReview.astro';
+import { siteFromHost, pageTitle, description } from '../../content';
+import { appBySlug } from '../../data/apps';
+
+const site = siteFromHost();
+const path = '/use-cases/loyalty';
+const title = pageTitle(site, 'use-cases/loyalty');
+const desc = description(site, 'use-cases/loyalty');
+const heroSubtitle = 'Loyalty campaigns succeed when Marsello or Yotpo points sync with Sequenzy lifecycle suppressions — enrollment on second order, tier celebrations without duplicating promotional blasts, and expiring points warnings that respect active sale weeks.';
+const useCaseName = 'loyalty campaigns';
+const trigger = 'Points earned, tier achieved, or milestone order count';
+const timing = 'Welcome to loyalty on 2nd order; tier celebration immediate; expiring points at 30 days before';
+const tldrPicks = [
+    { label: 'Loyalty core', tool: 'Marsello', reason: 'Points, tiers, POS + ecommerce' },
+    { label: 'Suite loyalty', tool: 'Yotpo Email & SMS', reason: 'Reviews + loyalty consolidation' },
+    { label: 'Lifecycle', tool: 'Sequenzy', reason: 'Enrollment and expiry orchestration' },
+    { label: 'Segmentation', tool: 'Klaviyo', reason: 'Tier-based campaign coordination' },
+];
+const faqs = [
+  { question: 'Best loyalty stack for Shopify?', answer: 'Marsello or Yotpo Loyalty as engine, Sequenzy for enrollment/expiry orchestration, Klaviyo tier segments, collision calendar with promotional layer.' },
+  { question: 'When enroll customers in loyalty?', answer: 'Second full-price order typical — not first-order discount seekers or one-time buyers.' },
+  { question: 'Loyalty vs promotional email?', answer: 'Collision calendar prevents same-day loyalty and sitewide promo. VIP gets early access not deeper discounts.' },
+  { question: 'Marsello vs Yotpo Loyalty?', answer: 'Marsello for POS omnichannel; Yotpo when already on reviews suite. Both need Sequenzy orchestration.' },
+  { question: 'Points expiry emails?', answer: '30d, 7d, 1d sequence via Sequenzy; suppress if redeemed or conflicting peak promo.' },
+  { question: 'SMS for loyalty?', answer: 'Expiry urgency only, opted-in VIPs, max quarterly frequency.' },
+  { question: 'Review-for-points?', answer: 'Single coordinated email — Yotpo event triggers Sequenzy announcement with bonus.' },
+  { question: 'Loyalty for subscription boxes?', answer: 'Often redundant — subscription is loyalty. Add-on shop may use points.' },
+  { question: 'Exclude wholesale from loyalty?', answer: 'Yes — B2B uses volume pricing not points.' },
+  { question: 'Metrics for loyalty campaigns?', answer: 'Enrollment rate, repeat frequency, redemption, enrolled LTV vs holdout.' },
+  { question: 'POD and loyalty?', answer: 'Thin margin often skips points — early access list instead.' },
+  { question: 'Biggest loyalty stack mistake?', answer: 'Launching points without collision governance — duplicates promos and confuses subscribers.' },
+];
+const toolReviews = [
+    {
+      slug: 'marsello',
+      rank: 1,
+      paragraphs: [
+      'Marsello loyalty with POS + Shopify for omnichannel repeat.',
+      'Segments and campaigns included.',
+      'Best when loyalty is central retention strategy.',
+      ],
+    },
+    {
+      slug: 'yotpo-email-sms',
+      rank: 2,
+      paragraphs: [
+      'Yotpo Loyalty consolidates with reviews and SMS.',
+      'Review-for-points natural fit.',
+      'Suite value when multiple modules active.',
+      ],
+    },
+    {
+      slug: 'sequenzy',
+      rank: 3,
+      paragraphs: [
+      'Sequenzy orchestrates enrollment, tier celebration, expiry without promo collision.',
+      'Reads tier property before sends.',
+      'Measure enrolled LTV lift.',
+      ],
+    },
+    {
+      slug: 'klaviyo',
+      rank: 4,
+      paragraphs: [
+      'Klaviyo tier segmentation and loyalty campaign reporting.',
+      'RFM integration with tier status.',
+      'Coordinate segments with Marsello rules.',
+      ],
+    },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+  <section class="relative overflow-hidden py-16 md:py-24">
+    <div class="container">
+      <a href="/use-cases" class="link text-sm">← Use-case playbooks</a>
+      <span class="badge mt-6">Marketing stack playbook</span>
+      <h1 class="hero-title mt-5 max-w-5xl">Shopify marketing stack for {useCaseName}</h1>
+      <p class="mt-7 max-w-3xl text-xl text-cyan-100">{heroSubtitle}</p>
+      <p class="mt-5 max-w-3xl text-lg text-slate-300">Trigger: {trigger} · Timing: {timing}</p>
+    </div>
+  </section>
+  <section class="container pb-12">
+    <TldrBox title={`Stack picks for ${useCaseName}`} picks={tldrPicks} />
+    <article class="prose-shopify mb-12 card">
+      <h2>Stack execution playbook</h2>
+  <p>Loyalty is not a standalone app install — it is a stack layer that must coordinate with lifecycle email, SMS, capture popups, and promotional calendars. Points emails firing the same day as sitewide sale emails train subscribers to ignore both.</p>
+  <p>Enrollment timing: second full-price order for most DTC, not first-order discount hunters. Profile property loyalty_enrolled gates all points creative — first-time buyers see product education not empty points balance.</p>
+  <p>Tier achievement triggers immediate celebration email from Sequenzy with Marsello tier sync — then suppress promotional sends for 48h to let celebration land.</p>
+  <p>Points expiring sequences start 30 days before expiry, 7 days before, final day — each suppressed if customer redeemed or if conflicting BFCM promo active per collision calendar.</p>
+  <p>VIP early access is loyalty value without discount — early collection access for gold tier beats double points during sale week when margin is already compressed.</p>
+  <p>Yotpo Loyalty suits brands already on Yotpo reviews wanting consolidation. Marsello adds POS integration for omnichannel retailers on Shopify plus physical store.</p>
+  <p>SMS for loyalty: points expiry only for opted-in VIPs — not weekly points balance spam.</p>
+  <p>Wholesale, employees, and one-time discount-only buyers excluded from enrollment automations.</p>
+  <p>Loyalty + reviews synergy: bonus points for photo review submission — coordinated in Yotpo with single email announcement via Sequenzy, not separate review ask and points ask same week.</p>
+  <p>Analytics: enrollment rate, repeat purchase frequency post-enrollment, redemption rate, tier progression speed, margin on loyalty-driven orders vs promo-driven.</p>
+  <p>Failure mode: loyalty pitch to subscribers who never made second purchase — feels irrelevant and increases unsubscribe.</p>
+  <p>Fix promotional collision calendar before loyalty launch — loyalty layer sits on top of governance, not instead of it.</p>
+
+      <h2>Merchant scenarios</h2>
+  <p><strong>Fashion early access:</strong> Gold tier gets drop preview 24h early via Sequenzy; no extra 10% off. Marsello tier sync. Promotional sale suppresses early access overlap.</p>
+  <p><strong>Beauty replenishment + points:</strong> Points earned on full-price replenishment only. Sequenzy replenishment and points expiry share suppression rules.</p>
+  <p><strong>Pet third-order enroll:</strong> Marsello enrolls on third order. Welcome-to-loyalty explains autoship bonus. Subscription SKU excluded from double points.</p>
+  <p><strong>Home room completer VIP:</strong> Klaviyo segment completed 3+ room categories → manual VIP tier → early access seasonal refresh.</p>
+  <p><strong>POD skip loyalty:</strong> Thin margin POD — no points program; community early access list instead of Marsello.</p>
+  <p><strong>B2B exclude:</strong> Wholesale tags skip all loyalty automations — volume pricing replaces points.</p>
+
+      <h2>Stack checklist</h2>
+      <ul>
+    <li>Enrollment trigger defined (typically 2nd+ full-price order)</li>
+    <li>Discount-only one-time buyers excluded from enrollment</li>
+    <li>Tier celebration suppresses promo 48h</li>
+    <li>Points expiry series with 30d and 7d touches</li>
+    <li>Collision calendar entry for loyalty vs sitewide promos</li>
+    <li>Empty points module hidden in email templates</li>
+    <li>Review-for-points coordinated single announcement</li>
+    <li>Wholesale and employee exclusions verified</li>
+    <li>Redemption does not stack with active popup code</li>
+    <li>SMS loyalty limited to expiry urgency opted-in VIPs</li>
+    <li>POS sync tested if Marsello omnichannel</li>
+    <li>Monthly redemption and margin report</li>
+      </ul>
+
+      <h3>Exclusions (non-negotiable)</h3>
+      <ul>
+    <li>Discount-only one-time buyers</li>
+    <li>Wholesale accounts</li>
+    <li>Employees</li>
+      </ul>
+
+      <h3>Metrics that prove quality</h3>
+      <ul>
+    <li>Loyalty enrollment rate</li>
+    <li>Repeat purchase frequency</li>
+    <li>Points redemption rate</li>
+    <li>Tier progression speed</li>
+      </ul>
+
+      <h3>Common mistakes</h3>
+      <ul>
+    <li>Loyalty pitch to one-time discount buyers</li>
+    <li>Points expiring without warning</li>
+    <li>Loyalty emails duplicating promotional sends</li>
+      </ul>
+
+      <h2>Loyalty layer in the six-layer stack</h2>
+  <div>
+    <h3>Loyalty engine: Marsello, Yotpo Loyalty</h3>
+    <p>Points earn/burn, tiers, rewards catalog.</p>
+    <p>Earn rules exclude clearance; bonus for reviews coordinated.</p>
+    <p><strong>Failure mode:</strong> Points on already-discounted SKUs eroding margin.</p>
+    <p><strong>Operator test:</strong> Margin on loyalty orders vs promo orders monthly.</p>
+  </div>
+  <div>
+    <h3>Lifecycle orchestration: Sequenzy</h3>
+    <p>Enrollment welcome, tier celebration, expiry warnings, VIP early access sends.</p>
+    <p>Reads loyalty tier property before every promo send.</p>
+    <p><strong>Failure mode:</strong> Promo email + double points same day.</p>
+    <p><strong>Operator test:</strong> Collision audit — zero overlap last sale week.</p>
+  </div>
+  <div>
+    <h3>Segmentation: Klaviyo</h3>
+    <p>Tier segments for campaign coordination and reporting.</p>
+    <p>VIP excluded from bargain hunter promos automatically.</p>
+    <p><strong>Failure mode:</strong> Gold tier receives same 25% off as prospect.</p>
+    <p><strong>Operator test:</strong> Tier-specific campaign performance tracked.</p>
+  </div>
+  <div>
+    <h3>Proof coordination: Yotpo</h3>
+    <p>Review-for-points campaigns in unified comms.</p>
+    <p>Single email CTA for review + bonus points.</p>
+    <p><strong>Failure mode:</strong> Review ask Monday, points promo Tuesday.</p>
+    <p><strong>Operator test:</strong> Review submission rate during points campaigns.</p>
+  </div>
+  <div>
+    <h3>SMS urgency: Postscript</h3>
+    <p>Points expiry final 48h for opted-in VIP only.</p>
+    <p>Max one loyalty SMS per quarter per subscriber.</p>
+    <p><strong>Failure mode:</strong> Weekly points balance texts.</p>
+    <p><strong>Operator test:</strong> SMS opt-out during expiry campaign under 1.5%.</p>
+  </div>
+  <div>
+    <h3>Analytics: Shopify, Marsello</h3>
+    <p>Enrollment %, repeat frequency, redemption, LTV delta enrolled vs not.</p>
+    <p>Holdout group not enrolled — measure true lift.</p>
+    <p><strong>Failure mode:</strong> Points liability growing without repeat lift.</p>
+    <p><strong>Operator test:</strong> Enrolled cohort LTV vs control at 180 days.</p>
+  </div>
+
+      <h2>Timing and trigger governance</h2>
+  <p>Enroll after order 2 fulfilled — not at signup.</p>
+  <p>Tier celebration within 1 hour of tier change event.</p>
+  <p>Expiry warnings at -30d, -7d, -1d — skip if redeemed.</p>
+  <p>Pause loyalty campaigns during BFCM unless early access is the offer.</p>
+
+      <h2>Measurement across the stack</h2>
+  <p>Enrollment rate of eligible repeat buyers.</p>
+  <p>Repeat purchase frequency enrolled vs not.</p>
+  <p>Redemption rate and points liability trend.</p>
+  <p>Margin on loyalty-attributed orders.</p>
+
+      <h2>Related playbooks</h2>
+  <p>Integration: <a class="link" href="/guides/loyalty-integration">loyalty integration guide</a>.</p>
+  <p>VIP: <a class="link" href="/use-cases/vip-segments">VIP segments</a>.</p>
+  <p>Proof: <a class="link" href="/use-cases/reviews-and-ugc">reviews and UGC</a>.</p>
+
+<h2>Stack coordination for loyalty campaigns</h2>
+<p>loyalty campaigns is not an email template problem — it is a stack handoff problem. Trigger: Points earned, tier achieved, or milestone order count Timing: Welcome to loyalty on 2nd order; tier celebration immediate; expiring points at 30 days before Every layer must read the same customer state: capture tags from Privy, lifecycle execution in Sequenzy, proof modules from Yotpo, loyalty tier from Marsello, SMS consent from Postscript. When convert repeat buyers into habitual customers, margin after discount matters more than attributed revenue.</p>
+<p><strong>Loyalty engine:</strong> Points earn/burn, tiers, rewards catalog. Playbook fit: Earn rules exclude clearance; bonus for reviews coordinated. Failure mode: Points on already-discounted SKUs eroding margin. Operator test: Margin on loyalty orders vs promo orders monthly.</p>
+<p><strong>Lifecycle orchestration:</strong> Enrollment welcome, tier celebration, expiry warnings, VIP early access sends. Playbook fit: Reads loyalty tier property before every promo send. Failure mode: Promo email + double points same day. Operator test: Collision audit — zero overlap last sale week.</p>
+<p><strong>Segmentation:</strong> Tier segments for campaign coordination and reporting. Playbook fit: VIP excluded from bargain hunter promos automatically. Failure mode: Gold tier receives same 25% off as prospect. Operator test: Tier-specific campaign performance tracked.</p>
+<p><strong>Proof coordination:</strong> Review-for-points campaigns in unified comms. Playbook fit: Single email CTA for review + bonus points. Failure mode: Review ask Monday, points promo Tuesday. Operator test: Review submission rate during points campaigns.</p>
+<p><strong>SMS urgency:</strong> Points expiry final 48h for opted-in VIP only. Playbook fit: Max one loyalty SMS per quarter per subscriber. Failure mode: Weekly points balance texts. Operator test: SMS opt-out during expiry campaign under 1.5%.</p>
+<p><strong>Analytics:</strong> Enrollment %, repeat frequency, redemption, LTV delta enrolled vs not. Playbook fit: Holdout group not enrolled — measure true lift. Failure mode: Points liability growing without repeat lift. Operator test: Enrolled cohort LTV vs control at 180 days.</p>
+<p><strong>Scenario — Fashion early access:</strong> Gold tier gets drop preview 24h early via Sequenzy; no extra 10% off. Marsello tier sync. Promotional sale suppresses early access overlap. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — Beauty replenishment + points:</strong> Points earned on full-price replenishment only. Sequenzy replenishment and points expiry share suppression rules. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — Pet third-order enroll:</strong> Marsello enrolls on third order. Welcome-to-loyalty explains autoship bonus. Subscription SKU excluded from double points. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — Home room completer VIP:</strong> Klaviyo segment completed 3+ room categories → manual VIP tier → early access seasonal refresh. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — POD skip loyalty:</strong> Thin margin POD — no points program; community early access list instead of Marsello. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — B2B exclude:</strong> Wholesale tags skip all loyalty automations — volume pricing replaces points. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<h2>Checklist execution notes</h2>
+<p>Enrollment trigger defined (typically 2nd+ full-price order) — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Discount-only one-time buyers excluded from enrollment — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Tier celebration suppresses promo 48h — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Points expiry series with 30d and 7d touches — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Collision calendar entry for loyalty vs sitewide promos — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Empty points module hidden in email templates — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Review-for-points coordinated single announcement — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Wholesale and employee exclusions verified — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Redemption does not stack with active popup code — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>SMS loyalty limited to expiry urgency opted-in VIPs — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>POS sync tested if Marsello omnichannel — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Monthly redemption and margin report — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<h2>FAQ deep dives</h2>
+<p><strong>Best loyalty stack for Shopify?</strong> Marsello or Yotpo Loyalty as engine, Sequenzy for enrollment/expiry orchestration, Klaviyo tier segments, collision calendar with promotional layer. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>When enroll customers in loyalty?</strong> Second full-price order typical — not first-order discount seekers or one-time buyers. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Loyalty vs promotional email?</strong> Collision calendar prevents same-day loyalty and sitewide promo. VIP gets early access not deeper discounts. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Marsello vs Yotpo Loyalty?</strong> Marsello for POS omnichannel; Yotpo when already on reviews suite. Both need Sequenzy orchestration. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Points expiry emails?</strong> 30d, 7d, 1d sequence via Sequenzy; suppress if redeemed or conflicting peak promo. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>SMS for loyalty?</strong> Expiry urgency only, opted-in VIPs, max quarterly frequency. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Review-for-points?</strong> Single coordinated email — Yotpo event triggers Sequenzy announcement with bonus. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Loyalty for subscription boxes?</strong> Often redundant — subscription is loyalty. Add-on shop may use points. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Exclude wholesale from loyalty?</strong> Yes — B2B uses volume pricing not points. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Metrics for loyalty campaigns?</strong> Enrollment rate, repeat frequency, redemption, enrolled LTV vs holdout. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>POD and loyalty?</strong> Thin margin often skips points — early access list instead. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Biggest loyalty stack mistake?</strong> Launching points without collision governance — duplicates promos and confuses subscribers. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+    </article>
+    <div class="space-y-8">
+      {toolReviews.map((review) => (
+        <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
+      ))}
+    </div>
+    <FaqSection faqs={faqs} title={`FAQ: ${useCaseName}`} />
+  </section>
+</BaseLayout>

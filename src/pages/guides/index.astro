@@ -1,0 +1,132 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { siteFromHost, pageTitle, description } from '../../content';
+
+const site = siteFromHost();
+const path = '/guides';
+const title = pageTitle(site, 'guides');
+const desc = description(site, 'guides');
+const faqs = [
+  { question: 'How are guides different from use-case playbooks?', answer: 'Guides cover cross-cutting governance — stack architecture, attribution, tool sprawl — that applies to every vertical. Playbooks execute one lifecycle moment.' },
+  { question: 'Which guide should I read first?', answer: 'Stack architecture, then popup-to-email handoff, then cross-channel coordination before peak season.' },
+  { question: 'Do guides assume Sequenzy?', answer: 'Yes as default lifecycle layer — but principles apply if Klaviyo or Drip owns lifecycle with documented suppressions.' },
+  { question: 'Are guides about email only?', answer: 'No — full stack: capture, lifecycle, SMS, reviews, loyalty, analytics coordination.' },
+  { question: 'Who owns guide implementation?', answer: 'Growth lead owns collision calendar; lifecycle owner owns flow docs; finance owns margin reconciliation weekly.' },
+  { question: 'How guides relate to /for vertical pages?', answer: 'Vertical guides apply architecture to category-specific examples; these guides are category-agnostic governance.' },
+  { question: 'Seasonal guides when to read?', answer: 'Seasonal campaign governance and list hygiene 6–8 weeks before BFCM.' },
+  { question: 'Agency vs in-house guide?', answer: 'Read before hiring retention agency — decide what must stay in-house (segments, suppressions, margin math).' },
+  { question: 'Attribution guide for Shopify?', answer: 'Incremental margin vs last-click across email, SMS, popups, loyalty — finance-readable method.' },
+  { question: 'Tool sprawl guide trigger?', answer: 'When three+ tools touch same shopper without collision calendar — audit before adding another app.' },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <span class="badge">Guides hub</span>
+      <h1 class="hero-title mt-5">Shopify marketing stack guides</h1>
+      <p class="mt-7 max-w-3xl text-xl text-cyan-100">Architecture, governance, and cross-channel playbooks for operators building a revenue stack — not a pile of apps with Shopify badges.</p>
+
+      <article class="prose-shopify card mt-12 max-w-4xl">
+        <h2>Guides for operators, not tool tourists</h2>
+        <p>App reviews answer "what does this tool do?" Use-case playbooks answer "how do I run welcome or winback?" Guides answer "how do I keep six tools from emailing the same person three offers on Tuesday?" That is stack governance — the unglamorous work that separates incremental margin from dashboard theater.</p>
+        <p>Merchants at $80k–$500k/mo often have Privy, Klaviyo or Sequenzy, Postscript, Yotpo, and maybe Marsello installed simultaneously. None failed on features. They failed on ownership: no collision calendar, no weekly Shopify reconciliation, no documented suppression between replenishment and winback. Guides fix the coordination layer assumptions the rest of the site builds on.</p>
+
+        <h2>Reading order for new stack owners</h2>
+        <p><strong>1. Stack architecture</strong> — assign capture, lifecycle, SMS, proof, loyalty, analytics layers with named owners.</p>
+        <p><strong>2. Popup to email handoff</strong> — source tags and consent timestamps into lifecycle within five minutes.</p>
+        <p><strong>3. Cross-channel coordination</strong> — collision calendar template, one offer per intent window.</p>
+        <p><strong>4. Attribution</strong> — incremental margin method finance will sign.</p>
+        <p><strong>5. List hygiene</strong> — sunset rules before peak season volume.</p>
+        <p>Before BFCM: seasonal campaign governance. Before hiring agency: agency vs in-house ownership. When invoice list grows: tool sprawl remediation. When launching loyalty: loyalty integration with promotional suppressions.</p>
+
+        <h2>Guide summaries</h2>
+        <p><strong>Stack architecture:</strong> six-layer model, owner matrix, week-one audit checklist.</p>
+        <p><strong>Popup to email handoff:</strong> Privy/Justuno → Sequenzy/Klaviyo tag schema, consent mapping, failure modes.</p>
+        <p><strong>Loyalty integration:</strong> Marsello/Yotpo with lifecycle — enrollment timing, expiry, promo collisions.</p>
+        <p><strong>Reviews and UGC in the stack:</strong> Yotpo modules in browse, cart, post-purchase templates — not widgets only.</p>
+        <p><strong>Marketing attribution:</strong> holdout tests, margin lines, Shopify as source of truth.</p>
+        <p><strong>Tool sprawl remediation:</strong> overlap audit, retire vs integrate decisions.</p>
+        <p><strong>Agency vs in-house:</strong> what must stay internal when outsourcing creative or strategy.</p>
+        <p><strong>Seasonal campaign governance:</strong> BFCM collision rows, VIP early access sequencing, post-peak deliverability.</p>
+        <p><strong>Cross-channel coordination:</strong> email + SMS + push + onsite without duplicate offers.</p>
+        <p><strong>List hygiene:</strong> sunset, re-engagement vs winback discount, Gmail/Yahoo requirements.</p>
+
+        <h2>Pair guides with vertical and playbook pages</h2>
+        <p>After reading stack architecture, open your <a class="link" href="/for">store-type guide</a> for category-specific layer weights. Execute with <a class="link" href="/use-cases">use-case playbooks</a>. Resolve tool choices on <a class="link" href="/compare">battlecards</a>. Migration paths live in <a class="link" href="/alternatives">alternatives hub</a>.</p>
+
+        <h2>Operator checklist before peak season</h2>
+        <p>Six weeks before BFCM: complete list hygiene sunset for unengaged 120+ day profiles. Four weeks before: publish collision calendar with rows for popup, welcome, cart, SMS, loyalty, winback, and promotional campaigns — each row names owner and max offer depth. Two weeks before: freeze segment logic changes; test shipping deadline dynamic content if Q4 gifting matters. One week before: deliverability spot-check domain authentication; pause non-essential A/B tests.</p>
+        <p>Post-peak: deliverability audit, Shopify margin reconciliation, document failed collision rows, schedule winback only after holdout design.</p>
+
+        <h2>Finance-readable attribution</h2>
+        <p>Attribution guide defines incremental margin with holdout cohorts. Email, SMS, popup, loyalty report separately — summing platform dashboards over-counts. Weekly Shopify net sales vs platform claims within agreed tolerance or trigger stack audit.</p>
+
+        <h2>Guide maintenance cadence</h2>
+        <p>Quarterly: tool sprawl audit, list hygiene review, attribution reconciliation with finance. Before peak: seasonal governance and cross-channel coordination refresh. After platform migration: popup handoff and loyalty integration re-read. After hiring agency: agency vs in-house guide — define retained internal ownership of segments and collision calendar regardless of vendor.</p>
+        <p>Guides are living references — when Shopify changes checkout extensibility, SMS regulations shift, or Gmail requirements update, list hygiene and cross-channel guides take precedence over new feature adoption.</p>
+
+        <h2>Who on your team reads which guide</h2>
+        <p>Growth lead: stack architecture, seasonal governance, cross-channel coordination, attribution. Email/lifecycle operator: popup handoff, loyalty integration, review-ugc, list hygiene. Founder at small team: all ten in order. Agency partner: agency vs in-house plus stack architecture — retained internal ownership non-negotiable. Finance: attribution guide monthly review with growth lead.</p>
+
+        <h2>Common guide mistakes</h2>
+        <p>Reading seasonal governance after BFCM starts. Implementing loyalty before collision calendar exists. Trusting agency attribution without Shopify reconcile. Adding SMS before checkout opt-in baseline measured. Skipping popup handoff while rebuilding welcome in new ESP.</p>
+
+        <h2>Documentation deliverables each guide enables</h2>
+        <p>Stack architecture → layer owner matrix. Popup handoff → tag schema doc. Cross-channel coordination → collision calendar template. Attribution → finance metric definitions. List hygiene → sunset policy. Seasonal governance → peak week row template. Tool sprawl → overlap audit checklist.</p>
+
+        <h2>Stack maturity model</h2>
+        <p>Level 0: single ESP, no capture tags, no reconciliation. Level 1: capture + lifecycle with documented welcome branches. Level 2: collision calendar, SMS layer, proof in templates. Level 3: loyalty with promo suppressions, holdout testing, finance-signed attribution. Level 4: vertical-optimized stack per store-type guide with quarterly audits. Most merchants overestimate level — audit honestly before peak season spend increases.</p>
+
+        <h2>Operator roles for guide implementation</h2>
+        <p>Growth lead owns collision calendar and attribution definitions. Lifecycle operator owns flow documentation and suppression rules. Capture owner owns Privy/Justuno tag schema. SMS owner owns Postscript quiet hours and frequency caps. Finance co-owns weekly Shopify reconciliation. Agency partners execute creative but retained internal ownership of segment logic is non-negotiable per agency vs in-house guide.</p>
+
+        <h2>When to read which guide</h2>
+        <p>Pre-launch stack: stack architecture → popup handoff → list hygiene. Pre-BFCM: seasonal governance → cross-channel coordination → list hygiene again. Post-migration ESP: popup handoff → attribution re-baseline. Adding loyalty: loyalty integration before Marsello install. Tool invoice growing: tool sprawl remediation. Hiring agency: agency vs in-house before contract signature.</p>
+
+        <h2>Guides vs use-cases vs vertical pages</h2>
+        <p>Guides are category-agnostic governance. Use-case playbooks execute one lifecycle moment (cart, welcome, winback) with stack layer maps. Store-type pages at /for apply six-layer architecture to fashion, beauty, B2B, etc. Read guides first for rules, vertical page for weights, use-case for execution.</p>
+
+        <h2>Peak season guide reading order</h2>
+        <p>Six weeks before BFCM: list hygiene guide for sunset sprint. Four weeks: seasonal campaign governance to draft collision calendar rows. Three weeks: cross-channel coordination to assign SMS and loyalty caps. Two weeks: attribution guide review with finance for margin thresholds. One week: popup handoff check — pause capture experiments that conflict with VIP early access. Post-peak: deliverability section of list hygiene guide within 14 days.</p>
+
+        <h2>Guide + stack tool pairing</h2>
+        <p>Stack architecture pairs with /apps roster for tool selection. Popup handoff pairs with Privy/Justuno battlecards. Loyalty integration pairs with Marsello/Yotpo reviews before points launch. Review-UGC pairs with email design playbook module specs. Attribution pairs with analytics use-case playbook holdout methods. Tool sprawl pairs with alternatives hub when retiring vendors.</p>
+
+        <h2>Guide deliverables checklist</h2>
+        <p>After reading the ten guides, your team should have: a layer owner matrix (stack architecture), capture tag schema with five-minute handoff SLA (popup handoff), collision calendar template with sale-week rows (cross-channel coordination), finance metric definitions with holdout design (attribution), sunset policy at 90–180 days (list hygiene), loyalty enrollment timing rules (loyalty integration), Yotpo module map in templates (review-ugc), peak-week governance doc (seasonal campaigns), overlap audit with retire decisions (tool sprawl), and retained internal ownership list (agency vs in-house).</p>
+        <p>Guides are prerequisites for playbooks — running winback or BFCM playbooks without collision calendar and list hygiene guides completed first is how merchants burn placement in January. Read guides for rules, /for for vertical weights, /use-cases for moment execution, /compare for tool finalists.</p>
+
+        <h2>Stack governance rituals</h2>
+        <p>Weekly: fifteen-minute collision check — any subscriber receive popup + cart + SMS same day? Monthly: Shopify net sales vs platform attribution reconcile. Quarterly: tool sprawl audit and segment logic review. Pre-peak: list hygiene sprint and seasonal governance refresh. Post-peak: deliverability audit within fourteen days. These rituals are boring and profitable — skip them and every guide becomes shelfware while invoice total climbs.</p>
+
+        <h2>Guide-to-playbook mapping</h2>
+        <p>Popup handoff guide before welcome playbook. Cross-channel coordination before cart + SMS playbooks. Discount strategy before winback and loyalty playbooks. List hygiene before deliverability and BFCM playbooks. Attribution before analytics playbook. Loyalty integration before loyalty playbook. Review-UGC before browse abandonment and reviews playbooks. Stack architecture before any of the above — it assigns owners so guides do not contradict each other in production.</p>
+        <p>Founders at under $50k/mo: read stack architecture, popup handoff, and list hygiene — execute welcome and cart playbooks only until collision incidents stay under one per sale week. Then add remaining guides as revenue band and team capacity grow.</p>
+
+        <h2>Why ten guides instead of one mega-post</h2>
+        <p>Stack problems arrive at different moments — peak season, migration, agency hire, loyalty launch, invoice sprawl. Splitting governance into focused guides lets operators update one document when Gmail requirements change without rereading sixty pages. Each guide cross-links to playbooks and vertical pages so implementation stays concrete. Marketing stack angle throughout: capture, lifecycle, SMS, proof, loyalty, analytics — not email-only advice divorced from popup and SMS collision reality.</p>
+
+        <h2>Documentation output template</h2>
+        <p>After each guide, save one page internally: owner name, last updated date, linked live flows, open risks, next review date. Guides without internal documentation become advice nobody executes — the hub exists to force stack governance into artifacts your team owns, not PDFs an agency keeps.</p>
+      </article>
+
+      <div class="mt-12 grid gap-4 md:grid-cols-2">
+        <a class="card" href="/guides/stack-architecture"><h3 class="text-xl font-black text-white">Shopify marketing stack architecture</h3><p class="mt-2 text-sm text-slate-300">layering capture, lifecycle, proof, loyalty, SMS, and analytics with clear ownership</p></a>
+        <a class="card" href="/guides/popup-to-email-handoff"><h3 class="text-xl font-black text-white">Popup to email handoff</h3><p class="mt-2 text-sm text-slate-300">moving qualified subscribers from capture tools into lifecycle flows without consent gaps</p></a>
+        <a class="card" href="/guides/loyalty-integration"><h3 class="text-xl font-black text-white">Loyalty integration</h3><p class="mt-2 text-sm text-slate-300">connecting points, tiers, and rewards to email, SMS, and onsite offers</p></a>
+        <a class="card" href="/guides/review-ugc"><h3 class="text-xl font-black text-white">Reviews and UGC in the stack</h3><p class="mt-2 text-sm text-slate-300">using social proof across consideration, cart, and post-purchase moments</p></a>
+        <a class="card" href="/guides/attribution"><h3 class="text-xl font-black text-white">Marketing attribution for Shopify</h3><p class="mt-2 text-sm text-slate-300">measuring incremental margin across email, SMS, popups, and loyalty</p></a>
+        <a class="card" href="/guides/tool-sprawl"><h3 class="text-xl font-black text-white">Tool sprawl remediation</h3><p class="mt-2 text-sm text-slate-300">auditing overlapping apps before adding another dashboard</p></a>
+        <a class="card" href="/guides/agency-vs-inhouse"><h3 class="text-xl font-black text-white">Agency vs in-house stack ownership</h3><p class="mt-2 text-sm text-slate-300">deciding whether strategy lives in software or services</p></a>
+        <a class="card" href="/guides/seasonal-campaigns"><h3 class="text-xl font-black text-white">Seasonal campaign governance</h3><p class="mt-2 text-sm text-slate-300">collision calendars and suppression rules for peak weeks</p></a>
+        <a class="card" href="/guides/cross-channel-coordination"><h3 class="text-xl font-black text-white">Cross-channel coordination</h3><p class="mt-2 text-sm text-slate-300">email, SMS, push, and onsite messaging without duplicate offers</p></a>
+        <a class="card" href="/guides/list-hygiene"><h3 class="text-xl font-black text-white">List hygiene across the stack</h3><p class="mt-2 text-sm text-slate-300">sunset rules, consent mapping, and deliverability protection</p></a>
+      </div>
+      <FaqSection faqs={faqs} title="Guides hub FAQ" />
+    </div>
+  </section>
+</BaseLayout>

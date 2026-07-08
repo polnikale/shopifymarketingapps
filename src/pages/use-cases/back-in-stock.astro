@@ -1,0 +1,245 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import ToolReview from '../../components/ToolReview.astro';
+import { siteFromHost, pageTitle, description } from '../../content';
+import { appBySlug } from '../../data/apps';
+
+const site = siteFromHost();
+const path = '/use-cases/back-in-stock';
+const title = pageTitle(site, 'use-cases/back-in-stock');
+const desc = description(site, 'use-cases/back-in-stock');
+const heroSubtitle = 'Back-in-stock is a waitlist fulfillment play — Privy variant waitlists, Sequenzy ordered notifications, inventory-confirmed triggers, and Postscript for waitlist opt-in only, never a full-list blast that sells out six units in seconds and angers everyone else.';
+const useCaseName = 'back-in-stock alerts';
+const trigger = 'Inventory restocked for waitlisted SKU or variant';
+const timing = 'Immediate on restock; priority by waitlist signup order; expire after 48h';
+const tldrPicks = [
+    { label: 'Waitlist', tool: 'Privy', reason: 'Variant-level stock alert capture' },
+    { label: 'Lifecycle', tool: 'Sequenzy', reason: 'Ordered waitlist fulfillment on restock' },
+    { label: 'Inventory', tool: 'Klaviyo', reason: 'Variant sync and alert automation' },
+    { label: 'Urgency SMS', tool: 'Postscript', reason: 'Waitlist opt-in only at restock' },
+];
+const faqs = [
+  { question: 'Alert full list on restock?', answer: 'No — waitlist order only for scarce variant. Full list only high-volume evergreen restock.' },
+  { question: 'Variant-level required?', answer: 'Yes for fashion/beauty/furniture — size/shade/fabric specificity.' },
+  { question: 'False alert prevention?', answer: 'Shopify inventory confirmed trigger — buffer qty optional.' },
+  { question: 'Waitlist order?', answer: 'Privy signup position → Sequenzy sequential fulfillment.' },
+  { question: 'SMS rules?', answer: 'Waitlist opt-in only. One per variant per window.' },
+  { question: 'Alert expiry?', answer: '48h typical scarcity window.' },
+  { question: 'Bought substitute?', answer: 'Exclude from alert unless still on waitlist.' },
+  { question: 'Tools?', answer: 'Privy waitlist, Sequenzy fulfillment, Klaviyo inventory, Postscript SMS.' },
+  { question: 'Metrics?', answer: 'Waitlist conversion, sell-through time, false alert rate.' },
+  { question: 'Collision with cart?', answer: 'Pause cart/browse promo same SKU during alert wave.' },
+  { question: 'High demand spacing?', answer: '15–30 min between batches — fairness and site stability.' },
+  { question: 'Biggest mistake?', answer: 'Full list back-in-stock email for 6 units — angers waitlist and burns trust.' },
+];
+const toolReviews = [
+    {
+      slug: 'privy',
+      rank: 1,
+      paragraphs: [
+      'Privy variant waitlists with position tracking.',
+      'Core capture for back-in-stock playbook.',
+      'Fast handoff on restock webhook.',
+      ],
+    },
+    {
+      slug: 'sequenzy',
+      rank: 2,
+      paragraphs: [
+      'Sequenzy ordered fulfillment sequences.',
+      'Expiry and spacing logic.',
+      'Inventory-confirmed trigger integration.',
+      ],
+    },
+    {
+      slug: 'klaviyo',
+      rank: 3,
+      paragraphs: [
+      'Klaviyo inventory triggers and reporting.',
+      'Variant-level automation at scale.',
+      'Waitlist segment hygiene.',
+      ],
+    },
+    {
+      slug: 'firepush',
+      rank: 4,
+      paragraphs: [
+      'Firepush push notifications for waitlist on mobile-heavy brands.',
+      'Supplement email not replace — coordinate suppressions.',
+      'Variant accuracy still required.',
+      ],
+    },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+  <section class="relative overflow-hidden py-16 md:py-24">
+    <div class="container">
+      <a href="/use-cases" class="link text-sm">← Use-case playbooks</a>
+      <span class="badge mt-6">Marketing stack playbook</span>
+      <h1 class="hero-title mt-5 max-w-5xl">Shopify marketing stack for {useCaseName}</h1>
+      <p class="mt-7 max-w-3xl text-xl text-cyan-100">{heroSubtitle}</p>
+      <p class="mt-5 max-w-3xl text-lg text-slate-300">Trigger: {trigger} · Timing: {timing}</p>
+    </div>
+  </section>
+  <section class="container pb-12">
+    <TldrBox title={`Stack picks for ${useCaseName}`} picks={tldrPicks} />
+    <article class="prose-shopify mb-12 card">
+      <h2>Stack execution playbook</h2>
+  <p>Back-in-stock alerts sit between launch and replenishment in the stack — high intent, scarce inventory, zero margin for error. Shoppers joined a waitlist for specific variant; they deserve first notification in signup order, not competition with full list promotional blast.</p>
+  <p>Trigger only when inventory confirmed at variant level in Shopify — false alerts when OOS again destroy trust faster than no alert. Buffer quantity threshold optional for high-velocity SKUs.</p>
+  <p>Waitlist fulfillment order: Privy position tag → Sequenzy sequential send with 15–30 min spacing for high demand — prevents checkout crash and fairness disputes.</p>
+  <p>Expire alert after 48h — scarcity window creates urgency without perpetual &quot;back in stock&quot; fatigue on items that restock frequently.</p>
+  <p>Exclude customers who bought substitute SKU during OOS period unless they remain on waitlist.</p>
+  <p>SMS to waitlist opt-in only at restock — Postscript one text per variant per subscriber. Not full SMS list.</p>
+  <p>Browse abandonment and cart flows should pause conflicting promos on same SKU during active back-in-stock wave.</p>
+  <p>Fashion size/color, beauty shade, furniture fabric — variant granularity mandatory. &quot;Product back in stock&quot; without size is useless.</p>
+  <p>Analytics: waitlist conversion rate, time to sell-through after alert, revenue per alert, false alert rate.</p>
+  <p>Integrate with product launch playbook when restock is major event — VIP waitlist may precede general waitlist.</p>
+
+      <h2>Merchant scenarios</h2>
+  <p><strong>Fashion variant restock:</strong> Privy size waitlist → inventory confirm → Sequenzy ordered send → 48h expiry → SMS waitlist opt-in.</p>
+  <p><strong>Beauty viral shade:</strong> Shade waitlist → proof UGC in alert → suppress recent substitute purchasers → Klaviyo reporting.</p>
+  <p><strong>Furniture fabric:</strong> Long lead restock → expectation email → alert on arrival → no discount on scarce fabric.</p>
+
+      <h2>Stack checklist</h2>
+      <ul>
+    <li>Variant-level waitlist not product-only</li>
+    <li>Inventory confirmed before trigger</li>
+    <li>Waitlist signup order preserved</li>
+    <li>48h offer expiry configured</li>
+    <li>Substitute purchaser exclusion rules</li>
+    <li>SMS waitlist opt-in only</li>
+    <li>Pause conflicting browse/cart promos same SKU</li>
+    <li>False alert post-mortem process</li>
+    <li>Spacing for high-velocity drops</li>
+    <li>VIP waitlist priority if applicable</li>
+    <li>Revenue per alert tracked</li>
+    <li>Sell-through time after alert measured</li>
+      </ul>
+
+      <h3>Exclusions (non-negotiable)</h3>
+      <ul>
+    <li>Customers who bought substitute</li>
+    <li>Waitlist for discontinued products</li>
+    <li>Variants still partially OOS</li>
+      </ul>
+
+      <h3>Metrics that prove quality</h3>
+      <ul>
+    <li>Waitlist conversion rate</li>
+    <li>Time to sell-through after alert</li>
+    <li>Revenue per alert sent</li>
+    <li>False alert rate (OOS again)</li>
+      </ul>
+
+      <h3>Common mistakes</h3>
+      <ul>
+    <li>Alerting before inventory confirmed</li>
+    <li>No variant-level accuracy</li>
+    <li>Sending to entire list not just waitlist</li>
+      </ul>
+
+      <h2>Back-in-stock stack map</h2>
+  <div>
+    <h3>Waitlist capture: Privy</h3>
+    <p>Variant waitlist with position and opt-in tags.</p>
+    <p>SKU + variant ID on profile.</p>
+    <p><strong>Failure mode:</strong> Product-level waitlist without size.</p>
+    <p><strong>Operator test:</strong> Variant match on alert creative.</p>
+  </div>
+  <div>
+    <h3>Fulfillment: Sequenzy</h3>
+    <p>Ordered notification on restock event.</p>
+    <p>Sequential send high demand.</p>
+    <p><strong>Failure mode:</strong> Simultaneous full list blast.</p>
+    <p><strong>Operator test:</strong> Waitlist conversion &gt; cold list 2x.</p>
+  </div>
+  <div>
+    <h3>Inventory gate: Klaviyo, Shopify</h3>
+    <p>Confirmed stock before any send.</p>
+    <p>Zero false alerts target.</p>
+    <p><strong>Failure mode:</strong> Alert then immediate OOS.</p>
+    <p><strong>Operator test:</strong> False alert rate under 1%.</p>
+  </div>
+  <div>
+    <h3>SMS: Postscript</h3>
+    <p>Waitlist SMS at restock opt-in only.</p>
+    <p>One text per variant window.</p>
+    <p><strong>Failure mode:</strong> Full SMS list on 6 units.</p>
+    <p><strong>Operator test:</strong> SMS waitlist conversion tracked.</p>
+  </div>
+  <div>
+    <h3>Analytics: Shopify</h3>
+    <p>Conversion, sell-through time, alert revenue.</p>
+    <p>Per-variant reporting.</p>
+    <p><strong>Failure mode:</strong> Alerts sent without conversion tracking.</p>
+    <p><strong>Operator test:</strong> 48h sell-through after alert.</p>
+  </div>
+
+      <h2>Timing and trigger governance</h2>
+  <p>Send within 5 minutes of inventory confirmed.</p>
+  <p>Sequential spacing 15–30 min if &gt;500 waitlist.</p>
+  <p>Expire 48h after alert.</p>
+  <p>No second alert same variant within 7 days unless new waitlist wave.</p>
+
+      <h2>Measurement across the stack</h2>
+  <p>Waitlist conversion rate.</p>
+  <p>Time to sell-through post-alert.</p>
+  <p>Revenue per alert sent.</p>
+  <p>False alert rate.</p>
+
+      <h2>Related playbooks</h2>
+  <p>Launch: <a class="link" href="/use-cases/product-launch">product launch</a>.</p>
+  <p>Vertical: <a class="link" href="/for/fashion">fashion</a>, <a class="link" href="/for/beauty">beauty</a>.</p>
+  <p>Capture: <a class="link" href="/guides/popup-to-email-handoff">popup handoff</a>.</p>
+
+<h2>Stack coordination for back-in-stock alerts</h2>
+<p>back-in-stock alerts is not an email template problem — it is a stack handoff problem. Trigger: Inventory restocked for waitlisted SKU or variant Timing: Immediate on restock; priority by waitlist signup order; expire after 48h Every layer must read the same customer state: capture tags from Privy, lifecycle execution in Sequenzy, proof modules from Yotpo, loyalty tier from Marsello, SMS consent from Postscript. When capture demand for unavailable products, margin after discount matters more than attributed revenue.</p>
+<p><strong>Waitlist capture:</strong> Variant waitlist with position and opt-in tags. Playbook fit: SKU + variant ID on profile. Failure mode: Product-level waitlist without size. Operator test: Variant match on alert creative.</p>
+<p><strong>Fulfillment:</strong> Ordered notification on restock event. Playbook fit: Sequential send high demand. Failure mode: Simultaneous full list blast. Operator test: Waitlist conversion &gt; cold list 2x.</p>
+<p><strong>Inventory gate:</strong> Confirmed stock before any send. Playbook fit: Zero false alerts target. Failure mode: Alert then immediate OOS. Operator test: False alert rate under 1%.</p>
+<p><strong>SMS:</strong> Waitlist SMS at restock opt-in only. Playbook fit: One text per variant window. Failure mode: Full SMS list on 6 units. Operator test: SMS waitlist conversion tracked.</p>
+<p><strong>Analytics:</strong> Conversion, sell-through time, alert revenue. Playbook fit: Per-variant reporting. Failure mode: Alerts sent without conversion tracking. Operator test: 48h sell-through after alert.</p>
+<p><strong>Scenario — Fashion variant restock:</strong> Privy size waitlist → inventory confirm → Sequenzy ordered send → 48h expiry → SMS waitlist opt-in. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — Beauty viral shade:</strong> Shade waitlist → proof UGC in alert → suppress recent substitute purchasers → Klaviyo reporting. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — Furniture fabric:</strong> Long lead restock → expectation email → alert on arrival → no discount on scarce fabric. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<h2>Checklist execution notes</h2>
+<p>Variant-level waitlist not product-only — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Inventory confirmed before trigger — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Waitlist signup order preserved — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>48h offer expiry configured — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Substitute purchaser exclusion rules — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>SMS waitlist opt-in only — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Pause conflicting browse/cart promos same SKU — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>False alert post-mortem process — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Spacing for high-velocity drops — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>VIP waitlist priority if applicable — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Revenue per alert tracked — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Sell-through time after alert measured — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<h2>FAQ deep dives</h2>
+<p><strong>Alert full list on restock?</strong> No — waitlist order only for scarce variant. Full list only high-volume evergreen restock. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Variant-level required?</strong> Yes for fashion/beauty/furniture — size/shade/fabric specificity. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>False alert prevention?</strong> Shopify inventory confirmed trigger — buffer qty optional. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Waitlist order?</strong> Privy signup position → Sequenzy sequential fulfillment. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>SMS rules?</strong> Waitlist opt-in only. One per variant per window. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Alert expiry?</strong> 48h typical scarcity window. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Bought substitute?</strong> Exclude from alert unless still on waitlist. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Tools?</strong> Privy waitlist, Sequenzy fulfillment, Klaviyo inventory, Postscript SMS. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Metrics?</strong> Waitlist conversion, sell-through time, false alert rate. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Collision with cart?</strong> Pause cart/browse promo same SKU during alert wave. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>High demand spacing?</strong> 15–30 min between batches — fairness and site stability. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Biggest mistake?</strong> Full list back-in-stock email for 6 units — angers waitlist and burns trust. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+    </article>
+    <div class="space-y-8">
+      {toolReviews.map((review) => (
+        <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
+      ))}
+    </div>
+    <FaqSection faqs={faqs} title={`FAQ: ${useCaseName}`} />
+  </section>
+</BaseLayout>

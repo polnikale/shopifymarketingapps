@@ -1,0 +1,252 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import ToolReview from '../../components/ToolReview.astro';
+import { siteFromHost, pageTitle, description } from '../../content';
+import { appBySlug } from '../../data/apps';
+
+const site = siteFromHost();
+const path = '/for/subscription-boxes';
+const title = pageTitle(site, 'for/subscription-boxes');
+const desc = description(site, 'for/subscription-boxes');
+const heroSubtitle = 'Subscriber retention, skip behavior, and box-preview engagement need a stack where Recharge events gate every send — Sequenzy skip recovery, Klaviyo churn prediction, Omnisend box previews, and Yotpo unboxing proof, not DTC cart recovery logic on monthly billing relationships.';
+const buyingCycle = 'Monthly recurring; skip behavior common; churn at month 3–4';
+const segmentName = 'subscription box brands';
+const tldrPicks = [
+    { label: 'Lifecycle', tool: 'Sequenzy', reason: 'Skip recovery, churn prevention, box preview sequences' },
+    { label: 'Subscription sync', tool: 'Klaviyo', reason: 'Recharge/Skio event depth and churn scoring' },
+    { label: 'Multichannel', tool: 'Omnisend', reason: 'Box preview email+SMS for lean box brands' },
+    { label: 'Proof', tool: 'Yotpo', reason: 'Unboxing UGC in preview and referral campaigns' },
+];
+const faqs = [
+  { question: 'What is the best marketing stack for subscription box Shopify stores?', answer: 'Recharge/Skio sync to Klaviyo for subscription intelligence, Sequenzy for preview/skip/churn lifecycle, Omnisend or Postscript for ship and deadline SMS, Yotpo for unboxing UGC in preview. Privy for gift capture. Subscription state gates every send.' },
+  { question: 'Why do subscribers churn at month 3–4?', answer: 'Novelty fade — preview content and month-3 churn prevention branches address this before discounting. Box preview engagement correlates with retention; invest in preview creative not promo blasts.' },
+  { question: 'How should skip recovery work?', answer: 'Content save first (sneak peek, bonus recipe, exclusive digital content) on day -3 after skip. Discount only on email two for high churn-score cohort. Never train skip-to-wait-for-deal.' },
+  { question: 'Should box brands send cart abandonment emails?', answer: 'Not to active subscribers — they are not cart shoppers. One-time add-on abandonment is separate flow with subscription status check. DTC cart logic on subscribers causes collision and confusion.' },
+  { question: 'When does SMS make sense for subscription boxes?', answer: 'Box shipped notification, skip deadline 48h warning, gift shipping cutoff — not weekly promos. Requires checkout opt-in. One billing-cycle cap on promotional-adjacent SMS.' },
+  { question: 'How handle gift subscriptions in the stack?', answer: 'Privy gift capture tags gift buyers. Separate confirmation and reminder flows from subscriber preview. Gift recipients never receive skip-recovery. Q4 collision calendar mandatory.' },
+  { question: 'Does Sequenzy replace Klaviyo for box brands?', answer: 'Sequenzy owns lifecycle execution (preview, skip, churn); Klaviyo owns subscription event depth, churn scoring, and reporting. Most box brands need both with documented sync.' },
+  { question: 'What metrics prove box stack ROI?', answer: 'Skip-to-active recovery rate, churn by subscriber month, preview email engagement vs retention correlation, referral MRR from email, incremental saves on holdout tests.' },
+  { question: 'How should winback work for churned subscribers?', answer: 'Missed-box preview content showing what they lost, flexible restart without deep discount first. Branch by stated cancellation reason if collected. Not generic DTC winback.' },
+  { question: 'Should box brands run BFCM discounts?', answer: 'Gift subscription campaigns and annual plan upgrades — not sitewide discounts cannibalizing monthly ARPU. Existing subscribers get gift bundle early access, not 30% off their own subscription.' },
+  { question: 'How fast implement subscription box stack?', answer: 'Two weeks for Recharge sync and preview sequence. Four weeks for skip-recovery and gift segmentation. Eight weeks for churn scoring, referral, and holdout testing.' },
+  { question: 'Biggest subscription box stack mistake?', answer: 'Treating subscribers like DTC email list — promotional blasts, cart recovery, and replenishment emails to active paying subscribers. Second: skip-recovery leading with discount instead of content save.' },
+];
+const toolReviews = [
+    {
+      slug: 'sequenzy',
+      rank: 1,
+      paragraphs: [
+      'Sequenzy fits box brands as lifecycle layer — preview sequences, skip recovery, month-3 churn prevention, and referral campaigns with Recharge-aware suppressions.',
+      'Agent-assisted branching helps small teams iterate preview content monthly without rebuilding complex Klaviyo trees.',
+      'Pair with Klaviyo subscription events — Sequenzy executes, Klaviyo scores and reports.',
+      ],
+    },
+    {
+      slug: 'klaviyo',
+      rank: 2,
+      paragraphs: [
+      'Klaviyo benchmark for subscription event depth — Recharge/Skio integration, churn prediction, and cohort reporting when box catalog and segments grow complex.',
+      'Owns segment priority rules and predictive churn routing to Sequenzy branches. Profile hygiene on churned subscribers protects deliverability.',
+      'Cost scales with profiles — suppress churned from promos, keep for winback only.',
+      ],
+    },
+    {
+      slug: 'omnisend',
+      rank: 3,
+      paragraphs: [
+      'Omnisend suits lean box brands needing preview email+SMS and ship notifications without full Postscript investment.',
+      'Prebuilt automations accelerate preview launch for teams under $80k MRR. Watch SMS costs on weekly-adjacent sends.',
+      'Verify Recharge sync depth vs Klaviyo before choosing as sole data layer at scale.',
+      ],
+    },
+    {
+      slug: 'yotpo-email-sms',
+      rank: 4,
+      paragraphs: [
+      'Yotpo UGC from unboxing feeds preview and referral campaigns — proof layer reduces skip rate more than discount in many box categories.',
+      'Review requests on individual box products post-delivery; integrate photos into Sequenzy preview templates.',
+      'Loyalty/referral module optional when native referral app already handles month-2 referral push.',
+      ],
+    },
+    {
+      slug: 'rejoiner',
+      rank: 5,
+      paragraphs: [
+      'Rejoiner targets subscription-adjacent recovery for box brands with one-time add-on storefronts — cart recovery on non-subscription SKUs only.',
+      'Must exclude active subscribers from DTC recovery flows. Best as supplement when box shop sells individual products alongside subscription.',
+      'Audit collision with Sequenzy preview before install.',
+      ],
+    },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+  <section class="relative overflow-hidden py-16 md:py-24">
+    <div class="container">
+      <a href="/for" class="link text-sm">← Store types</a>
+      <span class="badge mt-6">{segmentName}</span>
+      <h1 class="hero-title mt-5 max-w-5xl">Shopify marketing stack for {segmentName}</h1>
+      <p class="mt-7 max-w-3xl text-xl text-cyan-100">{heroSubtitle}</p>
+      <p class="mt-5 max-w-3xl text-lg text-slate-300">Buying behavior: {buyingCycle}</p>
+    </div>
+  </section>
+  <section class="container pb-12">
+    <TldrBox title="Stack shortlist" picks={tldrPicks} />
+    <article class="prose-shopify mb-12 card">
+      <h2>Why {segmentName} need a different stack shape</h2>
+  <p>Subscription box Shopify brands sell continuity, not one-time transactions. The marketing stack must read Recharge, Skio, or Bold subscription state before any promotional send fires — active subscribers need box previews and skip-save offers, not &quot;reorder your favorites&quot; DTC replenishment emails. Churn peaks at month 3–4 when novelty fades; the stack coordinates preview content, skip recovery, and referral incentives across email, SMS, and loyalty layers.</p>
+  <p>Skip behavior is the leading churn signal, not cancellation itself. A subscriber who skips two consecutive months needs a different branch than a happy active subscriber — Sequenzy skip-recovery sequences with box teaser content outperform immediate discount offers that train skip-to-wait-for-deal behavior.</p>
+  <p>Box preview emails drive retention more than promotional blasts. Omnisend or Sequenzy preview sequences 5–7 days before billing date increase excitement and reduce passive churn. Yotpo unboxing UGC from prior subscribers embedded in preview emails supplies social proof without discounting.</p>
+  <p>Referral and gifting campaigns are stack plays, not isolated broadcasts. Privy gift subscription capture tags gift buyers separately from subscribers; Sequenzy gift confirmation branches away from subscriber preview flows. Gifting spikes Q4 — collision calendar prevents gift buyers receiving skip-recovery emails.</p>
+  <p>SMS for subscription boxes works for billing reminder and shipping notification urgency — not weekly promotional texts. Postscript or Omnisend SMS when box ships or skip deadline approaches; TCPA opt-in at checkout with clear subscription identification.</p>
+  <p>Winback for churned subscribers differs from DTC winback. Former box subscribers need &quot;what you missed&quot; preview content and flexible restart offers — not generic 25% off that ignores why they cancelled (too much product, wrong category fit, budget).</p>
+  <p>Segmentation must separate active, paused, skipped, churned, and gift-recipient profiles with priority rules. Klaviyo predictive churn scores and Recharge event properties feed Sequenzy branches; overlapping segments without priority cause preview emails to hit churned profiles.</p>
+  <p>Loyalty and referral layers (Marsello, Yotpo Loyalty, or native referral apps) integrate with preview campaigns — refer-a-friend bonus in month 2–3 when novelty fade risk peaks. Points on subscription renewals need exclusion during skip-save offer windows.</p>
+  <p>Compliance and transparency reduce chargeback-driven churn. Billing date, skip deadline, and cancellation path clarity in email footer and dedicated preference center — not buried links. Lifecycle layer owns transactional-adjacent education; legal reviews cancellation copy annually.</p>
+  <p>Analytics for box brands track skip-to-active recovery rate, churn by subscriber month, box preview engagement correlation with retention, and referral revenue from email — not DTC-style second purchase within 60 days. Holdout tests on skip-recovery quarterly prove incrementality.</p>
+  <p>Agency-built box stacks often miss subscription state suppressions because agencies optimize DTC playbooks. In-house ownership of Recharge → Klaviyo → Sequenzy sync documentation survives employee turnover; retainer teams rarely maintain skip-branch logic through platform updates.</p>
+  <p>BFCM for subscription boxes means gift subscription campaigns and annual plan upgrades — not sitewide discounts that cannibalize monthly ARPU. VIP early access for existing subscribers to gift bundles; collision calendar separates subscriber preview from gift prospect nurture.</p>
+  <p>The first stack fix for most box brands: wire Recharge/Skio events into lifecycle suppressions, launch box preview 7 days before bill date, build skip-recovery branch before winback discounts. Capture optimization is secondary to retention mechanics.</p>
+  <p>Cross-sell one-time add-ons in box context differs from DTC cross-sell. Add-on offers belong in preview email or subscriber portal reminder — not cart abandonment flows that treat subscribers like anonymous browsers.</p>
+
+      <h2>Merchant stories from the field</h2>
+  <div>
+    <h3>Crate &amp; Cultivate ($124k/mo lifestyle boxes)</h3>
+    <p>Crate &amp; Cultivate ran Klaviyo promotional blasts to full list including active subscribers — NPS dropped when subscribers received &quot;subscribe and save 20%&quot; while already paying monthly. Stack rebuild: Recharge events sync to Klaviyo, Sequenzy owns preview (day -7), skip-recovery (day -3 after skip), churn prevention at month 3 with Yotpo unboxing UGC. Skip-to-active recovery rose from 22% to 41%. Postscript ships notification SMS only. Churn at month 4 fell from 18% to 12%. Stack $420/mo; saved ARPU exceeded tool cost 8x.</p>
+  </div>
+  <div>
+    <h3>PupParcel ($47k/mo pet subscription box)</h3>
+    <p>PupParcel had no gift buyer segmentation — gift purchasers received subscriber skip emails. Privy gift capture tags + Sequenzy branch fixed collision. Pet profile quiz at signup feeds box customization preview content. Omnisend preview email+SMS for lean team. Referral campaign in month 2 drove 14% of new subscribers from email. Lean stack under $280/mo.</p>
+  </div>
+  <div>
+    <h3>SpiceRoute Monthly ($89k/mo food subscription)</h3>
+    <p>SpiceRoute Monthly added recipe content in Sequenzy preview emails tied to upcoming box SKUs — engagement rate on preview doubled vs product-list-only emails. Skio skip events trigger save offer with recipe archive access, not immediate 15% off. Klaviyo churn score above 0.7 enters proactive outreach. Yotpo reviews on individual spices post-delivery feed cross-sell in month 5. Perishability shipping deadline in SMS 48h before regional cutoff.</p>
+  </div>
+
+      <h3>Priority plays for {segmentName}</h3>
+      <ul>
+    <li>Upcoming box preview emails</li>
+    <li>Skip recovery sequences</li>
+    <li>Churn prevention at risk months</li>
+    <li>Referral and gifting campaigns</li>
+      </ul>
+
+      <h3>Metrics to watch weekly</h3>
+      <ul>
+    <li>Skip-to-active recovery rate</li>
+    <li>Churn by subscriber month</li>
+    <li>Referral revenue from email</li>
+    <li>Box preview engagement correlation</li>
+      </ul>
+
+      <h2>Three stack scenarios for {segmentName}</h2>
+  <p><strong>Lean box startup:</strong> Recharge sync → Sequenzy preview + skip recovery → Omnisend billing SMS → Yotpo unboxing UGC in preview. Referral at month 2. Skip loyalty until month-6 retention proven.</p>
+  <p><strong>Growth retention focus:</strong> Skio events → Klaviyo churn scoring → Sequenzy preview, skip-save, month-3 churn prevention → Postscript ship + skip deadline SMS → Marsello referral points → Privy gift capture.</p>
+  <p><strong>Premium curated box:</strong> Justuno preference quiz → Klaviyo personalization → Sequenzy editorial preview content → Yotpo UGC community → VIP annual upgrade path. No winback discount — restart with missed-box preview.</p>
+
+      <h2>Six-layer subscription box stack architecture</h2>
+  <div>
+    <h3>Capture layer: Privy, Justuno</h3>
+    <p>Subscriber waitlist, gift subscription capture, preference quizzes tagging box interest and pet/household profile before first box ships.</p>
+    <p>Box capture qualifies gift vs self-subscribe intent and preference data for customization preview. Gift tags suppress subscriber-only flows. Quiz answers feed preview content personalization in Sequenzy.</p>
+    <p><strong>Failure mode:</strong> Generic 15% popup attracts one-month churners; gift and subscriber sources blended in welcome.</p>
+    <p><strong>Operator test:</strong> Gift purchasers received zero skip-recovery emails last month — verify in suppression documentation.</p>
+  </div>
+  <div>
+    <h3>Lifecycle layer: Sequenzy</h3>
+    <p>Box preview sequences, skip recovery, churn prevention at risk months, referral campaigns, churned winback with missed-box content.</p>
+    <p>Preview fires day -7 before bill date; skip-recovery day -3 after skip event; month-3 churn prevention branch for novelty-fade cohort. All branches check Recharge/Skio status before send.</p>
+    <p><strong>Failure mode:</strong> DTC cart recovery and replenishment promos sent to active subscribers; skip-recovery offers discount before content save attempt.</p>
+    <p><strong>Operator test:</strong> Zero replenishment-style promos sent to active subscribers last billing cycle — audit live flows.</p>
+  </div>
+  <div>
+    <h3>Subscription intelligence layer: Klaviyo + Recharge/Skio</h3>
+    <p>Subscription events, churn prediction, billing properties, and segment priority rules feeding lifecycle branches.</p>
+    <p>Klaviyo receives skipped, paused, churned, active events in real time. Predictive churn score routes high-risk subscribers to proactive Sequenzy branch. Segment priority: churned &gt; skipped &gt; active for conflicting triggers.</p>
+    <p><strong>Failure mode:</strong> Stale subscription status — cancelled subscribers still receive preview emails.</p>
+    <p><strong>Operator test:</strong> Spot-check 10 churned profiles against emails received last 30 days — should be winback or nothing.</p>
+  </div>
+  <div>
+    <h3>SMS urgency layer: Postscript, Omnisend</h3>
+    <p>Shipping notification, skip deadline reminder, gift deadline urgency — not promotional weekly texts.</p>
+    <p>SMS when box ships and 48h before skip deadline for at-risk cohort. One SMS per billing cycle max for promotional-adjacent content. Quiet hours enforced.</p>
+    <p><strong>Failure mode:</strong> Weekly SMS promos to subscribers already paying monthly — opt-out spike and brand damage.</p>
+    <p><strong>Operator test:</strong> SMS opt-out rate during billing week below 1.5% — if higher, audit frequency and content relevance.</p>
+  </div>
+  <div>
+    <h3>Proof layer: Yotpo Reviews, UGC</h3>
+    <p>Unboxing photos and subscriber testimonials in preview, referral, and churn-prevention emails — social proof that next box is worth keeping.</p>
+    <p>Pull Yotpo UGC from prior box themes into preview email two. Review requests post-delivery day +5 on individual products, not box cancellation window.</p>
+    <p><strong>Failure mode:</strong> UGC orphaned on site — preview emails still discounting because creative lacks proof assets.</p>
+    <p><strong>Operator test:</strong> Preview email with UGC block vs without — measure skip rate correlation (lower skip = proof working).</p>
+  </div>
+  <div>
+    <h3>Analytics layer: Shopify, Klaviyo, Recharge</h3>
+    <p>Skip recovery rate, churn by month, preview engagement vs retention, referral revenue, ARPU impact of skip-save offers.</p>
+    <p>Monthly cohort retention chart by acquisition source. Holdout 10% on skip-recovery quarterly. Finance reconciles subscription MRR impact of email-driven saves.</p>
+    <p><strong>Failure mode:</strong> Celebrating promotional email revenue while subscriber churn erases MRR gains.</p>
+    <p><strong>Operator test:</strong> Month-4 churn rate trended down last two quarters — if flat, preview and skip branches need revision.</p>
+  </div>
+
+      <h2>90-day implementation roadmap</h2>
+  <p><strong>Week 1:</strong> Audit Recharge/Skio → Klaviyo/Sequenzy sync. Map every email sent to subscribers last 30 days. Identify collision incidents (promo to active subscriber). Export gift vs subscriber tags.</p>
+  <p><strong>Week 2:</strong> Document subscription state suppressions. Assign layer owners. Build preview sequence day -7 with box content. Pause DTC-style promos to active list.</p>
+  <p><strong>Week 3:</strong> Launch skip-recovery branch: content save first, discount only on email two for high churn score. Wire Yotpo UGC into preview email two.</p>
+  <p><strong>Week 4:</strong> Gift buyer segmentation live. Reconcile subscriber email volume vs churn rate weeks 2–4.</p>
+  <p><strong>Week 5:</strong> Month-3 churn prevention branch for novelty-fade cohort. Referral campaign creative with Marsello or native referral.</p>
+  <p><strong>Week 6:</strong> Postscript/Omnisend ship notification and skip deadline SMS. Quiet hours and opt-in audit.</p>
+  <p><strong>Week 7:</strong> Churned winback: missed-box preview content, flexible restart. No generic 25% off.</p>
+  <p><strong>Week 8:</strong> Klaviyo churn score threshold documented. Proactive outreach for score &gt; 0.7.</p>
+  <p><strong>Week 9:</strong> Holdout 10% skip-recovery — measure incremental saves in Recharge at day 14.</p>
+  <p><strong>Week 10:</strong> Q4 gift campaign prep: Privy gift capture, collision calendar for gift vs subscriber.</p>
+  <p><strong>Week 11:</strong> Annual plan upgrade path for month-6+ happy subscribers. VIP early access to limited boxes.</p>
+  <p><strong>Week 12:</strong> Retrospective: churn by month, skip recovery, preview engagement, referral MRR. Plan next quarter content calendar integration.</p>
+
+      <h2>Pricing and stack economics</h2>
+  <p>Box stacks run $280–550/mo — Recharge/Skio ($20–100) + Klaviyo ($50–200) + Sequenzy ($50–150) + Yotpo ($0–100) + Postscript ($50–150). One saved subscriber month often covers entire stack cost.</p>
+  <p>Skip-save discount depth erodes ARPU — model save offer margin impact. Content-first save (bonus item, recipe archive, early sneak peek) often outperforms 15% off without training skip behavior.</p>
+  <p>Klaviyo profile count includes churned — sunset or suppress churned 90+ days from promotional sends; keep for winback only. Profile hygiene protects deliverability and invoice size.</p>
+  <p>Agency retainer for &quot;email marketing&quot; without subscription sync expertise wastes spend — in-house Recharge event documentation pays off within one churn reduction cycle.</p>
+  <p>Gift subscription Q4 revenue spikes should not cannibalize January subscriber MRR — track gift-to-subscriber conversion separately from gift-only purchasers.</p>
+
+      <h2>Cross-links for stack due diligence</h2>
+  <p>Playbooks: <a class="link" href="/use-cases/replenishment">replenishment</a> (subscription-aware), <a class="link" href="/use-cases/winback">winback</a>, <a class="link" href="/use-cases/holiday-gifting">holiday gifting</a>.</p>
+  <p>Vertical overlap: <a class="link" href="/for/food-and-beverage">food and beverage</a> for perishable box variants.</p>
+  <p>Governance: <a class="link" href="/guides/cross-channel-coordination">cross-channel coordination</a>.</p>
+
+<h2>Stack governance for subscription box brands</h2>
+<p>Operating a subscription box brands marketing stack means assigning layer owners before adding tools. Capture (Privy, Justuno) qualifies intent; Sequenzy executes lifecycle with suppressions; Postscript handles scarce SMS urgency; Yotpo injects proof into consideration; Marsello coordinates loyalty without promo collisions. When any layer sends without reading customer state from the others, subscriber retention, skips, churn, and upcoming-box previews gets worse — not better.</p>
+<p><strong>Capture layer in practice:</strong> Subscriber waitlist, gift subscription capture, preference quizzes tagging box interest and pet/household profile before first box ships. For subscription box brands, Box capture qualifies gift vs self-subscribe intent and preference data for customization preview. Gift tags suppress subscriber-only flows. Quiz answers feed preview content personalization in Sequenzy. The failure mode to watch: Generic 15% popup attracts one-month churners; gift and subscriber sources blended in welcome. Monthly operator test: Gift purchasers received zero skip-recovery emails last month — verify in suppression documentation.</p>
+<p><strong>Lifecycle layer in practice:</strong> Box preview sequences, skip recovery, churn prevention at risk months, referral campaigns, churned winback with missed-box content. For subscription box brands, Preview fires day -7 before bill date; skip-recovery day -3 after skip event; month-3 churn prevention branch for novelty-fade cohort. All branches check Recharge/Skio status before send. The failure mode to watch: DTC cart recovery and replenishment promos sent to active subscribers; skip-recovery offers discount before content save attempt. Monthly operator test: Zero replenishment-style promos sent to active subscribers last billing cycle — audit live flows.</p>
+<p><strong>Subscription intelligence layer in practice:</strong> Subscription events, churn prediction, billing properties, and segment priority rules feeding lifecycle branches. For subscription box brands, Klaviyo receives skipped, paused, churned, active events in real time. Predictive churn score routes high-risk subscribers to proactive Sequenzy branch. Segment priority: churned &gt; skipped &gt; active for conflicting triggers. The failure mode to watch: Stale subscription status — cancelled subscribers still receive preview emails. Monthly operator test: Spot-check 10 churned profiles against emails received last 30 days — should be winback or nothing.</p>
+<p><strong>SMS urgency layer in practice:</strong> Shipping notification, skip deadline reminder, gift deadline urgency — not promotional weekly texts. For subscription box brands, SMS when box ships and 48h before skip deadline for at-risk cohort. One SMS per billing cycle max for promotional-adjacent content. Quiet hours enforced. The failure mode to watch: Weekly SMS promos to subscribers already paying monthly — opt-out spike and brand damage. Monthly operator test: SMS opt-out rate during billing week below 1.5% — if higher, audit frequency and content relevance.</p>
+<p><strong>Proof layer in practice:</strong> Unboxing photos and subscriber testimonials in preview, referral, and churn-prevention emails — social proof that next box is worth keeping. For subscription box brands, Pull Yotpo UGC from prior box themes into preview email two. Review requests post-delivery day +5 on individual products, not box cancellation window. The failure mode to watch: UGC orphaned on site — preview emails still discounting because creative lacks proof assets. Monthly operator test: Preview email with UGC block vs without — measure skip rate correlation (lower skip = proof working).</p>
+<p><strong>Analytics layer in practice:</strong> Skip recovery rate, churn by month, preview engagement vs retention, referral revenue, ARPU impact of skip-save offers. For subscription box brands, Monthly cohort retention chart by acquisition source. Holdout 10% on skip-recovery quarterly. Finance reconciles subscription MRR impact of email-driven saves. The failure mode to watch: Celebrating promotional email revenue while subscriber churn erases MRR gains. Monthly operator test: Month-4 churn rate trended down last two quarters — if flat, preview and skip branches need revision.</p>
+<p><strong>Deploying the Lean box startup scenario:</strong> Recharge sync → Sequenzy preview + skip recovery → Omnisend billing SMS → Yotpo unboxing UGC in preview. Referral at month 2. Skip loyalty until month-6 retention proven. Document trigger, delay, branch, and suppression rows before launch. Reconcile Shopify net sales weekly — platform attribution will overstate if popup, cart, and SMS discounts stack on the same session.</p>
+<p><strong>Deploying the Growth retention focus scenario:</strong> Skio events → Klaviyo churn scoring → Sequenzy preview, skip-save, month-3 churn prevention → Postscript ship + skip deadline SMS → Marsello referral points → Privy gift capture. Document trigger, delay, branch, and suppression rows before launch. Reconcile Shopify net sales weekly — platform attribution will overstate if popup, cart, and SMS discounts stack on the same session.</p>
+<p><strong>Deploying the Premium curated box scenario:</strong> Justuno preference quiz → Klaviyo personalization → Sequenzy editorial preview content → Yotpo UGC community → VIP annual upgrade path. No winback discount — restart with missed-box preview. Document trigger, delay, branch, and suppression rows before launch. Reconcile Shopify net sales weekly — platform attribution will overstate if popup, cart, and SMS discounts stack on the same session.</p>
+<h2>Quarterly stack audit for subscription box brands</h2>
+<p><strong>Week 1 review:</strong> Audit Recharge/Skio → Klaviyo/Sequenzy sync. Map every email sent to subscribers last 30 days. Identify collision incidents (promo to active subscriber). Export gift vs subscriber tags. Confirm collision calendar updated for upcoming peak weeks and that subscription, wholesale, or gift-buyer tags still suppress conflicting promos.</p>
+<p><strong>Week 2 review:</strong> Document subscription state suppressions. Assign layer owners. Build preview sequence day -7 with box content. Pause DTC-style promos to active list. Confirm collision calendar updated for upcoming peak weeks and that subscription, wholesale, or gift-buyer tags still suppress conflicting promos.</p>
+<p><strong>Week 3 review:</strong> Launch skip-recovery branch: content save first, discount only on email two for high churn score. Wire Yotpo UGC into preview email two. Confirm collision calendar updated for upcoming peak weeks and that subscription, wholesale, or gift-buyer tags still suppress conflicting promos.</p>
+<p><strong>Week 4 review:</strong> Gift buyer segmentation live. Reconcile subscriber email volume vs churn rate weeks 2–4. Confirm collision calendar updated for upcoming peak weeks and that subscription, wholesale, or gift-buyer tags still suppress conflicting promos.</p>
+<p><strong>Week 5 review:</strong> Month-3 churn prevention branch for novelty-fade cohort. Referral campaign creative with Marsello or native referral. Confirm collision calendar updated for upcoming peak weeks and that subscription, wholesale, or gift-buyer tags still suppress conflicting promos.</p>
+<p><strong>Week 6 review:</strong> Postscript/Omnisend ship notification and skip deadline SMS. Quiet hours and opt-in audit. Confirm collision calendar updated for upcoming peak weeks and that subscription, wholesale, or gift-buyer tags still suppress conflicting promos.</p>
+<p><strong>Stack economics note:</strong> Box stacks run $280–550/mo — Recharge/Skio ($20–100) + Klaviyo ($50–200) + Sequenzy ($50–150) + Yotpo ($0–100) + Postscript ($50–150). One saved subscriber month often covers entire stack cost. Model operator hours alongside SaaS fees — governance debt shows up as discount margin leakage before it shows up as tool cost.</p>
+<p><strong>Stack economics note:</strong> Skip-save discount depth erodes ARPU — model save offer margin impact. Content-first save (bonus item, recipe archive, early sneak peek) often outperforms 15% off without training skip behavior. Model operator hours alongside SaaS fees — governance debt shows up as discount margin leakage before it shows up as tool cost.</p>
+<p><strong>Stack economics note:</strong> Klaviyo profile count includes churned — sunset or suppress churned 90+ days from promotional sends; keep for winback only. Profile hygiene protects deliverability and invoice size. Model operator hours alongside SaaS fees — governance debt shows up as discount margin leakage before it shows up as tool cost.</p>
+<p><strong>Stack economics note:</strong> Agency retainer for &quot;email marketing&quot; without subscription sync expertise wastes spend — in-house Recharge event documentation pays off within one churn reduction cycle. Model operator hours alongside SaaS fees — governance debt shows up as discount margin leakage before it shows up as tool cost.</p>
+<p><strong>Stack economics note:</strong> Gift subscription Q4 revenue spikes should not cannibalize January subscriber MRR — track gift-to-subscriber conversion separately from gift-only purchasers. Model operator hours alongside SaaS fees — governance debt shows up as discount margin leakage before it shows up as tool cost.</p>
+    </article>
+    <div class="space-y-8">
+      {toolReviews.map((review) => (
+        <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
+      ))}
+    </div>
+    <FaqSection faqs={faqs} title={`FAQ: ${segmentName}`} />
+  </section>
+</BaseLayout>

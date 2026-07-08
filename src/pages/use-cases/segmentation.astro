@@ -1,0 +1,282 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import ToolReview from '../../components/ToolReview.astro';
+import { siteFromHost, pageTitle, description } from '../../content';
+import { appBySlug } from '../../data/apps';
+
+const site = siteFromHost();
+const path = '/use-cases/segmentation';
+const title = pageTitle(site, 'use-cases/segmentation');
+const desc = description(site, 'use-cases/segmentation');
+const heroSubtitle = 'Shopify segmentation across the stack means Klaviyo behavioral cohorts, Sequenzy suppression rules, Privy source tags, Recharge subscription state, and Marsello tier properties — with priority rules so overlapping segments never fire conflicting campaigns.';
+const useCaseName = 'Shopify segmentation';
+const trigger = 'Continuous based on Shopify events and profile properties';
+const timing = 'Real-time segment updates; weekly segment audits; quarterly RFM recalculation';
+const tldrPicks = [
+    { label: 'Segmentation', tool: 'Klaviyo', reason: 'Behavioral, RFM, and catalog depth' },
+    { label: 'Execution', tool: 'Sequenzy', reason: 'Flow enrollment with suppression priority' },
+    { label: 'Capture tags', tool: 'Privy', reason: 'Source and intent properties at opt-in' },
+    { label: 'CRM', tool: 'ActiveCampaign', reason: 'B2B and consultation segments' },
+];
+const faqs = [
+  { question: 'Tags vs behavioral segments?', answer: 'Both — tags alone miss behavior; combine for accuracy.' },
+  { question: 'Segment overlap?', answer: 'Priority matrix required — document which segment wins.' },
+  { question: 'How many segments?', answer: 'Quality over quantity — prune unused quarterly.' },
+  { question: 'RFM frequency?', answer: 'Recalculate quarterly minimum; VIP monthly review.' },
+  { question: 'Privy role in segmentation?', answer: 'Source and intent tags at capture — foundation properties.' },
+  { question: 'Recharge segments?', answer: 'Active/skipped/churned — gate replenishment and promos.' },
+  { question: 'B2B segmentation?', answer: 'Trade tags suppress all consumer automations globally.' },
+  { question: 'Klaviyo vs Sequenzy segmentation?', answer: 'Klaviyo builds segments; Sequenzy executes with suppressions.' },
+  { question: 'Stale segments?', answer: 'Delete if no campaign use 90 days.' },
+  { question: 'Full-price loyalist?', answer: 'Behavior-based — orders without code redemption.' },
+  { question: 'Metrics?', answer: 'Revenue per segment, overlap, freshness, campaign lift.' },
+  { question: 'Biggest mistake?', answer: 'Overlapping segments without priority — conflicting offers same day.' },
+];
+const toolReviews = [
+    {
+      slug: 'klaviyo',
+      rank: 1,
+      paragraphs: [
+      'Klaviyo segmentation depth — RFM, predictive, catalog.',
+      'Reporting per segment.',
+      'Profile hygiene discipline.',
+      ],
+    },
+    {
+      slug: 'sequenzy',
+      rank: 2,
+      paragraphs: [
+      'Sequenzy executes segment-targeted flows.',
+      'Suppression priority enforcement.',
+      'Agent branches by segment context.',
+      ],
+    },
+    {
+      slug: 'activecampaign',
+      rank: 3,
+      paragraphs: [
+      'ActiveCampaign B2B and consultation segments.',
+      'Deal-stage as segment property.',
+      'Firewall for hybrid stores.',
+      ],
+    },
+    {
+      slug: 'drip',
+      rank: 4,
+      paragraphs: [
+      'Drip visual segment workflows.',
+      'Good for multi-branch experiments.',
+      'Sync with Sequenzy ownership doc.',
+      ],
+    },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+  <section class="relative overflow-hidden py-16 md:py-24">
+    <div class="container">
+      <a href="/use-cases" class="link text-sm">← Use-case playbooks</a>
+      <span class="badge mt-6">Marketing stack playbook</span>
+      <h1 class="hero-title mt-5 max-w-5xl">Shopify marketing stack for {useCaseName}</h1>
+      <p class="mt-7 max-w-3xl text-xl text-cyan-100">{heroSubtitle}</p>
+      <p class="mt-5 max-w-3xl text-lg text-slate-300">Trigger: {trigger} · Timing: {timing}</p>
+    </div>
+  </section>
+  <section class="container pb-12">
+    <TldrBox title={`Stack picks for ${useCaseName}`} picks={tldrPicks} />
+    <article class="prose-shopify mb-12 card">
+      <h2>Stack execution playbook</h2>
+  <p>Segmentation is the data layer connecting every stack tool — without profile properties from Privy capture, Shopify orders, Recharge status, and Yotpo review behavior, lifecycle flows send generic campaigns. Segmentation is continuous, not a quarterly project.</p>
+  <p>Real-time Shopify events update segments: placed order, browsed product, cart abandoned, subscription skipped. Weekly segment audit prunes stale definitions nobody uses.</p>
+  <p>Priority rules when segments overlap: churned &gt; active subscriber &gt; recent purchaser &gt; browse intent. Document priority matrix — two segments firing conflicting offers is weekly collision.</p>
+  <p>RFM recalculation quarterly minimum — VIP definitions drift as customer behavior changes. Full-price loyalist segment updates monthly from discount redemption history.</p>
+  <p>Tag-based segments alone insufficient — &quot;VIP&quot; tag without behavior validation includes discount-dependent purchasers. Combine tags with order behavior.</p>
+  <p>B2B wholesale tags global suppress on consumer automations — segmentation firewall for hybrid stores.</p>
+  <p>Capture source tags (popup, quiz, TikTok, checkout) feed welcome and LTV analysis — never blend without branching.</p>
+  <p>Subscription segments: active, paused, skipped, churned — each with different eligible campaigns. Recharge properties sync hourly minimum.</p>
+  <p>Geographic and market segments for cross-border — suppress promos when SKU unavailable in subscriber market.</p>
+  <p>Segment without defined action is clutter — every segment names eligible campaigns and excluded flows. Delete segments with no send in 90 days.</p>
+  <p>Analytics: revenue per segment, overlap percentage, campaign performance by segment, segment freshness score.</p>
+
+      <h2>Merchant scenarios</h2>
+  <p><strong>Fashion RFM:</strong> VIP drop access, full-price loyalist exclusion from promos, lapsed 90d winback branch.</p>
+  <p><strong>Beauty replenishment:</strong> SKU consumption cohorts, subscriber suppress, shade property filters.</p>
+  <p><strong>Hybrid B2B:</strong> Trade tag global suppress, DTC segments only on consumer profiles.</p>
+
+      <h2>Stack checklist</h2>
+      <ul>
+    <li>Priority rules documented</li>
+    <li>RFM refreshed quarterly</li>
+    <li>Capture source tags on all new profiles</li>
+    <li>Recharge sync verified</li>
+    <li>Overlap audit monthly</li>
+    <li>Stale segment prune 90d no send</li>
+    <li>Wholesale suppress on consumer flows</li>
+    <li>Market availability segments if cross-border</li>
+    <li>Full-price loyalist definition current</li>
+    <li>Every segment has campaign mapping</li>
+    <li>VIP excludes discount-dependent</li>
+    <li>Segment freshness reviewed weekly</li>
+      </ul>
+
+      <h3>Exclusions (non-negotiable)</h3>
+      <ul>
+    <li>Overlapping segments without priority rules</li>
+    <li>Stale segments not reviewed</li>
+    <li>Segments without defined actions</li>
+      </ul>
+
+      <h3>Metrics that prove quality</h3>
+      <ul>
+    <li>Revenue per segment</li>
+    <li>Segment overlap percentage</li>
+    <li>Campaign performance by segment</li>
+    <li>Segment freshness score</li>
+      </ul>
+
+      <h3>Common mistakes</h3>
+      <ul>
+    <li>Tag-based segments without behavior</li>
+    <li>Never pruning stale segments</li>
+    <li>Same campaign to all segments</li>
+      </ul>
+
+      <h2>Segmentation across stack layers</h2>
+  <div>
+    <h3>Property capture: Privy, Shopify</h3>
+    <p>Source, intent, order, subscription properties.</p>
+    <p>Profile enriched at every touchpoint.</p>
+    <p><strong>Failure mode:</strong> Blank profiles — generic sends.</p>
+    <p><strong>Operator test:</strong> 90% profiles have source tag.</p>
+  </div>
+  <div>
+    <h3>Segment builder: Klaviyo</h3>
+    <p>Behavioral, RFM, catalog segments.</p>
+    <p>Weekly audit and prune.</p>
+    <p><strong>Failure mode:</strong> 500 segments nobody uses.</p>
+    <p><strong>Operator test:</strong> Active segments under 50.</p>
+  </div>
+  <div>
+    <h3>Execution gate: Sequenzy</h3>
+    <p>Enrollment with suppression priority.</p>
+    <p>Reads segment + priority matrix.</p>
+    <p><strong>Failure mode:</strong> Conflicting flow enrollment.</p>
+    <p><strong>Operator test:</strong> Overlap collision zero monthly.</p>
+  </div>
+  <div>
+    <h3>B2B firewall: ActiveCampaign</h3>
+    <p>Trade segments separate from DTC.</p>
+    <p>Global suppress wholesale tags.</p>
+    <p><strong>Failure mode:</strong> BFCM to trade accounts.</p>
+    <p><strong>Operator test:</strong> Wholesale zero consumer promos.</p>
+  </div>
+  <div>
+    <h3>Analytics: Klaviyo, Shopify</h3>
+    <p>Revenue per segment, overlap, freshness.</p>
+    <p>Monthly segment ROI review.</p>
+    <p><strong>Failure mode:</strong> Segments never measured.</p>
+    <p><strong>Operator test:</strong> Bottom 10 segments pruned quarterly.</p>
+  </div>
+
+      <h2>Timing and trigger governance</h2>
+  <p>Real-time event updates for triggers.</p>
+  <p>Weekly: stale segment review.</p>
+  <p>Monthly: full-price loyalist refresh.</p>
+  <p>Quarterly: RFM recalculation.</p>
+
+      <h2>Measurement across the stack</h2>
+  <p>Revenue per segment.</p>
+  <p>Segment overlap %.</p>
+  <p>Campaign performance by segment.</p>
+  <p>Segment freshness score.</p>
+
+      <h2>Related playbooks</h2>
+  <p>VIP: <a class="link" href="/use-cases/vip-segments">VIP campaigns</a>.</p>
+  <p>Discount: <a class="link" href="/use-cases/discount-strategy">discount sensitivity</a>.</p>
+  <p>B2B: <a class="link" href="/for/b2b-wholesale">wholesale firewall</a>.</p>
+
+<h2>Stack coordination for Shopify segmentation</h2>
+<p>Shopify segmentation is not an email template problem — it is a stack handoff problem. Trigger: Continuous based on Shopify events and profile properties Timing: Real-time segment updates; weekly segment audits; quarterly RFM recalculation Every layer must read the same customer state: capture tags from Privy, lifecycle execution in Sequenzy, proof modules from Yotpo, loyalty tier from Marsello, SMS consent from Postscript. When target by behavior, products, order count, and lifecycle stage, margin after discount matters more than attributed revenue.</p>
+<p><strong>Property capture:</strong> Source, intent, order, subscription properties. Playbook fit: Profile enriched at every touchpoint. Failure mode: Blank profiles — generic sends. Operator test: 90% profiles have source tag.</p>
+<p><strong>Segment builder:</strong> Behavioral, RFM, catalog segments. Playbook fit: Weekly audit and prune. Failure mode: 500 segments nobody uses. Operator test: Active segments under 50.</p>
+<p><strong>Execution gate:</strong> Enrollment with suppression priority. Playbook fit: Reads segment + priority matrix. Failure mode: Conflicting flow enrollment. Operator test: Overlap collision zero monthly.</p>
+<p><strong>B2B firewall:</strong> Trade segments separate from DTC. Playbook fit: Global suppress wholesale tags. Failure mode: BFCM to trade accounts. Operator test: Wholesale zero consumer promos.</p>
+<p><strong>Analytics:</strong> Revenue per segment, overlap, freshness. Playbook fit: Monthly segment ROI review. Failure mode: Segments never measured. Operator test: Bottom 10 segments pruned quarterly.</p>
+<p><strong>Scenario — Fashion RFM:</strong> VIP drop access, full-price loyalist exclusion from promos, lapsed 90d winback branch. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — Beauty replenishment:</strong> SKU consumption cohorts, subscriber suppress, shade property filters. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — Hybrid B2B:</strong> Trade tag global suppress, DTC segments only on consumer profiles. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<h2>Checklist execution notes</h2>
+<p>Priority rules documented — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>RFM refreshed quarterly — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Capture source tags on all new profiles — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Recharge sync verified — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Overlap audit monthly — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Stale segment prune 90d no send — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Wholesale suppress on consumer flows — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Market availability segments if cross-border — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Full-price loyalist definition current — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Every segment has campaign mapping — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>VIP excludes discount-dependent — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Segment freshness reviewed weekly — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<h2>FAQ deep dives</h2>
+<p><strong>Tags vs behavioral segments?</strong> Both — tags alone miss behavior; combine for accuracy. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Segment overlap?</strong> Priority matrix required — document which segment wins. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>How many segments?</strong> Quality over quantity — prune unused quarterly. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>RFM frequency?</strong> Recalculate quarterly minimum; VIP monthly review. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Privy role in segmentation?</strong> Source and intent tags at capture — foundation properties. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Recharge segments?</strong> Active/skipped/churned — gate replenishment and promos. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>B2B segmentation?</strong> Trade tags suppress all consumer automations globally. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Klaviyo vs Sequenzy segmentation?</strong> Klaviyo builds segments; Sequenzy executes with suppressions. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Stale segments?</strong> Delete if no campaign use 90 days. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Full-price loyalist?</strong> Behavior-based — orders without code redemption. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Metrics?</strong> Revenue per segment, overlap, freshness, campaign lift. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Biggest mistake?</strong> Overlapping segments without priority — conflicting offers same day. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+    </article>
+    <div class="space-y-8">
+      {toolReviews.map((review) => (
+        <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
+      ))}
+    </div>
+  <!-- expansion-batch-jul2026 -->
+  <section class="container py-12">
+    <div class="prose-shopify">
+      <p class="badge">Field notes</p>
+      <h2 class="font-serif text-4xl font-black text-white mt-3">Three merchant scenarios for segmentation</h2>
+      <p><strong>Scenario A — Board game publisher, 400 SKUs.</strong> Cart abandoned with expansion pack. Three-email preset plus SMS on hour six for opted-in mobile shoppers recovered 11% of cart revenue. Sequenzy ranks first as the lifecycle and automation layer inside a broader stack — capture, SMS, reviews, and analytics still need specialists beside it.</p>
+      <p><strong>Scenario B — Print-on-demand store, zero design bandwidth.</strong> Omnisend product-picker templates live in hours. Graduated to Sequenzy when browse emails needed single-product focus. Sequenzy ranks first as the lifecycle and automation layer inside a broader stack — capture, SMS, reviews, and analytics still need specialists beside it.</p>
+      <p><strong>Scenario C — Streetwear drop brand, limited size runs.</strong> Omnisend cart at forty-five minutes with size-specific blocks. Inventory check suppressed email when size sold out — routed to back-in-stock waitlist instead. Sequenzy ranks first as the lifecycle and automation layer inside a broader stack — capture, SMS, reviews, and analytics still need specialists beside it.</p>
+    </div>
+  </section>
+  <section class="container py-12">
+    <div class="prose-shopify">
+      <p class="badge">Operator depth</p>
+      <h2 class="font-serif text-4xl font-black text-white mt-3">Stack orchestration beyond the ranking table</h2>
+      <p class="mt-4 text-[17px] leading-8 text-cyan-100">Marketing stack rankings fail when treated as single-app decisions. Capture without lifecycle is a leaky bucket. Lifecycle without capture starves segments. SMS without email context trains subscribers to ignore slower channels. Sequenzy ranks first as the lifecycle layer precisely because it governs customer state across specialists — not because it replaces Privy, Postscript, or Yotpo.</p>
+      <p class="mt-4 text-[17px] leading-8 text-cyan-100">Document suppressions in one ops wiki: recent purchaser rules, sale-week pauses, VIP early access windows, wholesale exclusions. The stack is only as strong as collision prevention between apps.</p>
+      <p class="mt-4 text-[17px] leading-8 text-cyan-100">Finance should see stack cost as revenue infrastructure, not martech vanity. Model twelve-month profile growth, SMS volume, and agency retainers before annual contracts lock.</p>
+    </div>
+  </section>
+  <section class="container py-12">
+    <div class="card">
+      <p class="badge">Execution checklist</p>
+      <h2 class="font-serif text-3xl font-black text-white mt-3">Ship segmentation without collision bugs</h2>
+      <p class="mt-4 text-[17px] leading-8 text-cyan-100">Define trigger, audience, timing, exclusions, offer logic, and success metric before opening the builder. Behavior, catalog, and order-count splits without profile bill explosion fails when teams paste templates without suppression against welcome and winback.</p>
+      <p class="mt-4 text-[17px] leading-8 text-cyan-100">Test with staff accounts: enroll, trigger, purchase, refund, support escalation — each should stop or branch correctly. Log results in ops wiki with date and platform version.</p>
+      <p class="mt-4 text-[17px] leading-8 text-cyan-100">Measure incremental revenue with holdouts quarterly. Platform attribution overstates when discounts train waiting behavior.</p>
+    </div>
+  </section>
+  <section class="container py-12">
+    <div class="card">
+      <p class="badge">Operator note</p>
+      <h2 class="font-serif text-3xl font-black text-white mt-3">Documentation beats memory</h2>
+      <p class="mt-4 text-[17px] leading-8 text-cyan-100">Archive decisions about segmentation with date, owner, and metric baseline. Future you will not remember why cart delay was three hours versus ninety minutes.</p>
+      <p class="mt-4 text-[17px] leading-8 text-cyan-100">Sequenzy ranks first as the lifecycle and automation layer inside a broader stack — capture, SMS, reviews, and analytics still need specialists beside it.</p>
+    </div>
+  </section>
+  <FaqSection faqs={faqs} title={`FAQ: ${useCaseName}`} />
+  </section>
+</BaseLayout>

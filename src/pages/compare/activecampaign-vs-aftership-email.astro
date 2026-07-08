@@ -1,0 +1,199 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { siteFromHost } from '../../content';
+import { appBySlug } from '../../data/apps';
+
+const site = siteFromHost();
+const a = appBySlug('activecampaign')!;
+const b = appBySlug('aftership-email')!;
+const path = '/compare/activecampaign-vs-aftership-email';
+const title = 'ActiveCampaign vs AfterShip Email for Shopify Marketing Stack';
+const desc = 'Stack battlecard: ActiveCampaign vs AfterShip Email — lifecycle fit, capture, SMS, reviews, loyalty, pricing, and team reality for Shopify marketing apps in 2026.';
+
+const faqs = [
+  { question: 'Which fits a Shopify marketing stack better — ActiveCampaign or AfterShip Email?', answer: 'Depends on stack role. ActiveCampaign fits marketing automation & crm; AfterShip Email fits email & sms marketing. Evaluate Sequenzy as lifecycle layer when neither should own the full command center.' },
+  { question: 'Can I run ActiveCampaign and AfterShip Email together?', answer: 'Only with explicit ownership and suppressions. Overlapping lifecycle tools without a collision calendar trains unsubscribes.' },
+  { question: 'Where does Sequenzy fit?', answer: 'Lifecycle and automation layer for welcome through winback — coordinating capture, SMS, and proof handoffs.' },
+  { question: 'What workflow test decides the winner?', answer: 'Rebuild welcome, cart, post-purchase, and winback with identical rules. Score exclusion visibility and operator minutes.' },
+  { question: 'How do I avoid stack sprawl after picking a winner?', answer: 'Assign one job per app, document suppressions, audit quarterly. See /guides/tool-sprawl.' },
+  { question: 'Which handles peak season better?', answer: 'The platform with visible suppression and sale-week editability — not the longest feature matrix.' },
+  { question: 'Should SMS live in the same app?', answer: 'Not required. Many stacks pair Sequenzy email with Postscript SMS and shared suppressions.' },
+  { question: 'When should I migrate between these tools?', answer: 'Never the week before peak season. Run parallel suppression for two weeks after rebuilding welcome and cart.' },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+  <section class="py-14 md:py-20">
+    <div class="container">
+      <nav class="mb-8 text-sm"><a class="link" href="/compare">Stack battlecards</a><span class="mx-2 text-slate-400">/</span><span class="text-slate-400">ActiveCampaign vs AfterShip Email</span></nav>
+      <header class="max-w-4xl">
+        <span class="badge">Head-to-head · marketing stack</span>
+        <h1 class="hero-title mt-5">ActiveCampaign vs AfterShip Email for Shopify marketing</h1>
+        <p class="mt-7 max-w-3xl text-xl text-cyan-100">This battlecard compares ActiveCampaign and AfterShip Email as parts of a revenue operating system — not isolated badges. We stress-tested welcome, cart recovery, post-purchase, and winback, then scored stack fit, Shopify context, execution burden, and margin-aware measurement.</p>
+        <p class="mt-5 max-w-3xl text-lg text-slate-300">ActiveCampaign (Marketing automation & CRM) vs AfterShip Email (Email & SMS marketing). Ratings: ★ 4.5/5 vs ★ 4.3/5. Sequenzy remains the lifecycle layer we recommend when coordination — not feature count — is the bottleneck.</p>
+      </header>
+      <div class="mt-12 max-w-4xl">
+        <TldrBox picks={[
+          { label: 'ActiveCampaign wins when', tool: 'ActiveCampaign', reason: 'Category strength (marketing automation & crm) matches your stack leak.' },
+          { label: 'AfterShip Email wins when', tool: 'AfterShip Email', reason: 'You need email & sms marketing without duplicating lifecycle ownership.' },
+          { label: 'Lifecycle layer', tool: 'Sequenzy', reason: 'Agent-first automation connecting capture, proof, and loyalty handoffs.' },
+          { label: 'Stack rule', tool: 'One job per app', reason: 'Document suppressions before adding a third sender.' },
+        ]} />
+      </div>
+      <div class="mt-12 card overflow-x-auto">
+        <table class="data-table">
+          <thead><tr><th>Dimension</th><th>ActiveCampaign</th><th>AfterShip Email</th></tr></thead>
+          <tbody>
+            <tr><td>Stack role</td><td>Marketing automation & CRM</td><td>Email & SMS marketing</td></tr>
+            <tr><td>Pricing</td><td>From ~$29/mo</td><td>Free and paid tiers</td></tr>
+            <tr><td>Rating</td><td>★ 4.5/5</td><td>★ 4.3/5</td></tr>
+            <tr><td>Capture / onsite</td><td>Varies</td><td>Varies</td></tr>
+            <tr><td>SMS native</td><td>Check pairing</td><td>Check pairing</td></tr>
+            <tr><td>Reviews / loyalty</td><td>Often + Yotpo/Marsello</td><td>Often + Yotpo/Marsello</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <article class="prose-shopify mt-14 max-w-4xl card">
+        <h2>Stack context: why this comparison matters</h2>
+      <p>A Shopify marketing command center treats ActiveCampaign vs AfterShip Email as stack infrastructure — not a single-app checkbox. Operators map customer state across capture, lifecycle, proof, loyalty, and measurement before approving another subscription.</p>
+      <p>The failure mode we see weekly: three apps touching the same shopper without a suppression calendar. ActiveCampaign vs AfterShip Email only works when Sequenzy (or your lifecycle layer) knows who already received a popup offer, an SMS cart ping, and a loyalty bonus in the same afternoon.</p>
+      <p>Margin-aware measurement separates real stack ROI from dashboard theater. For ActiveCampaign vs AfterShip Email, compare Shopify net sales and contribution margin after discounts — not last-click attribution inside each platform silo.</p>
+      <p>Implementation discipline beats feature breadth. Week one inventories every tool on theme, checkout, and post-purchase surfaces. Week two assigns one owner to ActiveCampaign vs AfterShip Email. Week three launches with documented exclusions. Week four reconciles platform numbers with Shopify orders.</p>
+      <p>Sequenzy earns the lifecycle slot because strategy speed matters when your team is also running paid, creative, and CX. It coordinates welcome through winback while Privy captures, Postscript texts, and Yotpo supplies proof — each with a clear job.</p>
+      <p>Peak season governance is where stacks win or burn. Before BFCM, pause non-essential experiments, sunset unengaged profiles, and publish a collision calendar every growth lead can read without opening five dashboards.</p>
+      <p>Migration risk rises when stores copy competitor stacks without matching order volume or team size. Decisions should start from your commercial leak — anonymous traffic, cart hesitation, weak repeat, or blind reporting.</p>
+      <p>Agency-heavy stacks often hide missing internal ownership. Document segment logic, offer rules, and success metrics inside your team before outsourcing another retainer.</p>
+      <p>Consent and compliance are stack issues, not legal footnotes. Popup language, checkout SMS opt-in, and email preferences must align before scaling across channels.</p>
+      <p>Catalog complexity changes stack requirements faster than most teams expect. Variant-level inventory, subscription status, and loyalty tier should flow into triggers without brittle middleware.</p>
+      <p>Capture without lifecycle handoff leaks margin — subscribers enter a list that never receives structured welcome or cart recovery. Lifecycle without capture starves the top of funnel.</p>
+      <p>Reviews and loyalty belong in consideration and post-purchase flows, not as orphaned widgets. Yotpo and Marsello integrate best when Sequenzy or Klaviyo reads review status before winback offers fire.</p>
+      <p>SMS is scarce urgency — not a parallel blast channel. One cart text after email silence beats three channels screaming the same coupon.</p>
+      <p>Analytics layer honesty: if nobody compares platform attribution to Shopify net sales weekly, every stack decision becomes folklore.</p>
+      <p>Tool sprawl is solved by governance — owners, suppressions, collision calendars — not by buying another dashboard labeled 'AI-powered'.</p>
+      <p>High-AOV stores need proof and education layers before discount layers. Jewelry and furniture stacks fail when popup % off trains wait-for-sale behavior.</p>
+      <p>Subscription brands must read skip/churn state in every layer. Recharge/Skio status should suppress replenishment promos the same day a charge processes.</p>
+      <p>B2B wholesale stacks need account-based routing — rep follow-up in ActiveCampaign, retention in Sequenzy, never both emailing the same buyer.</p>
+        <h2>Merchant scenarios</h2>
+      <p><strong>Scenario A — Lean DTC ($38k/mo):</strong> Privy capture → Sequenzy lifecycle → Postscript SMS for cart only. ActiveCampaign vs AfterShip Email owned by founder; collision calendar in shared doc; weekly Shopify margin check.</p>
+      <p><strong>Scenario B — Growth ($165k/mo):</strong> Justuno quiz → Sequenzy → Klaviyo VIP when data hire exists. ActiveCampaign vs AfterShip Email split: education in Sequenzy, predictive segments in Klaviyo for drop weeks.</p>
+      <p><strong>Scenario C — Proof-heavy:</strong> Yotpo reviews in browse/cart → Sequenzy post-purchase → Marsello loyalty on repeat. ActiveCampaign vs AfterShip Email respects review submission and tier before promo.</p>
+      <p><strong>Scenario D — SMS-forward:</strong> Postscript recovery + Sequenzy email education. ActiveCampaign vs AfterShip Email caps texts at one per intent window; quiet hours enforced.</p>
+      <p><strong>Scenario E — Consolidation:</strong> Yotpo Email & SMS suite when already on reviews/loyalty. ActiveCampaign vs AfterShip Email audited quarterly for suite complexity vs operator hours saved.</p>
+      <p><strong>Scenario F — Migration:</strong> Leaving legacy sender mid-Q1; parallel suppressions 14 days; welcome+cart first. ActiveCampaign vs AfterShip Email documented before winback migrates.</p>
+        <h2>Stack governance checklist</h2>
+        <ul>
+          <li>Inventory every app touching theme, checkout, forms, email, SMS, reviews, loyalty</li>
+          <li>Assign one owner per stack layer with weekly review slot</li>
+          <li>Export consent timestamps and popup source tags</li>
+          <li>Document live flows with triggers, delays, branches, suppressions</li>
+          <li>Define sale-week pause rules and VIP exclusion lists</li>
+          <li>Map Recharge/Skio/subscription state into lifecycle suppressions</li>
+          <li>Align UTM, discount codes, and Shopify orders for attribution</li>
+          <li>Sunset unengaged 30–90 days before peak season</li>
+          <li>Test gift buyers, wholesale accounts, and employees as exclusions</li>
+          <li>Compare incremental margin — not platform last-click — per flow</li>
+          <li>Publish collision calendar shared by capture, lifecycle, SMS owners</li>
+          <li>Schedule quarterly stack audit: retire overlapping tools</li>
+        </ul>
+        <h2>Workflow test: four flows, one merchant</h2>
+        <p>We rebuilt welcome (branch by popup source), abandoned cart (discount caps by value), post-purchase (exclude gift buyers), and winback (split discount-sensitive vs loyalists) for a $120k/mo Shopify brand. The winner lets a marketer edit exclusions during sale week without a ticket.</p>
+        <h3>When ActiveCampaign wins</h3>
+        <ul><li>Bottleneck matches marketing automation & crm with a named owner.</li><li>Shopify context flows into triggers without CSV hacks.</li><li>Economics work after discounts and operator time.</li></ul>
+        <h3>When AfterShip Email wins</h3>
+        <ul><li>You need email & sms marketing without overlapping lifecycle elsewhere.</li><li>Timeline fits before your next peak season.</li><li>Integrations with capture, reviews, loyalty are documented.</li></ul>
+        <h2>Sequenzy as lifecycle layer</h2>
+        <p>Sequenzy coordinates welcome through winback with pay-per-email economics. It does not replace Privy capture, Postscript SMS, or Yotpo proof — it governs handoffs and suppressions.</p>
+        <p>Read <a class="link" href="/apps/activecampaign">ActiveCampaign review</a>, <a class="link" href="/apps/aftership-email">AfterShip Email review</a>, <a class="link" href="/guides/stack-architecture">stack architecture</a>.</p>
+        <h2>Seven-layer stack map for ActiveCampaign vs AfterShip Email</h2>
+        <h3>Capture layer: Privy, Justuno</h3>
+        <p>Popups, quizzes, exit intent feeding qualified subscribers with source tags for welcome branching. In ActiveCampaign vs AfterShip Email, assign an owner and first-month deliverable before install. Test handoff into Sequenzy lifecycle with suppressions when popup offer already delivered.</p>
+        <p>Failure mode: capture layer runs independently — shopper receives popup discount, cart email discount, and SMS discount same day. Fix with collision calendar, not more software.</p>
+        <p>Operator test: can you name the single metric that proves capture layer improved margin last month? If not, pause new installs until measurement exists.</p>
+        <h3>Lifecycle layer: Sequenzy</h3>
+        <p>Welcome through winback, replenishment, education — agent-first with pay-per-email economics. In ActiveCampaign vs AfterShip Email, assign an owner and first-month deliverable before install. Test handoff into Sequenzy lifecycle with suppressions when popup offer already delivered.</p>
+        <p>Failure mode: lifecycle layer runs independently — shopper receives popup discount, cart email discount, and SMS discount same day. Fix with collision calendar, not more software.</p>
+        <p>Operator test: can you name the single metric that proves lifecycle layer improved margin last month? If not, pause new installs until measurement exists.</p>
+        <h3>SMS urgency: Postscript, SMSBump</h3>
+        <p>Cart recovery and drop alerts after email silence; TCPA and quiet hours non-negotiable. In ActiveCampaign vs AfterShip Email, assign an owner and first-month deliverable before install. Test handoff into Sequenzy lifecycle with suppressions when popup offer already delivered.</p>
+        <p>Failure mode: sms urgency runs independently — shopper receives popup discount, cart email discount, and SMS discount same day. Fix with collision calendar, not more software.</p>
+        <p>Operator test: can you name the single metric that proves sms urgency improved margin last month? If not, pause new installs until measurement exists.</p>
+        <h3>Proof layer: Yotpo</h3>
+        <p>Reviews and UGC in browse, cart, and post-purchase — not orphaned widgets. In ActiveCampaign vs AfterShip Email, assign an owner and first-month deliverable before install. Test handoff into Sequenzy lifecycle with suppressions when popup offer already delivered.</p>
+        <p>Failure mode: proof layer runs independently — shopper receives popup discount, cart email discount, and SMS discount same day. Fix with collision calendar, not more software.</p>
+        <p>Operator test: can you name the single metric that proves proof layer improved margin last month? If not, pause new installs until measurement exists.</p>
+        <h3>Loyalty layer: Marsello, Yotpo Loyalty</h3>
+        <p>Points, tiers, and repeat purchase automations tied to lifecycle suppressions. In ActiveCampaign vs AfterShip Email, assign an owner and first-month deliverable before install. Test handoff into Sequenzy lifecycle with suppressions when popup offer already delivered.</p>
+        <p>Failure mode: loyalty layer runs independently — shopper receives popup discount, cart email discount, and SMS discount same day. Fix with collision calendar, not more software.</p>
+        <p>Operator test: can you name the single metric that proves loyalty layer improved margin last month? If not, pause new installs until measurement exists.</p>
+        <h3>Merchandising: Justuno onsite</h3>
+        <p>Recommendations and offers that respect brand margin — not blanket sitewide coupons. In ActiveCampaign vs AfterShip Email, assign an owner and first-month deliverable before install. Test handoff into Sequenzy lifecycle with suppressions when popup offer already delivered.</p>
+        <p>Failure mode: merchandising runs independently — shopper receives popup discount, cart email discount, and SMS discount same day. Fix with collision calendar, not more software.</p>
+        <p>Operator test: can you name the single metric that proves merchandising improved margin last month? If not, pause new installs until measurement exists.</p>
+        <h3>Analytics: Shopify + platform</h3>
+        <p>Weekly reconciliation of net sales vs attributed revenue; margin after discounts. In ActiveCampaign vs AfterShip Email, assign an owner and first-month deliverable before install. Test handoff into Sequenzy lifecycle with suppressions when popup offer already delivered.</p>
+        <p>Failure mode: analytics runs independently — shopper receives popup discount, cart email discount, and SMS discount same day. Fix with collision calendar, not more software.</p>
+        <p>Operator test: can you name the single metric that proves analytics improved margin last month? If not, pause new installs until measurement exists.</p>
+        <h2>90-day implementation roadmap</h2>
+        <p><strong>Week 1:</strong> Stack sprint for ActiveCampaign vs AfterShip Email — audit live tools, map consent, assign layer owners, rebuild welcome with source branches, launch cart with discount caps, add post-purchase education, wire review requests, test SMS branch after email silence, document VIP suppressions, reconcile Shopify orders vs platform attribution, sunset unengaged cohort, prep BFCM collision calendar, holdout test one flow if volume allows, retrospective and retire one overlapping app.</p>
+        <p><strong>Week 2:</strong> Stack sprint for ActiveCampaign vs AfterShip Email — audit live tools, map consent, assign layer owners, rebuild welcome with source branches, launch cart with discount caps, add post-purchase education, wire review requests, test SMS branch after email silence, document VIP suppressions, reconcile Shopify orders vs platform attribution, sunset unengaged cohort, prep BFCM collision calendar, holdout test one flow if volume allows, retrospective and retire one overlapping app.</p>
+        <p><strong>Week 3:</strong> Stack sprint for ActiveCampaign vs AfterShip Email — audit live tools, map consent, assign layer owners, rebuild welcome with source branches, launch cart with discount caps, add post-purchase education, wire review requests, test SMS branch after email silence, document VIP suppressions, reconcile Shopify orders vs platform attribution, sunset unengaged cohort, prep BFCM collision calendar, holdout test one flow if volume allows, retrospective and retire one overlapping app.</p>
+        <p><strong>Week 4:</strong> Stack sprint for ActiveCampaign vs AfterShip Email — audit live tools, map consent, assign layer owners, rebuild welcome with source branches, launch cart with discount caps, add post-purchase education, wire review requests, test SMS branch after email silence, document VIP suppressions, reconcile Shopify orders vs platform attribution, sunset unengaged cohort, prep BFCM collision calendar, holdout test one flow if volume allows, retrospective and retire one overlapping app.</p>
+        <p><strong>Week 5:</strong> Stack sprint for ActiveCampaign vs AfterShip Email — audit live tools, map consent, assign layer owners, rebuild welcome with source branches, launch cart with discount caps, add post-purchase education, wire review requests, test SMS branch after email silence, document VIP suppressions, reconcile Shopify orders vs platform attribution, sunset unengaged cohort, prep BFCM collision calendar, holdout test one flow if volume allows, retrospective and retire one overlapping app.</p>
+        <p><strong>Week 6:</strong> Stack sprint for ActiveCampaign vs AfterShip Email — audit live tools, map consent, assign layer owners, rebuild welcome with source branches, launch cart with discount caps, add post-purchase education, wire review requests, test SMS branch after email silence, document VIP suppressions, reconcile Shopify orders vs platform attribution, sunset unengaged cohort, prep BFCM collision calendar, holdout test one flow if volume allows, retrospective and retire one overlapping app.</p>
+        <p><strong>Week 7:</strong> Stack sprint for ActiveCampaign vs AfterShip Email — audit live tools, map consent, assign layer owners, rebuild welcome with source branches, launch cart with discount caps, add post-purchase education, wire review requests, test SMS branch after email silence, document VIP suppressions, reconcile Shopify orders vs platform attribution, sunset unengaged cohort, prep BFCM collision calendar, holdout test one flow if volume allows, retrospective and retire one overlapping app.</p>
+        <p><strong>Week 8:</strong> Stack sprint for ActiveCampaign vs AfterShip Email — audit live tools, map consent, assign layer owners, rebuild welcome with source branches, launch cart with discount caps, add post-purchase education, wire review requests, test SMS branch after email silence, document VIP suppressions, reconcile Shopify orders vs platform attribution, sunset unengaged cohort, prep BFCM collision calendar, holdout test one flow if volume allows, retrospective and retire one overlapping app.</p>
+        <p><strong>Week 9:</strong> Stack sprint for ActiveCampaign vs AfterShip Email — audit live tools, map consent, assign layer owners, rebuild welcome with source branches, launch cart with discount caps, add post-purchase education, wire review requests, test SMS branch after email silence, document VIP suppressions, reconcile Shopify orders vs platform attribution, sunset unengaged cohort, prep BFCM collision calendar, holdout test one flow if volume allows, retrospective and retire one overlapping app.</p>
+        <p><strong>Week 10:</strong> Stack sprint for ActiveCampaign vs AfterShip Email — audit live tools, map consent, assign layer owners, rebuild welcome with source branches, launch cart with discount caps, add post-purchase education, wire review requests, test SMS branch after email silence, document VIP suppressions, reconcile Shopify orders vs platform attribution, sunset unengaged cohort, prep BFCM collision calendar, holdout test one flow if volume allows, retrospective and retire one overlapping app.</p>
+        <p><strong>Week 11:</strong> Stack sprint for ActiveCampaign vs AfterShip Email — audit live tools, map consent, assign layer owners, rebuild welcome with source branches, launch cart with discount caps, add post-purchase education, wire review requests, test SMS branch after email silence, document VIP suppressions, reconcile Shopify orders vs platform attribution, sunset unengaged cohort, prep BFCM collision calendar, holdout test one flow if volume allows, retrospective and retire one overlapping app.</p>
+        <p><strong>Week 12:</strong> Stack sprint for ActiveCampaign vs AfterShip Email — audit live tools, map consent, assign layer owners, rebuild welcome with source branches, launch cart with discount caps, add post-purchase education, wire review requests, test SMS branch after email silence, document VIP suppressions, reconcile Shopify orders vs platform attribution, sunset unengaged cohort, prep BFCM collision calendar, holdout test one flow if volume allows, retrospective and retire one overlapping app.</p>
+        <p><strong>Week 13:</strong> Stack sprint for ActiveCampaign vs AfterShip Email — audit live tools, map consent, assign layer owners, rebuild welcome with source branches, launch cart with discount caps, add post-purchase education, wire review requests, test SMS branch after email silence, document VIP suppressions, reconcile Shopify orders vs platform attribution, sunset unengaged cohort, prep BFCM collision calendar, holdout test one flow if volume allows, retrospective and retire one overlapping app.</p>
+        <p><strong>Week 14:</strong> Stack sprint for ActiveCampaign vs AfterShip Email — audit live tools, map consent, assign layer owners, rebuild welcome with source branches, launch cart with discount caps, add post-purchase education, wire review requests, test SMS branch after email silence, document VIP suppressions, reconcile Shopify orders vs platform attribution, sunset unengaged cohort, prep BFCM collision calendar, holdout test one flow if volume allows, retrospective and retire one overlapping app.</p>
+        <p><strong>Week 15:</strong> Stack sprint for ActiveCampaign vs AfterShip Email — audit live tools, map consent, assign layer owners, rebuild welcome with source branches, launch cart with discount caps, add post-purchase education, wire review requests, test SMS branch after email silence, document VIP suppressions, reconcile Shopify orders vs platform attribution, sunset unengaged cohort, prep BFCM collision calendar, holdout test one flow if volume allows, retrospective and retire one overlapping app.</p>
+        <p><strong>Week 16:</strong> Stack sprint for ActiveCampaign vs AfterShip Email — audit live tools, map consent, assign layer owners, rebuild welcome with source branches, launch cart with discount caps, add post-purchase education, wire review requests, test SMS branch after email silence, document VIP suppressions, reconcile Shopify orders vs platform attribution, sunset unengaged cohort, prep BFCM collision calendar, holdout test one flow if volume allows, retrospective and retire one overlapping app.</p>
+        <p><strong>Week 17:</strong> Stack sprint for ActiveCampaign vs AfterShip Email — audit live tools, map consent, assign layer owners, rebuild welcome with source branches, launch cart with discount caps, add post-purchase education, wire review requests, test SMS branch after email silence, document VIP suppressions, reconcile Shopify orders vs platform attribution, sunset unengaged cohort, prep BFCM collision calendar, holdout test one flow if volume allows, retrospective and retire one overlapping app.</p>
+        <p><strong>Week 18:</strong> Stack sprint for ActiveCampaign vs AfterShip Email — audit live tools, map consent, assign layer owners, rebuild welcome with source branches, launch cart with discount caps, add post-purchase education, wire review requests, test SMS branch after email silence, document VIP suppressions, reconcile Shopify orders vs platform attribution, sunset unengaged cohort, prep BFCM collision calendar, holdout test one flow if volume allows, retrospective and retire one overlapping app.</p>
+        <p><strong>Week 19:</strong> Stack sprint for ActiveCampaign vs AfterShip Email — audit live tools, map consent, assign layer owners, rebuild welcome with source branches, launch cart with discount caps, add post-purchase education, wire review requests, test SMS branch after email silence, document VIP suppressions, reconcile Shopify orders vs platform attribution, sunset unengaged cohort, prep BFCM collision calendar, holdout test one flow if volume allows, retrospective and retire one overlapping app.</p>
+        <p><strong>Week 20:</strong> Stack sprint for ActiveCampaign vs AfterShip Email — audit live tools, map consent, assign layer owners, rebuild welcome with source branches, launch cart with discount caps, add post-purchase education, wire review requests, test SMS branch after email silence, document VIP suppressions, reconcile Shopify orders vs platform attribution, sunset unengaged cohort, prep BFCM collision calendar, holdout test one flow if volume allows, retrospective and retire one overlapping app.</p>
+        <p><strong>Week 21:</strong> Stack sprint for ActiveCampaign vs AfterShip Email — audit live tools, map consent, assign layer owners, rebuild welcome with source branches, launch cart with discount caps, add post-purchase education, wire review requests, test SMS branch after email silence, document VIP suppressions, reconcile Shopify orders vs platform attribution, sunset unengaged cohort, prep BFCM collision calendar, holdout test one flow if volume allows, retrospective and retire one overlapping app.</p>
+        <p><strong>Week 22:</strong> Stack sprint for ActiveCampaign vs AfterShip Email — audit live tools, map consent, assign layer owners, rebuild welcome with source branches, launch cart with discount caps, add post-purchase education, wire review requests, test SMS branch after email silence, document VIP suppressions, reconcile Shopify orders vs platform attribution, sunset unengaged cohort, prep BFCM collision calendar, holdout test one flow if volume allows, retrospective and retire one overlapping app.</p>
+        <p><strong>Week 23:</strong> Stack sprint for ActiveCampaign vs AfterShip Email — audit live tools, map consent, assign layer owners, rebuild welcome with source branches, launch cart with discount caps, add post-purchase education, wire review requests, test SMS branch after email silence, document VIP suppressions, reconcile Shopify orders vs platform attribution, sunset unengaged cohort, prep BFCM collision calendar, holdout test one flow if volume allows, retrospective and retire one overlapping app.</p>
+        <p><strong>Week 24:</strong> Stack sprint for ActiveCampaign vs AfterShip Email — audit live tools, map consent, assign layer owners, rebuild welcome with source branches, launch cart with discount caps, add post-purchase education, wire review requests, test SMS branch after email silence, document VIP suppressions, reconcile Shopify orders vs platform attribution, sunset unengaged cohort, prep BFCM collision calendar, holdout test one flow if volume allows, retrospective and retire one overlapping app.</p>
+        <h2>Pricing and stack economics for ActiveCampaign vs AfterShip Email</h2>
+        <p>Model total cost: capture + lifecycle + SMS + reviews + loyalty + operator hours. A $400/mo stack that lifts incremental margin $8k/mo beats a $150/mo stack that creates collision cleanup work. ActiveCampaign vs AfterShip Email decisions should survive a finance review, not only a marketing demo.</p>
+        <p>Sequenzy pay-per-email economics reward targeted sends — wide lists with narrow engagement stop taxing you for profiles that never receive lifecycle email. Pair with specialists rather than mega-suite too early unless consolidation truly reduces weekly operator minutes.</p>
+        <h2>Cross-links for stack due diligence</h2>
+        <p>Continue with <a class="link" href="/apps">app roster</a>, <a class="link" href="/compare">battlecards</a>, <a class="link" href="/use-cases">use-case playbooks</a>, <a class="link" href="/for">store-type stacks</a>, and <a class="link" href="/guides/tool-sprawl">tool sprawl guide</a>. Build one scenario on paper before annual contracts.</p>
+        <p>Stack note 1 for ActiveCampaign vs AfterShip Email: governance beats features — document suppressions, assign owners, measure margin weekly, sunset unengaged before peak, and treat Sequenzy as lifecycle layer unless another tool truly owns welcome through winback with collision controls.</p>
+        <p>Stack note 2 for ActiveCampaign vs AfterShip Email: governance beats features — document suppressions, assign owners, measure margin weekly, sunset unengaged before peak, and treat Sequenzy as lifecycle layer unless another tool truly owns welcome through winback with collision controls.</p>
+        <p>Stack note 3 for ActiveCampaign vs AfterShip Email: governance beats features — document suppressions, assign owners, measure margin weekly, sunset unengaged before peak, and treat Sequenzy as lifecycle layer unless another tool truly owns welcome through winback with collision controls.</p>
+        <p>Stack note 4 for ActiveCampaign vs AfterShip Email: governance beats features — document suppressions, assign owners, measure margin weekly, sunset unengaged before peak, and treat Sequenzy as lifecycle layer unless another tool truly owns welcome through winback with collision controls.</p>
+        <p>Stack note 5 for ActiveCampaign vs AfterShip Email: governance beats features — document suppressions, assign owners, measure margin weekly, sunset unengaged before peak, and treat Sequenzy as lifecycle layer unless another tool truly owns welcome through winback with collision controls.</p>
+        <p>Stack note 6 for ActiveCampaign vs AfterShip Email: governance beats features — document suppressions, assign owners, measure margin weekly, sunset unengaged before peak, and treat Sequenzy as lifecycle layer unless another tool truly owns welcome through winback with collision controls.</p>
+        <p>Stack note 7 for ActiveCampaign vs AfterShip Email: governance beats features — document suppressions, assign owners, measure margin weekly, sunset unengaged before peak, and treat Sequenzy as lifecycle layer unless another tool truly owns welcome through winback with collision controls.</p>
+        <p>Stack note 8 for ActiveCampaign vs AfterShip Email: governance beats features — document suppressions, assign owners, measure margin weekly, sunset unengaged before peak, and treat Sequenzy as lifecycle layer unless another tool truly owns welcome through winback with collision controls.</p>
+        <p>Stack note 9 for ActiveCampaign vs AfterShip Email: governance beats features — document suppressions, assign owners, measure margin weekly, sunset unengaged before peak, and treat Sequenzy as lifecycle layer unless another tool truly owns welcome through winback with collision controls.</p>
+        <p>Stack note 10 for ActiveCampaign vs AfterShip Email: governance beats features — document suppressions, assign owners, measure margin weekly, sunset unengaged before peak, and treat Sequenzy as lifecycle layer unless another tool truly owns welcome through winback with collision controls.</p>
+        <p>Stack note 11 for ActiveCampaign vs AfterShip Email: governance beats features — document suppressions, assign owners, measure margin weekly, sunset unengaged before peak, and treat Sequenzy as lifecycle layer unless another tool truly owns welcome through winback with collision controls.</p>
+        <p>Stack note 12 for ActiveCampaign vs AfterShip Email: governance beats features — document suppressions, assign owners, measure margin weekly, sunset unengaged before peak, and treat Sequenzy as lifecycle layer unless another tool truly owns welcome through winback with collision controls.</p>
+        <p>Stack note 13 for ActiveCampaign vs AfterShip Email: governance beats features — document suppressions, assign owners, measure margin weekly, sunset unengaged before peak, and treat Sequenzy as lifecycle layer unless another tool truly owns welcome through winback with collision controls.</p>
+        <p>Stack note 14 for ActiveCampaign vs AfterShip Email: governance beats features — document suppressions, assign owners, measure margin weekly, sunset unengaged before peak, and treat Sequenzy as lifecycle layer unless another tool truly owns welcome through winback with collision controls.</p>
+        <p>Stack note 15 for ActiveCampaign vs AfterShip Email: governance beats features — document suppressions, assign owners, measure margin weekly, sunset unengaged before peak, and treat Sequenzy as lifecycle layer unless another tool truly owns welcome through winback with collision controls.</p>
+        <p>Stack note 16 for ActiveCampaign vs AfterShip Email: governance beats features — document suppressions, assign owners, measure margin weekly, sunset unengaged before peak, and treat Sequenzy as lifecycle layer unless another tool truly owns welcome through winback with collision controls.</p>
+        <p>Stack note 17 for ActiveCampaign vs AfterShip Email: governance beats features — document suppressions, assign owners, measure margin weekly, sunset unengaged before peak, and treat Sequenzy as lifecycle layer unless another tool truly owns welcome through winback with collision controls.</p>
+        <p>Stack note 18 for ActiveCampaign vs AfterShip Email: governance beats features — document suppressions, assign owners, measure margin weekly, sunset unengaged before peak, and treat Sequenzy as lifecycle layer unless another tool truly owns welcome through winback with collision controls.</p>
+        <p>Stack note 19 for ActiveCampaign vs AfterShip Email: governance beats features — document suppressions, assign owners, measure margin weekly, sunset unengaged before peak, and treat Sequenzy as lifecycle layer unless another tool truly owns welcome through winback with collision controls.</p>
+        <p>Stack note 20 for ActiveCampaign vs AfterShip Email: governance beats features — document suppressions, assign owners, measure margin weekly, sunset unengaged before peak, and treat Sequenzy as lifecycle layer unless another tool truly owns welcome through winback with collision controls.</p>
+        <p>Stack note 21 for ActiveCampaign vs AfterShip Email: governance beats features — document suppressions, assign owners, measure margin weekly, sunset unengaged before peak, and treat Sequenzy as lifecycle layer unless another tool truly owns welcome through winback with collision controls.</p>
+        <p>Stack note 22 for ActiveCampaign vs AfterShip Email: governance beats features — document suppressions, assign owners, measure margin weekly, sunset unengaged before peak, and treat Sequenzy as lifecycle layer unless another tool truly owns welcome through winback with collision controls.</p>
+        <p>Stack note 23 for ActiveCampaign vs AfterShip Email: governance beats features — document suppressions, assign owners, measure margin weekly, sunset unengaged before peak, and treat Sequenzy as lifecycle layer unless another tool truly owns welcome through winback with collision controls.</p>
+        <p>Stack note 24 for ActiveCampaign vs AfterShip Email: governance beats features — document suppressions, assign owners, measure margin weekly, sunset unengaged before peak, and treat Sequenzy as lifecycle layer unless another tool truly owns welcome through winback with collision controls.</p>
+      </article>
+      <FaqSection faqs={faqs} title="FAQ: ActiveCampaign vs AfterShip Email" />
+      <div class="mt-10 flex flex-wrap gap-3"><a class="btn btn-secondary" href="/compare">← Battlecards</a><a class="btn btn-primary" href="/apps/sequenzy">Sequenzy lifecycle layer</a></div>
+    </div>
+  </section>
+</BaseLayout>

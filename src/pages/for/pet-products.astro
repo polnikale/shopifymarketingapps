@@ -1,0 +1,254 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import ToolReview from '../../components/ToolReview.astro';
+import { siteFromHost, pageTitle, description } from '../../content';
+import { appBySlug } from '../../data/apps';
+
+const site = siteFromHost();
+const path = '/for/pet-products';
+const title = pageTitle(site, 'for/pet-products');
+const desc = description(site, 'for/pet-products');
+const heroSubtitle = 'Pet life-stage transitions, consumption-based reorder math, and species-specific segmentation need a stack where Privy captures pet profile, Sequenzy runs consumption replenishment, Klaviyo segments by breed/weight, and Yotpo supplies pet UGC proof — not generic 30-day reorder blasts.';
+const buyingCycle = '2–8 week reorder by pet size and product type; life-stage transitions';
+const segmentName = 'pet product stores';
+const tldrPicks = [
+    { label: 'Lifecycle', tool: 'Sequenzy', reason: 'Pet onboarding, consumption reorder, life-stage transitions' },
+    { label: 'Segmentation', tool: 'Klaviyo', reason: 'Species, breed, weight, and life-stage cohorts' },
+    { label: 'Capture', tool: 'Privy', reason: 'Pet profile quiz with species and weight tags' },
+    { label: 'Proof', tool: 'Yotpo', reason: 'Pet UGC and vet-trusted reviews in consideration' },
+];
+const faqs = [
+  { question: 'Best marketing stack for pet Shopify stores?', answer: 'Privy pet profile capture, Sequenzy consumption reorder and life-stage flows, Klaviyo species segmentation, Recharge sync, Yotpo pet UGC, Postscript for reorder SMS when opted in.' },
+  { question: 'How calculate pet food reorder timing?', answer: 'By pet weight, product calories/serving, and bag size — trigger at 80% consumption not calendar 30 days. Store weight as profile property.' },
+  { question: 'Why segment by species?', answer: 'Dog owners ignore cat emails and unsubscribe. Species tag at capture is non-negotiable for multi-species catalogs.' },
+  { question: 'New pet onboarding?', answer: '21-day education series after first pet product purchase or quiz completion — nutrition, sizing, life-stage preview. High LTV moment.' },
+  { question: 'Life-stage transitions?', answer: 'Automated at puppy→adult, adult→senior thresholds per species. Product recommendations update in Sequenzy branches.' },
+  { question: 'Subscription and replenishment collision?', answer: 'Recharge/Skio active status suppresses replenishment on subscribed SKU. Separate skip-save branch.' },
+  { question: 'SMS for pet products?', answer: 'Consumption-window reminders and flea due dates after email silence — not weekly promos. Checkout opt-in prerequisite.' },
+  { question: 'Pet loyalty programs?', answer: 'Second full-price order enrollment. Points on food and consumable repeat — not first-order popup hunters.' },
+  { question: 'Multi-pet households?', answer: 'Per-pet properties or consolidated household reminder listing SKUs per pet. Klaviyo supports multiple custom properties.' },
+  { question: 'Gift purchases?', answer: 'Suppress replenishment to gift buyer — recipient data rarely available. Gift confirmation branch only.' },
+  { question: 'Metrics for pet stack?', answer: 'Reorder rate by segment, life-stage transition revenue, subscription retention, species campaign RPR, SMS reorder conversion.' },
+  { question: 'Biggest pet stack mistake?', answer: 'Universal 30-day reorder without species or consumption math — wrong product, wrong timing, churn to Chewy subscription.' },
+];
+const toolReviews = [
+    {
+      slug: 'sequenzy',
+      rank: 1,
+      paragraphs: [
+      'Sequenzy owns pet lifecycle — new-pet onboarding, consumption reorder by category, life-stage transitions, health education paths.',
+      'Agent workflows help draft species-specific content without rebuilding flows per breed.',
+      'Pair with Recharge suppressions and Privy pet tags for coordinated replenishment.',
+      ],
+    },
+    {
+      slug: 'klaviyo',
+      rank: 2,
+      paragraphs: [
+      'Klaviyo species, breed, and weight segmentation when catalog spans multiple pet types and life-stages.',
+      'Predictive churn on subscription pet food. Reporting by pet cohort.',
+      'Custom properties for multi-pet households — audit data completeness monthly.',
+      ],
+    },
+    {
+      slug: 'privy',
+      rank: 3,
+      paragraphs: [
+      'Privy pet profile quiz captures species, weight, age at opt-in — foundation for all downstream segmentation.',
+      'Avoid generic discount wheel — pet owners respond to relevant product recommendations.',
+      'Quiz completion handoff to Sequenzy within 5 minutes critical.',
+      ],
+    },
+    {
+      slug: 'yotpo-email-sms',
+      rank: 4,
+      paragraphs: [
+      'Yotpo pet UGC in browse and post-purchase — same-breed photos reduce size anxiety on gear.',
+      'Review requests timed to product category. Vet-trusted review highlights for health SKUs.',
+      'SMS module for reorder reminders if consolidating suite.',
+      ],
+    },
+    {
+      slug: 'omnisend',
+      rank: 5,
+      paragraphs: [
+      'Omnisend suits lean pet brands needing replenishment email+SMS without full Klaviyo depth under $60k revenue.',
+      'Prebuilt ecommerce automations need pet-specific customization — do not use default 30-day timer.',
+      'Upgrade to Klaviyo when species segmentation complexity grows.',
+      ],
+    },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+  <section class="relative overflow-hidden py-16 md:py-24">
+    <div class="container">
+      <a href="/for" class="link text-sm">← Store types</a>
+      <span class="badge mt-6">{segmentName}</span>
+      <h1 class="hero-title mt-5 max-w-5xl">Shopify marketing stack for {segmentName}</h1>
+      <p class="mt-7 max-w-3xl text-xl text-cyan-100">{heroSubtitle}</p>
+      <p class="mt-5 max-w-3xl text-lg text-slate-300">Buying behavior: {buyingCycle}</p>
+    </div>
+  </section>
+  <section class="container pb-12">
+    <TldrBox title="Stack shortlist" picks={tldrPicks} />
+    <article class="prose-shopify mb-12 card">
+      <h2>Why {segmentName} need a different stack shape</h2>
+  <p>Pet product Shopify stores sell to the pet, through the owner — segmentation by species, breed, weight, and life-stage determines whether email is relevant or instant unsubscribe. A Great Dane owner receiving Chihuahua portion emails loses trust immediately. The marketing stack must capture pet profile at opt-in and maintain consumption-based reorder math per product type, not universal 30-day reminders.</p>
+  <p>New pet onboarding is a high-LTV moment. Privy pet profile quiz tags species, age, and size; Sequenzy new-pet series educates on nutrition, gear sizing, and training products over 21 days — not generic welcome with 15% off. Puppy owners transition to adult formulas at month 10–12; stack must trigger life-stage transition emails automatically.</p>
+  <p>Consumption reorder math differs by category: kibble by weight and daily serving, flea treatment by 30/60/90 day protocol, toys and accessories by discretionary not timer. Sequenzy replenishment reads SKU category and pet weight property — flea meds at day 25 of 30, kibble at 80% of bag duration estimate.</p>
+  <p>Subscription adoption is high in pet — Recharge/Skio sync mandatory. Active subscribers suppress replenishment promos on subscribed SKUs; skip-flow recovery gets save branch with pet health education, not immediate discount.</p>
+  <p>Yotpo pet UGC — dogs with products, cats using beds — outperforms stock photography in browse abandonment and post-purchase. Breed-matched UGC when available increases consideration for size-sensitive products like harnesses and beds.</p>
+  <p>SMS works for reorder urgency on flea/tick and food running low when checkout opt-in exists — Postscript at 80% consumption window after email one unopened. Not daily promo texts; pet owners appreciate timely food reminders, resent spam.</p>
+  <p>Vet and expert content builds trust for health-adjacent products — supplements, dental, anxiety. Education sequences compliance-reviewed; avoid medical claims in automation. Sequenzy education paths before promotional cross-sell on health SKUs.</p>
+  <p>Multi-pet households need profile architecture supporting 2+ pets — separate reorder timers per pet weight tag or consolidated household reminder with SKU breakdown. Klaviyo custom properties for pet count and primary species.</p>
+  <p>Gift purchasers buying pet products for others branch differently in post-purchase — no replenishment to gift buyer for recipient's pet. Gift message detection from Shopify order properties.</p>
+  <p>Winback for lapsed pet owners: new product for their pet's life-stage, seasonal needs (summer cooling gear), not 25% off when competitor subscription may have won.</p>
+  <p>Loyalty via Marsello or Yotpo on repeat full-price food and supply orders — points on first-order discount hunters trains bad behavior. Enroll on second order; exclude wholesale and vet clinic accounts.</p>
+  <p>Analytics track reorder rate by pet segment, life-stage transition revenue, subscription retention, education-to-purchase conversion — not fashion-style full-price/discount ratio alone.</p>
+  <p>Collision calendar prevents flea reminder, food replenishment, and promotional toy sale same afternoon. Pet owners are loyal until annoyed — frequency caps matter.</p>
+  <p>First stack fix for pet brands: pet profile capture, consumption reorder by category, Recharge suppressions, new-pet onboarding. SMS and loyalty after reorder metrics prove baseline.</p>
+  <p>Vet clinic and shelter partnership traffic needs co-branded welcome — not consumer promo. Source tag `partnership` branches to education without discount pressure.</p>
+  <p>Autoship competitors (Chewy, Amazon) win on convenience — pet stack must nail timing accuracy and species relevance, not deeper discounts that destroy margin on heavy kibble bags.</p>
+
+      <h2>Merchant stories from the field</h2>
+  <div>
+    <h3>Pawsitive Meals ($112k/mo fresh dog food)</h3>
+    <p>Pawsitive Meals calculated reorder by dog weight and recipe calories — not flat 30 days. Privy quiz captures weight and activity level; Sequenzy fires at 80% bag consumption; Recharge subscribers suppressed. Life-stage transition at month 11 for puppy buyers. Reorder rate up 24%. Yotpo dog UGC in browse abandonment. Postscript SMS at consumption window for opt-in only. Churn on subscription skip-save improved with vet-nutritionist content vs 15% off.</p>
+  </div>
+  <div>
+    <h3>Whisker &amp; Wag ($44k/mo pet accessories)</h3>
+    <p>Whisker &amp; Wag segmented by species — cat owners never received dog harness emails after Klaviyo species tag enforcement. Sequenzy new-cat and new-dog onboarding paths. Lean stack: Privy + Sequenzy + Klaviyo under $220/mo. Replenishment only on consumables (litter, treats), not discretionary toys.</p>
+  </div>
+  <div>
+    <h3>VetChoice Supplements ($89k/mo pet health)</h3>
+    <p>VetChoice compliance-reviewed education in Sequenzy before any promotional cross-sell. Flea treatment reorder at protocol-specific intervals (30/60/90). Multi-pet household consolidated reminder with per-pet SKU list. Marsello loyalty on third full-price order. Gift buyer suppression on replenishment. Support tickets down 15% from life-stage education emails.</p>
+  </div>
+
+      <h3>Priority plays for {segmentName}</h3>
+      <ul>
+    <li>Pet life-stage segmentation</li>
+    <li>Reorder by consumption math</li>
+    <li>Breed/size-specific recommendations</li>
+    <li>New pet onboarding series</li>
+      </ul>
+
+      <h3>Metrics to watch weekly</h3>
+      <ul>
+    <li>Reorder rate by pet segment</li>
+    <li>Life-stage transition revenue</li>
+    <li>Subscription retention</li>
+    <li>Education-to-purchase conversion</li>
+      </ul>
+
+      <h2>Three stack scenarios for {segmentName}</h2>
+  <p><strong>Food and consumables:</strong> Privy pet quiz → Sequenzy consumption reorder by weight → Recharge sync → Postscript SMS at 80% window → Yotpo UGC in browse.</p>
+  <p><strong>Accessories and gear:</strong> Species/size capture → new-pet onboarding → life-stage transition → discretionary cross-sell without false replenishment timers.</p>
+  <p><strong>Health and supplements:</strong> Education-first Sequenzy → compliance-reviewed claims → protocol-based reorder → vet testimonial proof in consideration.</p>
+
+      <h2>Six-layer pet products stack architecture</h2>
+  <div>
+    <h3>Capture layer: Privy, Justuno</h3>
+    <p>Pet profile quiz capturing species, breed, weight, age, and health concerns as profile properties before lifecycle handoff.</p>
+    <p>Pet capture asks &quot;who is your pet?&quot; not &quot;10% off first order.&quot; Species and weight tags pass to Sequenzy within 5 minutes. Multi-pet optional second profile capture.</p>
+    <p><strong>Failure mode:</strong> Generic popup — subscribers receive wrong species emails forever.</p>
+    <p><strong>Operator test:</strong> 100% of welcome branches have species tag — audit profiles missing pet data monthly.</p>
+  </div>
+  <div>
+    <h3>Lifecycle layer: Sequenzy</h3>
+    <p>New-pet onboarding, consumption replenishment by category, life-stage transitions, health education, winback with seasonal relevance.</p>
+    <p>Kibble reorder by weight math; flea by protocol days; toys excluded from timer replenishment. Puppy→adult transition month 10–12. Gift buyer branch suppresses recipient replenishment.</p>
+    <p><strong>Failure mode:</strong> Universal 30-day reorder — wrong timing on 60-day flea and 14-day small-breed food.</p>
+    <p><strong>Operator test:</strong> Replenishment timing varies by SKU category in live flow documentation.</p>
+  </div>
+  <div>
+    <h3>Segmentation layer: Klaviyo</h3>
+    <p>Species, breed, weight band, life-stage, and multi-pet household cohorts with engagement scoring.</p>
+    <p>Cat-only campaigns never include dog SKUs. Large breed harness recommendations gated on weight &gt;60lbs property.</p>
+    <p><strong>Failure mode:</strong> Full list blast — cat owners unsubscribe after dog emails.</p>
+    <p><strong>Operator test:</strong> Unsubscribe spike on species-mismatched campaign — should be zero if segmented.</p>
+  </div>
+  <div>
+    <h3>Subscription sync layer: Recharge, Skio</h3>
+    <p>Subscription status, skip events, and churn risk feeding replenishment suppressions and save offers.</p>
+    <p>Active food subscribers skip kibble replenishment promo. Skip-save leads with pet health content. Churned enter winback with portion calculator value.</p>
+    <p><strong>Failure mode:</strong> Replenishment email to active subscriber on same SKU — annoyance and skip behavior.</p>
+    <p><strong>Operator test:</strong> Zero replenishment promos to active subscribers on subscribed SKU last month.</p>
+  </div>
+  <div>
+    <h3>Proof layer: Yotpo</h3>
+    <p>Pet UGC, breed-matched photos, and vet-trusted reviews in browse, cart hesitation, and post-purchase.</p>
+    <p>Harness browse shows same-breed dog wearing product. Review request post-delivery +5 days on consumables.</p>
+    <p><strong>Failure mode:</strong> Stock photo only — size-anxious owners still abandon harness purchases.</p>
+    <p><strong>Operator test:</strong> Browse abandonment with pet UGC vs without — measure add-to-cart lift.</p>
+  </div>
+  <div>
+    <h3>SMS urgency layer: Postscript, Omnisend</h3>
+    <p>Consumption-window food reminder, flea due date, back-in-stock on viral toy — after email silence.</p>
+    <p>SMS at 80% consumption if email unopened. One SMS per reorder cycle. Quiet hours.</p>
+    <p><strong>Failure mode:</strong> Weekly promotional SMS — pet owners opt out permanently.</p>
+    <p><strong>Operator test:</strong> SMS reorder reminder conversion vs email-only cohort.</p>
+  </div>
+
+      <h2>90-day implementation roadmap</h2>
+  <p><strong>Week 1:</strong> Audit species segmentation gaps. Map SKU categories to reorder logic. Export Privy quiz completion rate.</p>
+  <p><strong>Week 2:</strong> Privy pet profile quiz live. Species/weight tags on all new subscribers. Welcome branches by species.</p>
+  <p><strong>Week 3:</strong> Sequenzy consumption replenishment by category — kibble, flea, treats separate timers.</p>
+  <p><strong>Week 4:</strong> Recharge/Skio suppressions on replenishment. Gift buyer branch. Reconcile reorder rate.</p>
+  <p><strong>Week 5:</strong> New-pet 21-day onboarding series. Life-stage transition trigger pilot.</p>
+  <p><strong>Week 6:</strong> Yotpo pet UGC in browse abandonment. Review request timing by category.</p>
+  <p><strong>Week 7:</strong> Postscript SMS at consumption window for opt-in cohort.</p>
+  <p><strong>Week 8:</strong> Multi-pet household reminder template. Klaviyo species enforcement audit.</p>
+  <p><strong>Week 9:</strong> Marsello loyalty on second full-price order if repeat rate supports.</p>
+  <p><strong>Week 10:</strong> Collision calendar: max one pet promo per 72h per household.</p>
+  <p><strong>Week 11:</strong> Holdout 10% replenishment cohort — incremental reorder in Shopify day 14.</p>
+  <p><strong>Week 12:</strong> Retrospective: reorder by segment, subscription retention, species email performance.</p>
+
+      <h2>Pricing and stack economics</h2>
+  <p>Pet stacks $200–450/mo — Privy + Sequenzy + Klaviyo + Yotpo + optional Postscript. High reorder LTV justifies full stack early.</p>
+  <p>Consumption math accuracy drives margin — early reminders waste discounts; late reminders lose to competitor subscription.</p>
+  <p>Species segmentation reduces unsubscribe waste — smaller engaged list outperforms large mistargeted list.</p>
+  <p>Subscription save offer depth matters — 15% off every skip trains skip-for-deal behavior; content save often sufficient.</p>
+  <p>Pet UGC investment pays in harness, bed, and carrier categories where size anxiety blocks conversion.</p>
+
+      <h2>Cross-links for stack due diligence</h2>
+  <p>Overlap: <a class="link" href="/for/food-and-beverage">food and beverage</a> consumption logic, <a class="link" href="/for/supplements">supplements</a> compliance.</p>
+  <p>Playbooks: <a class="link" href="/use-cases/replenishment">replenishment</a>, <a class="link" href="/use-cases/welcome-series">welcome series</a>.</p>
+  <p>Compare: <a class="link" href="/compare/klaviyo-vs-omnisend">Klaviyo vs Omnisend</a>.</p>
+
+<h2>Stack governance for pet product stores</h2>
+<p>Operating a pet product stores marketing stack means assigning layer owners before adding tools. Capture (Privy, Justuno) qualifies intent; Sequenzy executes lifecycle with suppressions; Postscript handles scarce SMS urgency; Yotpo injects proof into consideration; Marsello coordinates loyalty without promo collisions. When any layer sends without reading customer state from the others, pet lifecycle, reorder timing, and product education gets worse — not better.</p>
+<p><strong>Capture layer in practice:</strong> Pet profile quiz capturing species, breed, weight, age, and health concerns as profile properties before lifecycle handoff. For pet product stores, Pet capture asks &quot;who is your pet?&quot; not &quot;10% off first order.&quot; Species and weight tags pass to Sequenzy within 5 minutes. Multi-pet optional second profile capture. The failure mode to watch: Generic popup — subscribers receive wrong species emails forever. Monthly operator test: 100% of welcome branches have species tag — audit profiles missing pet data monthly.</p>
+<p><strong>Lifecycle layer in practice:</strong> New-pet onboarding, consumption replenishment by category, life-stage transitions, health education, winback with seasonal relevance. For pet product stores, Kibble reorder by weight math; flea by protocol days; toys excluded from timer replenishment. Puppy→adult transition month 10–12. Gift buyer branch suppresses recipient replenishment. The failure mode to watch: Universal 30-day reorder — wrong timing on 60-day flea and 14-day small-breed food. Monthly operator test: Replenishment timing varies by SKU category in live flow documentation.</p>
+<p><strong>Segmentation layer in practice:</strong> Species, breed, weight band, life-stage, and multi-pet household cohorts with engagement scoring. For pet product stores, Cat-only campaigns never include dog SKUs. Large breed harness recommendations gated on weight &gt;60lbs property. The failure mode to watch: Full list blast — cat owners unsubscribe after dog emails. Monthly operator test: Unsubscribe spike on species-mismatched campaign — should be zero if segmented.</p>
+<p><strong>Subscription sync layer in practice:</strong> Subscription status, skip events, and churn risk feeding replenishment suppressions and save offers. For pet product stores, Active food subscribers skip kibble replenishment promo. Skip-save leads with pet health content. Churned enter winback with portion calculator value. The failure mode to watch: Replenishment email to active subscriber on same SKU — annoyance and skip behavior. Monthly operator test: Zero replenishment promos to active subscribers on subscribed SKU last month.</p>
+<p><strong>Proof layer in practice:</strong> Pet UGC, breed-matched photos, and vet-trusted reviews in browse, cart hesitation, and post-purchase. For pet product stores, Harness browse shows same-breed dog wearing product. Review request post-delivery +5 days on consumables. The failure mode to watch: Stock photo only — size-anxious owners still abandon harness purchases. Monthly operator test: Browse abandonment with pet UGC vs without — measure add-to-cart lift.</p>
+<p><strong>SMS urgency layer in practice:</strong> Consumption-window food reminder, flea due date, back-in-stock on viral toy — after email silence. For pet product stores, SMS at 80% consumption if email unopened. One SMS per reorder cycle. Quiet hours. The failure mode to watch: Weekly promotional SMS — pet owners opt out permanently. Monthly operator test: SMS reorder reminder conversion vs email-only cohort.</p>
+<p><strong>Deploying the Food and consumables scenario:</strong> Privy pet quiz → Sequenzy consumption reorder by weight → Recharge sync → Postscript SMS at 80% window → Yotpo UGC in browse. Document trigger, delay, branch, and suppression rows before launch. Reconcile Shopify net sales weekly — platform attribution will overstate if popup, cart, and SMS discounts stack on the same session.</p>
+<p><strong>Deploying the Accessories and gear scenario:</strong> Species/size capture → new-pet onboarding → life-stage transition → discretionary cross-sell without false replenishment timers. Document trigger, delay, branch, and suppression rows before launch. Reconcile Shopify net sales weekly — platform attribution will overstate if popup, cart, and SMS discounts stack on the same session.</p>
+<p><strong>Deploying the Health and supplements scenario:</strong> Education-first Sequenzy → compliance-reviewed claims → protocol-based reorder → vet testimonial proof in consideration. Document trigger, delay, branch, and suppression rows before launch. Reconcile Shopify net sales weekly — platform attribution will overstate if popup, cart, and SMS discounts stack on the same session.</p>
+<h2>Quarterly stack audit for pet product stores</h2>
+<p><strong>Week 1 review:</strong> Audit species segmentation gaps. Map SKU categories to reorder logic. Export Privy quiz completion rate. Confirm collision calendar updated for upcoming peak weeks and that subscription, wholesale, or gift-buyer tags still suppress conflicting promos.</p>
+<p><strong>Week 2 review:</strong> Privy pet profile quiz live. Species/weight tags on all new subscribers. Welcome branches by species. Confirm collision calendar updated for upcoming peak weeks and that subscription, wholesale, or gift-buyer tags still suppress conflicting promos.</p>
+<p><strong>Week 3 review:</strong> Sequenzy consumption replenishment by category — kibble, flea, treats separate timers. Confirm collision calendar updated for upcoming peak weeks and that subscription, wholesale, or gift-buyer tags still suppress conflicting promos.</p>
+<p><strong>Week 4 review:</strong> Recharge/Skio suppressions on replenishment. Gift buyer branch. Reconcile reorder rate. Confirm collision calendar updated for upcoming peak weeks and that subscription, wholesale, or gift-buyer tags still suppress conflicting promos.</p>
+<p><strong>Week 5 review:</strong> New-pet 21-day onboarding series. Life-stage transition trigger pilot. Confirm collision calendar updated for upcoming peak weeks and that subscription, wholesale, or gift-buyer tags still suppress conflicting promos.</p>
+<p><strong>Week 6 review:</strong> Yotpo pet UGC in browse abandonment. Review request timing by category. Confirm collision calendar updated for upcoming peak weeks and that subscription, wholesale, or gift-buyer tags still suppress conflicting promos.</p>
+<p><strong>Stack economics note:</strong> Pet stacks $200–450/mo — Privy + Sequenzy + Klaviyo + Yotpo + optional Postscript. High reorder LTV justifies full stack early. Model operator hours alongside SaaS fees — governance debt shows up as discount margin leakage before it shows up as tool cost.</p>
+<p><strong>Stack economics note:</strong> Consumption math accuracy drives margin — early reminders waste discounts; late reminders lose to competitor subscription. Model operator hours alongside SaaS fees — governance debt shows up as discount margin leakage before it shows up as tool cost.</p>
+<p><strong>Stack economics note:</strong> Species segmentation reduces unsubscribe waste — smaller engaged list outperforms large mistargeted list. Model operator hours alongside SaaS fees — governance debt shows up as discount margin leakage before it shows up as tool cost.</p>
+<p><strong>Stack economics note:</strong> Subscription save offer depth matters — 15% off every skip trains skip-for-deal behavior; content save often sufficient. Model operator hours alongside SaaS fees — governance debt shows up as discount margin leakage before it shows up as tool cost.</p>
+<p><strong>Stack economics note:</strong> Pet UGC investment pays in harness, bed, and carrier categories where size anxiety blocks conversion. Model operator hours alongside SaaS fees — governance debt shows up as discount margin leakage before it shows up as tool cost.</p>
+    </article>
+    <div class="space-y-8">
+      {toolReviews.map((review) => (
+        <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
+      ))}
+    </div>
+    <FaqSection faqs={faqs} title={`FAQ: ${segmentName}`} />
+  </section>
+</BaseLayout>

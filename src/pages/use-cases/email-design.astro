@@ -1,0 +1,253 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import ToolReview from '../../components/ToolReview.astro';
+import { siteFromHost, pageTitle, description } from '../../content';
+import { appBySlug } from '../../data/apps';
+
+const site = siteFromHost();
+const path = '/use-cases/email-design';
+const title = pageTitle(site, 'use-cases/email-design');
+const desc = description(site, 'use-cases/email-design');
+const heroSubtitle = 'Email design is a cross-stack presentation layer — templates must render proof from Yotpo, products from Shopify, loyalty state from Marsello, and offers from Privy without breaking mobile readability or accessibility across every lifecycle moment.';
+const useCaseName = 'email design';
+const trigger = 'All campaign and flow sends';
+const timing = 'Mobile-first design; test on iOS Mail and Gmail app before every launch';
+const tldrPicks = [
+    { label: 'Template depth', tool: 'Klaviyo', reason: 'Product feeds and dynamic blocks at scale' },
+    { label: 'Lifecycle', tool: 'Sequenzy', reason: 'Consistent module system across flows' },
+    { label: 'SMB templates', tool: 'Omnisend', reason: 'Mobile-first prebuilt ecommerce layouts' },
+    { label: 'Native simple', tool: 'Shopify Email', reason: 'Basic product grids for lean teams' },
+];
+const faqs = [
+  { question: 'Is email design just templates?', answer: 'On a full stack it is the presentation layer connecting proof, loyalty, offers, and product data from multiple tools — module system required.' },
+  { question: 'How many products per mobile email?', answer: 'Two per row maximum; often one hero product outperforms dense grids on consideration purchases.' },
+  { question: 'Klaviyo vs Sequenzy for design?', answer: 'Klaviyo dynamic product feeds at scale; Sequenzy consistent lifecycle modules with faster iteration. Share module library across both if using both.' },
+  { question: 'Dark mode email design?', answer: 'Test logos and buttons in dark clients; provide bordered button fallback; avoid pure white text on transparent PNG logos.' },
+  { question: 'Yotpo in email design?', answer: 'Designed fixed-ratio UGC slots — not embed widget HTML that breaks responsive layout.' },
+  { question: 'Plain-text email still needed?', answer: 'Yes — human-reviewed plain-text for accessibility and deliverability; not auto-generated from HTML.' },
+  { question: 'Shopify Email design limits?', answer: 'Fine for simple product newsletters; insufficient module depth for multi-layer stack with proof and loyalty conditionals.' },
+  { question: 'Design affect deliverability?', answer: 'Image-heavy low-text emails hurt placement. Balance content; sunset unengaged regardless of design quality.' },
+  { question: 'Who owns design in the stack?', answer: 'Shared doc between lifecycle owner and creative; capture and loyalty modules need approval before install.' },
+  { question: 'How often refresh templates?', answer: 'Quarterly module performance review; full rebrand only with A/B baseline captured first.' },
+  { question: 'SMS and email design relationship?', answer: 'SMS links to mobile-optimized landing matching email visual language — continuity improves conversion.' },
+  { question: 'B2B email design differences?', answer: 'Table/card SKU layouts, MOQ modules, no consumer coupon creative patterns.' },
+];
+const toolReviews = [
+    {
+      slug: 'klaviyo',
+      rank: 1,
+      paragraphs: [
+      'Klaviyo dynamic product blocks and feed-powered templates at catalog scale.',
+      'Strong A/B on module placement.',
+      'Requires mobile QA discipline on every dynamic block.',
+      ],
+    },
+    {
+      slug: 'sequenzy',
+      rank: 2,
+      paragraphs: [
+      'Sequenzy lifecycle templates with consistent module reuse across flows.',
+      'Fast copy and layout iteration for lean teams.',
+      'Pair with documented design system doc.',
+      ],
+    },
+    {
+      slug: 'omnisend',
+      rank: 3,
+      paragraphs: [
+      'Omnisend mobile-first ecommerce templates for SMB quick deployment.',
+      'Prebuilt blocks reduce design debt early.',
+      'Less flexible for complex conditional loyalty/proof modules.',
+      ],
+    },
+    {
+      slug: 'shopify-email',
+      rank: 4,
+      paragraphs: [
+      'Shopify Email adequate for basic product grid newsletters inside admin.',
+      'Not stack-grade module system for Yotpo/Marsello conditionals.',
+      'Good starter before Sequenzy/Klaviyo depth.',
+      ],
+    },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+  <section class="relative overflow-hidden py-16 md:py-24">
+    <div class="container">
+      <a href="/use-cases" class="link text-sm">← Use-case playbooks</a>
+      <span class="badge mt-6">Marketing stack playbook</span>
+      <h1 class="hero-title mt-5 max-w-5xl">Shopify marketing stack for {useCaseName}</h1>
+      <p class="mt-7 max-w-3xl text-xl text-cyan-100">{heroSubtitle}</p>
+      <p class="mt-5 max-w-3xl text-lg text-slate-300">Trigger: {trigger} · Timing: {timing}</p>
+    </div>
+  </section>
+  <section class="container pb-12">
+    <TldrBox title={`Stack picks for ${useCaseName}`} picks={tldrPicks} />
+    <article class="prose-shopify mb-12 card">
+      <h2>Stack execution playbook</h2>
+  <p>Email design on a full marketing stack is not a creative department isolated task — it is the visual contract between capture, lifecycle, SMS, reviews, and loyalty layers. When Yotpo UGC, Marsello points balance, and Privy offer codes appear in the same template, design system consistency prevents chaotic subscriber experience.</p>
+  <p>Mobile-first is non-negotiable: 65%+ of Shopify marketing email opens on phone. Test iOS Mail and Gmail app before every send — desktop-only preview ships broken grids that kill click rate on product-led campaigns.</p>
+  <p>Module system beats one-off templates. Header, hero, product row (max 2 SKUs mobile), proof block, CTA, footer with preference center — reused across welcome, cart, post-purchase with swapped content slots. Sequenzy and Klaviyo both benefit from documented module library.</p>
+  <p>Product grids with six items fail on mobile — two products with large tap targets outperform dense catalogs. Shopify product feed dynamic blocks need fallback when inventory zero.</p>
+  <p>Dark mode rendering: test logos and button contrast in dark clients. Cyan accent buttons on dark growth sites may disappear in inverted mode — provide bordered fallback.</p>
+  <p>Accessibility: alt text on lifestyle images, 44px minimum tap targets, plain-text version synced with HTML not auto-generated garbage. Screen reader users buy high-AOV home and jewelry.</p>
+  <p>Proof blocks pull Yotpo review photos into designed slots — not raw widget HTML that breaks responsive layout. Design specifies 1:1 UGC crop for browse abandonment modules.</p>
+  <p>Loyalty module shows points balance and tier — only when Marsello/Yotpo sync confirms enrollment. Showing empty points confuses first-time buyers.</p>
+  <p>Offer module displays single active code from collision calendar — never stack popup + cart codes in one email footer.</p>
+  <p>SMS does not replace design discipline — SMS links land on mobile PDP; email design and landing page visual continuity matters for conversion.</p>
+  <p>Deliverability ties to design weight: image-heavy emails without text balance trigger spam filters. 60/40 text-to-image guidance on promotional sends.</p>
+  <p>Analytics: mobile click rate, image-off rendering test, accessibility complaints, time-to-click proxy. Design iteration driven by module performance not subjective preference.</p>
+
+      <h2>Merchant scenarios</h2>
+  <p><strong>Fashion browse abandonment:</strong> Module: hero SKU image, Yotpo fit review quote, two-tap CTA, single related product. No six-grid. Dark mode tested.</p>
+  <p><strong>Beauty replenishment:</strong> SKU image, usage reminder copy block, subscription status badge if Recharge synced, one-tap reorder button deep-linked to cart.</p>
+  <p><strong>Supplement education:</strong> Text-heavy layout 70/30 for compliance visibility; small product row; no image-only email. Plain-text mirror approved by legal.</p>
+  <p><strong>Jewelry consideration:</strong> Large hero, financing badge module, certification icon row, minimal product grid — one item focus.</p>
+  <p><strong>POD launch:</strong> Full-bleed design image, countdown module, waitlist position optional, single CTA — no clutter on 48h sell-through sends.</p>
+  <p><strong>B2B catalog update:</strong> Table-style SKU list desktop; stacked cards mobile; MOQ callout module; no consumer discount styling.</p>
+
+      <h2>Stack checklist</h2>
+      <ul>
+    <li>Mobile preview iOS Mail and Gmail app signed off</li>
+    <li>Max two product blocks per row on mobile breakpoints</li>
+    <li>Alt text on all lifestyle and product images</li>
+    <li>Plain-text version human-reviewed</li>
+    <li>Dark mode logo and button contrast checked</li>
+    <li>Yotpo UGC module uses fixed aspect ratio container</li>
+    <li>Loyalty module gated on enrollment property</li>
+    <li>Single offer code displayed — collision calendar verified</li>
+    <li>Inventory fallback when product OOS in dynamic block</li>
+    <li>Preference center and unsubscribe visible without scroll on mobile</li>
+    <li>Image weight under 200KB total where possible</li>
+    <li>Module library doc shared across capture, lifecycle, loyalty owners</li>
+      </ul>
+
+      <h3>Exclusions (non-negotiable)</h3>
+      <ul>
+    <li>Desktop-only templates</li>
+    <li>Image-heavy emails without alt text</li>
+    <li>Tiny tap targets on mobile</li>
+      </ul>
+
+      <h3>Metrics that prove quality</h3>
+      <ul>
+    <li>Mobile click rate</li>
+    <li>Image-off rendering quality</li>
+    <li>Time on email (proxy via clicks)</li>
+    <li>Accessibility complaint rate</li>
+      </ul>
+
+      <h3>Common mistakes</h3>
+      <ul>
+    <li>Desktop-only preview</li>
+    <li>Product grids with 6+ items on mobile</li>
+    <li>No plain-text fallback</li>
+      </ul>
+
+      <h2>Design modules mapped to stack layers</h2>
+  <div>
+    <h3>Capture offer module: Privy</h3>
+    <p>Visual consistency between popup offer and email welcome/cart modules — same code, same expiry display.</p>
+    <p>Design system includes offer badge component synced with Privy rules.</p>
+    <p><strong>Failure mode:</strong> Different discount % popup vs email creative.</p>
+    <p><strong>Operator test:</strong> Side-by-side popup and email screenshot audit monthly.</p>
+  </div>
+  <div>
+    <h3>Lifecycle template system: Sequenzy, Klaviyo</h3>
+    <p>Shared modules across welcome, cart, post-purchase, winback flows.</p>
+    <p>One module library document; swap content not layout per flow.</p>
+    <p><strong>Failure mode:</strong> Every flow rebuilt from scratch — inconsistent mobile breakage.</p>
+    <p><strong>Operator test:</strong> Module reuse rate across flows &gt;80%.</p>
+  </div>
+  <div>
+    <h3>Proof module: Yotpo</h3>
+    <p>Designed UGC/review slot with SKU-matched content.</p>
+    <p>Browse and cart templates include proof block slot by default.</p>
+    <p><strong>Failure mode:</strong> Raw review widget HTML breaks mobile.</p>
+    <p><strong>Operator test:</strong> CTR uplift with proof module on A/B.</p>
+  </div>
+  <div>
+    <h3>Loyalty module: Marsello, Yotpo Loyalty</h3>
+    <p>Points balance and tier badge when enrolled only.</p>
+    <p>Conditional display on profile property.</p>
+    <p><strong>Failure mode:</strong> Empty loyalty module for 90% of recipients.</p>
+    <p><strong>Operator test:</strong> Module shown only when points &gt; 0.</p>
+  </div>
+  <div>
+    <h3>Analytics feedback: Klaviyo, Shopify</h3>
+    <p>Mobile click heatmap proxy via link position; module-level CTR comparison.</p>
+    <p>Quarterly design retrospective on bottom vs top CTA.</p>
+    <p><strong>Failure mode:</strong> Redesign without performance data.</p>
+    <p><strong>Operator test:</strong> Mobile CTR documented before/after template change.</p>
+  </div>
+
+      <h2>Timing and trigger governance</h2>
+  <p>Design QA gate before every new flow launch — not only campaigns.</p>
+  <p>Module changes frozen 7 days before BFCM — test peak templates early.</p>
+  <p>New SKU templates require inventory fallback test same day.</p>
+  <p>Legal-approved modules for supplement and health-adjacent brands — version controlled.</p>
+
+      <h2>Measurement across the stack</h2>
+  <p>Mobile click rate vs desktop per template.</p>
+  <p>Revenue per click on product module positions.</p>
+  <p>Unsubscribe spike after template redesign — rollback trigger if &gt;0.2% single send.</p>
+  <p>Accessibility: spam complaint rate and image-off click viability.</p>
+
+      <h2>Related playbooks</h2>
+  <p>Foundation: <a class="link" href="/use-cases/deliverability">deliverability</a> — design weight affects inbox placement.</p>
+  <p>Content: <a class="link" href="/use-cases/reviews-and-ugc">reviews and UGC</a> in templates.</p>
+  <p>Governance: <a class="link" href="/guides/cross-channel-coordination">cross-channel coordination</a>.</p>
+
+<h2>Stack coordination for email design</h2>
+<p>email design is not an email template problem — it is a stack handoff problem. Trigger: All campaign and flow sends Timing: Mobile-first design; test on iOS Mail and Gmail app before every launch Every layer must read the same customer state: capture tags from Privy, lifecycle execution in Sequenzy, proof modules from Yotpo, loyalty tier from Marsello, SMS consent from Postscript. When make product-led campaigns readable and mobile-friendly, margin after discount matters more than attributed revenue.</p>
+<p><strong>Capture offer module:</strong> Visual consistency between popup offer and email welcome/cart modules — same code, same expiry display. Playbook fit: Design system includes offer badge component synced with Privy rules. Failure mode: Different discount % popup vs email creative. Operator test: Side-by-side popup and email screenshot audit monthly.</p>
+<p><strong>Lifecycle template system:</strong> Shared modules across welcome, cart, post-purchase, winback flows. Playbook fit: One module library document; swap content not layout per flow. Failure mode: Every flow rebuilt from scratch — inconsistent mobile breakage. Operator test: Module reuse rate across flows &gt;80%.</p>
+<p><strong>Proof module:</strong> Designed UGC/review slot with SKU-matched content. Playbook fit: Browse and cart templates include proof block slot by default. Failure mode: Raw review widget HTML breaks mobile. Operator test: CTR uplift with proof module on A/B.</p>
+<p><strong>Loyalty module:</strong> Points balance and tier badge when enrolled only. Playbook fit: Conditional display on profile property. Failure mode: Empty loyalty module for 90% of recipients. Operator test: Module shown only when points &gt; 0.</p>
+<p><strong>Analytics feedback:</strong> Mobile click heatmap proxy via link position; module-level CTR comparison. Playbook fit: Quarterly design retrospective on bottom vs top CTA. Failure mode: Redesign without performance data. Operator test: Mobile CTR documented before/after template change.</p>
+<p><strong>Scenario — Fashion browse abandonment:</strong> Module: hero SKU image, Yotpo fit review quote, two-tap CTA, single related product. No six-grid. Dark mode tested. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — Beauty replenishment:</strong> SKU image, usage reminder copy block, subscription status badge if Recharge synced, one-tap reorder button deep-linked to cart. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — Supplement education:</strong> Text-heavy layout 70/30 for compliance visibility; small product row; no image-only email. Plain-text mirror approved by legal. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — Jewelry consideration:</strong> Large hero, financing badge module, certification icon row, minimal product grid — one item focus. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — POD launch:</strong> Full-bleed design image, countdown module, waitlist position optional, single CTA — no clutter on 48h sell-through sends. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — B2B catalog update:</strong> Table-style SKU list desktop; stacked cards mobile; MOQ callout module; no consumer discount styling. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<h2>Checklist execution notes</h2>
+<p>Mobile preview iOS Mail and Gmail app signed off — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Max two product blocks per row on mobile breakpoints — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Alt text on all lifestyle and product images — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Plain-text version human-reviewed — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Dark mode logo and button contrast checked — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Yotpo UGC module uses fixed aspect ratio container — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Loyalty module gated on enrollment property — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Single offer code displayed — collision calendar verified — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Inventory fallback when product OOS in dynamic block — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Preference center and unsubscribe visible without scroll on mobile — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Image weight under 200KB total where possible — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Module library doc shared across capture, lifecycle, loyalty owners — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<h2>FAQ deep dives</h2>
+<p><strong>Is email design just templates?</strong> On a full stack it is the presentation layer connecting proof, loyalty, offers, and product data from multiple tools — module system required. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>How many products per mobile email?</strong> Two per row maximum; often one hero product outperforms dense grids on consideration purchases. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Klaviyo vs Sequenzy for design?</strong> Klaviyo dynamic product feeds at scale; Sequenzy consistent lifecycle modules with faster iteration. Share module library across both if using both. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Dark mode email design?</strong> Test logos and buttons in dark clients; provide bordered button fallback; avoid pure white text on transparent PNG logos. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Yotpo in email design?</strong> Designed fixed-ratio UGC slots — not embed widget HTML that breaks responsive layout. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Plain-text email still needed?</strong> Yes — human-reviewed plain-text for accessibility and deliverability; not auto-generated from HTML. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Shopify Email design limits?</strong> Fine for simple product newsletters; insufficient module depth for multi-layer stack with proof and loyalty conditionals. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Design affect deliverability?</strong> Image-heavy low-text emails hurt placement. Balance content; sunset unengaged regardless of design quality. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Who owns design in the stack?</strong> Shared doc between lifecycle owner and creative; capture and loyalty modules need approval before install. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>How often refresh templates?</strong> Quarterly module performance review; full rebrand only with A/B baseline captured first. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>SMS and email design relationship?</strong> SMS links to mobile-optimized landing matching email visual language — continuity improves conversion. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>B2B email design differences?</strong> Table/card SKU layouts, MOQ modules, no consumer coupon creative patterns. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+    </article>
+    <div class="space-y-8">
+      {toolReviews.map((review) => (
+        <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
+      ))}
+    </div>
+    <FaqSection faqs={faqs} title={`FAQ: ${useCaseName}`} />
+  </section>
+</BaseLayout>

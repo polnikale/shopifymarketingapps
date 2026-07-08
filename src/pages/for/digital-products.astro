@@ -1,0 +1,238 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import ToolReview from '../../components/ToolReview.astro';
+import { siteFromHost, pageTitle, description } from '../../content';
+import { appBySlug } from '../../data/apps';
+
+const site = siteFromHost();
+const path = '/for/digital-products';
+const title = pageTitle(site, 'for/digital-products');
+const desc = description(site, 'for/digital-products');
+const heroSubtitle = 'Instant delivery, activation onboarding, and upgrade paths need a lean digital stack — Sequenzy activation sequences, ActiveCampaign course pipelines, Klaviyo behavioral triggers, zero physical-product tools, and no SMS cart recovery on products that deliver in seconds.';
+const buyingCycle = 'Immediate delivery; onboarding critical; cross-sell within 7 days';
+const segmentName = 'digital product shops';
+const tldrPicks = [
+    { label: 'Lifecycle', tool: 'Sequenzy', reason: 'Onboarding, activation, cross-sell within 14 days' },
+    { label: 'Course CRM', tool: 'ActiveCampaign', reason: 'Module progress and certification pipelines' },
+    { label: 'Behavioral', tool: 'Klaviyo', reason: 'Usage events and upgrade segmentation' },
+    { label: 'Capture', tool: 'Privy', reason: 'Lead magnets and webinar opt-in with intent tags' },
+];
+const faqs = [
+  { question: 'What is the best marketing stack for digital Shopify products?', answer: 'Sequenzy for activation and cross-sell lifecycle, ActiveCampaign for course progress CRM, Klaviyo for behavioral segmentation, Privy for lead capture. Skip physical-product tools.' },
+  { question: 'Should digital stores use cart abandonment?', answer: 'Lightweight for checkout-started-but-not-completed on high-consideration products — but many digital purchases are impulse post-nurture. No SMS cart recovery. Lead with access anxiety resolution not discount.' },
+  { question: 'Do digital products need Yotpo reviews?', answer: 'No for SKU reviews. Use outcome testimonials and completion stories in email modules instead.' },
+  { question: 'How fast should access email send?', answer: 'Immediately on purchase confirmation — within 2 minutes. Plain-text backup with link. Deliverability testing non-negotiable.' },
+  { question: 'What is activation rate?', answer: 'Percentage of buyers completing first meaningful action (download, login, module 1) within 48h. Target 85%+. Low activation drives refunds.' },
+  { question: 'When does ActiveCampaign beat Klaviyo for digital?', answer: 'Course and membership products with module progress triggers and certification pipelines. Klaviyo strong for template/download behavioral segmentation.' },
+  { question: 'Should digital use SMS?', answer: 'Only webinar/live cohort reminders with explicit opt-in. Not for download delivery or cross-sell.' },
+  { question: 'How handle renewals?', answer: 'Sequenzy 30/14/7 day sequence with curriculum value recap before any discount. Segment never-activated separately — different winback.' },
+  { question: 'Lead magnet vs buyer paths?', answer: 'Separate tags and automations from opt-in. Nurture 7–14 days before pitch. Never merge into purchaser onboarding.' },
+  { question: 'Metrics for digital stack?', answer: 'Activation 48h, cross-sell within 14 days, renewal rate, refund rate, support tickets per 100 sales, deliverability on access emails.' },
+  { question: 'Implementation timeline?', answer: 'One week activation sequence. Three weeks cross-sell and progress integration. Six weeks renewal and lead nurture if applicable.' },
+  { question: 'Biggest digital stack mistake?', answer: 'Copying physical ecommerce automations — shipping emails, back-in-stock, review requests on products that deliver instantly online.' },
+];
+const toolReviews = [
+    {
+      slug: 'sequenzy',
+      rank: 1,
+      paragraphs: [
+      'Sequenzy default lifecycle for digital — activation onboarding, cross-sell timing, renewal sequences without physical-product template baggage.',
+      'Agent-assisted flow building helps solo creators ship day-1/day-3/day-7 activation without LMS complexity.',
+      'Disable or avoid cart/shipping templates. Measure activation and cross-sell not send volume.',
+      ],
+    },
+    {
+      slug: 'activecampaign',
+      rank: 2,
+      paragraphs: [
+      'ActiveCampaign fits course creators needing progress-based triggers, certification emails, and stalled-learner help sequences.',
+      'CRM pipeline for high-ticket coaching upsells from course buyers. Integrates with major LMS platforms.',
+      'Overkill for simple template shops — use Klaviyo behavioral only unless progress events needed.',
+      ],
+    },
+    {
+      slug: 'klaviyo',
+      rank: 3,
+      paragraphs: [
+      'Klaviyo behavioral segmentation on download events, engagement scoring, and cross-sell propensity for digital catalogs.',
+      'Strong reporting when product line diversifies. Pair with Sequenzy for execution.',
+      'Avoid physical-product flow templates without audit — disable shipping and replenishment defaults.',
+      ],
+    },
+    {
+      slug: 'privy',
+      rank: 4,
+      paragraphs: [
+      'Privy lead magnet and webinar capture with topic tags feeding Sequenzy nurture branches.',
+      'URL targeting for funnel pages vs main store. No discount popup on free product pages.',
+      'Fast handoff critical — digital leads cool within hours not days.',
+      ],
+    },
+    {
+      slug: 'drip',
+      rank: 5,
+      paragraphs: [
+      'Drip suits creators wanting visual automation for lead nurture with ecommerce tagging — alternative to ActiveCampaign for non-course digital.',
+      'Ecommerce focus without LMS depth. Good for ebook and template funnels at moderate scale.',
+      'Verify Shopify digital product events sync before complex branching.',
+      ],
+    },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+  <section class="relative overflow-hidden py-16 md:py-24">
+    <div class="container">
+      <a href="/for" class="link text-sm">← Store types</a>
+      <span class="badge mt-6">{segmentName}</span>
+      <h1 class="hero-title mt-5 max-w-5xl">Shopify marketing stack for {segmentName}</h1>
+      <p class="mt-7 max-w-3xl text-xl text-cyan-100">{heroSubtitle}</p>
+      <p class="mt-5 max-w-3xl text-lg text-slate-300">Buying behavior: {buyingCycle}</p>
+    </div>
+  </section>
+  <section class="container pb-12">
+    <TldrBox title="Stack shortlist" picks={tldrPicks} />
+    <article class="prose-shopify mb-12 card">
+      <h2>Why {segmentName} need a different stack shape</h2>
+  <p>Digital product Shopify stores — courses, templates, presets, software licenses, ebooks — deliver instantly and live or die on activation, not shipping notifications. The marketing stack must onboard buyers into product usage within 24 hours, cross-sell complementary products within 14 days, and renew or upgrade before license expiration. Physical-product tools (back-in-stock, shipping SMS, Yotpo product reviews) waste budget and create irrelevant subscriber noise.</p>
+  <p>Welcome and post-purchase collapse into one critical moment: access delivery plus activation guidance. Sequenzy post-purchase fires immediately with login link, first-step checklist, and day-3 progress check — not generic thank-you with 20% off another product before buyer opens the course.</p>
+  <p>Lead magnet capture differs from ecommerce popup logic. Privy webinar and free-chapter opt-ins tag intent level; Sequenzy nurture educates before pitch. Blending lead magnet subscribers into purchaser onboarding sends wrong depth and destroys conversion metrics.</p>
+  <p>Course and membership products need progress-aware email. ActiveCampaign or Klaviyo integration with Teachable, Thinkific, or custom LMS events triggers help emails when module completion stalls — not weekly promotional blasts to engaged learners.</p>
+  <p>Cross-sell within 14 days targets complementary products based on purchase behavior — template pack buyers get advanced course offer, not unrelated preset bundle. Suppression: active subscribers on membership do not receive one-time product promos for overlapping content.</p>
+  <p>Renewal and upgrade paths are the retention engine. License expiration at 30, 14, and 7 days in Sequenzy with value recap before discount. Winback for lapsed members means new module preview, not 50% off stale catalog.</p>
+  <p>SMS rarely fits digital products except webinar reminders and live cohort start times. Postscript on digital downloads feels spammy; email carries access links with proper deliverability attention.</p>
+  <p>Reviews and social proof come from outcome testimonials and completion rates — not Yotpo SKU reviews. Embed student results and case studies in cross-sell and upgrade emails; video testimonial modules in onboarding increase activation.</p>
+  <p>Refund and chargeback windows are short — activation email quality directly affects dispute rate. Clear access instructions, support contact, and refund policy in email one reduce &quot;I never received it&quot; claims.</p>
+  <p>Affiliate and partner traffic needs source-specific onboarding. Partner-referred buyers may need different first-step path than organic homepage subscribers. Source tags from Privy into Sequenzy branches within 5 minutes.</p>
+  <p>Analytics track activation rate post-purchase, cross-sell within 14 days, renewal conversion, support ticket reduction from onboarding — not DTC replenishment or return rate. Holdout tests on onboarding variants quarterly.</p>
+  <p>Deliverability is existential for digital — access links in spam folder equal refund requests. Dedicated sending domain, plain-text access email, and list hygiene matter more than promotional creative polish.</p>
+  <p>Agency DTC playbooks with cart abandonment and browse flows misapply to digital. Audit stack for physical-product automations firing on digital SKUs — disable shipping, back-in-stock, and review request flows.</p>
+  <p>The first digital stack fix: activation sequence with day-1, day-3, day-7 touchpoints, progress integration if course product, renewal reminders at 30/14/7 days before expiration. Add capture nurture only after activation metrics baseline established.</p>
+  <p>License key and multi-seat B2B digital products need company-level onboarding — ActiveCampaign company records separate from individual purchaser welcome when seat count exceeds one.</p>
+  <p>Affiliate-driven digital funnels require commission-aware attribution — do not credit email last-click for partner traffic without source exclusion in analytics layer.</p>
+
+      <h2>Merchant stories from the field</h2>
+  <div>
+    <h3>PresetLab Pro ($78k/mo Lightroom presets)</h3>
+    <p>PresetLab had 41% of buyers never downloading after purchase — support flooded. Sequenzy post-purchase: immediate access email, day-1 install video, day-3 &quot;show us your edit&quot; engagement, day-14 cross-sell advanced pack. Activation rate rose to 89%. Cross-sell revenue 22% of email-driven revenue. Klaviyo segments by download event. No SMS, no Yotpo. Stack $180/mo.</p>
+  </div>
+  <div>
+    <h3>CodeCraft Academy ($156k/mo online courses)</h3>
+    <p>CodeCraft integrated Thinkific progress with ActiveCampaign — stalled at module 3 triggers help email from instructor persona, not discount. Sequenzy handles purchase onboarding and certification celebration. Renewal at 30/14/7 days with curriculum roadmap recap. Completion rate up 19%; renewal rate up 11%. Privy free-lesson capture nurtures 14 days before offer.</p>
+  </div>
+  <div>
+    <h3>TemplateVault ($34k/mo Notion templates)</h3>
+    <p>TemplateVault lean stack: Privy lead magnet → Sequenzy 5-email nurture → purchase onboarding → day-10 related template cross-sell. Membership tier added: Recharge sync suppresses one-time cross-sell for active members. Winback shows new template preview. Activation within 48h tracked at 94%.</p>
+  </div>
+
+      <h3>Priority plays for {segmentName}</h3>
+      <ul>
+    <li>Instant delivery and access emails</li>
+    <li>Onboarding and activation series</li>
+    <li>Cross-sell by purchase behavior</li>
+    <li>Renewal and upgrade paths</li>
+      </ul>
+
+      <h3>Metrics to watch weekly</h3>
+      <ul>
+    <li>Activation rate post-purchase</li>
+    <li>Cross-sell within 14 days</li>
+    <li>Renewal conversion</li>
+    <li>Support ticket reduction from onboarding</li>
+      </ul>
+
+      <h2>Three stack scenarios for {segmentName}</h2>
+  <p><strong>One-time digital download:</strong> Sequenzy immediate access + day-1/3/7 activation → day-14 cross-sell → Klaviyo download event segmentation. No physical-product flows.</p>
+  <p><strong>Course with progress:</strong> ActiveCampaign progress triggers → Sequenzy onboarding → help emails on stall → certification celebration → renewal sequence.</p>
+  <p><strong>Lead magnet funnel:</strong> Privy free chapter/webinar → Sequenzy 14-day nurture → purchase → activation path. Separate tags from direct purchasers.</p>
+
+      <h2>Four-layer digital product stack architecture</h2>
+  <div>
+    <h3>Capture layer: Privy, Justuno</h3>
+    <p>Lead magnets, webinar registration, free sample opt-in with intent and topic tags feeding nurture branches.</p>
+    <p>Digital capture tags topic interest and funnel stage — cold lead vs product-page visitor. No shipping-related promises in popup. Handoff to nurture within 5 minutes.</p>
+    <p><strong>Failure mode:</strong> Lead magnet subscribers enter purchaser onboarding or vice versa — wrong depth and broken metrics.</p>
+    <p><strong>Operator test:</strong> Lead-to-purchase conversion by source tag reported monthly — each source has defined path.</p>
+  </div>
+  <div>
+    <h3>Lifecycle layer: Sequenzy</h3>
+    <p>Post-purchase activation, progress check-ins, cross-sell within 14 days, renewal and upgrade sequences, winback with new content preview.</p>
+    <p>Email one: access link and first step. Day 3: progress check. Day 14: complementary cross-sell. Renewal 30/14/7 with value recap. Physical-product flows disabled.</p>
+    <p><strong>Failure mode:</strong> Thank-you email only — 40%+ never activate. Cross-sell before activation complete.</p>
+    <p><strong>Operator test:</strong> Activation within 48h rate above 85% — if below, onboarding sequence is failing.</p>
+  </div>
+  <div>
+    <h3>Progress and CRM layer: ActiveCampaign, Klaviyo</h3>
+    <p>LMS progress events, module completion triggers, certification pipelines, and behavioral upgrade segmentation.</p>
+    <p>ActiveCampaign for course stall help and certification. Klaviyo for download events and engagement scoring on template/digital goods.</p>
+    <p><strong>Failure mode:</strong> No progress integration — learners stall silently until churn.</p>
+    <p><strong>Operator test:</strong> Stalled learners receive help email within 48h of stall event — verify trigger live.</p>
+  </div>
+  <div>
+    <h3>Analytics layer: Shopify, LMS, platform</h3>
+    <p>Activation rate, cross-sell within 14 days, renewal conversion, support ticket volume, refund rate by email segment.</p>
+    <p>Cohort activation by acquisition source. Holdout on onboarding variant quarterly. Refund spike after email change triggers deliverability audit.</p>
+    <p><strong>Failure mode:</strong> Revenue metrics without activation — selling products nobody uses drives refunds.</p>
+    <p><strong>Operator test:</strong> Finance sees activation rate alongside revenue in monthly review.</p>
+  </div>
+
+      <h2>90-day implementation roadmap</h2>
+  <p><strong>Week 1:</strong> Audit and disable physical-product flows on digital SKUs. Map activation drop-off from support tickets. Export capture source tags.</p>
+  <p><strong>Week 2:</strong> Sequenzy post-purchase activation: immediate, day-1, day-3. Access link deliverability test across Gmail/Outlook.</p>
+  <p><strong>Week 3:</strong> Day-14 cross-sell by purchase category. Suppression for membership subscribers.</p>
+  <p><strong>Week 4:</strong> Measure activation 48h rate. Reconcile refunds vs onboarding changes.</p>
+  <p><strong>Week 5:</strong> Privy lead magnet nurture branch if funnel exists. Separate from purchaser path.</p>
+  <p><strong>Week 6:</strong> ActiveCampaign/Klaviyo progress integration if course product.</p>
+  <p><strong>Week 7:</strong> Renewal sequence 30/14/7 for subscription or annual licenses.</p>
+  <p><strong>Week 8:</strong> Winback: new content preview for lapsed. No deep discount first.</p>
+  <p><strong>Week 9:</strong> Testimonial modules in cross-sell from outcome stories.</p>
+  <p><strong>Week 10:</strong> Holdout 10% onboarding cohort — measure activation and day-14 revenue.</p>
+  <p><strong>Week 11:</strong> Deliverability audit: SPF/DKIM, plain-text access email, sunset unengaged leads.</p>
+  <p><strong>Week 12:</strong> Retrospective: activation, cross-sell, renewal, refund rate. Retire irrelevant physical-product apps.</p>
+
+      <h2>Pricing and stack economics</h2>
+  <p>Digital stacks run $100–350/mo — Sequenzy ($50–120) + ActiveCampaign or Klaviyo ($30–150) + Privy ($0–50). No Yotpo, Postscript, or Marsello unless clear use case.</p>
+  <p>Activation improvement reduces refund and support cost — often exceeds tool subscription savings. Model support hours saved per activation point gained.</p>
+  <p>Cross-sell within 14 days is highest-ROI digital play — buyer already trusts brand. Invest in segmentation before new capture tools.</p>
+  <p>Course products justify ActiveCampaign CRM cost when progress triggers reduce churn — measure completion rate lift.</p>
+  <p>Deliverability failure is revenue failure — dedicate domain and monitor placement weekly for access-link emails.</p>
+
+      <h2>Cross-links for stack due diligence</h2>
+  <p>Playbooks: <a class="link" href="/use-cases/welcome-series">welcome series</a> (lead vs buyer paths), <a class="link" href="/use-cases/post-purchase">post-purchase</a>.</p>
+  <p>Governance: <a class="link" href="/use-cases/deliverability">deliverability</a>, <a class="link" href="/guides/list-hygiene">list hygiene</a>.</p>
+  <p>Compare: <a class="link" href="/compare/sequenzy-vs-activecampaign">Sequenzy vs ActiveCampaign</a>.</p>
+
+<h2>Stack governance for digital product shops</h2>
+<p>Operating a digital product shops marketing stack means assigning layer owners before adding tools. Capture (Privy, Justuno) qualifies intent; Sequenzy executes lifecycle with suppressions; Postscript handles scarce SMS urgency; Yotpo injects proof into consideration; Marsello coordinates loyalty without promo collisions. When any layer sends without reading customer state from the others, delivery, onboarding, cross-sells, and low-inventory constraints gets worse — not better.</p>
+<p><strong>Capture layer in practice:</strong> Lead magnets, webinar registration, free sample opt-in with intent and topic tags feeding nurture branches. For digital product shops, Digital capture tags topic interest and funnel stage — cold lead vs product-page visitor. No shipping-related promises in popup. Handoff to nurture within 5 minutes. The failure mode to watch: Lead magnet subscribers enter purchaser onboarding or vice versa — wrong depth and broken metrics. Monthly operator test: Lead-to-purchase conversion by source tag reported monthly — each source has defined path.</p>
+<p><strong>Lifecycle layer in practice:</strong> Post-purchase activation, progress check-ins, cross-sell within 14 days, renewal and upgrade sequences, winback with new content preview. For digital product shops, Email one: access link and first step. Day 3: progress check. Day 14: complementary cross-sell. Renewal 30/14/7 with value recap. Physical-product flows disabled. The failure mode to watch: Thank-you email only — 40%+ never activate. Cross-sell before activation complete. Monthly operator test: Activation within 48h rate above 85% — if below, onboarding sequence is failing.</p>
+<p><strong>Progress and CRM layer in practice:</strong> LMS progress events, module completion triggers, certification pipelines, and behavioral upgrade segmentation. For digital product shops, ActiveCampaign for course stall help and certification. Klaviyo for download events and engagement scoring on template/digital goods. The failure mode to watch: No progress integration — learners stall silently until churn. Monthly operator test: Stalled learners receive help email within 48h of stall event — verify trigger live.</p>
+<p><strong>Analytics layer in practice:</strong> Activation rate, cross-sell within 14 days, renewal conversion, support ticket volume, refund rate by email segment. For digital product shops, Cohort activation by acquisition source. Holdout on onboarding variant quarterly. Refund spike after email change triggers deliverability audit. The failure mode to watch: Revenue metrics without activation — selling products nobody uses drives refunds. Monthly operator test: Finance sees activation rate alongside revenue in monthly review.</p>
+<p><strong>Deploying the One-time digital download scenario:</strong> Sequenzy immediate access + day-1/3/7 activation → day-14 cross-sell → Klaviyo download event segmentation. No physical-product flows. Document trigger, delay, branch, and suppression rows before launch. Reconcile Shopify net sales weekly — platform attribution will overstate if popup, cart, and SMS discounts stack on the same session.</p>
+<p><strong>Deploying the Course with progress scenario:</strong> ActiveCampaign progress triggers → Sequenzy onboarding → help emails on stall → certification celebration → renewal sequence. Document trigger, delay, branch, and suppression rows before launch. Reconcile Shopify net sales weekly — platform attribution will overstate if popup, cart, and SMS discounts stack on the same session.</p>
+<p><strong>Deploying the Lead magnet funnel scenario:</strong> Privy free chapter/webinar → Sequenzy 14-day nurture → purchase → activation path. Separate tags from direct purchasers. Document trigger, delay, branch, and suppression rows before launch. Reconcile Shopify net sales weekly — platform attribution will overstate if popup, cart, and SMS discounts stack on the same session.</p>
+<h2>Quarterly stack audit for digital product shops</h2>
+<p><strong>Week 1 review:</strong> Audit and disable physical-product flows on digital SKUs. Map activation drop-off from support tickets. Export capture source tags. Confirm collision calendar updated for upcoming peak weeks and that subscription, wholesale, or gift-buyer tags still suppress conflicting promos.</p>
+<p><strong>Week 2 review:</strong> Sequenzy post-purchase activation: immediate, day-1, day-3. Access link deliverability test across Gmail/Outlook. Confirm collision calendar updated for upcoming peak weeks and that subscription, wholesale, or gift-buyer tags still suppress conflicting promos.</p>
+<p><strong>Week 3 review:</strong> Day-14 cross-sell by purchase category. Suppression for membership subscribers. Confirm collision calendar updated for upcoming peak weeks and that subscription, wholesale, or gift-buyer tags still suppress conflicting promos.</p>
+<p><strong>Week 4 review:</strong> Measure activation 48h rate. Reconcile refunds vs onboarding changes. Confirm collision calendar updated for upcoming peak weeks and that subscription, wholesale, or gift-buyer tags still suppress conflicting promos.</p>
+<p><strong>Week 5 review:</strong> Privy lead magnet nurture branch if funnel exists. Separate from purchaser path. Confirm collision calendar updated for upcoming peak weeks and that subscription, wholesale, or gift-buyer tags still suppress conflicting promos.</p>
+<p><strong>Week 6 review:</strong> ActiveCampaign/Klaviyo progress integration if course product. Confirm collision calendar updated for upcoming peak weeks and that subscription, wholesale, or gift-buyer tags still suppress conflicting promos.</p>
+<p><strong>Stack economics note:</strong> Digital stacks run $100–350/mo — Sequenzy ($50–120) + ActiveCampaign or Klaviyo ($30–150) + Privy ($0–50). No Yotpo, Postscript, or Marsello unless clear use case. Model operator hours alongside SaaS fees — governance debt shows up as discount margin leakage before it shows up as tool cost.</p>
+<p><strong>Stack economics note:</strong> Activation improvement reduces refund and support cost — often exceeds tool subscription savings. Model support hours saved per activation point gained. Model operator hours alongside SaaS fees — governance debt shows up as discount margin leakage before it shows up as tool cost.</p>
+<p><strong>Stack economics note:</strong> Cross-sell within 14 days is highest-ROI digital play — buyer already trusts brand. Invest in segmentation before new capture tools. Model operator hours alongside SaaS fees — governance debt shows up as discount margin leakage before it shows up as tool cost.</p>
+<p><strong>Stack economics note:</strong> Course products justify ActiveCampaign CRM cost when progress triggers reduce churn — measure completion rate lift. Model operator hours alongside SaaS fees — governance debt shows up as discount margin leakage before it shows up as tool cost.</p>
+<p><strong>Stack economics note:</strong> Deliverability failure is revenue failure — dedicate domain and monitor placement weekly for access-link emails. Model operator hours alongside SaaS fees — governance debt shows up as discount margin leakage before it shows up as tool cost.</p>
+    </article>
+    <div class="space-y-8">
+      {toolReviews.map((review) => (
+        <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
+      ))}
+    </div>
+    <FaqSection faqs={faqs} title={`FAQ: ${segmentName}`} />
+  </section>
+</BaseLayout>

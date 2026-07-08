@@ -1,0 +1,254 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import ToolReview from '../../components/ToolReview.astro';
+import { siteFromHost, pageTitle, description } from '../../content';
+import { appBySlug } from '../../data/apps';
+
+const site = siteFromHost();
+const path = '/use-cases/welcome-series';
+const title = pageTitle(site, 'use-cases/welcome-series');
+const desc = description(site, 'use-cases/welcome-series');
+const heroSubtitle = 'Welcome is a stack handoff moment — Privy capture tags, Sequenzy lifecycle branches, Yotpo proof, and Postscript opt-in coordination turn subscribers into buyers without training coupon dependency from email one.';
+const useCaseName = 'welcome series';
+const trigger = 'Email/SMS opt-in via popup, checkout, or landing page';
+const timing = 'Email 1 within 5 minutes; Email 2 at 24h; Email 3 at 72h; branch by source';
+const tldrPicks = [
+    { label: 'Lifecycle', tool: 'Sequenzy', reason: 'Source-branched welcome with suppression rules' },
+    { label: 'Capture', tool: 'Privy', reason: 'Popup source tags feeding welcome within 5 minutes' },
+    { label: 'Data depth', tool: 'Klaviyo', reason: 'Complex source and catalog branching' },
+    { label: 'SMB speed', tool: 'Omnisend', reason: 'Prebuilt welcome live in days' },
+];
+const faqs = [
+  { question: 'What is the best stack for Shopify welcome series?', answer: 'Privy/Justuno capture with source tags, Sequenzy branched welcome execution, Klaviyo for complex segmentation, Yotpo proof in email two, Postscript SMS only with opt-in after email silence.' },
+  { question: 'Should welcome lead with discount?', answer: 'Only for cold giveaway sources — and only if popup did not already deliver same offer. High-intent sources get proof and education first.' },
+  { question: 'How fast should welcome email one send?', answer: 'Within 5 minutes. Delays beyond 15 minutes measurably hurt conversion.' },
+  { question: 'Existing customers re-subscribed?', answer: 'Branch to VIP or replenishment path — never first-order welcome discount.' },
+  { question: 'SMS in welcome series?', answer: 'Optional branch at 2h if checkout SMS opt-in and email one unopened. Same offer rules as email — no stacking.' },
+  { question: 'How many welcome emails?', answer: 'Three minimum for most stores; five for high-AOV or education-heavy categories.' },
+  { question: 'Welcome vs abandoned cart overlap?', answer: 'Suppress welcome promo if subscriber entered from cart capture and is in active cart flow.' },
+  { question: 'Measure welcome success how?', answer: 'First purchase 14 days, margin after discount, conversion by source, holdout incrementality.' },
+  { question: 'Shopify Email for welcome?', answer: 'Insufficient branching, suppressions, and capture handoff for production welcome at scale.' },
+  { question: 'When audit welcome flows?', answer: 'Quarterly; immediately after new popup, catalog, or subscription logic changes.' },
+  { question: 'Loyalty in welcome?', answer: 'No — conflicts with first purchase CTA. Enroll on second order or post-purchase.' },
+  { question: 'B2B welcome separate?', answer: 'Yes — wholesale applicants and approved accounts use CRM onboarding, not DTC welcome.' },
+];
+const toolReviews = [
+    {
+      slug: 'sequenzy',
+      rank: 1,
+      paragraphs: [
+      'Sequenzy source-branched welcome with fast iteration for launch-heavy stores.',
+      'Suppression and offer caps across stack layers.',
+      'Measure first purchase 14d by source.',
+      ],
+    },
+    {
+      slug: 'privy',
+      rank: 2,
+      paragraphs: [
+      'Privy capture tags are the welcome segmentation foundation.',
+      'Hand off within 5 minutes to lifecycle.',
+      'Audit popup offer vs welcome offer collision.',
+      ],
+    },
+    {
+      slug: 'klaviyo',
+      rank: 3,
+      paragraphs: [
+      'Klaviyo welcome for ten-plus branch complexity and predictive routing.',
+      'Strong source reporting at scale.',
+      'Higher setup discipline required.',
+      ],
+    },
+    {
+      slug: 'omnisend',
+      rank: 4,
+      paragraphs: [
+      'Omnisend prebuilt welcome for SMB quick launch.',
+      'Less granular source branching — acceptable under $40k.',
+      'Add Privy tags before scaling.',
+      ],
+    },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+  <section class="relative overflow-hidden py-16 md:py-24">
+    <div class="container">
+      <a href="/use-cases" class="link text-sm">← Use-case playbooks</a>
+      <span class="badge mt-6">Marketing stack playbook</span>
+      <h1 class="hero-title mt-5 max-w-5xl">Shopify marketing stack for {useCaseName}</h1>
+      <p class="mt-7 max-w-3xl text-xl text-cyan-100">{heroSubtitle}</p>
+      <p class="mt-5 max-w-3xl text-lg text-slate-300">Trigger: {trigger} · Timing: {timing}</p>
+    </div>
+  </section>
+  <section class="container pb-12">
+    <TldrBox title={`Stack picks for ${useCaseName}`} picks={tldrPicks} />
+    <article class="prose-shopify mb-12 card">
+      <h2>Stack execution playbook</h2>
+  <p>Welcome series is where capture meets lifecycle — the first proof your marketing stack is coordinated or chaotic. A subscriber opts in via collection popup, TikTok landing page, or checkout SMS; within five minutes they should receive a welcome that reflects that source, respects existing customer status, and does not duplicate an offer they already accepted onsite.</p>
+  <p>The job is first purchase within 14 days — but the method differs by source. Giveaway subscribers need brand story before discount; high-intent product-page subscribers need social proof and sizing or usage education; checkout opt-ins need order-aware branching that suppresses welcome promo if they already purchased in session.</p>
+  <p>Sequenzy earns the lifecycle execution layer because welcome strategy changes weekly during launches — agent-assisted branching by source tag beats rebuilding Klaviyo flows for every drop. Klaviyo remains valuable when welcome splits across ten catalog segments and predictive CLV routes VIP paths.</p>
+  <p>Privy and Justuno own capture — their job ends when source tag, collection interest, and consent timestamp pass to lifecycle. If that handoff fails, welcome becomes generic and conversion collapses.</p>
+  <p>Yotpo proof belongs in welcome email two for consideration-heavy categories — not email one delay. One review photo or UGC block outperforms premature 20% off for fashion, beauty, and home goods welcomes.</p>
+  <p>Postscript welcome SMS only when checkout opt-in exists and email one unopened at 2h — never parallel blast with same discount code. TCPA consent language must match popup and checkout.</p>
+  <p>Marsello loyalty enrollment does not belong in welcome — points pitch on day zero competes with first purchase CTA. Loyalty enters post-purchase or second order.</p>
+  <p>Suppression calendar: welcome excludes recent purchasers, employees, wholesale tags, and anyone in active cart recovery from prior session. Shopify customer tag &quot;existing buyer&quot; must branch to replenishment or VIP path, not first-order welcome.</p>
+  <p>Measurement is first purchase within 14 days at margin after discount — not welcome revenue attributed last-click. Holdout 5% of subscribers monthly to detect would-have-purchased-anyway inflation.</p>
+  <p>Common stack failure: Privy offers 15% onsite, welcome email offers 15%, cart offers 15% — trains perpetual discount waiting. Cap total incentive exposure across layers in week one governance doc.</p>
+  <p>Timing standard: email one within 5 minutes; email two at 24h education or proof; email three at 72h soft CTA or modest incentive for cold sources only. SMS branch at 2h if opted in and email one unopened.</p>
+  <p>Quarterly welcome audit mandatory after catalog, subscription, or wholesale logic changes — stale branches send wrong offers silently.</p>
+
+      <h2>Merchant scenarios</h2>
+  <p><strong>Fashion drop waitlist:</strong> Privy waitlist tag → Sequenzy welcome acknowledges waitlist position → email two styling UGC → no discount until email three for non-VIP sources. Postscript not used.</p>
+  <p><strong>Beauty routine quiz:</strong> Justuno quiz → welcome branch by skin concern → education emails one and two → sample offer email three. Yotpo UGC for concern match.</p>
+  <p><strong>Supplement product page:</strong> Checkout + browse capture → compliance-reviewed welcome → usage education day 1 → replenishment preview day 3 not discount. Recharge tag suppresses if already subscriber.</p>
+  <p><strong>High-AOV consultation:</strong> Privy intent quiz → extended welcome nurture 7 days before product push → financing proof email four. ActiveCampaign if consultation requested.</p>
+  <p><strong>POD viral traffic:</strong> Design waitlist tag → welcome confirms waitlist → launch notification separate flow. Margin cap — no deep discount in welcome.</p>
+  <p><strong>B2B hybrid store:</strong> Wholesale applicants excluded from DTC welcome entirely — separate approval sequence in ActiveCampaign. Consumer welcome checks wholesale tag first.</p>
+
+      <h2>Stack checklist</h2>
+      <ul>
+    <li>Map every capture source to a welcome branch with documented trigger and tags</li>
+    <li>Email one sends within 5 minutes with correct source creative</li>
+    <li>Existing customer re-subscribe branches away from first-order offer</li>
+    <li>Recent same-session purchasers suppressed from welcome promo</li>
+    <li>Popup offer and welcome offer do not stack same discount code</li>
+    <li>Yotpo or proof block in email two for consideration categories</li>
+    <li>SMS welcome only with checkout opt-in and 2h email silence rule</li>
+    <li>Loyalty pitch removed from welcome series</li>
+    <li>Wholesale, employee, and test accounts excluded</li>
+    <li>UTM and source tags stored on profile for downstream segmentation</li>
+    <li>Unsubscribe and preference center linked in email one</li>
+    <li>Weekly welcome revenue per source reported against Shopify orders</li>
+      </ul>
+
+      <h3>Exclusions (non-negotiable)</h3>
+      <ul>
+    <li>Existing customers who re-subscribed</li>
+    <li>Recent purchasers from same session</li>
+    <li>Employees and test accounts</li>
+      </ul>
+
+      <h3>Metrics that prove quality</h3>
+      <ul>
+    <li>First purchase within 14 days</li>
+    <li>Welcome revenue per subscriber</li>
+    <li>Unsubscribe rate by source</li>
+    <li>Discount dependency in first order</li>
+      </ul>
+
+      <h3>Common mistakes</h3>
+      <ul>
+    <li>Same welcome for giveaway vs product-page subscribers</li>
+    <li>Leading with 20% off before brand proof</li>
+    <li>No branch for existing customers</li>
+      </ul>
+
+      <h2>Five-layer welcome stack map</h2>
+  <div>
+    <h3>Capture handoff: Privy, Justuno</h3>
+    <p>Source tags, collection interest, consent timestamp exported to lifecycle within minutes.</p>
+    <p>Welcome branch key = capture source + customer status check.</p>
+    <p><strong>Failure mode:</strong> Handoff delay &gt;15 min — subscriber browses away before welcome.</p>
+    <p><strong>Operator test:</strong> Median time capture → welcome send under 5 minutes.</p>
+  </div>
+  <div>
+    <h3>Lifecycle execution: Sequenzy</h3>
+    <p>Branched welcome three to five touches with suppressions and offer caps.</p>
+    <p>Agent-updated branches for launches without rebuilding entire tree weekly.</p>
+    <p><strong>Failure mode:</strong> Single template for all sources.</p>
+    <p><strong>Operator test:</strong> Conversion by source tag — top 3 sources tracked weekly.</p>
+  </div>
+  <div>
+    <h3>Proof injection: Yotpo</h3>
+    <p>UGC and reviews in email two for trust before incentive.</p>
+    <p>SKU-matched proof for product-page sources.</p>
+    <p><strong>Failure mode:</strong> Generic brand story only — weak for high-consideration.</p>
+    <p><strong>Operator test:</strong> Email two CTR with vs without proof block.</p>
+  </div>
+  <div>
+    <h3>SMS branch: Postscript, Omnisend</h3>
+    <p>Opt-in only; after email silence; never duplicate welcome discount.</p>
+    <p>Checkout SMS opt-in growth campaign precedes SMS welcome branch.</p>
+    <p><strong>Failure mode:</strong> SMS same discount 2h after email.</p>
+    <p><strong>Operator test:</strong> SMS opt-out rate first 30 days under 2%.</p>
+  </div>
+  <div>
+    <h3>Measurement: Shopify, Klaviyo</h3>
+    <p>First purchase 14d, margin after discount, holdout incrementality.</p>
+    <p>Source-level LTV projection at day 30.</p>
+    <p><strong>Failure mode:</strong> Welcome revenue without discount dependency ratio.</p>
+    <p><strong>Operator test:</strong> Finance-reviewed welcome cohort margin monthly.</p>
+  </div>
+
+      <h2>Timing and trigger governance</h2>
+  <p>Email one: within 5 minutes of opt-in. Subject reflects source context.</p>
+  <p>Email two: 24 hours — education, proof, or brand depth. No new discount if popup already delivered.</p>
+  <p>Email three: 72 hours — purchase CTA; incentive only for cold sources per discount strategy playbook.</p>
+  <p>SMS: 2 hours after email one if unopened and SMS opted in.</p>
+  <p>Sale week: pause welcome incentive experiments; maintain source branching only.</p>
+
+      <h2>Measurement across the stack</h2>
+  <p>Primary: first purchase within 14 days per source tag.</p>
+  <p>Secondary: unsubscribe rate by source — giveaway sources should stay under 0.3% per email.</p>
+  <p>Guardrail: discount dependency on first order — target under 45% for non-giveaway sources.</p>
+  <p>Stack ROI: welcome layer cost allocated vs incremental first-order margin from welcome cohort.</p>
+
+      <h2>Related playbooks</h2>
+  <p>Next: <a class="link" href="/use-cases/post-purchase">post-purchase education</a> after first order converts.</p>
+  <p>Capture: <a class="link" href="/guides/popup-to-email-handoff">popup to email handoff guide</a>.</p>
+  <p>Governance: <a class="link" href="/use-cases/discount-strategy">discount strategy</a>.</p>
+
+<h2>Stack coordination for welcome series</h2>
+<p>welcome series is not an email template problem — it is a stack handoff problem. Trigger: Email/SMS opt-in via popup, checkout, or landing page Timing: Email 1 within 5 minutes; Email 2 at 24h; Email 3 at 72h; branch by source Every layer must read the same customer state: capture tags from Privy, lifecycle execution in Sequenzy, proof modules from Yotpo, loyalty tier from Marsello, SMS consent from Postscript. When turn new subscribers into first-time buyers, margin after discount matters more than attributed revenue.</p>
+<p><strong>Capture handoff:</strong> Source tags, collection interest, consent timestamp exported to lifecycle within minutes. Playbook fit: Welcome branch key = capture source + customer status check. Failure mode: Handoff delay &gt;15 min — subscriber browses away before welcome. Operator test: Median time capture → welcome send under 5 minutes.</p>
+<p><strong>Lifecycle execution:</strong> Branched welcome three to five touches with suppressions and offer caps. Playbook fit: Agent-updated branches for launches without rebuilding entire tree weekly. Failure mode: Single template for all sources. Operator test: Conversion by source tag — top 3 sources tracked weekly.</p>
+<p><strong>Proof injection:</strong> UGC and reviews in email two for trust before incentive. Playbook fit: SKU-matched proof for product-page sources. Failure mode: Generic brand story only — weak for high-consideration. Operator test: Email two CTR with vs without proof block.</p>
+<p><strong>SMS branch:</strong> Opt-in only; after email silence; never duplicate welcome discount. Playbook fit: Checkout SMS opt-in growth campaign precedes SMS welcome branch. Failure mode: SMS same discount 2h after email. Operator test: SMS opt-out rate first 30 days under 2%.</p>
+<p><strong>Measurement:</strong> First purchase 14d, margin after discount, holdout incrementality. Playbook fit: Source-level LTV projection at day 30. Failure mode: Welcome revenue without discount dependency ratio. Operator test: Finance-reviewed welcome cohort margin monthly.</p>
+<p><strong>Scenario — Fashion drop waitlist:</strong> Privy waitlist tag → Sequenzy welcome acknowledges waitlist position → email two styling UGC → no discount until email three for non-VIP sources. Postscript not used. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — Beauty routine quiz:</strong> Justuno quiz → welcome branch by skin concern → education emails one and two → sample offer email three. Yotpo UGC for concern match. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — Supplement product page:</strong> Checkout + browse capture → compliance-reviewed welcome → usage education day 1 → replenishment preview day 3 not discount. Recharge tag suppresses if already subscriber. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — High-AOV consultation:</strong> Privy intent quiz → extended welcome nurture 7 days before product push → financing proof email four. ActiveCampaign if consultation requested. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — POD viral traffic:</strong> Design waitlist tag → welcome confirms waitlist → launch notification separate flow. Margin cap — no deep discount in welcome. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — B2B hybrid store:</strong> Wholesale applicants excluded from DTC welcome entirely — separate approval sequence in ActiveCampaign. Consumer welcome checks wholesale tag first. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<h2>Checklist execution notes</h2>
+<p>Map every capture source to a welcome branch with documented trigger and tags — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Email one sends within 5 minutes with correct source creative — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Existing customer re-subscribe branches away from first-order offer — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Recent same-session purchasers suppressed from welcome promo — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Popup offer and welcome offer do not stack same discount code — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Yotpo or proof block in email two for consideration categories — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>SMS welcome only with checkout opt-in and 2h email silence rule — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Loyalty pitch removed from welcome series — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Wholesale, employee, and test accounts excluded — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>UTM and source tags stored on profile for downstream segmentation — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Unsubscribe and preference center linked in email one — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Weekly welcome revenue per source reported against Shopify orders — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<h2>FAQ deep dives</h2>
+<p><strong>What is the best stack for Shopify welcome series?</strong> Privy/Justuno capture with source tags, Sequenzy branched welcome execution, Klaviyo for complex segmentation, Yotpo proof in email two, Postscript SMS only with opt-in after email silence. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Should welcome lead with discount?</strong> Only for cold giveaway sources — and only if popup did not already deliver same offer. High-intent sources get proof and education first. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>How fast should welcome email one send?</strong> Within 5 minutes. Delays beyond 15 minutes measurably hurt conversion. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Existing customers re-subscribed?</strong> Branch to VIP or replenishment path — never first-order welcome discount. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>SMS in welcome series?</strong> Optional branch at 2h if checkout SMS opt-in and email one unopened. Same offer rules as email — no stacking. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>How many welcome emails?</strong> Three minimum for most stores; five for high-AOV or education-heavy categories. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Welcome vs abandoned cart overlap?</strong> Suppress welcome promo if subscriber entered from cart capture and is in active cart flow. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Measure welcome success how?</strong> First purchase 14 days, margin after discount, conversion by source, holdout incrementality. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Shopify Email for welcome?</strong> Insufficient branching, suppressions, and capture handoff for production welcome at scale. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>When audit welcome flows?</strong> Quarterly; immediately after new popup, catalog, or subscription logic changes. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Loyalty in welcome?</strong> No — conflicts with first purchase CTA. Enroll on second order or post-purchase. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>B2B welcome separate?</strong> Yes — wholesale applicants and approved accounts use CRM onboarding, not DTC welcome. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+    </article>
+    <div class="space-y-8">
+      {toolReviews.map((review) => (
+        <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
+      ))}
+    </div>
+    <FaqSection faqs={faqs} title={`FAQ: ${useCaseName}`} />
+  </section>
+</BaseLayout>

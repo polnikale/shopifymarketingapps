@@ -1,0 +1,247 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import ToolReview from '../../components/ToolReview.astro';
+import { siteFromHost, pageTitle, description } from '../../content';
+import { appBySlug } from '../../data/apps';
+
+const site = siteFromHost();
+const path = '/use-cases/reviews-and-ugc';
+const title = pageTitle(site, 'use-cases/reviews-and-ugc');
+const desc = description(site, 'use-cases/reviews-and-ugc');
+const heroSubtitle = 'Reviews and UGC are a proof layer across the stack — Yotpo captures and displays, Sequenzy embeds in browse/cart/post-purchase, Klaviyo dynamic blocks pull SKU-matched content, not orphaned PDP widgets that never reach consideration email.';
+const useCaseName = 'reviews and UGC';
+const trigger = 'Post-delivery +7 days; post-purchase satisfaction signals';
+const timing = 'Review request at day 7; UGC showcase in browse abandonment; review highlights in winback';
+const tldrPicks = [
+    { label: 'Proof platform', tool: 'Yotpo', reason: 'Review capture and UGC library' },
+    { label: 'Lifecycle', tool: 'Sequenzy', reason: 'Proof blocks in browse, cart, post-purchase' },
+    { label: 'Dynamic', tool: 'Klaviyo', reason: 'Product-matched review feeds at scale' },
+    { label: 'Timing', tool: 'Delivery +7d', reason: 'Review request after product arrival' },
+];
+const faqs = [
+  { question: 'Reviews only on PDP?', answer: 'Waste — embed in browse, cart, post-purchase, winback via designed modules.' },
+  { question: 'Review request when?', answer: 'Delivery +7 typical; +14 furniture; never pre-arrival.' },
+  { question: 'Yotpo vs stack role?', answer: 'Yotpo captures and stores; Sequenzy/Klaviyo distribute in email.' },
+  { question: 'Raw widget embed?', answer: 'No — fixed-ratio designed slots for mobile.' },
+  { question: 'Negative reviews?', answer: 'CX alert — no auto-discount response email.' },
+  { question: 'Supplement reviews in email?', answer: 'Experience language only — compliance filter.' },
+  { question: 'Gift orders?', answer: 'Separate review flow — recipient not gift buyer.' },
+  { question: 'High-return SKUs?', answer: 'Delay review until return window passes.' },
+  { question: 'Photo review incentive?', answer: 'Loyalty points optional — not stacked with sale.' },
+  { question: 'Measure proof ROI?', answer: 'A/B CTR and conversion with proof block.' },
+  { question: 'Launch UGC?', answer: 'Beta/early buyer photos in launch email two.' },
+  { question: 'Biggest mistake?', answer: 'Collecting reviews never wiring into email flows — orphaned Yotpo install.' },
+];
+const toolReviews = [
+    {
+      slug: 'yotpo-email-sms',
+      rank: 1,
+      paragraphs: [
+      'Yotpo core proof platform — reviews, UGC, photos.',
+      'Integrate into Sequenzy/Klaviyo modules.',
+      'Suite SMS optional for restock.',
+      ],
+    },
+    {
+      slug: 'sequenzy',
+      rank: 2,
+      paragraphs: [
+      'Sequenzy distributes proof in browse, cart, post-purchase.',
+      'Designed module slots.',
+      'Review request timing triggers.',
+      ],
+    },
+    {
+      slug: 'klaviyo',
+      rank: 3,
+      paragraphs: [
+      'Klaviyo dynamic review feeds at catalog scale.',
+      'SKU-matched blocks.',
+      'Reporting on proof CTR.',
+      ],
+    },
+    {
+      slug: 'omnisend',
+      rank: 4,
+      paragraphs: [
+      'Omnisend product review blocks for SMB.',
+      'Faster setup less customization.',
+      'Upgrade to Yotpo+Sequenzy at scale.',
+      ],
+    },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+  <section class="relative overflow-hidden py-16 md:py-24">
+    <div class="container">
+      <a href="/use-cases" class="link text-sm">← Use-case playbooks</a>
+      <span class="badge mt-6">Marketing stack playbook</span>
+      <h1 class="hero-title mt-5 max-w-5xl">Shopify marketing stack for {useCaseName}</h1>
+      <p class="mt-7 max-w-3xl text-xl text-cyan-100">{heroSubtitle}</p>
+      <p class="mt-5 max-w-3xl text-lg text-slate-300">Trigger: {trigger} · Timing: {timing}</p>
+    </div>
+  </section>
+  <section class="container pb-12">
+    <TldrBox title={`Stack picks for ${useCaseName}`} picks={tldrPicks} />
+    <article class="prose-shopify mb-12 card">
+      <h2>Stack execution playbook</h2>
+  <p>Reviews and UGC on a marketing stack are not a PDP footer widget — they are dynamic proof modules in browse abandonment, cart hesitation, post-purchase, winback, and launch emails. Yotpo supplies content; Sequenzy and Klaviyo place it in designed fixed-ratio slots.</p>
+  <p>Review request timing: delivery +7 days typical; +14 for furniture after return window; +3 check-in for perishable quality. Never request before product arrives — drives negative reviews and complaints.</p>
+  <p>High-return SKUs: delay review ask until return window assessed — fashion fit, furniture size. Gift recipients may need separate flow.</p>
+  <p>Browse email one: Yotpo UGC for viewed SKU — fit quotes, installation photos, taste testimonials by category. Proof before discount.</p>
+  <p>Cart recovery: social proof module reduces discount dependency on email one for consideration purchases.</p>
+  <p>Winback: showcase new UGC from recent buyers — lapsed subscribers see fresh social proof not stale discount.</p>
+  <p>Negative review response time is CX metric — stack triggers alert to support; do not auto-email negative reviewers with discount.</p>
+  <p>Supplement compliance: experience language in review-powered email — &quot;mixes well&quot; not efficacy claims pulled from reviews.</p>
+  <p>Loyalty integration: bonus points for photo review via Marsello/Yotpo — separate from promotional calendar collisions.</p>
+  <p>Analytics: review submission rate, UGC CTR in campaigns, conversion lift A/B with proof block, negative response time.</p>
+
+      <h2>Merchant scenarios</h2>
+  <p><strong>Fashion fit proof:</strong> Yotpo fit keywords in browse → cart UGC → review +7d post-delivery.</p>
+  <p><strong>Furniture installation:</strong> Room photo UGC in browse → review +14d → assembly guide before review ask.</p>
+  <p><strong>Beauty routine:</strong> Before/after UGC browse → experience reviews only → shade-matched photos.</p>
+  <p><strong>Supplement experience:</strong> Compliance-filtered review text in email → request +10d → no health claims.</p>
+
+      <h2>Stack checklist</h2>
+      <ul>
+    <li>Review request post-delivery not pre-arrival</li>
+    <li>Return window considered high-return SKUs</li>
+    <li>UGC block in browse email one</li>
+    <li>Cart proof module before discount</li>
+    <li>Fixed aspect ratio containers — no raw widget HTML</li>
+    <li>SKU-matched dynamic content</li>
+    <li>Gift recipient review flow separate</li>
+    <li>Negative review alert to CX</li>
+    <li>Compliance filter supplements</li>
+    <li>Photo review incentive via loyalty if used</li>
+    <li>A/B proof block CTR tracked</li>
+    <li>Submission rate by category monitored</li>
+      </ul>
+
+      <h3>Exclusions (non-negotiable)</h3>
+      <ul>
+    <li>High-return SKUs before return window closes</li>
+    <li>Gift recipients</li>
+    <li>Products without enough reviews yet</li>
+      </ul>
+
+      <h3>Metrics that prove quality</h3>
+      <ul>
+    <li>Review submission rate</li>
+    <li>UGC click-through in campaigns</li>
+    <li>Conversion lift with social proof</li>
+    <li>Negative review response time</li>
+      </ul>
+
+      <h3>Common mistakes</h3>
+      <ul>
+    <li>Review request before product arrival</li>
+    <li>No negative review handling</li>
+    <li>Generic review ask without product context</li>
+      </ul>
+
+      <h2>Proof layer stack map</h2>
+  <div>
+    <h3>Capture: Yotpo</h3>
+    <p>Review and photo collection post-delivery.</p>
+    <p>Timed triggers from Sequenzy.</p>
+    <p><strong>Failure mode:</strong> Pre-arrival review ask.</p>
+    <p><strong>Operator test:</strong> Submission rate by timing.</p>
+  </div>
+  <div>
+    <h3>Distribution: Sequenzy, Klaviyo</h3>
+    <p>Embed proof in lifecycle emails.</p>
+    <p>Designed modules not widgets.</p>
+    <p><strong>Failure mode:</strong> PDP-only reviews.</p>
+    <p><strong>Operator test:</strong> Browse email with UGC CTR.</p>
+  </div>
+  <div>
+    <h3>Dynamic match: Klaviyo</h3>
+    <p>Viewed/purchased SKU matched UGC.</p>
+    <p>Catalog-scale feeds.</p>
+    <p><strong>Failure mode:</strong> Generic unrelated review photos.</p>
+    <p><strong>Operator test:</strong> SKU match accuracy audit.</p>
+  </div>
+  <div>
+    <h3>Loyalty tie-in: Marsello</h3>
+    <p>Points for photo review optional.</p>
+    <p>Separate from promo calendar.</p>
+    <p><strong>Failure mode:</strong> Double incentive review + sale.</p>
+    <p><strong>Operator test:</strong> Review incentive collision check.</p>
+  </div>
+  <div>
+    <h3>Analytics: Yotpo, Shopify</h3>
+    <p>Submission, CTR lift, conversion A/B.</p>
+    <p>Proof ROI documented.</p>
+    <p><strong>Failure mode:</strong> Reviews collected never used in email.</p>
+    <p><strong>Operator test:</strong> UGC used in 3+ flow types.</p>
+  </div>
+
+      <h2>Timing and trigger governance</h2>
+  <p>Review request: delivery +7 default, category-adjusted.</p>
+  <p>Browse/cart: proof anytime — no delivery dependency.</p>
+  <p>Winback: fresh UGC from last 30 days prioritized.</p>
+  <p>Launch: beta buyer UGC in general launch email two.</p>
+
+      <h2>Measurement across the stack</h2>
+  <p>Review submission rate.</p>
+  <p>UGC CTR in email modules.</p>
+  <p>Conversion lift with vs without proof A/B.</p>
+  <p>Negative review response time.</p>
+
+      <h2>Related playbooks</h2>
+  <p>Design: <a class="link" href="/use-cases/email-design">email design</a> modules.</p>
+  <p>Flows: <a class="link" href="/use-cases/browse-abandonment">browse</a>, <a class="link" href="/use-cases/post-purchase">post-purchase</a>.</p>
+  <p>Guide: <a class="link" href="/guides/review-ugc">reviews in stack</a>.</p>
+
+<h2>Stack coordination for reviews and UGC</h2>
+<p>reviews and UGC is not an email template problem — it is a stack handoff problem. Trigger: Post-delivery +7 days; post-purchase satisfaction signals Timing: Review request at day 7; UGC showcase in browse abandonment; review highlights in winback Every layer must read the same customer state: capture tags from Privy, lifecycle execution in Sequenzy, proof modules from Yotpo, loyalty tier from Marsello, SMS consent from Postscript. When pull social proof into retention campaigns, margin after discount matters more than attributed revenue.</p>
+<p><strong>Capture:</strong> Review and photo collection post-delivery. Playbook fit: Timed triggers from Sequenzy. Failure mode: Pre-arrival review ask. Operator test: Submission rate by timing.</p>
+<p><strong>Distribution:</strong> Embed proof in lifecycle emails. Playbook fit: Designed modules not widgets. Failure mode: PDP-only reviews. Operator test: Browse email with UGC CTR.</p>
+<p><strong>Dynamic match:</strong> Viewed/purchased SKU matched UGC. Playbook fit: Catalog-scale feeds. Failure mode: Generic unrelated review photos. Operator test: SKU match accuracy audit.</p>
+<p><strong>Loyalty tie-in:</strong> Points for photo review optional. Playbook fit: Separate from promo calendar. Failure mode: Double incentive review + sale. Operator test: Review incentive collision check.</p>
+<p><strong>Analytics:</strong> Submission, CTR lift, conversion A/B. Playbook fit: Proof ROI documented. Failure mode: Reviews collected never used in email. Operator test: UGC used in 3+ flow types.</p>
+<p><strong>Scenario — Fashion fit proof:</strong> Yotpo fit keywords in browse → cart UGC → review +7d post-delivery. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — Furniture installation:</strong> Room photo UGC in browse → review +14d → assembly guide before review ask. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — Beauty routine:</strong> Before/after UGC browse → experience reviews only → shade-matched photos. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — Supplement experience:</strong> Compliance-filtered review text in email → request +10d → no health claims. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<h2>Checklist execution notes</h2>
+<p>Review request post-delivery not pre-arrival — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Return window considered high-return SKUs — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>UGC block in browse email one — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Cart proof module before discount — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Fixed aspect ratio containers — no raw widget HTML — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>SKU-matched dynamic content — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Gift recipient review flow separate — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Negative review alert to CX — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Compliance filter supplements — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Photo review incentive via loyalty if used — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>A/B proof block CTR tracked — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Submission rate by category monitored — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<h2>FAQ deep dives</h2>
+<p><strong>Reviews only on PDP?</strong> Waste — embed in browse, cart, post-purchase, winback via designed modules. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Review request when?</strong> Delivery +7 typical; +14 furniture; never pre-arrival. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Yotpo vs stack role?</strong> Yotpo captures and stores; Sequenzy/Klaviyo distribute in email. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Raw widget embed?</strong> No — fixed-ratio designed slots for mobile. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Negative reviews?</strong> CX alert — no auto-discount response email. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Supplement reviews in email?</strong> Experience language only — compliance filter. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Gift orders?</strong> Separate review flow — recipient not gift buyer. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>High-return SKUs?</strong> Delay review until return window passes. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Photo review incentive?</strong> Loyalty points optional — not stacked with sale. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Measure proof ROI?</strong> A/B CTR and conversion with proof block. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Launch UGC?</strong> Beta/early buyer photos in launch email two. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Biggest mistake?</strong> Collecting reviews never wiring into email flows — orphaned Yotpo install. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+    </article>
+    <div class="space-y-8">
+      {toolReviews.map((review) => (
+        <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
+      ))}
+    </div>
+    <FaqSection faqs={faqs} title={`FAQ: ${useCaseName}`} />
+  </section>
+</BaseLayout>

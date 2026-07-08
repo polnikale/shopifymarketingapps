@@ -1,0 +1,257 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import ToolReview from '../../components/ToolReview.astro';
+import { siteFromHost, pageTitle, description } from '../../content';
+import { appBySlug } from '../../data/apps';
+
+const site = siteFromHost();
+const path = '/for/home-goods';
+const title = pageTitle(site, 'for/home-goods');
+const desc = description(site, 'for/home-goods');
+const heroSubtitle = 'Room-by-room inspiration, long browse cycles, and cross-sell completion need a stack built for catalog depth and project-based segmentation — not single-product cart blasts.';
+const buyingCycle = '4–16 weeks; room-by-room purchasing; heavy inspiration browsing';
+const segmentName = 'home goods stores';
+const tldrPicks = [
+    { label: 'Lifecycle', tool: 'Sequenzy', reason: 'Room-series education and project completion nudges' },
+    { label: 'Segmentation', tool: 'Klaviyo', reason: 'Catalog-scale browse and collection segments' },
+    { label: 'Workflows', tool: 'Drip', reason: 'Visual journeys for multi-room cross-sell' },
+    { label: 'Capture', tool: 'Privy', reason: 'Style quiz and room intent popups' },
+];
+const faqs = [
+  { question: 'Best stack for home goods Shopify stores?', answer: 'Justuno/Privy room capture, Sequenzy room-series and cross-sell, Klaviyo or Drip segmentation, AfterShip delivery triggers, Yotpo photo reviews, Postscript for high-AOV cart SMS.' },
+  { question: 'When should home goods cross-sell fire?', answer: 'After delivery +14 days for bulky items; sooner for small decor if fulfillment fast. Never before customer has product.' },
+  { question: 'How to segment home goods email?', answer: 'By room, style aesthetic, browse collection, and project completion stage — not one list for entire catalog.' },
+  { question: 'Should home goods cart recovery discount immediately?', answer: 'Education and dimensions first for AOV >$300. Graduated incentive on later touches only.' },
+  { question: 'Does Mailchimp work for home goods?', answer: 'Acceptable for simple decor under $40k. Large catalogs and room logic need Klaviyo, Drip, or Sequenzy depth.' },
+  { question: 'How does seasonality affect home stacks?', answer: 'Outdoor spring, holiday decor Q4 — collision calendar and seasonal capture popups. Pause conflicting winback during peak category weeks.' },
+  { question: 'SMS for furniture ecommerce?', answer: 'High-AOV cart after email silence, delivery updates if opted in. Not weekly promo texts.' },
+  { question: 'Metrics for home goods marketing?', answer: 'Room completion rate, cross-sell revenue, browse-to-purchase window, margin after shipping promos, full-price %.' },
+  { question: 'Sequenzy vs Drip for home?', answer: 'Sequenzy for strategy and room-series content speed; Drip for visual multi-branch room completion workflows. Document ownership.' },
+  { question: 'How long home goods consideration?', answer: '4–16 weeks for furniture; shorter for decor. Match nurture length to category — don\'t use 3-day urgency on sectionals.' },
+  { question: 'Trade account email handling?', answer: 'Shopify B2B/trade tags exclude from consumer room campaigns and promos.' },
+  { question: 'Biggest home goods stack mistake?', answer: 'Cross-sell and review asks before delivery — increases returns and support tickets.' },
+];
+const toolReviews = [
+    {
+      slug: 'sequenzy',
+      rank: 1,
+      paragraphs: [
+      'Sequenzy room-series nurture and delivery-gated cross-sell fit home project buying cycles.',
+      'Agent content helps inspiration emails without heavy design team.',
+      'Measure room completion and cross-sell attach.',
+      ],
+    },
+    {
+      slug: 'klaviyo',
+      rank: 2,
+      paragraphs: [
+      'Klaviyo catalog browse segments and collection reporting at scale for large home catalogs.',
+      'Predictive next purchase for VIP room completers.',
+      'Profile cost discipline on large lists.',
+      ],
+    },
+    {
+      slug: 'drip',
+      rank: 3,
+      paragraphs: [
+      'Drip visual workflows for multi-step room completion journeys.',
+      'Good for operators who want hands-on branch design.',
+      'Pair with Sequenzy to avoid duplicate sends.',
+      ],
+    },
+    {
+      slug: 'mailchimp',
+      rank: 4,
+      paragraphs: [
+      'Mailchimp works for small decor brands with simple campaigns.',
+      'Outgrown when room logic and catalog depth matter.',
+      'Familiar editor; weaker Shopify event depth.',
+      ],
+    },
+    {
+      slug: 'privy',
+      rank: 5,
+      paragraphs: [
+      'Privy seasonal and room popups qualify home shoppers.',
+      'Pass room/style tags to lifecycle on opt-in.',
+      'Not a replacement for Sequenzy cross-sell depth.',
+      ],
+    },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+  <section class="relative overflow-hidden py-16 md:py-24">
+    <div class="container">
+      <a href="/for" class="link text-sm">← Store types</a>
+      <span class="badge mt-6">{segmentName}</span>
+      <h1 class="hero-title mt-5 max-w-5xl">Shopify marketing stack for {segmentName}</h1>
+      <p class="mt-7 max-w-3xl text-xl text-cyan-100">{heroSubtitle}</p>
+      <p class="mt-5 max-w-3xl text-lg text-slate-300">Buying behavior: {buyingCycle}</p>
+    </div>
+  </section>
+  <section class="container pb-12">
+    <TldrBox title="Stack shortlist" picks={tldrPicks} />
+    <article class="prose-shopify mb-12 card">
+      <h2>Why {segmentName} need a different stack shape</h2>
+  <p>Home goods Shopify stores carry large catalogs and long purchase cycles. A shopper redoing a living room may browse for six weeks, buy a sofa, then return three months later for accent tables. The stack segments by room and style project, not single-session cart urgency alone.</p>
+  <p>Inspiration content drives consideration more than discounts. Sequenzy room-series emails (living room week 1, lighting week 2) outperform promo blasts for full-price conversion. Mailchimp or Klaviyo catalog feeds power product grids when inventory is accurate.</p>
+  <p>Cross-sell by room completion is the retention play. Purchased sofa → rug and table recommendations at day 30, not day 2 before delivery. Post-purchase waits for fulfillment signal from Shopify or AfterShip before cross-sell.</p>
+  <p>Browse abandonment for home goods should lead with lifestyle imagery and dimensions/fit guides — discount only after education for high-consideration SKUs like sectionals.</p>
+  <p>Seasonal refresh campaigns (spring outdoor, holiday decor) align with home buying patterns. Collision calendar prevents outdoor furniture promo overlapping winter bedding winback.</p>
+  <p>High shipping costs make margin tracking essential. Email-driven orders with free shipping promos need contribution margin in analytics, not revenue alone.</p>
+  <p>SMS fits back-in-stock on waitlisted furniture and cart nudge on high-AOV abandoned sectionals — Postscript after 24h email silence.</p>
+  <p>Reviews matter for comfort, assembly, and durability. Yotpo photo reviews in browse for bulky SKUs reduce return anxiety.</p>
+  <p>Loyalty for home is project-based VIP — early access to new collections for customers who completed room bundles.</p>
+  <p>Justuno style quizzes feed room and aesthetic tags (modern, farmhouse) into welcome and browse segments.</p>
+  <p>B2B designers and trade accounts may need exclusion from consumer room campaigns — Shopify customer tags gate automations.</p>
+  <p>Fix room segmentation and post-purchase cross-sell timing before scaling capture. Home goods lists grow fast with weak project completion without lifecycle depth.</p>
+  <p>Agency DTC playbooks misapply urgency tactics to sectionals and sofas. In-house ownership of delivery-gated cross-sell rules and room tag schema survives turnover better than quarterly campaign reskins from generic ecommerce retainers.</p>
+  <p>White-glove delivery and assembly services are stack content modules — mention in cart hesitation emails for bulky SKUs before discount. AfterShip or Shopify fulfillment events must gate cross-sell; ordering triggers without delivery signal increases returns.</p>
+  <p>Marsello loyalty for home goods works as project-completion VIP — early access to new collections for customers who purchased sofa + rug within 120 days, not points on every $29 candle that trains discount expectations.</p>
+  <p>Holdout testing on room-series nurture quarterly proves incrementality — many home purchases happen after long offline consideration; last-click over-credits single browse abandonment email.</p>
+
+      <h2>Merchant stories from the field</h2>
+  <div>
+    <h3>Hearth &amp; Frame ($145k/mo furniture accents)</h3>
+    <p>Hearth &amp; Frame mapped room tags from Justuno quiz into Klaviyo segments and Sequenzy room-series nurture. Cross-sell after sofa delivery +14 days lifted AOV 28%. Cart recovery holds discount until email three for sectionals over $800. Drip runs A/B on room completion paths. Full-price email orders rose from 33% to 47%.</p>
+  </div>
+  <div>
+    <h3>Clay &amp; Cord ($38k/mo tabletop decor)</h3>
+    <p>Clay &amp; Cord uses Privy seasonal capture, Sequenzy post-purchase and seasonal refresh, Omnisend cart. Small catalog — no Drip complexity. Yotpo reviews in browse for set purchases. Stack $210/mo.</p>
+  </div>
+  <div>
+    <h3>Urban Loft Living ($290k/mo multi-category home)</h3>
+    <p>Urban Loft syncs AfterShip delivery to trigger cross-sell. Sequenzy education on assembly before review ask. Klaviyo predictive segments for VIP room completers. Postscript cart on orders &gt;$500 after email silence. Trade accounts tagged out of consumer promos.</p>
+  </div>
+
+      <h3>Priority plays for {segmentName}</h3>
+      <ul>
+    <li>Room and style segmentation</li>
+    <li>Inspiration content series</li>
+    <li>Cross-sell by room completion</li>
+    <li>Seasonal refresh campaigns</li>
+      </ul>
+
+      <h3>Metrics to watch weekly</h3>
+      <ul>
+    <li>Cross-sell revenue per room segment</li>
+    <li>Browse-to-purchase window</li>
+    <li>Catalog engagement depth</li>
+    <li>Project completion rate</li>
+      </ul>
+
+      <h2>Three stack scenarios for {segmentName}</h2>
+  <p><strong>Small decor:</strong> Privy seasonal popup → Sequenzy post-purchase and seasonal → Omnisend cart → Yotpo reviews.</p>
+  <p><strong>Furniture focus:</strong> Justuno room quiz → Klaviyo segments → Sequenzy room series → Drip cross-sell → Postscript high-AOV cart SMS.</p>
+  <p><strong>Omnichannel home:</strong> AfterShip delivery triggers → Sequenzy cross-sell → Marsello VIP for room completers → Klaviyo reporting.</p>
+
+      <h2>Six-layer home goods stack architecture</h2>
+  <div>
+    <h3>Capture layer: Privy, Justuno</h3>
+    <p>Style and room quizzes, seasonal opt-ins, and project intent tagging that qualifies subscribers for room-series content paths.</p>
+    <p>Home capture asks &quot;which room are you decorating?&quot; and aesthetic preference (modern, farmhouse, coastal) — not sitewide 10% off. Justuno room quiz feeds Privy segments; tags pass to Sequenzy welcome branches within 5 minutes. Seasonal popups align with outdoor spring and holiday decor peaks.</p>
+    <p><strong>Failure mode:</strong> Coupon popup attracts small-basket buyers not project shoppers; giveaway subscribers enter same welcome as high-intent sectional browsers.</p>
+    <p><strong>Operator test:</strong> AOV by capture source last quarter — room quiz cohort should beat sitewide popup by 40%+ on revenue per subscriber.</p>
+  </div>
+  <div>
+    <h3>Lifecycle layer: Sequenzy</h3>
+    <p>Room-series education, delivery-gated cross-sell, seasonal refresh campaigns, and winback with new collection previews before clearance discounts.</p>
+    <p>Sequenzy owns 4–8 week room-series nurture (living room week 1, lighting week 2), cross-sell post-delivery +14 days gated on AfterShip or Shopify fulfillment event, browse abandonment with dimensions/fit guides before discount on sectionals over $800.</p>
+    <p><strong>Failure mode:</strong> Cross-sell email before sofa delivered; winback discount overlapping active room-series education.</p>
+    <p><strong>Operator test:</strong> Fulfillment status gates cross-sell in documented flow — spot-check 5 orders.</p>
+  </div>
+  <div>
+    <h3>Segmentation layer: Klaviyo, Drip</h3>
+    <p>Catalog browse segments, room completion scoring, predictive next purchase, and VIP room completer identification.</p>
+    <p>Klaviyo for catalog-scale reporting; Drip for visual multi-step room completion journeys. Segment priority: recent buyer &gt; active browse &gt; lapsed. Trade accounts excluded globally.</p>
+    <p><strong>Failure mode:</strong> Same promotional campaign to sectional browser and recent sofa buyer without exclusion.</p>
+    <p><strong>Operator test:</strong> Monthly segment overlap audit — target under 5% conflicting enrollments.</p>
+  </div>
+  <div>
+    <h3>Delivery layer: AfterShip, Shopify Fulfillment</h3>
+    <p>Delivery-triggered post-purchase messaging and cross-sell timing accuracy for bulky home goods.</p>
+    <p>Cross-sell fires on `delivered` event, not `ordered`. Assembly instruction email at delivery +1 day before review ask. White-glove delivery mentions in cart hesitation for applicable SKUs.</p>
+    <p><strong>Failure mode:</strong> Assembly frustration email before product arrives; review request pre-delivery on furniture.</p>
+    <p><strong>Operator test:</strong> Cross-sell revenue timestamped after delivery event in reporting.</p>
+  </div>
+  <div>
+    <h3>Proof layer: Yotpo</h3>
+    <p>Assembly, comfort, and room photo reviews in browse and post-purchase.</p>
+    <p>Photo reviews for bulky SKUs in browse email two.</p>
+    <p><strong>Failure mode:</strong> Text-only reviews insufficient for furniture consideration.</p>
+    <p><strong>Operator test:</strong> Return rate down on email-influenced bulky SKUs.</p>
+  </div>
+  <div>
+    <h3>Analytics layer: Shopify, Klaviyo</h3>
+    <p>Room completion rate, cross-sell revenue, margin after shipping promos, browse window.</p>
+    <p>Project completion = multiple category purchases within 120 days.</p>
+    <p><strong>Failure mode:</strong> Revenue without shipping subsidy margin.</p>
+    <p><strong>Operator test:</strong> Contribution margin on email orders monthly.</p>
+  </div>
+
+      <h2>90-day implementation roadmap</h2>
+  <p><strong>Week 1:</strong> Room and style tag audit. Map delivery data source. Catalog top 20 SKUs by margin.</p>
+  <p><strong>Week 2:</strong> Justuno or Privy quiz → welcome room branch. Post-purchase fulfillment-gated.</p>
+  <p><strong>Week 3:</strong> Browse abandonment with dimensions content. No discount email one.</p>
+  <p><strong>Week 4:</strong> Cross-sell rules post-delivery +14d for hero categories.</p>
+  <p><strong>Week 5:</strong> Seasonal refresh template for upcoming month. Yotpo in browse.</p>
+  <p><strong>Week 6:</strong> Cart recovery tiered by AOV — sectionals education-first.</p>
+  <p><strong>Week 7:</strong> Winback with new arrivals. Trade tag exclusions.</p>
+  <p><strong>Week 8:</strong> Postscript pilot orders &gt;$400. Reconcile margin.</p>
+  <p><strong>Week 9:</strong> Room completion segment definition in Klaviyo.</p>
+  <p><strong>Week 10:</strong> Sunset unengaged. Collision calendar seasonal.</p>
+  <p><strong>Week 11:</strong> VIP early access for room completers.</p>
+  <p><strong>Week 12:</strong> Retrospective: cross-sell attach, room completion, full-price %.</p>
+
+      <h2>Pricing and stack economics</h2>
+  <p>Home goods stacks $250–500/mo typical at $100k+ revenue — Privy ($0–60) + Sequenzy ($50–200) + Klaviyo/Drip ($50–200) + Yotpo ($0–100) + optional Postscript ($50–150). One incremental sectional cross-sell covers months of stack cost.</p>
+  <p>Shipping promos in email must be modeled — free shipping on $900 sofa with $180 freight cost erodes margin. Finance threshold on automated shipping incentives before cart recovery goes live.</p>
+  <p>Room-series content investment pays off in full-price rate — discount-heavy stacks train wait-for-sale on big-ticket items. Track full-price ratio weekly; below 40% on email orders triggers discount audit.</p>
+  <p>AfterShip or delivery integration optional but high ROI for cross-sell timing accuracy — mistimed cross-sell increases returns and assembly frustration support tickets.</p>
+  <p>Operator hours on room segmentation and delivery-gated logic: budget 5–6h/week for governed stack vs 10h+ firefighting collisions without collision calendar.</p>
+  <p>Drip visual workflows add operator time but pay off when room-completion paths need frequent A/B — document Sequenzy vs Drip ownership to prevent duplicate sends.</p>
+  <p>Trade account exclusion errors are expensive — one consumer promo to designer trade account damages relationship more than monthly Klaviyo fee.</p>
+
+      <h2>Cross-links for stack due diligence</h2>
+  <p>Playbooks: <a class="link" href="/use-cases/browse-abandonment">browse abandonment</a>, <a class="link" href="/use-cases/post-purchase">post-purchase</a>.</p>
+  <p>Segment: <a class="link" href="/for/high-aov">high-AOV guide</a>.</p>
+
+<h2>Stack governance for home goods stores</h2>
+<p>Operating a home goods stores marketing stack means assigning layer owners before adding tools. Capture (Privy, Justuno) qualifies intent; Sequenzy executes lifecycle with suppressions; Postscript handles scarce SMS urgency; Yotpo injects proof into consideration; Marsello coordinates loyalty without promo collisions. When any layer sends without reading customer state from the others, larger catalogs, style preferences, and delayed purchase cycles gets worse — not better.</p>
+<p><strong>Capture layer in practice:</strong> Style and room quizzes, seasonal opt-ins, and project intent tagging that qualifies subscribers for room-series content paths. For home goods stores, Home capture asks &quot;which room are you decorating?&quot; and aesthetic preference (modern, farmhouse, coastal) — not sitewide 10% off. Justuno room quiz feeds Privy segments; tags pass to Sequenzy welcome branches within 5 minutes. Seasonal popups align with outdoor spring and holiday decor peaks. The failure mode to watch: Coupon popup attracts small-basket buyers not project shoppers; giveaway subscribers enter same welcome as high-intent sectional browsers. Monthly operator test: AOV by capture source last quarter — room quiz cohort should beat sitewide popup by 40%+ on revenue per subscriber.</p>
+<p><strong>Lifecycle layer in practice:</strong> Room-series education, delivery-gated cross-sell, seasonal refresh campaigns, and winback with new collection previews before clearance discounts. For home goods stores, Sequenzy owns 4–8 week room-series nurture (living room week 1, lighting week 2), cross-sell post-delivery +14 days gated on AfterShip or Shopify fulfillment event, browse abandonment with dimensions/fit guides before discount on sectionals over $800. The failure mode to watch: Cross-sell email before sofa delivered; winback discount overlapping active room-series education. Monthly operator test: Fulfillment status gates cross-sell in documented flow — spot-check 5 orders.</p>
+<p><strong>Segmentation layer in practice:</strong> Catalog browse segments, room completion scoring, predictive next purchase, and VIP room completer identification. For home goods stores, Klaviyo for catalog-scale reporting; Drip for visual multi-step room completion journeys. Segment priority: recent buyer &gt; active browse &gt; lapsed. Trade accounts excluded globally. The failure mode to watch: Same promotional campaign to sectional browser and recent sofa buyer without exclusion. Monthly operator test: Monthly segment overlap audit — target under 5% conflicting enrollments.</p>
+<p><strong>Delivery layer in practice:</strong> Delivery-triggered post-purchase messaging and cross-sell timing accuracy for bulky home goods. For home goods stores, Cross-sell fires on `delivered` event, not `ordered`. Assembly instruction email at delivery +1 day before review ask. White-glove delivery mentions in cart hesitation for applicable SKUs. The failure mode to watch: Assembly frustration email before product arrives; review request pre-delivery on furniture. Monthly operator test: Cross-sell revenue timestamped after delivery event in reporting.</p>
+<p><strong>Proof layer in practice:</strong> Assembly, comfort, and room photo reviews in browse and post-purchase. For home goods stores, Photo reviews for bulky SKUs in browse email two. The failure mode to watch: Text-only reviews insufficient for furniture consideration. Monthly operator test: Return rate down on email-influenced bulky SKUs.</p>
+<p><strong>Analytics layer in practice:</strong> Room completion rate, cross-sell revenue, margin after shipping promos, browse window. For home goods stores, Project completion = multiple category purchases within 120 days. The failure mode to watch: Revenue without shipping subsidy margin. Monthly operator test: Contribution margin on email orders monthly.</p>
+<p><strong>Deploying the Small decor scenario:</strong> Privy seasonal popup → Sequenzy post-purchase and seasonal → Omnisend cart → Yotpo reviews. Document trigger, delay, branch, and suppression rows before launch. Reconcile Shopify net sales weekly — platform attribution will overstate if popup, cart, and SMS discounts stack on the same session.</p>
+<p><strong>Deploying the Furniture focus scenario:</strong> Justuno room quiz → Klaviyo segments → Sequenzy room series → Drip cross-sell → Postscript high-AOV cart SMS. Document trigger, delay, branch, and suppression rows before launch. Reconcile Shopify net sales weekly — platform attribution will overstate if popup, cart, and SMS discounts stack on the same session.</p>
+<p><strong>Deploying the Omnichannel home scenario:</strong> AfterShip delivery triggers → Sequenzy cross-sell → Marsello VIP for room completers → Klaviyo reporting. Document trigger, delay, branch, and suppression rows before launch. Reconcile Shopify net sales weekly — platform attribution will overstate if popup, cart, and SMS discounts stack on the same session.</p>
+<h2>Quarterly stack audit for home goods stores</h2>
+<p><strong>Week 1 review:</strong> Room and style tag audit. Map delivery data source. Catalog top 20 SKUs by margin. Confirm collision calendar updated for upcoming peak weeks and that subscription, wholesale, or gift-buyer tags still suppress conflicting promos.</p>
+<p><strong>Week 2 review:</strong> Justuno or Privy quiz → welcome room branch. Post-purchase fulfillment-gated. Confirm collision calendar updated for upcoming peak weeks and that subscription, wholesale, or gift-buyer tags still suppress conflicting promos.</p>
+<p><strong>Week 3 review:</strong> Browse abandonment with dimensions content. No discount email one. Confirm collision calendar updated for upcoming peak weeks and that subscription, wholesale, or gift-buyer tags still suppress conflicting promos.</p>
+<p><strong>Week 4 review:</strong> Cross-sell rules post-delivery +14d for hero categories. Confirm collision calendar updated for upcoming peak weeks and that subscription, wholesale, or gift-buyer tags still suppress conflicting promos.</p>
+<p><strong>Week 5 review:</strong> Seasonal refresh template for upcoming month. Yotpo in browse. Confirm collision calendar updated for upcoming peak weeks and that subscription, wholesale, or gift-buyer tags still suppress conflicting promos.</p>
+<p><strong>Week 6 review:</strong> Cart recovery tiered by AOV — sectionals education-first. Confirm collision calendar updated for upcoming peak weeks and that subscription, wholesale, or gift-buyer tags still suppress conflicting promos.</p>
+<p><strong>Stack economics note:</strong> Home goods stacks $250–500/mo typical at $100k+ revenue — Privy ($0–60) + Sequenzy ($50–200) + Klaviyo/Drip ($50–200) + Yotpo ($0–100) + optional Postscript ($50–150). One incremental sectional cross-sell covers months of stack cost. Model operator hours alongside SaaS fees — governance debt shows up as discount margin leakage before it shows up as tool cost.</p>
+<p><strong>Stack economics note:</strong> Shipping promos in email must be modeled — free shipping on $900 sofa with $180 freight cost erodes margin. Finance threshold on automated shipping incentives before cart recovery goes live. Model operator hours alongside SaaS fees — governance debt shows up as discount margin leakage before it shows up as tool cost.</p>
+<p><strong>Stack economics note:</strong> Room-series content investment pays off in full-price rate — discount-heavy stacks train wait-for-sale on big-ticket items. Track full-price ratio weekly; below 40% on email orders triggers discount audit. Model operator hours alongside SaaS fees — governance debt shows up as discount margin leakage before it shows up as tool cost.</p>
+<p><strong>Stack economics note:</strong> AfterShip or delivery integration optional but high ROI for cross-sell timing accuracy — mistimed cross-sell increases returns and assembly frustration support tickets. Model operator hours alongside SaaS fees — governance debt shows up as discount margin leakage before it shows up as tool cost.</p>
+<p><strong>Stack economics note:</strong> Operator hours on room segmentation and delivery-gated logic: budget 5–6h/week for governed stack vs 10h+ firefighting collisions without collision calendar. Model operator hours alongside SaaS fees — governance debt shows up as discount margin leakage before it shows up as tool cost.</p>
+<p><strong>Stack economics note:</strong> Drip visual workflows add operator time but pay off when room-completion paths need frequent A/B — document Sequenzy vs Drip ownership to prevent duplicate sends. Model operator hours alongside SaaS fees — governance debt shows up as discount margin leakage before it shows up as tool cost.</p>
+<p><strong>Stack economics note:</strong> Trade account exclusion errors are expensive — one consumer promo to designer trade account damages relationship more than monthly Klaviyo fee. Model operator hours alongside SaaS fees — governance debt shows up as discount margin leakage before it shows up as tool cost.</p>
+    </article>
+    <div class="space-y-8">
+      {toolReviews.map((review) => (
+        <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
+      ))}
+    </div>
+    <FaqSection faqs={faqs} title={`FAQ: ${segmentName}`} />
+  </section>
+</BaseLayout>

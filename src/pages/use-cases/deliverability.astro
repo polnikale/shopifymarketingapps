@@ -1,0 +1,247 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import ToolReview from '../../components/ToolReview.astro';
+import { siteFromHost, pageTitle, description } from '../../content';
+import { appBySlug } from '../../data/apps';
+
+const site = siteFromHost();
+const path = '/use-cases/deliverability';
+const title = pageTitle(site, 'use-cases/deliverability');
+const desc = description(site, 'use-cases/deliverability');
+const heroSubtitle = 'Deliverability protects the entire stack — sunset unengaged across Klaviyo, Sequenzy, Privy, and Postscript lists, authentication on sending domains, engagement-based pruning before BFCM, and list hygiene governance so lifecycle email actually reaches inboxes.';
+const useCaseName = 'deliverability';
+const trigger = 'Ongoing monitoring of bounce, complaint, and engagement rates';
+const timing = 'Weekly deliverability check; sunset unengaged at 90–180 days; warm new domains gradually';
+const tldrPicks = [
+    { label: 'Hygiene', tool: 'List sunset', reason: 'Unengaged 90–180d pruning before peak' },
+    { label: 'Lifecycle', tool: 'Sequenzy', reason: 'Targeted sends over list-wide blasts' },
+    { label: 'Monitoring', tool: 'Klaviyo', reason: 'Bounce, complaint, placement reporting' },
+    { label: 'Compliance', tool: 'Gmail/Yahoo rules', reason: 'One-click unsubscribe, engagement thresholds' },
+];
+const faqs = [
+  { question: 'Sunset timeline?', answer: '90–180 days unengaged — re-engage once, then suppress. Stricter before BFCM.' },
+  { question: 'Purchased lists?', answer: 'Never — destroys placement and violates ESP ToS.' },
+  { question: 'New domain warm-up?', answer: '4+ weeks gradual volume — engaged first.' },
+  { question: 'Gmail Yahoo 2024 rules?', answer: 'One-click unsubscribe, spam rate under 0.3%, engagement-based sending.' },
+  { question: 'Multi-tool hygiene?', answer: 'Single sunset policy — sync suppressions across Privy Klaviyo Sequenzy Postscript.' },
+  { question: 'Image-heavy promos?', answer: 'Balance text, alt text, plain-text version — deliverability risk.' },
+  { question: 'Complaint spike fix?', answer: 'Pause promos, audit creative, suppress complainers, check auth.' },
+  { question: 'Sequenzy deliverability?', answer: 'Pay-per-email rewards targeting — less dormant volume than batch ESP habits.' },
+  { question: 'SMS affect email?', answer: 'Separate reputation mostly — brand trust overlap.' },
+  { question: 'Post-BFCM audit?', answer: 'Within 14 days — complaints and engagement predict January.' },
+  { question: 'Re-engagement vs winback?', answer: 'One sunset re-engagement attempt before suppress — not endless winback discounts.' },
+  { question: 'Biggest mistake?', answer: 'No sunset before BFCM volume spike — spam folder February.' },
+];
+const toolReviews = [
+    {
+      slug: 'klaviyo',
+      rank: 1,
+      paragraphs: [
+      'Klaviyo deliverability reporting and sunset tools.',
+      'Engagement segments for send discipline.',
+      'Post-peak placement monitoring.',
+      ],
+    },
+    {
+      slug: 'sequenzy',
+      rank: 2,
+      paragraphs: [
+      'Sequenzy targeted sends reduce dormant volume.',
+      'Pay-per-email aligns with hygiene economics.',
+      'Coordinate suppressions with Klaviyo.',
+      ],
+    },
+    {
+      slug: 'sendlane',
+      rank: 3,
+      paragraphs: [
+      'Sendlane deliverability focus for lifecycle layer.',
+      'Verify sunset sync with capture tools.',
+      'Monitoring dashboards.',
+      ],
+    },
+    {
+      slug: 'brevo',
+      rank: 4,
+      paragraphs: [
+      'Brevo hygiene tools for SMB stacks.',
+      'Auth setup guidance.',
+      'Engagement-based pruning.',
+      ],
+    },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+  <section class="relative overflow-hidden py-16 md:py-24">
+    <div class="container">
+      <a href="/use-cases" class="link text-sm">← Use-case playbooks</a>
+      <span class="badge mt-6">Marketing stack playbook</span>
+      <h1 class="hero-title mt-5 max-w-5xl">Shopify marketing stack for {useCaseName}</h1>
+      <p class="mt-7 max-w-3xl text-xl text-cyan-100">{heroSubtitle}</p>
+      <p class="mt-5 max-w-3xl text-lg text-slate-300">Trigger: {trigger} · Timing: {timing}</p>
+    </div>
+  </section>
+  <section class="container pb-12">
+    <TldrBox title={`Stack picks for ${useCaseName}`} picks={tldrPicks} />
+    <article class="prose-shopify mb-12 card">
+      <h2>Stack execution playbook</h2>
+  <p>Deliverability is stack infrastructure — when inbox placement fails, capture handoffs, cart recovery, replenishment, and SMS opt-in growth all waste effort. Multi-tool stacks compound risk when Privy, Klaviyo, Sequenzy, and Postscript each hold profiles without coordinated sunset.</p>
+  <p>Weekly monitoring: bounce rate, spam complaint rate, unsubscribe spike, inbox placement spot-checks. Threshold breaches trigger pause on promotional sends and hygiene sprint.</p>
+  <p>Sunset unengaged 90–180 days — re-engagement winback attempt once, then suppress or delete before peak season. Gmail and Yahoo 2024+ requirements demand engagement-based sending discipline.</p>
+  <p>Never purchased lists, never re-engage spam complainers, never sudden 10x volume without warm-up on new domains or IPs.</p>
+  <p>Sequenzy pay-per-email economics align with hygiene — sending to dormant profiles costs money and hurts placement. Targeted lifecycle beats list-wide blasts.</p>
+  <p>Authentication: SPF, DKIM, DMARC on dedicated sending domain — not root domain shortcuts. Marketing domain separate from transactional if possible.</p>
+  <p>Plain-text versions human-reviewed — image-heavy promotional without text balance triggers filters. 60/40 guidance on promo sends.</p>
+  <p>Popup consent language aligned with email content expectations — mismatch drives complaints.</p>
+  <p>SMS opt-in separate from email — TCPA compliance protects brand and deliverability adjacent reputation.</p>
+  <p>Post-BFCM deliverability audit mandatory — complaint spike and engagement drop predict January problems.</p>
+  <p>Cross-tool duplicate profiles inflate send volume — audit same email in Privy, Klaviyo, Sequenzy monthly.</p>
+
+      <h2>Merchant scenarios</h2>
+  <p><strong>Pre-BFCM hygiene:</strong> Sunset 120d unengaged → re-engagement once → suppress → verify auth → gradual volume ramp.</p>
+  <p><strong>New domain warm-up:</strong> Gradual volume increase 4 weeks → engaged segments first → no cold list spike.</p>
+  <p><strong>Complaint spike response:</strong> Pause promos → audit recent creative → sunset complainers → plain-text test send.</p>
+
+      <h2>Stack checklist</h2>
+      <ul>
+    <li>SPF/DKIM/DMARC verified</li>
+    <li>Dedicated sending domain</li>
+    <li>Weekly bounce and complaint monitoring</li>
+    <li>Sunset policy documented 90–180d</li>
+    <li>Re-engagement once then suppress</li>
+    <li>No purchased lists ever</li>
+    <li>Complainer permanent suppress</li>
+    <li>Pre-BFCM hygiene sprint completed</li>
+    <li>Cross-tool duplicate profile audit</li>
+    <li>Plain-text on promotional sends</li>
+    <li>One-click unsubscribe functional</li>
+    <li>Post-peak deliverability audit scheduled</li>
+      </ul>
+
+      <h3>Exclusions (non-negotiable)</h3>
+      <ul>
+    <li>Purchased lists</li>
+    <li>Re-engaging spam complainers</li>
+    <li>Sudden volume spikes without warm-up</li>
+      </ul>
+
+      <h3>Metrics that prove quality</h3>
+      <ul>
+    <li>Inbox placement rate</li>
+    <li>Bounce rate</li>
+    <li>Spam complaint rate</li>
+    <li>Sunset list size and recovery</li>
+      </ul>
+
+      <h3>Common mistakes</h3>
+      <ul>
+    <li>Never sunsetting unengaged contacts</li>
+    <li>Sending to purchased lists</li>
+    <li>Ignoring Gmail/Yahoo 2024 requirements</li>
+      </ul>
+
+      <h2>Deliverability across stack layers</h2>
+  <div>
+    <h3>Authentication: DNS/ESP</h3>
+    <p>SPF DKIM DMARC on send domain.</p>
+    <p>Marketing subdomain common.</p>
+    <p><strong>Failure mode:</strong> Auth failures — spam folder.</p>
+    <p><strong>Operator test:</strong> Monthly auth verification.</p>
+  </div>
+  <div>
+    <h3>Hygiene: Klaviyo, Sequenzy</h3>
+    <p>Sunset and suppression governance.</p>
+    <p>Coordinated across tools.</p>
+    <p><strong>Failure mode:</strong> Sequenzy sends Klaviyo-sunset profiles.</p>
+    <p><strong>Operator test:</strong> Single sunset policy all tools.</p>
+  </div>
+  <div>
+    <h3>Send discipline: Sequenzy</h3>
+    <p>Targeted lifecycle not batch blast.</p>
+    <p>Engagement-weighted volume.</p>
+    <p><strong>Failure mode:</strong> List-wide promo to cold 50%.</p>
+    <p><strong>Operator test:</strong> Active engagement rate pre-send.</p>
+  </div>
+  <div>
+    <h3>Consent: Privy</h3>
+    <p>Aligned popup and email expectations.</p>
+    <p>Accurate opt-in language.</p>
+    <p><strong>Failure mode:</strong> Bait-and-switch consent.</p>
+    <p><strong>Operator test:</strong> Complaint rate by capture source.</p>
+  </div>
+  <div>
+    <h3>Monitoring: Klaviyo, GlockApps</h3>
+    <p>Placement and complaint tracking.</p>
+    <p>Weekly review ritual.</p>
+    <p><strong>Failure mode:</strong> No monitoring until crisis.</p>
+    <p><strong>Operator test:</strong> Complaint under 0.08%.</p>
+  </div>
+
+      <h2>Timing and trigger governance</h2>
+  <p>Weekly: bounce, complaint, placement check.</p>
+  <p>Pre-peak: sunset sprint 4–6 weeks before BFCM.</p>
+  <p>New domain: 4-week warm-up minimum.</p>
+  <p>Post-peak: audit within 14 days.</p>
+
+      <h2>Measurement across the stack</h2>
+  <p>Inbox placement rate.</p>
+  <p>Bounce rate under 2%.</p>
+  <p>Spam complaint under 0.08%.</p>
+  <p>Sunset list size trend.</p>
+  <p>Engagement rate on active cohort.</p>
+
+      <h2>Related playbooks</h2>
+  <p>Guide: <a class="link" href="/guides/list-hygiene">list hygiene</a>.</p>
+  <p>Peak: <a class="link" href="/use-cases/black-friday">Black Friday</a>.</p>
+  <p>Design: <a class="link" href="/use-cases/email-design">email design</a> weight.</p>
+
+<h2>Stack coordination for deliverability</h2>
+<p>deliverability is not an email template problem — it is a stack handoff problem. Trigger: Ongoing monitoring of bounce, complaint, and engagement rates Timing: Weekly deliverability check; sunset unengaged at 90–180 days; warm new domains gradually Every layer must read the same customer state: capture tags from Privy, lifecycle execution in Sequenzy, proof modules from Yotpo, loyalty tier from Marsello, SMS consent from Postscript. When protect inbox placement while sending more lifecycle email, margin after discount matters more than attributed revenue.</p>
+<p><strong>Authentication:</strong> SPF DKIM DMARC on send domain. Playbook fit: Marketing subdomain common. Failure mode: Auth failures — spam folder. Operator test: Monthly auth verification.</p>
+<p><strong>Hygiene:</strong> Sunset and suppression governance. Playbook fit: Coordinated across tools. Failure mode: Sequenzy sends Klaviyo-sunset profiles. Operator test: Single sunset policy all tools.</p>
+<p><strong>Send discipline:</strong> Targeted lifecycle not batch blast. Playbook fit: Engagement-weighted volume. Failure mode: List-wide promo to cold 50%. Operator test: Active engagement rate pre-send.</p>
+<p><strong>Consent:</strong> Aligned popup and email expectations. Playbook fit: Accurate opt-in language. Failure mode: Bait-and-switch consent. Operator test: Complaint rate by capture source.</p>
+<p><strong>Monitoring:</strong> Placement and complaint tracking. Playbook fit: Weekly review ritual. Failure mode: No monitoring until crisis. Operator test: Complaint under 0.08%.</p>
+<p><strong>Scenario — Pre-BFCM hygiene:</strong> Sunset 120d unengaged → re-engagement once → suppress → verify auth → gradual volume ramp. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — New domain warm-up:</strong> Gradual volume increase 4 weeks → engaged segments first → no cold list spike. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — Complaint spike response:</strong> Pause promos → audit recent creative → sunset complainers → plain-text test send. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<h2>Checklist execution notes</h2>
+<p>SPF/DKIM/DMARC verified — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Dedicated sending domain — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Weekly bounce and complaint monitoring — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Sunset policy documented 90–180d — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Re-engagement once then suppress — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>No purchased lists ever — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Complainer permanent suppress — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Pre-BFCM hygiene sprint completed — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Cross-tool duplicate profile audit — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Plain-text on promotional sends — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>One-click unsubscribe functional — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Post-peak deliverability audit scheduled — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<h2>FAQ deep dives</h2>
+<p><strong>Sunset timeline?</strong> 90–180 days unengaged — re-engage once, then suppress. Stricter before BFCM. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Purchased lists?</strong> Never — destroys placement and violates ESP ToS. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>New domain warm-up?</strong> 4+ weeks gradual volume — engaged first. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Gmail Yahoo 2024 rules?</strong> One-click unsubscribe, spam rate under 0.3%, engagement-based sending. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Multi-tool hygiene?</strong> Single sunset policy — sync suppressions across Privy Klaviyo Sequenzy Postscript. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Image-heavy promos?</strong> Balance text, alt text, plain-text version — deliverability risk. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Complaint spike fix?</strong> Pause promos, audit creative, suppress complainers, check auth. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Sequenzy deliverability?</strong> Pay-per-email rewards targeting — less dormant volume than batch ESP habits. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>SMS affect email?</strong> Separate reputation mostly — brand trust overlap. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Post-BFCM audit?</strong> Within 14 days — complaints and engagement predict January. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Re-engagement vs winback?</strong> One sunset re-engagement attempt before suppress — not endless winback discounts. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Biggest mistake?</strong> No sunset before BFCM volume spike — spam folder February. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+    </article>
+    <div class="space-y-8">
+      {toolReviews.map((review) => (
+        <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
+      ))}
+    </div>
+    <FaqSection faqs={faqs} title={`FAQ: ${useCaseName}`} />
+  </section>
+</BaseLayout>

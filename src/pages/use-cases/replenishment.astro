@@ -1,0 +1,251 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import ToolReview from '../../components/ToolReview.astro';
+import { siteFromHost, pageTitle, description } from '../../content';
+import { appBySlug } from '../../data/apps';
+
+const site = siteFromHost();
+const path = '/use-cases/replenishment';
+const title = pageTitle(site, 'use-cases/replenishment');
+const desc = description(site, 'use-cases/replenishment');
+const heroSubtitle = 'Replenishment is the stack\'s consumption clock — Sequenzy per-SKU timing, Recharge subscription suppressions, Privy quiz properties, Postscript reorder SMS, and Klaviyo cohort reporting, not a universal 30-day timer that spams serum buyers before half-empty bottles.';
+const useCaseName = 'replenishment reminders';
+const trigger = 'Days since last purchase of consumable SKU exceeds usage window';
+const timing = 'Reminder at 80% of expected consumption; follow-up at 100%; subscription upsell at 120%';
+const tldrPicks = [
+    { label: 'Lifecycle', tool: 'Sequenzy', reason: 'Per-SKU consumption windows at 80% depletion' },
+    { label: 'Subscription sync', tool: 'Klaviyo', reason: 'Recharge/Skio suppressions and churn scoring' },
+    { label: 'Capture data', tool: 'Privy', reason: 'Consumption quiz properties feeding timing math' },
+    { label: 'SMS reminder', tool: 'Postscript', reason: 'Reorder window SMS after email silence' },
+];
+const faqs = [
+  { question: 'Best stack for replenishment?', answer: 'Sequenzy per-SKU timing, Klaviyo + Recharge suppressions, Privy consumption quiz data, Postscript SMS optional, Yotpo proof in email one.' },
+  { question: 'Universal 30-day reminder?', answer: 'No — per-SKU consumption windows. Universal timer is the top replenishment failure.' },
+  { question: 'Discount every replenishment email?', answer: 'No — full-price default. Incentive email two for non-responders cold segment only.' },
+  { question: 'Active subscribers?', answer: 'Suppress replenishment on subscribed SKU entirely. Separate skip-save flow.' },
+  { question: 'Bundle replenishment?', answer: 'Track line items separately — serum and moisturizer different timers from same kit order.' },
+  { question: 'SMS for replenishment?', answer: 'After email silence at 80% window, opt-in only, one per cycle. Strong for pet/food.' },
+  { question: 'Replenishment vs winback?', answer: 'Replenishment for recent buyers within consumption window. Winback at 90–180+ days lapsed.' },
+  { question: 'Metrics?', answer: 'Conversion rate, full-price %, days vs optimal window, holdout incrementality, subscription upsell rate.' },
+  { question: 'Holdout testing?', answer: '10% quarterly — prove email drives incremental reorder vs natural consumption cycle.' },
+  { question: 'B2B exclusion?', answer: 'Wholesale/trade tags never receive DTC replenishment.' },
+  { question: 'Loyalty collision?', answer: 'No double-points email same day as replenishment reminder.' },
+  { question: 'Biggest mistake?', answer: 'Replenishment promos to active subscribe-and-save customers on same SKU.' },
+];
+const toolReviews = [
+    {
+      slug: 'sequenzy',
+      rank: 1,
+      paragraphs: [
+      'Sequenzy per-SKU replenishment with subscription suppressions.',
+      'Full-price default templates.',
+      'Agent copy for routine reminder emails.',
+      ],
+    },
+    {
+      slug: 'klaviyo',
+      rank: 2,
+      paragraphs: [
+      'Klaviyo Recharge integration and replenishment reporting.',
+      'Cohort analysis by SKU.',
+      'Predictive reorder timing at scale.',
+      ],
+    },
+    {
+      slug: 'privy',
+      rank: 3,
+      paragraphs: [
+      'Privy consumption quiz feeds timing properties.',
+      'Pet weight, coffee cups, skin routine tags.',
+      'Foundation for accurate first replenishment.',
+      ],
+    },
+    {
+      slug: 'postscript',
+      rank: 4,
+      paragraphs: [
+      'Postscript reorder SMS after email silence.',
+      'Pet and food categories strongest ROI.',
+      'One SMS per reorder cycle cap.',
+      ],
+    },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+  <section class="relative overflow-hidden py-16 md:py-24">
+    <div class="container">
+      <a href="/use-cases" class="link text-sm">← Use-case playbooks</a>
+      <span class="badge mt-6">Marketing stack playbook</span>
+      <h1 class="hero-title mt-5 max-w-5xl">Shopify marketing stack for {useCaseName}</h1>
+      <p class="mt-7 max-w-3xl text-xl text-cyan-100">{heroSubtitle}</p>
+      <p class="mt-5 max-w-3xl text-lg text-slate-300">Trigger: {trigger} · Timing: {timing}</p>
+    </div>
+  </section>
+  <section class="container pb-12">
+    <TldrBox title={`Stack picks for ${useCaseName}`} picks={tldrPicks} />
+    <article class="prose-shopify mb-12 card">
+      <h2>Stack execution playbook</h2>
+  <p>Replenishment reminders are the profit engine for beauty, supplements, pet food, coffee, and consumable brands — but only when timed to actual consumption, gated on subscription status, and coordinated with loyalty and promotional layers. A universal 30-day reminder is the most common stack failure across consumable verticals.</p>
+  <p>Trigger: days since last purchase of consumable SKU exceeds 80% of expected consumption window. Follow-up at 100% depletion; subscription upsell at 120% for non-subscribers only. Windows vary: serum 42 days, protein 30 days, dog food by weight math, coffee by bag size quiz.</p>
+  <p>Recharge/Skio suppression is mandatory — active subscriber on same SKU must never receive single-purchase replenishment promo. Skip-flow subscribers get save branch, not replenishment. This collision destroys subscription trust weekly when unchecked.</p>
+  <p>Full-price replenishment is the target KPI — defaulting to 10% off every reminder trains wait-for-code behavior. Incentive only on email two for lapsed replenishment responders; full-price loyalists get one-tap reorder deep link only.</p>
+  <p>Bundle complexity: kit buyers deplete SKUs at different rates. Stack logic tracks line-item consumption separately — serum runs out before moisturizer in same kit order. Klaviyo properties updated per SKU purchase history.</p>
+  <p>Privy consumption quiz at capture feeds timing math before first purchase even happens — household coffee consumption, pet weight, skin routine steps. Quiz data beats post-purchase guesswork.</p>
+  <p>Postscript SMS at 80% window if email one unopened and checkout opt-in exists — one SMS per reorder cycle. Pet food and perishable categories see strongest SMS ROI; luxury beauty often email-only.</p>
+  <p>Yotpo replenishment email with routine UGC — &quot;customers reorder this every 6 weeks&quot; social proof outperforms discount on email one for beauty replenishment.</p>
+  <p>Marsello loyalty: show points earn on replenishment order in email one for enrolled profiles. Double-points promo must not collide with replenishment reminder same day — collision calendar.</p>
+  <p>Wholesale and practitioner accounts excluded from DTC replenishment entirely. B2B reorder flows are separate playbook.</p>
+  <p>Winback vs replenishment: lapsed 120+ days enters winback branch, not replenishment timer. Replenishment assumes recent buyer relationship.</p>
+  <p>Holdout 10% on replenishment quarterly — consumable buyers often reorder on schedule without email. Prove incrementality before scaling volume.</p>
+
+      <h2>Merchant scenarios</h2>
+  <p><strong>Beauty serum replenishment:</strong> 42-day window → Yotpo routine UGC email one → one-tap reorder → 5% email two non-responders only → suppress Recharge subscribers.</p>
+  <p><strong>Pet food by weight:</strong> Privy weight quiz → bag duration math → 80% trigger → SMS if unopened → multi-pet separate timers.</p>
+  <p><strong>Protein subscription:</strong> Suppress replenishment on subscribed SKU → skip-save separate → one-time add-on replenishment valid.</p>
+  <p><strong>Coffee consumption:</strong> Quiz household cups/day → bag size → 80% window → flavor cross-sell email two not discount.</p>
+
+      <h2>Stack checklist</h2>
+      <ul>
+    <li>Per-SKU consumption windows documented</li>
+    <li>80% and 100% trigger thresholds configured</li>
+    <li>Recharge/Skio active subscriber suppression live</li>
+    <li>Skip-flow separate from replenishment</li>
+    <li>Full-price default on email one</li>
+    <li>Bundle line-item tracking if applicable</li>
+    <li>Privy quiz properties on profile</li>
+    <li>Wholesale tags excluded</li>
+    <li>Loyalty collision calendar checked</li>
+    <li>SMS branch after email silence only</li>
+    <li>Holdout cohort quarterly</li>
+    <li>Replenishment margin tracked in Shopify</li>
+      </ul>
+
+      <h3>Exclusions (non-negotiable)</h3>
+      <ul>
+    <li>Customers who already reordered</li>
+    <li>Subscription active on same SKU</li>
+    <li>Products with irregular usage patterns</li>
+      </ul>
+
+      <h3>Metrics that prove quality</h3>
+      <ul>
+    <li>Replenishment conversion rate</li>
+    <li>Days early/late vs optimal</li>
+    <li>Subscription conversion from reminder</li>
+    <li>Full-price replenishment rate</li>
+      </ul>
+
+      <h3>Common mistakes</h3>
+      <ul>
+    <li>Universal 30-day reminder for all SKUs</li>
+    <li>Discounting replenishment by default</li>
+    <li>Ignoring subscription status</li>
+      </ul>
+
+      <h2>Five-layer replenishment stack map</h2>
+  <div>
+    <h3>Consumption data: Privy, Shopify</h3>
+    <p>Quiz properties and order line history feed timing math.</p>
+    <p>Per-SKU window table maintained by ops.</p>
+    <p><strong>Failure mode:</strong> Universal 30-day timer.</p>
+    <p><strong>Operator test:</strong> Three SKU categories have different live windows.</p>
+  </div>
+  <div>
+    <h3>Lifecycle execution: Sequenzy</h3>
+    <p>80%/100%/120% sequences with full-price default.</p>
+    <p>Orchestrates subscription suppressions before send.</p>
+    <p><strong>Failure mode:</strong> Discount-first every reminder.</p>
+    <p><strong>Operator test:</strong> Full-price replenishment rate above 60%.</p>
+  </div>
+  <div>
+    <h3>Subscription gate: Klaviyo, Recharge</h3>
+    <p>Active/skip/churn status suppressions.</p>
+    <p>Zero replenishment to active same-SKU subscriber.</p>
+    <p><strong>Failure mode:</strong> Promo conflicts with subscribe-and-save.</p>
+    <p><strong>Operator test:</strong> Monthly suppression audit.</p>
+  </div>
+  <div>
+    <h3>SMS layer: Postscript</h3>
+    <p>Reorder window reminder after email silence.</p>
+    <p>One SMS per cycle for pet/food/coffee opt-in cohorts.</p>
+    <p><strong>Failure mode:</strong> Weekly SMS replenishment spam.</p>
+    <p><strong>Operator test:</strong> SMS incremental reorder vs holdout.</p>
+  </div>
+  <div>
+    <h3>Analytics: Shopify, Klaviyo</h3>
+    <p>Replenishment conversion, full-price rate, holdout incrementality.</p>
+    <p>Cohort by SKU category and acquisition source.</p>
+    <p><strong>Failure mode:</strong> Revenue without subscription churn context.</p>
+    <p><strong>Operator test:</strong> Finance replenishment margin monthly.</p>
+  </div>
+
+      <h2>Timing and trigger governance</h2>
+  <p>Primary trigger: 80% of consumption window per SKU.</p>
+  <p>Follow-up: 100% depletion — stronger CTA, modest incentive cold segment only.</p>
+  <p>Subscription upsell: 120% for non-subscribers who have reordered 2+ times.</p>
+  <p>Never replenishment and promotional blast same day — collision calendar.</p>
+  <p>Pause replenishment during active winback with better offer.</p>
+
+      <h2>Measurement across the stack</h2>
+  <p>Replenishment conversion rate per SKU category.</p>
+  <p>Full-price replenishment percentage.</p>
+  <p>Days early/late vs optimal consumption window.</p>
+  <p>Subscription conversion from replenishment upsell at 120%.</p>
+  <p>Holdout incrementality quarterly.</p>
+
+      <h2>Related playbooks</h2>
+  <p>Vertical: <a class="link" href="/for/beauty">beauty</a>, <a class="link" href="/for/supplements">supplements</a>, <a class="link" href="/for/pet-products">pet</a>.</p>
+  <p>Related: <a class="link" href="/use-cases/winback">winback</a> for lapsed beyond replenishment window.</p>
+  <p>Governance: <a class="link" href="/guides/loyalty-integration">loyalty integration</a>.</p>
+
+<h2>Stack coordination for replenishment reminders</h2>
+<p>replenishment reminders is not an email template problem — it is a stack handoff problem. Trigger: Days since last purchase of consumable SKU exceeds usage window Timing: Reminder at 80% of expected consumption; follow-up at 100%; subscription upsell at 120% Every layer must read the same customer state: capture tags from Privy, lifecycle execution in Sequenzy, proof modules from Yotpo, loyalty tier from Marsello, SMS consent from Postscript. When time repeat purchases around actual product usage, margin after discount matters more than attributed revenue.</p>
+<p><strong>Consumption data:</strong> Quiz properties and order line history feed timing math. Playbook fit: Per-SKU window table maintained by ops. Failure mode: Universal 30-day timer. Operator test: Three SKU categories have different live windows.</p>
+<p><strong>Lifecycle execution:</strong> 80%/100%/120% sequences with full-price default. Playbook fit: Orchestrates subscription suppressions before send. Failure mode: Discount-first every reminder. Operator test: Full-price replenishment rate above 60%.</p>
+<p><strong>Subscription gate:</strong> Active/skip/churn status suppressions. Playbook fit: Zero replenishment to active same-SKU subscriber. Failure mode: Promo conflicts with subscribe-and-save. Operator test: Monthly suppression audit.</p>
+<p><strong>SMS layer:</strong> Reorder window reminder after email silence. Playbook fit: One SMS per cycle for pet/food/coffee opt-in cohorts. Failure mode: Weekly SMS replenishment spam. Operator test: SMS incremental reorder vs holdout.</p>
+<p><strong>Analytics:</strong> Replenishment conversion, full-price rate, holdout incrementality. Playbook fit: Cohort by SKU category and acquisition source. Failure mode: Revenue without subscription churn context. Operator test: Finance replenishment margin monthly.</p>
+<p><strong>Scenario — Beauty serum replenishment:</strong> 42-day window → Yotpo routine UGC email one → one-tap reorder → 5% email two non-responders only → suppress Recharge subscribers. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — Pet food by weight:</strong> Privy weight quiz → bag duration math → 80% trigger → SMS if unopened → multi-pet separate timers. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — Protein subscription:</strong> Suppress replenishment on subscribed SKU → skip-save separate → one-time add-on replenishment valid. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — Coffee consumption:</strong> Quiz household cups/day → bag size → 80% window → flavor cross-sell email two not discount. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<h2>Checklist execution notes</h2>
+<p>Per-SKU consumption windows documented — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>80% and 100% trigger thresholds configured — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Recharge/Skio active subscriber suppression live — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Skip-flow separate from replenishment — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Full-price default on email one — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Bundle line-item tracking if applicable — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Privy quiz properties on profile — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Wholesale tags excluded — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Loyalty collision calendar checked — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>SMS branch after email silence only — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Holdout cohort quarterly — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Replenishment margin tracked in Shopify — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<h2>FAQ deep dives</h2>
+<p><strong>Best stack for replenishment?</strong> Sequenzy per-SKU timing, Klaviyo + Recharge suppressions, Privy consumption quiz data, Postscript SMS optional, Yotpo proof in email one. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Universal 30-day reminder?</strong> No — per-SKU consumption windows. Universal timer is the top replenishment failure. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Discount every replenishment email?</strong> No — full-price default. Incentive email two for non-responders cold segment only. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Active subscribers?</strong> Suppress replenishment on subscribed SKU entirely. Separate skip-save flow. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Bundle replenishment?</strong> Track line items separately — serum and moisturizer different timers from same kit order. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>SMS for replenishment?</strong> After email silence at 80% window, opt-in only, one per cycle. Strong for pet/food. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Replenishment vs winback?</strong> Replenishment for recent buyers within consumption window. Winback at 90–180+ days lapsed. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Metrics?</strong> Conversion rate, full-price %, days vs optimal window, holdout incrementality, subscription upsell rate. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Holdout testing?</strong> 10% quarterly — prove email drives incremental reorder vs natural consumption cycle. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>B2B exclusion?</strong> Wholesale/trade tags never receive DTC replenishment. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Loyalty collision?</strong> No double-points email same day as replenishment reminder. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Biggest mistake?</strong> Replenishment promos to active subscribe-and-save customers on same SKU. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+    </article>
+    <div class="space-y-8">
+      {toolReviews.map((review) => (
+        <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
+      ))}
+    </div>
+    <FaqSection faqs={faqs} title={`FAQ: ${useCaseName}`} />
+  </section>
+</BaseLayout>

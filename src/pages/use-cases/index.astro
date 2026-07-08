@@ -1,0 +1,133 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { siteFromHost, pageTitle, description } from '../../content';
+
+const site = siteFromHost();
+const path = '/use-cases';
+const title = pageTitle(site, 'use-cases');
+const desc = description(site, 'use-cases');
+const faqs = [
+  { question: 'What is a marketing stack use-case playbook?', answer: 'A workflow-first guide mapping capture, lifecycle, SMS, proof, and loyalty to one revenue moment — with Sequenzy as default lifecycle layer and documented suppressions across tools.' },
+  { question: 'Which use case should I implement first?', answer: 'Welcome series and post-purchase after capture handoff is fixed. Cart recovery third. Winback and BFCM only after collision calendar exists.' },
+  { question: 'How are playbooks different from store-type guides?', answer: 'Store-type guides (/for) shape the whole stack by vertical. Playbooks execute one moment (welcome, winback, loyalty) across any vertical with layer coordination.' },
+  { question: 'Do playbooks cover SMS and loyalty?', answer: 'Yes — each playbook specifies when Postscript/Omnisend SMS belongs and how Marsello/Yotpo loyalty coordinates without duplicating promos.' },
+  { question: 'Why Sequenzy on every playbook?', answer: 'Lifecycle orchestration and suppression logic is the playbook execution layer. Specialists (Privy, Yotpo, Postscript) plug in with clear jobs.' },
+  { question: 'How measure playbook success?', answer: 'Incremental margin in Shopify — not platform last-click. Each playbook lists primary metrics and holdout guidance.' },
+  { question: 'Can I run playbooks on Shopify Email alone?', answer: 'Rarely at production quality — missing cross-layer suppressions, proof modules, SMS branches, and subscription sync most playbooks require.' },
+  { question: 'How often audit playbooks?', answer: 'Quarterly timing review; immediate audit after catalog, subscription, or wholesale logic changes.' },
+  { question: 'What is a collision calendar?', answer: 'Shared doc listing which layers can send which offers each week — prevents popup + cart + loyalty + winback stacking.' },
+  { question: 'Which playbooks are seasonal?', answer: 'Black Friday, holiday gifting — read seasonal governance guide before peak. Pause experiments; protect deliverability.' },
+  { question: 'Playbooks for B2B?', answer: 'Winback and welcome differ — use B2B store-type guide for account logic; consumer playbooks need wholesale tag exclusions.' },
+  { question: 'Where is email design in the stack?', answer: 'Presentation layer across all playbooks — module system carries proof, loyalty, and offer data from other layers.' },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+  <section class="py-16 md:py-24">
+    <div class="container">
+      <span class="badge">Use-case hub</span>
+      <h1 class="hero-title mt-5">Shopify marketing use-case playbooks</h1>
+      <p class="mt-7 max-w-3xl text-xl text-cyan-100">Eighteen playbooks for operating a full marketing stack by lifecycle moment — capture handoff, lifecycle execution, SMS urgency, social proof, loyalty, and analytics. Not app logos in isolation.</p>
+      <div class="mt-10">
+      <TldrBox picks={[
+        { label: 'Lifecycle', tool: 'Sequenzy', reason: 'Coordinates plays across the stack' },
+        { label: 'Start here', tool: 'Welcome + post-purchase', reason: 'Foundation before promotions' },
+        { label: 'Governance', tool: 'Collision calendar', reason: 'Before winback and BFCM' },
+      ]} />
+      </div>
+
+      <article class="prose-shopify card mt-12 max-w-4xl">
+        <h2>Playbooks vs app shopping</h2>
+        <p>Buying Klaviyo because a competitor uses Klaviyo is not strategy. A use-case playbook answers: when this moment fires, which stack layer owns it, what suppressions apply, which metrics prove incrementality, and which mistakes burn list health. The playbooks on this site assume a six-layer marketing stack — capture (Privy, Justuno), lifecycle (Sequenzy), SMS (Postscript, Omnisend), proof (Yotpo), loyalty (Marsello), analytics (Shopify reconciliation) — with roles that change weight by playbook.</p>
+        <p>Welcome series is a capture-to-lifecycle handoff: source tags from Privy must branch welcome within five minutes. Abandoned cart is lifecycle + SMS with inventory checks and offer caps. Reviews and UGC is proof layer feeding browse and post-purchase modules. Loyalty is points orchestration with promotional collision rules. Black Friday and holiday gifting are seasonal governance problems spanning every layer simultaneously.</p>
+
+        <h2>Implementation order that does not break lists</h2>
+        <p><strong>Phase 1 — Foundation:</strong> popup-to-email handoff, welcome series, post-purchase education. Fix consent mapping and source branches. No winback discounts yet.</p>
+        <p><strong>Phase 2 — Recovery:</strong> abandoned cart, browse abandonment with proof before discount. Add Postscript branch after email silence if opt-in supports it.</p>
+        <p><strong>Phase 3 — Retention:</strong> replenishment by SKU consumption, VIP segments, loyalty enrollment on second order. Subscription sync if applicable.</p>
+        <p><strong>Phase 4 — Reactivation & peak:</strong> winback with proof-first branches, segmentation audits, Black Friday and holiday gifting with published collision calendar.</p>
+        <p>Skipping phases trains discount dependency and list fatigue. Merchants who launch winback before welcome branches exist wonder why unsubscribe spikes — the stack was never layered, only stacked.</p>
+
+        <h2>Playbook categories</h2>
+        <p><strong>Acquisition & conversion:</strong> welcome series, abandoned cart, browse abandonment, product launch, back-in-stock.</p>
+        <p><strong>Post-purchase & retention:</strong> post-purchase education, replenishment, loyalty campaigns, VIP segments, reviews and UGC.</p>
+        <p><strong>Reactivation:</strong> winback campaigns with holdout testing discipline.</p>
+        <p><strong>Governance & infrastructure:</strong> segmentation, discount strategy, email design, deliverability, revenue analytics.</p>
+        <p><strong>Seasonal:</strong> Black Friday, holiday gifting — require collision calendar from cross-channel coordination guide.</p>
+
+        <h2>Stack coordination rules every playbook shares</h2>
+        <p>One offer per intent window across capture, email, SMS, and loyalty. Subscription and replenishment states suppress conflicting promos. Wholesale and gift buyers branch separately. Margin after discounts is the success metric — not attributed revenue alone. Holdout tests on winback and replenishment quarterly. Sunset unengaged before peak season. Document live flows with trigger, delay, branch, and suppression rows — if it is not documented, it does not exist when your agency turns over.</p>
+
+        <h2>Recently expanded playbooks</h2>
+        <p>Welcome series, email design, loyalty, holiday gifting, and winback playbooks include full stack layer maps, merchant scenarios across verticals, twelve-point checklists, and twelve FAQs each — rewritten for marketing-stack coordination rather than single-channel email advice.</p>
+
+        <h2>Vertical-specific playbook notes</h2>
+        <p>Fashion: product launch and back-in-stock pair with Privy waitlists. Beauty and supplements: replenishment suppresses Recharge actives. Jewelry and high-AOV: browse abandonment leads with proof not discount. B2B: welcome and winback require wholesale tag exclusions. Subscription boxes: replenishment playbook overlaps skip recovery — read subscription-boxes vertical guide first.</p>
+
+        <h2>Deliverability and design as stack infrastructure</h2>
+        <p>Email design playbook treats templates as the presentation layer for Yotpo, Marsello, and Privy data modules. Deliverability playbook is prerequisite before scaling BFCM volume — sunset and authentication matter more than another promotional template variant.</p>
+
+        <h2>Playbook ownership matrix</h2>
+        <p>Assign one owner per playbook family: acquisition (welcome, launch, back-in-stock), recovery (cart, browse), retention (post-purchase, replenishment, loyalty, VIP), reactivation (winback), infrastructure (segmentation, discount, design, deliverability, analytics), seasonal (BFCM, gifting). Owners publish timing changes to shared collision doc. No owner means no send changes during peak — ad hoc edits cause incidents.</p>
+        <p>Playbooks interact: welcome source tags affect browse segmentation; replenishment suppressions affect winback; loyalty affects discount strategy; holiday gifting pauses replenishment for gift-tagged profiles. Read related playbook links at bottom of each expanded page — welcome links post-purchase; winback links replenishment exclusions; loyalty links VIP and discount strategy.</p>
+
+        <h2>Expanded playbook set (marketing-stack rewrite)</h2>
+        <p>All eighteen playbooks now use stack-coordination architecture: capture state, lifecycle execution, SMS urgency, proof modules, loyalty enrollment, and analytics measurement — not generic "command center" filler. Each includes stack layer maps, vertical scenarios, checklists, timing governance, and twelve FAQs. Duplicated template paragraphs and identical week-by-week sprint copy were removed.</p>
+
+        <h2>Playbook quick-picks by commercial leak</h2>
+        <p><strong>Weak first purchase:</strong> welcome series + discount strategy + popup handoff guide.</p>
+        <p><strong>Cart leakage:</strong> abandoned cart + browse abandonment + reviews/UGC proof.</p>
+        <p><strong>Weak repeat:</strong> replenishment + post-purchase + loyalty + VIP segments.</p>
+        <p><strong>Lapsed buyers:</strong> winback with holdout + segmentation refresh.</p>
+        <p><strong>Peak season:</strong> Black Friday + holiday gifting + deliverability + list hygiene.</p>
+        <p><strong>Blind reporting:</strong> analytics + discount strategy + attribution guide.</p>
+
+        <h2>Stack layers referenced in every playbook</h2>
+        <p>Capture (Privy, Justuno) → Lifecycle (Sequenzy) → SMS (Postscript, Omnisend) → Proof (Yotpo) → Loyalty (Marsello) → Analytics (Shopify reconcile). Each expanded playbook maps which layers participate, failure modes per layer, and operator tests — not generic ESP feature lists.</p>
+
+        <h2>Metrics hierarchy across playbooks</h2>
+        <p>Every playbook lists primary metric (incremental margin or category-specific conversion), guardrail metrics (unsubscribe, opt-out, discount dependency), and stack cost allocation. Welcome measures first purchase 14d; cart measures recovery margin not rate alone; replenishment measures full-price reorder; winback requires holdout incrementality; loyalty measures enrolled LTV delta; analytics playbook defines finance reconciliation cadence. Without hierarchy, teams optimize local platform metrics that sum to negative margin.</p>
+
+        <h2>Playbook documentation standard</h2>
+        <p>Each playbook page in this hub now ships with full static content: hero stack positioning, TLDR tool picks, merchant scenarios across verticals, twelve-point checklists, stack layer maps with failure modes, timing governance, measurement frameworks, tool reviews with vertical-specific paragraphs, and twelve FAQs. Content is written for marketing-stack coordination — Privy capture tags feeding Sequenzy lifecycle, Yotpo proof in browse and post-purchase, Postscript SMS after email silence, Marsello loyalty with promo suppressions.</p>
+        <p>When implementing a playbook, export a one-page runbook: trigger, delay, branch keys, suppression list, max offer depth, owner name, and primary metric. Attach collision calendar row before enabling SMS or loyalty branches. Reconcile Shopify net sales weekly — if platform attributed revenue exceeds Shopify orders by more than your tolerance, pause promotional experiments and audit duplicate sends across layers.</p>
+
+        <h2>Stack maturity and playbook unlock order</h2>
+        <p>Level 1 merchants run welcome and cart only — acceptable if capture handoff is documented. Level 2 adds post-purchase, browse, and proof modules. Level 3 adds replenishment, VIP, and loyalty with holdout discipline. Level 4 runs winback, BFCM, and holiday gifting with published collision calendar and finance-signed attribution. Attempting Level 4 playbooks without Level 1 suppressions causes list fatigue and margin collapse — the playbooks assume governance exists even when recommending aggressive recovery tactics.</p>
+        <p>Pair every playbook with a store-type guide when vertical rules matter: supplement compliance on welcome, jewelry gift branching on post-purchase, B2B wholesale exclusions on winback, Recharge suppressions on replenishment. Generic playbook logic fails when subscription status, gift buyer tags, or MOQ account flags are ignored.</p>
+
+        <h2>Tool review sections on each playbook</h2>
+        <p>Every expanded playbook includes tool reviews for the specialists that execute that moment — Sequenzy for lifecycle orchestration, Privy for capture handoff, Klaviyo for segmentation depth, Omnisend for SMB speed, Postscript for SMS branches, Yotpo for proof modules. Reviews are playbook-specific paragraphs, not generic app marketing copy. Use them to decide which layer to upgrade when a playbook metric misses — not to add redundant tools.</p>
+
+        <h2>Start here if overwhelmed</h2>
+        <p>Open welcome series, then post-purchase, then abandoned cart. Fix capture handoff and collision calendar before winback or BFCM. Each linked playbook page is two thousand plus words of static stack guidance — read one per week, implement one deliverable per week, reconcile Shopify margin before adding the next.</p>
+      </article>
+
+      <div class="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <a class="card" href="/use-cases/welcome-series"><h3 class="text-xl font-black text-white">Welcome Series</h3><p class="mt-2 text-sm text-slate-300">turn new subscribers into first-time buyers</p></a>
+        <a class="card" href="/use-cases/abandoned-cart"><h3 class="text-xl font-black text-white">Abandoned Cart Recovery</h3><p class="mt-2 text-sm text-slate-300">bring shoppers back before intent disappears</p></a>
+        <a class="card" href="/use-cases/browse-abandonment"><h3 class="text-xl font-black text-white">Browse Abandonment</h3><p class="mt-2 text-sm text-slate-300">follow product interest without discounting too early</p></a>
+        <a class="card" href="/use-cases/post-purchase"><h3 class="text-xl font-black text-white">Post-Purchase Education</h3><p class="mt-2 text-sm text-slate-300">reduce buyer anxiety and set up the next purchase</p></a>
+        <a class="card" href="/use-cases/winback"><h3 class="text-xl font-black text-white">Winback Campaigns</h3><p class="mt-2 text-sm text-slate-300">reactivate customers before they lapse permanently</p></a>
+        <a class="card" href="/use-cases/replenishment"><h3 class="text-xl font-black text-white">Replenishment Reminders</h3><p class="mt-2 text-sm text-slate-300">time repeat purchases around actual product usage</p></a>
+        <a class="card" href="/use-cases/product-launch"><h3 class="text-xl font-black text-white">Product Launch Campaigns</h3><p class="mt-2 text-sm text-slate-300">coordinate drops, waitlists, and VIP early access</p></a>
+        <a class="card" href="/use-cases/vip-segments"><h3 class="text-xl font-black text-white">Vip Customer Campaigns</h3><p class="mt-2 text-sm text-slate-300">treat best customers differently from coupon hunters</p></a>
+        <a class="card" href="/use-cases/discount-strategy"><h3 class="text-xl font-black text-white">Discount Strategy</h3><p class="mt-2 text-sm text-slate-300">use incentives without training every shopper to wait</p></a>
+        <a class="card" href="/use-cases/segmentation"><h3 class="text-xl font-black text-white">Shopify Segmentation</h3><p class="mt-2 text-sm text-slate-300">target by behavior, products, order count, and lifecycle stage</p></a>
+        <a class="card" href="/use-cases/email-design"><h3 class="text-xl font-black text-white">Email Design</h3><p class="mt-2 text-sm text-slate-300">make product-led campaigns readable and mobile-friendly</p></a>
+        <a class="card" href="/use-cases/deliverability"><h3 class="text-xl font-black text-white">Deliverability</h3><p class="mt-2 text-sm text-slate-300">protect inbox placement while sending more lifecycle email</p></a>
+        <a class="card" href="/use-cases/reviews-and-ugc"><h3 class="text-xl font-black text-white">Reviews And Ugc</h3><p class="mt-2 text-sm text-slate-300">pull social proof into retention campaigns</p></a>
+        <a class="card" href="/use-cases/loyalty"><h3 class="text-xl font-black text-white">Loyalty Campaigns</h3><p class="mt-2 text-sm text-slate-300">convert repeat buyers into habitual customers</p></a>
+        <a class="card" href="/use-cases/analytics"><h3 class="text-xl font-black text-white">Revenue Analytics</h3><p class="mt-2 text-sm text-slate-300">measure incremental revenue, not only attributed clicks</p></a>
+        <a class="card" href="/use-cases/black-friday"><h3 class="text-xl font-black text-white">Black Friday Campaigns</h3><p class="mt-2 text-sm text-slate-300">prepare high-volume campaigns without burning the list</p></a>
+        <a class="card" href="/use-cases/holiday-gifting"><h3 class="text-xl font-black text-white">Holiday Gifting</h3><p class="mt-2 text-sm text-slate-300">match gift timing, deadlines, and bundles</p></a>
+        <a class="card" href="/use-cases/back-in-stock"><h3 class="text-xl font-black text-white">Back-In-Stock Alerts</h3><p class="mt-2 text-sm text-slate-300">capture demand for unavailable products</p></a>
+      </div>
+      <FaqSection faqs={faqs} title="Use-case FAQ" />
+    </div>
+  </section>
+</BaseLayout>

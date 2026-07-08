@@ -1,0 +1,249 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import ToolReview from '../../components/ToolReview.astro';
+import { siteFromHost, pageTitle, description } from '../../content';
+import { appBySlug } from '../../data/apps';
+
+const site = siteFromHost();
+const path = '/use-cases/post-purchase';
+const title = pageTitle(site, 'use-cases/post-purchase');
+const desc = description(site, 'use-cases/post-purchase');
+const heroSubtitle = 'Post-purchase is where proof, education, loyalty enrollment, and cross-sell coordinate — Sequenzy delivery-gated sequences, AfterShip triggers, Yotpo review requests, and Marsello second-order enrollment, not a second sale push before the box arrives.';
+const useCaseName = 'post-purchase education';
+const trigger = 'Order placed and payment confirmed';
+const timing = 'Confirmation immediate; shipping at fulfillment; education at delivery +2 days; cross-sell at day 14';
+const tldrPicks = [
+    { label: 'Lifecycle', tool: 'Sequenzy', reason: 'Education, delivery-gated cross-sell, gift branches' },
+    { label: 'Delivery sync', tool: 'AfterShip', reason: 'Delivered-event triggers for bulky goods' },
+    { label: 'Proof', tool: 'Yotpo', reason: 'Review requests timed post-delivery' },
+    { label: 'Loyalty', tool: 'Marsello', reason: 'Second-order enrollment not day-zero pitch' },
+];
+const faqs = [
+  { question: 'When post-purchase cross-sell?', answer: 'After delivery +14 days bulky goods; day 14 consumables; never before customer has product for furniture.' },
+  { question: 'Gift order handling?', answer: 'Separate branch — packaging/care for gift buyer, no recipient cross-sell to purchaser.' },
+  { question: 'Review request timing?', answer: 'Delivery +5 to +14 depending category; after return window for high-return SKUs.' },
+  { question: 'Loyalty in post-purchase?', answer: 'Enroll on second order or email three — not day zero.' },
+  { question: 'Subscription first order?', answer: 'Onboarding education — not cross-sell conflicting with subscription shipment.' },
+  { question: 'Best stack tools?', answer: 'Sequenzy sequences, AfterShip triggers, Yotpo reviews, Marsello loyalty timing.' },
+  { question: 'Digital post-purchase?', answer: 'Activation not shipping — access immediate, progress check-ins.' },
+  { question: 'SMS post-purchase?', answer: 'Delivery notification perishables only — not cross-sell SMS.' },
+  { question: 'Metrics?', answer: 'Review rate, second order 60d, support tickets, cross-sell attach, returns.' },
+  { question: 'Biggest mistake?', answer: 'Cross-sell before delivery on bulky goods — increases returns and support load.' },
+  { question: 'AfterShip required?', answer: 'High ROI for furniture/home — optional for small parcel consumables.' },
+  { question: 'Education content who owns?', answer: 'Ops/product with compliance review supplements — Sequenzy executes approved blocks.' },
+];
+const toolReviews = [
+    {
+      slug: 'sequenzy',
+      rank: 1,
+      paragraphs: [
+      'Sequenzy branched post-purchase by order type and category.',
+      'Delivery-gated logic for cross-sell.',
+      'Agent drafts education content.',
+      ],
+    },
+    {
+      slug: 'aftership-email',
+      rank: 2,
+      paragraphs: [
+      'AfterShip delivery triggers for post-purchase timing.',
+      'Critical for furniture cross-sell gating.',
+      'Pair with Sequenzy not duplicate sends.',
+      ],
+    },
+    {
+      slug: 'yotpo-email-sms',
+      rank: 3,
+      paragraphs: [
+      'Yotpo review request integration post-delivery.',
+      'Category timing configuration.',
+      'UGC in follow-up education emails.',
+      ],
+    },
+    {
+      slug: 'marsello',
+      rank: 4,
+      paragraphs: [
+      'Marsello second-order loyalty enrollment.',
+      'Avoid day-zero enrollment conflict.',
+      'Points balance in post-purchase email three if enrolled.',
+      ],
+    },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+  <section class="relative overflow-hidden py-16 md:py-24">
+    <div class="container">
+      <a href="/use-cases" class="link text-sm">← Use-case playbooks</a>
+      <span class="badge mt-6">Marketing stack playbook</span>
+      <h1 class="hero-title mt-5 max-w-5xl">Shopify marketing stack for {useCaseName}</h1>
+      <p class="mt-7 max-w-3xl text-xl text-cyan-100">{heroSubtitle}</p>
+      <p class="mt-5 max-w-3xl text-lg text-slate-300">Trigger: {trigger} · Timing: {timing}</p>
+    </div>
+  </section>
+  <section class="container pb-12">
+    <TldrBox title={`Stack picks for ${useCaseName}`} picks={tldrPicks} />
+    <article class="prose-shopify mb-12 card">
+      <h2>Stack execution playbook</h2>
+  <p>Post-purchase education is the stack moment that reduces returns, support tickets, and buyer remorse — while setting up replenishment and cross-sell with correct timing. Pushing another sale before delivery on furniture, jewelry, or supplements increases returns and chargebacks.</p>
+  <p>Immediate confirmation: order summary and expectation setting. Fulfillment: shipping notification. Education: delivery +2 days for usage, assembly, or routine guidance. Cross-sell: delivery +14 days for home goods, day 14 for consumables, day 7 for digital activation.</p>
+  <p>Gift vs self-purchase branches mandatory — gift buyers get packaging and care content, not &quot;buy another for yourself.&quot; Shopify gift order properties or recipient-detected heuristics gate branches.</p>
+  <p>Yotpo review request timing: delivery +5 to +14 days depending on category — after return window assessment for high-return SKUs. Experience language in supplements; fit and comfort in apparel.</p>
+  <p>Marsello loyalty enrollment on second order or post-purchase email three after positive experience — not day-zero points pitch competing with product education.</p>
+  <p>Recharge subscription first orders get onboarding education, not cross-sell conflicting with upcoming shipment. Subscription suppressions on replenishment promos in post-purchase path.</p>
+  <p>AfterShip or Shopify delivery events gate cross-sell for home goods and high-AOV — cross-sell before delivery is top mistake in furniture stacks.</p>
+  <p>Digital products: post-purchase IS activation — access link immediate, day 1/3/7 check-ins. No shipping modules. See digital vertical guide.</p>
+  <p>SMS: delivery notification and delivery-day confirm for perishables — Postscript with opt-in. Not promotional cross-sell SMS.</p>
+  <p>Analytics: review submission rate, second order within 60 days, support ticket reduction, cross-sell attach rate — each measured separately not blended.</p>
+
+      <h2>Merchant scenarios</h2>
+  <p><strong>Beauty routine post-purchase:</strong> Usage education day 2 → review day 7 → replenishment preview day 14 → loyalty enroll on 2nd order.</p>
+  <p><strong>Furniture delivery-gated:</strong> Assembly email on delivered → review day 14 → cross-sell room completion day 21.</p>
+  <p><strong>Gift jewelry order:</strong> Packaging care email → no cross-sell to gift buyer → recipient-focused content only.</p>
+  <p><strong>Digital course:</strong> Access immediate → module 1 day 1 → stall help day 3 → no physical-product modules.</p>
+
+      <h2>Stack checklist</h2>
+      <ul>
+    <li>Gift vs self branch configured</li>
+    <li>Delivery-gated cross-sell for bulky SKUs</li>
+    <li>Review request timed post-delivery appropriately</li>
+    <li>Subscription first-order separate path</li>
+    <li>Loyalty not in email one</li>
+    <li>Education before cross-sell</li>
+    <li>AfterShip trigger verified if used</li>
+    <li>Support FAQ link in email one</li>
+    <li>Replenishment preview timing documented</li>
+    <li>SMS delivery-only if applicable</li>
+    <li>Return window considered for review ask</li>
+    <li>Second-order 60d metric tracked</li>
+      </ul>
+
+      <h3>Exclusions (non-negotiable)</h3>
+      <ul>
+    <li>Gift purchasers (different messaging)</li>
+    <li>Subscription first orders</li>
+    <li>High-return SKUs needing fit guide first</li>
+      </ul>
+
+      <h3>Metrics that prove quality</h3>
+      <ul>
+    <li>Review submission rate</li>
+    <li>Second order within 60 days</li>
+    <li>Support ticket reduction</li>
+    <li>Cross-sell attach rate</li>
+      </ul>
+
+      <h3>Common mistakes</h3>
+      <ul>
+    <li>Pushing another sale before delivery</li>
+    <li>Same post-purchase for gifts and self-purchases</li>
+    <li>No product-specific education</li>
+      </ul>
+
+      <h2>Five-layer post-purchase stack map</h2>
+  <div>
+    <h3>Lifecycle orchestration: Sequenzy</h3>
+    <p>Branched post-purchase by category and order type.</p>
+    <p>Education → review → cross-sell sequence.</p>
+    <p><strong>Failure mode:</strong> Cross-sell before delivery.</p>
+    <p><strong>Operator test:</strong> Cross-sell timestamp after delivery event.</p>
+  </div>
+  <div>
+    <h3>Delivery intelligence: AfterShip, Shopify</h3>
+    <p>Delivered trigger for timing accuracy.</p>
+    <p>Furniture and bulky goods cross-sell gate.</p>
+    <p><strong>Failure mode:</strong> Ordered-event triggers cross-sell.</p>
+    <p><strong>Operator test:</strong> 100% bulky cross-sell post-delivery.</p>
+  </div>
+  <div>
+    <h3>Proof layer: Yotpo</h3>
+    <p>Timed review requests and UGC follow-up.</p>
+    <p>Category-specific review timing.</p>
+    <p><strong>Failure mode:</strong> Review ask before arrival.</p>
+    <p><strong>Operator test:</strong> Review rate by timing variant.</p>
+  </div>
+  <div>
+    <h3>Loyalty enrollment: Marsello</h3>
+    <p>Second-order or post-experience enrollment.</p>
+    <p>Not competing with education email one.</p>
+    <p><strong>Failure mode:</strong> Points pitch day zero.</p>
+    <p><strong>Operator test:</strong> Enrollment on 2nd order rate.</p>
+  </div>
+  <div>
+    <h3>Analytics: Shopify</h3>
+    <p>Second order 60d, tickets, review rate, cross-sell attach.</p>
+    <p>Separate metrics per post-purchase email.</p>
+    <p><strong>Failure mode:</strong> Blended post-purchase ROI.</p>
+    <p><strong>Operator test:</strong> Weekly metric dashboard exists.</p>
+  </div>
+
+      <h2>Timing and trigger governance</h2>
+  <p>Confirmation: immediate.</p>
+  <p>Education: delivery +2 days or digital day 1.</p>
+  <p>Review ask: delivery +5 to +14 by category.</p>
+  <p>Cross-sell: delivery +14 bulky, day 14 consumables.</p>
+  <p>Loyalty enroll: second order trigger only.</p>
+
+      <h2>Measurement across the stack</h2>
+  <p>Review submission rate.</p>
+  <p>Second order within 60 days.</p>
+  <p>Support ticket volume per 100 orders.</p>
+  <p>Cross-sell attach rate post-delivery.</p>
+  <p>Return rate on post-purchase-influenced orders.</p>
+
+      <h2>Related playbooks</h2>
+  <p>Next: <a class="link" href="/use-cases/replenishment">replenishment</a> for consumables.</p>
+  <p>Proof: <a class="link" href="/use-cases/reviews-and-ugc">reviews and UGC</a>.</p>
+  <p>Vertical: <a class="link" href="/for/home-goods">home goods</a> delivery gating.</p>
+
+<h2>Stack coordination for post-purchase education</h2>
+<p>post-purchase education is not an email template problem — it is a stack handoff problem. Trigger: Order placed and payment confirmed Timing: Confirmation immediate; shipping at fulfillment; education at delivery +2 days; cross-sell at day 14 Every layer must read the same customer state: capture tags from Privy, lifecycle execution in Sequenzy, proof modules from Yotpo, loyalty tier from Marsello, SMS consent from Postscript. When reduce buyer anxiety and set up the next purchase, margin after discount matters more than attributed revenue.</p>
+<p><strong>Lifecycle orchestration:</strong> Branched post-purchase by category and order type. Playbook fit: Education → review → cross-sell sequence. Failure mode: Cross-sell before delivery. Operator test: Cross-sell timestamp after delivery event.</p>
+<p><strong>Delivery intelligence:</strong> Delivered trigger for timing accuracy. Playbook fit: Furniture and bulky goods cross-sell gate. Failure mode: Ordered-event triggers cross-sell. Operator test: 100% bulky cross-sell post-delivery.</p>
+<p><strong>Proof layer:</strong> Timed review requests and UGC follow-up. Playbook fit: Category-specific review timing. Failure mode: Review ask before arrival. Operator test: Review rate by timing variant.</p>
+<p><strong>Loyalty enrollment:</strong> Second-order or post-experience enrollment. Playbook fit: Not competing with education email one. Failure mode: Points pitch day zero. Operator test: Enrollment on 2nd order rate.</p>
+<p><strong>Analytics:</strong> Second order 60d, tickets, review rate, cross-sell attach. Playbook fit: Separate metrics per post-purchase email. Failure mode: Blended post-purchase ROI. Operator test: Weekly metric dashboard exists.</p>
+<p><strong>Scenario — Beauty routine post-purchase:</strong> Usage education day 2 → review day 7 → replenishment preview day 14 → loyalty enroll on 2nd order. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — Furniture delivery-gated:</strong> Assembly email on delivered → review day 14 → cross-sell room completion day 21. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — Gift jewelry order:</strong> Packaging care email → no cross-sell to gift buyer → recipient-focused content only. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — Digital course:</strong> Access immediate → module 1 day 1 → stall help day 3 → no physical-product modules. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<h2>Checklist execution notes</h2>
+<p>Gift vs self branch configured — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Delivery-gated cross-sell for bulky SKUs — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Review request timed post-delivery appropriately — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Subscription first-order separate path — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Loyalty not in email one — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Education before cross-sell — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>AfterShip trigger verified if used — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Support FAQ link in email one — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Replenishment preview timing documented — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>SMS delivery-only if applicable — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Return window considered for review ask — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Second-order 60d metric tracked — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<h2>FAQ deep dives</h2>
+<p><strong>When post-purchase cross-sell?</strong> After delivery +14 days bulky goods; day 14 consumables; never before customer has product for furniture. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Gift order handling?</strong> Separate branch — packaging/care for gift buyer, no recipient cross-sell to purchaser. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Review request timing?</strong> Delivery +5 to +14 depending category; after return window for high-return SKUs. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Loyalty in post-purchase?</strong> Enroll on second order or email three — not day zero. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Subscription first order?</strong> Onboarding education — not cross-sell conflicting with subscription shipment. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Best stack tools?</strong> Sequenzy sequences, AfterShip triggers, Yotpo reviews, Marsello loyalty timing. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Digital post-purchase?</strong> Activation not shipping — access immediate, progress check-ins. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>SMS post-purchase?</strong> Delivery notification perishables only — not cross-sell SMS. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Metrics?</strong> Review rate, second order 60d, support tickets, cross-sell attach, returns. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Biggest mistake?</strong> Cross-sell before delivery on bulky goods — increases returns and support load. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>AfterShip required?</strong> High ROI for furniture/home — optional for small parcel consumables. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Education content who owns?</strong> Ops/product with compliance review supplements — Sequenzy executes approved blocks. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+    </article>
+    <div class="space-y-8">
+      {toolReviews.map((review) => (
+        <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
+      ))}
+    </div>
+    <FaqSection faqs={faqs} title={`FAQ: ${useCaseName}`} />
+  </section>
+</BaseLayout>

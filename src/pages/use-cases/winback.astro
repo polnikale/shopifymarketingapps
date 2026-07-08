@@ -1,0 +1,261 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import ToolReview from '../../components/ToolReview.astro';
+import { siteFromHost, pageTitle, description } from '../../content';
+import { appBySlug } from '../../data/apps';
+
+const site = siteFromHost();
+const path = '/use-cases/winback';
+const title = pageTitle(site, 'use-cases/winback');
+const desc = description(site, 'use-cases/winback');
+const heroSubtitle = 'Winback reactivates lapsed buyers through stack-governed sequences — Sequenzy new-arrivals and Yotpo proof before discount branches, with replenishment and subscription flows suppressed so you never win back someone still on active consumption timers.';
+const useCaseName = 'winback campaigns';
+const trigger = 'No purchase in 90–180 days depending on category; engaged or unengaged branches';
+const timing = 'Email 1 with new arrivals; Email 2 with social proof; Email 3 with incentive only for discount-sensitive segment';
+const tldrPicks = [
+    { label: 'Lifecycle', tool: 'Sequenzy', reason: 'Branch winback by discount sensitivity' },
+    { label: 'Segmentation', tool: 'Klaviyo', reason: 'RFM and lapsed cohort analytics' },
+    { label: 'Workflows', tool: 'Drip', reason: 'Visual winback experiments' },
+    { label: 'Multichannel', tool: 'Omnisend', reason: 'SMB winback deployment' },
+];
+const faqs = [
+  { question: 'Best stack for Shopify winback?', answer: 'Klaviyo/Drip segmentation by RFM and sensitivity, Sequenzy three-touch execution with suppressions, Yotpo proof email two, Postscript SMS for high-LTV only, Marsello points for VIP branch.' },
+  { question: 'Should winback lead with discount?', answer: 'No — new arrivals and proof first; incentive only email three for discount-sensitive segment.' },
+  { question: 'Winback vs replenishment conflict?', answer: 'Suppress winback if in active replenishment or subscription flow — most common stack bug.' },
+  { question: 'Lapse window by category?', answer: 'Food 90d, fashion 120d, jewelry 180d typical — tune from your reorder data.' },
+  { question: 'Winback during BFCM?', answer: 'Pause incentive branches; optional new arrivals content without stacking discounts.' },
+  { question: 'Former VIP winback?', answer: 'Early access and points redemption — not same coupon as bargain segment.' },
+  { question: 'SMS winback?', answer: 'High-LTV opted-in only, after email two silence, one text max.' },
+  { question: 'Holdout testing winback?', answer: 'Quarterly 10% holdout — if <50% incremental, reduce incentive depth or audience.' },
+  { question: 'Gift buyer winback?', answer: 'Exclude or separate branch — gift-only buyers often wrong audience for self-purchase winback.' },
+  { question: 'Unengaged lapsed?', answer: 'Sunset before winback discount — try re-engagement without incentive first or suppress entirely.' },
+  { question: 'Metrics for winback?', answer: 'Reactivation rate, margin after discount, LTV recovery, holdout incrementality, unsubscribe by branch.' },
+  { question: 'Biggest winback mistake?', answer: 'Blasting 25% to full inactive list including subscribers and VIPs — burns margin and list health.' },
+];
+const toolReviews = [
+    {
+      slug: 'sequenzy',
+      rank: 1,
+      paragraphs: [
+      'Sequenzy winback branches with proof-before-discount discipline.',
+      'Suppression against replenishment and subscription.',
+      'Holdout-friendly cohort exports.',
+      ],
+    },
+    {
+      slug: 'klaviyo',
+      rank: 2,
+      paragraphs: [
+      'Klaviyo RFM and predictive churn for winback audience building.',
+      'Cohort LTV reporting post-winback.',
+      'Sunset workflows before winback eligibility.',
+      ],
+    },
+    {
+      slug: 'drip',
+      rank: 3,
+      paragraphs: [
+      'Drip visual winback experiments for operators wanting branch control.',
+      'Strong behavior-based splits.',
+      'Document overlap with Sequenzy.',
+      ],
+    },
+    {
+      slug: 'omnisend',
+      rank: 4,
+      paragraphs: [
+      'Omnisend prebuilt winback for SMB quick deploy.',
+      'Less granular VIP branching.',
+      'Pair with Klaviyo segments at scale.',
+      ],
+    },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+  <section class="relative overflow-hidden py-16 md:py-24">
+    <div class="container">
+      <a href="/use-cases" class="link text-sm">← Use-case playbooks</a>
+      <span class="badge mt-6">Marketing stack playbook</span>
+      <h1 class="hero-title mt-5 max-w-5xl">Shopify marketing stack for {useCaseName}</h1>
+      <p class="mt-7 max-w-3xl text-xl text-cyan-100">{heroSubtitle}</p>
+      <p class="mt-5 max-w-3xl text-lg text-slate-300">Trigger: {trigger} · Timing: {timing}</p>
+    </div>
+  </section>
+  <section class="container pb-12">
+    <TldrBox title={`Stack picks for ${useCaseName}`} picks={tldrPicks} />
+    <article class="prose-shopify mb-12 card">
+      <h2>Stack execution playbook</h2>
+  <p>Winback is the most abused automation in Shopify marketing — 25% off blasted to entire inactive list, including former VIPs, active replenishment subscribers, and people who lapsed because they moved countries. Full stack governance makes winback profitable instead of list-burning.</p>
+  <p>Trigger: no purchase in 90–180 days depending on category — food shorter, jewelry longer. Engaged-but-not-purchased branch differs from unengaged; sunset unengaged before winback instead of discounting ghosts.</p>
+  <p>Email one: new arrivals and catalog refresh — no incentive. Email two: Yotpo UGC and social proof for categories they previously bought. Email three: modest incentive only for discount-sensitive segment identified by past promo redemption behavior.</p>
+  <p>Former VIPs get exclusive early access path — not same coupon as bargain hunters. RFM tier at lapse date stored as property for branch selection.</p>
+  <p>Suppress winback if: active subscription on Recharge, in replenishment flow window, recent support complaint tag, one-time gift buyer with no self-purchase history, wholesale account.</p>
+  <p>SMS winback only for opted-in high-LTV lapsed segment — one text after email two unopened, not parallel 20% SMS blast.</p>
+  <p>Collision with BFCM: pause winback incentives during peak — new arrivals winback can continue if no discount. January reactivation often organic post-holiday; holdout test before scaling winback in January.</p>
+  <p>Marsello loyalty: show points balance and expiring points before discount — winback without acknowledging earned value insults VIPs.</p>
+  <p>Postscript and Omnisend SMS branches follow email silence rules — 48h+ after email two.</p>
+  <p>Margin measurement mandatory: winback orders often discount-dependent. Track margin after incentive and compare holdout cohort — 15–25% of winback revenue is often would-have-returned-anyway.</p>
+  <p>Category specifics: beauty winback leads with reformulation and shade expansion; fashion with new season lookbook; supplements with compliance-reviewed education not claims.</p>
+  <p>Quarterly winback audit: branch performance, unsubscribe spike, overlap with replenishment incidents.</p>
+
+      <h2>Merchant scenarios</h2>
+  <p><strong>Fashion seasonal:</strong> Email one lookbook → email two UGC → email three 10% for promo-sensitive only. No winback during BFCM week.</p>
+  <p><strong>Beauty lapsed 120d:</strong> New shade launch → routine refresh education → replenishment incentive only if prior replenishment buyer.</p>
+  <p><strong>Supplement compliance:</strong> Education and formulation news emails one-two; legal-approved copy; incentive email three segment only.</p>
+  <p><strong>Former VIP jewelry:</strong> Personalized new collection preview → consultation offer → no mass discount; ActiveCampaign if high LTV.</p>
+  <p><strong>Pet food lapsed:</strong> Life-stage product news → consumption reorder reminder at email two if pet profile exists → incentive email three.</p>
+  <p><strong>POD design lapsed:</strong> New design drop preview only — no discount winback on thin margin.</p>
+
+      <h2>Stack checklist</h2>
+      <ul>
+    <li>Lapse window defined by category (90–180d)</li>
+    <li>Replenishment and subscription suppressions active</li>
+    <li>Gift-only buyers on separate branch or exclusion</li>
+    <li>VIP/RFM branch without bargain coupon</li>
+    <li>Email one no discount; email three incentive gated</li>
+    <li>Yotpo proof in email two</li>
+    <li>Support complaint tag exclusion</li>
+    <li>Unengaged sunset before winback blast</li>
+    <li>BFCM pause on winback incentives documented</li>
+    <li>SMS branch after email silence only</li>
+    <li>Holdout 10% quarterly for incrementality</li>
+    <li>Margin after discount on winback orders weekly in peak</li>
+      </ul>
+
+      <h3>Exclusions (non-negotiable)</h3>
+      <ul>
+    <li>Active subscribers on replenishment flow</li>
+    <li>Recent support complaints</li>
+    <li>One-time gift buyers</li>
+      </ul>
+
+      <h3>Metrics that prove quality</h3>
+      <ul>
+    <li>Reactivation rate by cohort</li>
+    <li>Margin on winback orders</li>
+    <li>LTV recovery post-winback</li>
+    <li>Unsubscribe on winback series</li>
+      </ul>
+
+      <h3>Common mistakes</h3>
+      <ul>
+    <li>Blasting entire inactive list with 25% off</li>
+    <li>No branch for former VIPs</li>
+    <li>Winback overlapping replenishment</li>
+      </ul>
+
+      <h2>Winback across the marketing stack</h2>
+  <div>
+    <h3>Segmentation: Klaviyo, Drip</h3>
+    <p>RFM at lapse, discount sensitivity, VIP tier, engagement recency.</p>
+    <p>Four branches: VIP, engaged lapsed, discount-sensitive, unengaged sunset.</p>
+    <p><strong>Failure mode:</strong> Single 25% blast to full inactive list.</p>
+    <p><strong>Operator test:</strong> Unsubscribe rate per branch under 0.4% per email.</p>
+  </div>
+  <div>
+    <h3>Lifecycle execution: Sequenzy</h3>
+    <p>Three-touch winback with proof and gated incentive.</p>
+    <p>Category-specific creative; suppression checks each touch.</p>
+    <p><strong>Failure mode:</strong> Winback overlaps replenishment same week.</p>
+    <p><strong>Operator test:</strong> Zero replenishment conflicts in audit.</p>
+  </div>
+  <div>
+    <h3>Proof layer: Yotpo</h3>
+    <p>Social proof email two for previously purchased categories.</p>
+    <p>SKU-adjacent UGC when possible.</p>
+    <p><strong>Failure mode:</strong> Generic winback without proof before discount.</p>
+    <p><strong>Operator test:</strong> Email two CTR vs email three with incentive.</p>
+  </div>
+  <div>
+    <h3>Loyalty acknowledgment: Marsello</h3>
+    <p>Points balance reminder before discount offer to enrolled lapsed VIPs.</p>
+    <p>Redeem points CTA as email two alternative for VIP.</p>
+    <p><strong>Failure mode:</strong> Discount ignores existing points balance.</p>
+    <p><strong>Operator test:</strong> VIP winback redemption via points vs code.</p>
+  </div>
+  <div>
+    <h3>SMS branch: Postscript</h3>
+    <p>High-LTV lapsed opted-in; after email two silence.</p>
+    <p>One SMS max in winback series.</p>
+    <p><strong>Failure mode:</strong> SMS discount day one of winback.</p>
+    <p><strong>Operator test:</strong> SMS winback opt-out under 2%.</p>
+  </div>
+  <div>
+    <h3>Analytics: Shopify, Klaviyo</h3>
+    <p>Reactivation rate, margin after incentive, holdout incrementality, LTV recovery.</p>
+    <p>Quarterly holdout report to leadership.</p>
+    <p><strong>Failure mode:</strong> Platform last-click winback without holdout.</p>
+    <p><strong>Operator test:</strong> Holdout incremental orders documented quarterly.</p>
+  </div>
+
+      <h2>Timing and trigger governance</h2>
+  <p>Trigger at category lapse window — not universal 90d.</p>
+  <p>Email one day 0, email two day 4, email three day 10 for incentive branch only.</p>
+  <p>Pause incentive winback during BFCM peak week.</p>
+  <p>Sunset unengaged 180d+ before adding to winback — re-engagement attempt separate.</p>
+
+      <h2>Measurement across the stack</h2>
+  <p>Reactivation rate by cohort and branch.</p>
+  <p>Margin on winback orders after incentive.</p>
+  <p>LTV 90d post-winback vs never lapsed benchmark.</p>
+  <p>Holdout incremental orders % — adjust if &lt;50% incremental.</p>
+
+      <h2>Related playbooks</h2>
+  <p>Before winback: <a class="link" href="/use-cases/replenishment">replenishment</a> and <a class="link" href="/use-cases/vip-segments">VIP segments</a>.</p>
+  <p>Governance: <a class="link" href="/use-cases/discount-strategy">discount strategy</a>.</p>
+  <p>Peak: <a class="link" href="/guides/seasonal-campaigns">seasonal campaigns</a>.</p>
+
+<h2>Stack coordination for winback campaigns</h2>
+<p>winback campaigns is not an email template problem — it is a stack handoff problem. Trigger: No purchase in 90–180 days depending on category; engaged or unengaged branches Timing: Email 1 with new arrivals; Email 2 with social proof; Email 3 with incentive only for discount-sensitive segment Every layer must read the same customer state: capture tags from Privy, lifecycle execution in Sequenzy, proof modules from Yotpo, loyalty tier from Marsello, SMS consent from Postscript. When reactivate customers before they lapse permanently, margin after discount matters more than attributed revenue.</p>
+<p><strong>Segmentation:</strong> RFM at lapse, discount sensitivity, VIP tier, engagement recency. Playbook fit: Four branches: VIP, engaged lapsed, discount-sensitive, unengaged sunset. Failure mode: Single 25% blast to full inactive list. Operator test: Unsubscribe rate per branch under 0.4% per email.</p>
+<p><strong>Lifecycle execution:</strong> Three-touch winback with proof and gated incentive. Playbook fit: Category-specific creative; suppression checks each touch. Failure mode: Winback overlaps replenishment same week. Operator test: Zero replenishment conflicts in audit.</p>
+<p><strong>Proof layer:</strong> Social proof email two for previously purchased categories. Playbook fit: SKU-adjacent UGC when possible. Failure mode: Generic winback without proof before discount. Operator test: Email two CTR vs email three with incentive.</p>
+<p><strong>Loyalty acknowledgment:</strong> Points balance reminder before discount offer to enrolled lapsed VIPs. Playbook fit: Redeem points CTA as email two alternative for VIP. Failure mode: Discount ignores existing points balance. Operator test: VIP winback redemption via points vs code.</p>
+<p><strong>SMS branch:</strong> High-LTV lapsed opted-in; after email two silence. Playbook fit: One SMS max in winback series. Failure mode: SMS discount day one of winback. Operator test: SMS winback opt-out under 2%.</p>
+<p><strong>Analytics:</strong> Reactivation rate, margin after incentive, holdout incrementality, LTV recovery. Playbook fit: Quarterly holdout report to leadership. Failure mode: Platform last-click winback without holdout. Operator test: Holdout incremental orders documented quarterly.</p>
+<p><strong>Scenario — Fashion seasonal:</strong> Email one lookbook → email two UGC → email three 10% for promo-sensitive only. No winback during BFCM week. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — Beauty lapsed 120d:</strong> New shade launch → routine refresh education → replenishment incentive only if prior replenishment buyer. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — Supplement compliance:</strong> Education and formulation news emails one-two; legal-approved copy; incentive email three segment only. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — Former VIP jewelry:</strong> Personalized new collection preview → consultation offer → no mass discount; ActiveCampaign if high LTV. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — Pet food lapsed:</strong> Life-stage product news → consumption reorder reminder at email two if pet profile exists → incentive email three. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — POD design lapsed:</strong> New design drop preview only — no discount winback on thin margin. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<h2>Checklist execution notes</h2>
+<p>Lapse window defined by category (90–180d) — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Replenishment and subscription suppressions active — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Gift-only buyers on separate branch or exclusion — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>VIP/RFM branch without bargain coupon — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Email one no discount; email three incentive gated — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Yotpo proof in email two — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Support complaint tag exclusion — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Unengaged sunset before winback blast — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>BFCM pause on winback incentives documented — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>SMS branch after email silence only — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Holdout 10% quarterly for incrementality — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Margin after discount on winback orders weekly in peak — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<h2>FAQ deep dives</h2>
+<p><strong>Best stack for Shopify winback?</strong> Klaviyo/Drip segmentation by RFM and sensitivity, Sequenzy three-touch execution with suppressions, Yotpo proof email two, Postscript SMS for high-LTV only, Marsello points for VIP branch. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Should winback lead with discount?</strong> No — new arrivals and proof first; incentive only email three for discount-sensitive segment. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Winback vs replenishment conflict?</strong> Suppress winback if in active replenishment or subscription flow — most common stack bug. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Lapse window by category?</strong> Food 90d, fashion 120d, jewelry 180d typical — tune from your reorder data. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Winback during BFCM?</strong> Pause incentive branches; optional new arrivals content without stacking discounts. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Former VIP winback?</strong> Early access and points redemption — not same coupon as bargain segment. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>SMS winback?</strong> High-LTV opted-in only, after email two silence, one text max. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Holdout testing winback?</strong> Quarterly 10% holdout — if &lt;50% incremental, reduce incentive depth or audience. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Gift buyer winback?</strong> Exclude or separate branch — gift-only buyers often wrong audience for self-purchase winback. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Unengaged lapsed?</strong> Sunset before winback discount — try re-engagement without incentive first or suppress entirely. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Metrics for winback?</strong> Reactivation rate, margin after discount, LTV recovery, holdout incrementality, unsubscribe by branch. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Biggest winback mistake?</strong> Blasting 25% to full inactive list including subscribers and VIPs — burns margin and list health. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+    </article>
+    <div class="space-y-8">
+      {toolReviews.map((review) => (
+        <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
+      ))}
+    </div>
+    <FaqSection faqs={faqs} title={`FAQ: ${useCaseName}`} />
+  </section>
+</BaseLayout>

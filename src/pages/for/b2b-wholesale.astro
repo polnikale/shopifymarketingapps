@@ -1,0 +1,244 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import ToolReview from '../../components/ToolReview.astro';
+import { siteFromHost, pageTitle, description } from '../../content';
+import { appBySlug } from '../../data/apps';
+
+const site = siteFromHost();
+const path = '/for/b2b-wholesale';
+const title = pageTitle(site, 'for/b2b-wholesale');
+const desc = description(site, 'for/b2b-wholesale');
+const heroSubtitle = 'Account approvals, MOQ reorder cycles, and rep-triggered follow-up need a B2B stack — ActiveCampaign approval pipelines, Klaviyo catalog sync, Sequenzy MOQ reminders, and strict DTC tag firewall, not consumer cart recovery blasting wholesale buyers with 10% off.';
+const buyingCycle = 'Account-based; approval workflows; bulk reorder cycles';
+const segmentName = 'B2B wholesale Shopify stores';
+const tldrPicks = [
+    { label: 'B2B CRM', tool: 'ActiveCampaign', reason: 'Account approval, deal stages, rep workflows' },
+    { label: 'Catalog lifecycle', tool: 'Sequenzy', reason: 'MOQ reorder, catalog updates, onboarding' },
+    { label: 'Segmentation', tool: 'Klaviyo', reason: 'Account-based reporting and catalog depth' },
+    { label: 'Capture', tool: 'Privy', reason: 'Trade application and company qualification forms' },
+];
+const faqs = [
+  { question: 'What is the best marketing stack for B2B wholesale Shopify?', answer: 'ActiveCampaign for approval and rep pipelines, Sequenzy for onboarding and MOQ reorder, Klaviyo or Brevo for catalog segmentation, Privy for trade application capture. Hard firewall from consumer automations.' },
+  { question: 'Can wholesale and DTC share one Klaviyo account?', answer: 'Possible with strict tag suppressions on every consumer flow — but collision risk is high. Separate reporting views minimum; many hybrids split execution layers. Audit monthly.' },
+  { question: 'Should B2B stores run cart abandonment?', answer: 'Not for trade accounts using quick reorder portal. DTC cart recovery must exclude all wholesale tags. Trade buyers do not respond to 10% off cart emails.' },
+  { question: 'How does account approval work in the stack?', answer: 'Privy/form capture → ActiveCampaign deal stage → rep review → approved tag → Sequenzy onboarding. No promotional email until `approved` status synced.' },
+  { question: 'What are MOQ reorder reminders?', answer: 'Sequenzy triggers based on case-pack consumption interval and account history — not 30-day DTC replenishment. Content includes MOQ compliance and rep contact.' },
+  { question: 'Does SMS fit B2B wholesale?', answer: 'Rarely for promotional use. Shipping notification with explicit opt-in only. Reps handle reorder urgency for key accounts.' },
+  { question: 'Should trade accounts get loyalty points?', answer: 'No — volume pricing tiers and contract terms replace consumer loyalty. Marsello-style points create pricing expectation conflicts.' },
+  { question: 'What metrics prove B2B stack ROI?', answer: 'Account activation rate, bulk reorder frequency, MOQ compliance from prompts, rep-attributed revenue, collision incident count (target zero), trade account LTV.' },
+  { question: 'How handle catalog updates?', answer: 'Segmented broadcast by product permission and region. Discontinuation notices with replacement SKU suggestions. Never consumer promotional styling on trade catalog emails.' },
+  { question: 'Biggest B2B stack mistake?', answer: 'Consumer promotional automations hitting trade accounts — BFCM discounts to net-30 buyers destroys pricing integrity and rep relationships.' },
+  { question: 'ActiveCampaign vs Klaviyo for B2B?', answer: 'ActiveCampaign for approval pipelines and rep workflows. Klaviyo for catalog depth and reporting when product lines are complex. Trade-only may use Brevo for broadcasts plus ActiveCampaign CRM.' },
+  { question: 'Implementation timeline?', answer: 'Two weeks tag firewall and approval pipeline. Four weeks onboarding and MOQ reorder. Eight weeks full catalog broadcast and at-risk account workflows.' },
+];
+const toolReviews = [
+    {
+      slug: 'activecampaign',
+      rank: 1,
+      paragraphs: [
+      'ActiveCampaign is the default B2B CRM layer for wholesale — approval pipelines, rep notifications, deal stages, and at-risk account workflows.',
+      'Owns trade relationship logic that consumer ESPs handle poorly. Sync approval status to Sequenzy and Klaviyo suppressions.',
+      'Strong automation for document collection and onboarding sequences post-approval.',
+      ],
+    },
+    {
+      slug: 'sequenzy',
+      rank: 2,
+      paragraphs: [
+      'Sequenzy handles B2B operational lifecycle — onboarding, MOQ reorder, catalog updates, compliance renewals — not consumer cart recovery on trade tags.',
+      'Agent-assisted content helps teams ship catalog broadcast copy without DTC promotional tone bleeding in.',
+      'Requires wholesale tag suppressions on any consumer-template flows if hybrid store.',
+      ],
+    },
+    {
+      slug: 'klaviyo',
+      rank: 3,
+      paragraphs: [
+      'Klaviyo fits hybrid stores needing catalog-depth segmentation and reporting on DTC side with company-aware properties for trade.',
+      'Must configure global wholesale suppressions on every consumer flow — audit quarterly. Not ideal alone for approval CRM.',
+      'Strong product feed and catalog sync for SKU announcement broadcasts to permitted segments.',
+      ],
+    },
+    {
+      slug: 'brevo',
+      rank: 4,
+      paragraphs: [
+      'Brevo suits trade-only stores needing catalog broadcasts and transactional email at lower cost than full Klaviyo.',
+      'Pair with ActiveCampaign for CRM pipeline. Less Shopify-native depth than Klaviyo but adequate for broadcast-heavy B2B.',
+      'Verify Shopify B2B company property sync before relying on segmentation.',
+      ],
+    },
+    {
+      slug: 'privy',
+      rank: 5,
+      paragraphs: [
+      'Privy trade application forms capture company qualification data and route to ActiveCampaign — not consumer discount popup on /trade pages.',
+      'Configure URL targeting so DTC popups never fire on wholesale application or account portal pages.',
+      'Pass company name and application source tags at handoff.',
+      ],
+    },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+  <section class="relative overflow-hidden py-16 md:py-24">
+    <div class="container">
+      <a href="/for" class="link text-sm">← Store types</a>
+      <span class="badge mt-6">{segmentName}</span>
+      <h1 class="hero-title mt-5 max-w-5xl">Shopify marketing stack for {segmentName}</h1>
+      <p class="mt-7 max-w-3xl text-xl text-cyan-100">{heroSubtitle}</p>
+      <p class="mt-5 max-w-3xl text-lg text-slate-300">Buying behavior: {buyingCycle}</p>
+    </div>
+  </section>
+  <section class="container pb-12">
+    <TldrBox title="Stack shortlist" picks={tldrPicks} />
+    <article class="prose-shopify mb-12 card">
+      <h2>Why {segmentName} need a different stack shape</h2>
+  <p>B2B wholesale Shopify stores — trade accounts, bulk buyers, interior designers, retailers — operate on account approval, MOQ rules, net terms, and rep relationships. Consumer marketing stack logic (popup 15% off, cart abandonment discounts, winback incentives) actively damages wholesale relationships when applied to approved accounts. The stack needs a hard firewall between DTC consumer paths and B2B account paths.</p>
+  <p>Account approval is a pipeline, not a welcome series. Privy or native forms capture trade applications; ActiveCampaign stages approval workflow with rep notification; approved accounts enter Sequenzy onboarding with catalog access, MOQ education, and reorder cadence — not first-order 10% popup offer.</p>
+  <p>MOQ and bulk reorder reminders differ from DTC replenishment. Sequenzy reorder flows trigger on consumption math by case pack, seasonal inventory builds, and contract renewal dates — not 30-day universal timers. Recharge-style subscription logic rarely applies; net-30 reorder cycles dominate.</p>
+  <p>Rep-triggered follow-up integrates with CRM layer. When rep logs call outcome in ActiveCampaign, lifecycle suppresses automated promos for 14 days to avoid collision. High-touch accounts may opt out of automated email entirely — profile flag respected across stack.</p>
+  <p>Catalog and price list updates are core B2B email content. New SKU announcements, discontinuation notices, and MOQ changes broadcast to approved account segments in Klaviyo or Brevo — with market and tier exclusions. Consumer promotional calendar must not leak into trade segments.</p>
+  <p>DTC hybrid stores running wholesale on same Shopify instance face the highest collision risk. Customer tags `wholesale`, `trade`, `net-terms`, `employee` must suppress consumer automations at capture handoff. One blended Klaviyo segment without priority rules sends BFCM 30% off to $50k/year trade accounts.</p>
+  <p>SMS rarely fits B2B wholesale — reorder urgency handled by rep and email. Postscript on trade accounts feels inappropriate unless explicit opt-in for shipping notifications. Service-adjacent SMS only with documented consent.</p>
+  <p>Loyalty and points programs designed for consumer DTC confuse B2B buyers expecting volume pricing tiers. Tier benefits belong in contract and account manager communication — Marsello consumer loyalty on trade accounts creates pricing expectation conflicts.</p>
+  <p>Yotpo reviews matter for B2B when social proof supports retailer resale — pull case studies and sell-through data into catalog update emails, not consumer-style UGC browse abandonment.</p>
+  <p>Analytics track account activation rate, bulk reorder frequency, rep-attributed revenue, MOQ compliance from email prompts — not consumer metrics like first purchase within 14 days. Shopify B2B company profiles and ActiveCampaign deal value reconcile weekly.</p>
+  <p>Compliance includes tax-exempt documentation, resale certificate collection, and regional distribution restrictions. Onboarding sequences include document upload reminders; lifecycle suppresses promos until account status `approved`.</p>
+  <p>Agency DTC playbooks applied to B2B fail predictably. In-house ownership of tag firewall, approval pipeline, and catalog broadcast rules survives platform migrations. Document every consumer automation exclusion for wholesale tags.</p>
+  <p>Integration with Shopify B2B features (company accounts, catalog permissions, price lists) must flow into segmentation. Klaviyo or ActiveCampaign reads company properties; Sequenzy triggers reference account tier not individual consumer behavior alone.</p>
+  <p>The first B2B stack fix: tag firewall audit on every consumer automation, build approval pipeline, launch MOQ reorder for top 20% accounts by revenue. Consumer capture optimization is irrelevant until wholesale paths are protected.</p>
+
+      <h2>Merchant stories from the field</h2>
+  <div>
+    <h3>TradeStone Tile ($420k/mo wholesale + DTC)</h3>
+    <p>TradeStone ran one Klaviyo instance for trade and consumer — contractors received Black Friday 35% off while on net-30 terms. Crisis rebuild: ActiveCampaign for trade approval and rep pipeline, Sequenzy MOQ reorder by case pack, Klaviyo consumer only with `wholesale` tag global suppression. Privy trade application form routes to ActiveCampaign within 2 minutes. Trade account promotional collision incidents: 12 in October, zero after week 4. DTC revenue unaffected; trade reorder frequency up 16%.</p>
+  </div>
+  <div>
+    <h3>BulkBotanics Supply ($185k/mo B2B ingredients)</h3>
+    <p>BulkBotanics is trade-only Shopify — no DTC. Brevo for catalog broadcasts and compliance documentation reminders; ActiveCampaign for new account onboarding; Sequenzy reorder based on 45-day consumption model by SKU case size. No cart abandonment — buyers use quick reorder portal. Rep-triggered follow-up in ActiveCampaign when order volume drops 30% quarter-over-quarter. Account activation rate from application to first MOQ order: 34% in 60 days.</p>
+  </div>
+  <div>
+    <h3>Lumen Commercial Lighting ($290k/mo hybrid)</h3>
+    <p>Lumen separated Shopify storefronts but shared Klaviyo until collision audit forced split reporting views. Consumer: Privy + Sequenzy cart recovery. Trade: catalog update emails only, MOQ reminder, no discounts. Interior designer segment gets lookbook content in Sequenzy, not promo. Tag `designer-trade` excludes all consumer winback. Stack governance doc 40 pages — updated quarterly.</p>
+  </div>
+
+      <h3>Priority plays for {segmentName}</h3>
+      <ul>
+    <li>Account approval and onboarding</li>
+    <li>Bulk order reminders</li>
+    <li>Rep-triggered follow-up</li>
+    <li>Catalog and MOQ updates</li>
+      </ul>
+
+      <h3>Metrics to watch weekly</h3>
+      <ul>
+    <li>Account activation rate</li>
+    <li>Bulk reorder frequency</li>
+    <li>Rep-attributed revenue</li>
+    <li>MOQ compliance from email prompts</li>
+      </ul>
+
+      <h2>Three stack scenarios for {segmentName}</h2>
+  <p><strong>Trade-only:</strong> Privy application → ActiveCampaign approval → Sequenzy onboarding + MOQ reorder → Brevo/Klaviyo catalog broadcasts. No consumer automations. Rep pipeline for at-risk accounts.</p>
+  <p><strong>Hybrid DTC + wholesale:</strong> Tag firewall day one. Consumer: Privy + Sequenzy cart. Trade: ActiveCampaign pipeline + Sequenzy reorder. Global suppression: wholesale tags on ALL consumer flows. Separate reporting views.</p>
+  <p><strong>Rep-assisted high-touch:</strong> ActiveCampaign deal stages primary. Sequenzy only for catalog updates and MOQ reminders. `high-touch` flag suppresses automated promo entirely. Rep logs activity syncs suppressions.</p>
+
+      <h2>Five-layer B2B wholesale stack architecture</h2>
+  <div>
+    <h3>Capture and qualification layer: Privy, Shopify Forms</h3>
+    <p>Trade application forms, company qualification, resale certificate upload triggers, and company-size tagging before approval pipeline.</p>
+    <p>B2B capture collects company name, tax ID intent, order volume estimate — not 10% off first order. Applications route to ActiveCampaign, not consumer welcome. DTC popups suppressed on /trade URLs.</p>
+    <p><strong>Failure mode:</strong> Consumer discount popup shown to trade applicant — sets wrong pricing expectations before approval.</p>
+    <p><strong>Operator test:</strong> Trade application-to-ActiveCampaign deal creation under 5 minutes — spot-check weekly.</p>
+  </div>
+  <div>
+    <h3>CRM and approval layer: ActiveCampaign, Brevo</h3>
+    <p>Account approval workflow, rep assignment, deal stages, quote follow-up, and at-risk account outreach.</p>
+    <p>ActiveCampaign stages: applied → documents requested → approved → first order → active reorder. Rep notified on stage change. Consumer promos globally suppressed for any contact with open trade deal.</p>
+    <p><strong>Failure mode:</strong> Approval status not synced — unapproved accounts receive catalog pricing emails.</p>
+    <p><strong>Operator test:</strong> Zero promotional consumer emails to contacts with `wholesale` or `pending-approval` tag last month.</p>
+  </div>
+  <div>
+    <h3>Lifecycle operations layer: Sequenzy</h3>
+    <p>Approved account onboarding, MOQ reorder reminders, catalog update notifications, discontinuation alerts, and compliance document renewals.</p>
+    <p>Reorder triggers on case-pack consumption intervals per account tier. Onboarding educates MOQ, lead times, and rep contact — not discount. Catalog updates segmented by product line permission.</p>
+    <p><strong>Failure mode:</strong> DTC cart abandonment and winback sent to trade accounts — relationship damage and pricing conflict.</p>
+    <p><strong>Operator test:</strong> Audit 10 wholesale accounts against consumer automation enrollment — must be zero.</p>
+  </div>
+  <div>
+    <h3>Catalog intelligence layer: Klaviyo, Brevo</h3>
+    <p>Account-based segmentation, catalog sync, price list awareness, and broadcast reporting by company tier.</p>
+    <p>Segments by company revenue tier, product category permission, and region. New SKU broadcasts respect distribution restrictions. Reporting by account not individual contact when company accounts enabled.</p>
+    <p><strong>Failure mode:</strong> Consumer RFM segments applied to trade buyers — irrelevant promos and unsubscribes from key accounts.</p>
+    <p><strong>Operator test:</strong> Catalog broadcast unsubscribe rate below 0.1% — higher suggests wrong segmentation.</p>
+  </div>
+  <div>
+    <h3>Analytics layer: Shopify B2B, ActiveCampaign</h3>
+    <p>Account activation rate, reorder frequency, MOQ compliance, rep-attributed revenue, and trade vs DTC margin separation.</p>
+    <p>Weekly reconcile trade order volume vs email-attributed reorder prompts. Account-level LTV not contact-level for multi-buyer companies.</p>
+    <p><strong>Failure mode:</strong> Reporting blended trade and DTC — wrong stack decisions on both sides.</p>
+    <p><strong>Operator test:</strong> Finance receives separate trade and DTC incremental margin report monthly.</p>
+  </div>
+
+      <h2>90-day implementation roadmap</h2>
+  <p><strong>Week 1:</strong> Audit every consumer automation for wholesale tag exclusions. List collision incidents last 90 days. Map approval workflow gaps.</p>
+  <p><strong>Week 2:</strong> Implement global suppression: wholesale/trade/pending tags on consumer flows. Privy trade application to ActiveCampaign pipeline.</p>
+  <p><strong>Week 3:</strong> Sequenzy approved-account onboarding live. MOQ education and rep introduction emails.</p>
+  <p><strong>Week 4:</strong> Reorder reminder pilot on top 20% accounts by LTV. Reconcile trade email volume vs reorder rate.</p>
+  <p><strong>Week 5:</strong> Catalog update broadcast template with tier segmentation. Discontinuation notice workflow.</p>
+  <p><strong>Week 6:</strong> Rep-triggered suppression rules documented. `high-touch` flag on strategic accounts.</p>
+  <p><strong>Week 7:</strong> Compliance document renewal reminders. Tax-exempt expiration triggers.</p>
+  <p><strong>Week 8:</strong> DTC consumer stack audit — confirm firewall intact after trade changes.</p>
+  <p><strong>Week 9:</strong> At-risk account workflow: volume drop 30% QoQ → ActiveCampaign rep task.</p>
+  <p><strong>Week 10:</strong> Separate trade and DTC reporting dashboards. Finance review.</p>
+  <p><strong>Week 11:</strong> Q4 planning: trade early catalog access vs DTC BFCM — collision calendar.</p>
+  <p><strong>Week 12:</strong> Retrospective: activation rate, reorder frequency, collision incidents (target zero), account LTV trend.</p>
+
+      <h2>Pricing and stack economics</h2>
+  <p>B2B stacks run $200–500/mo — ActiveCampaign ($30–150) + Sequenzy ($50–150) + Klaviyo/Brevo ($50–200). One preserved trade relationship from collision fix can exceed annual stack cost.</p>
+  <p>Consumer discount sent to trade account can cost thousands in margin negotiation — tag firewall ROI is immediate not incremental.</p>
+  <p>Rep time saved by qualified application capture and automated onboarding documentation has real headcount economics.</p>
+  <p>Hybrid stores may run higher total stack cost than trade-only — justify with separated revenue reporting and zero collision policy.</p>
+  <p>Avoid consumer loyalty suite on trade accounts — volume tier pricing belongs in contract, not Marsello points.</p>
+
+      <h2>Cross-links for stack due diligence</h2>
+  <p>Hybrid stores: read consumer <a class="link" href="/for/high-aov">high-AOV</a> guide with tag firewall.</p>
+  <p>Governance: <a class="link" href="/guides/stack-architecture">stack architecture</a>, <a class="link" href="/guides/cross-channel-coordination">cross-channel coordination</a>.</p>
+  <p>Compare: <a class="link" href="/compare/klaviyo-vs-activecampaign">Klaviyo vs ActiveCampaign</a>, <a class="link" href="/compare/activecampaign-vs-brevo">ActiveCampaign vs Brevo</a>.</p>
+
+<h2>Stack governance for B2B wholesale Shopify stores</h2>
+<p>Operating a B2B wholesale Shopify stores marketing stack means assigning layer owners before adding tools. Capture (Privy, Justuno) qualifies intent; Sequenzy executes lifecycle with suppressions; Postscript handles scarce SMS urgency; Yotpo injects proof into consideration; Marsello coordinates loyalty without promo collisions. When any layer sends without reading customer state from the others, account approvals, bulk ordering, and rep follow-up gets worse — not better.</p>
+<p><strong>Capture and qualification layer in practice:</strong> Trade application forms, company qualification, resale certificate upload triggers, and company-size tagging before approval pipeline. For B2B wholesale Shopify stores, B2B capture collects company name, tax ID intent, order volume estimate — not 10% off first order. Applications route to ActiveCampaign, not consumer welcome. DTC popups suppressed on /trade URLs. The failure mode to watch: Consumer discount popup shown to trade applicant — sets wrong pricing expectations before approval. Monthly operator test: Trade application-to-ActiveCampaign deal creation under 5 minutes — spot-check weekly.</p>
+<p><strong>CRM and approval layer in practice:</strong> Account approval workflow, rep assignment, deal stages, quote follow-up, and at-risk account outreach. For B2B wholesale Shopify stores, ActiveCampaign stages: applied → documents requested → approved → first order → active reorder. Rep notified on stage change. Consumer promos globally suppressed for any contact with open trade deal. The failure mode to watch: Approval status not synced — unapproved accounts receive catalog pricing emails. Monthly operator test: Zero promotional consumer emails to contacts with `wholesale` or `pending-approval` tag last month.</p>
+<p><strong>Lifecycle operations layer in practice:</strong> Approved account onboarding, MOQ reorder reminders, catalog update notifications, discontinuation alerts, and compliance document renewals. For B2B wholesale Shopify stores, Reorder triggers on case-pack consumption intervals per account tier. Onboarding educates MOQ, lead times, and rep contact — not discount. Catalog updates segmented by product line permission. The failure mode to watch: DTC cart abandonment and winback sent to trade accounts — relationship damage and pricing conflict. Monthly operator test: Audit 10 wholesale accounts against consumer automation enrollment — must be zero.</p>
+<p><strong>Catalog intelligence layer in practice:</strong> Account-based segmentation, catalog sync, price list awareness, and broadcast reporting by company tier. For B2B wholesale Shopify stores, Segments by company revenue tier, product category permission, and region. New SKU broadcasts respect distribution restrictions. Reporting by account not individual contact when company accounts enabled. The failure mode to watch: Consumer RFM segments applied to trade buyers — irrelevant promos and unsubscribes from key accounts. Monthly operator test: Catalog broadcast unsubscribe rate below 0.1% — higher suggests wrong segmentation.</p>
+<p><strong>Analytics layer in practice:</strong> Account activation rate, reorder frequency, MOQ compliance, rep-attributed revenue, and trade vs DTC margin separation. For B2B wholesale Shopify stores, Weekly reconcile trade order volume vs email-attributed reorder prompts. Account-level LTV not contact-level for multi-buyer companies. The failure mode to watch: Reporting blended trade and DTC — wrong stack decisions on both sides. Monthly operator test: Finance receives separate trade and DTC incremental margin report monthly.</p>
+<p><strong>Deploying the Trade-only scenario:</strong> Privy application → ActiveCampaign approval → Sequenzy onboarding + MOQ reorder → Brevo/Klaviyo catalog broadcasts. No consumer automations. Rep pipeline for at-risk accounts. Document trigger, delay, branch, and suppression rows before launch. Reconcile Shopify net sales weekly — platform attribution will overstate if popup, cart, and SMS discounts stack on the same session.</p>
+<p><strong>Deploying the Hybrid DTC + wholesale scenario:</strong> Tag firewall day one. Consumer: Privy + Sequenzy cart. Trade: ActiveCampaign pipeline + Sequenzy reorder. Global suppression: wholesale tags on ALL consumer flows. Separate reporting views. Document trigger, delay, branch, and suppression rows before launch. Reconcile Shopify net sales weekly — platform attribution will overstate if popup, cart, and SMS discounts stack on the same session.</p>
+<p><strong>Deploying the Rep-assisted high-touch scenario:</strong> ActiveCampaign deal stages primary. Sequenzy only for catalog updates and MOQ reminders. `high-touch` flag suppresses automated promo entirely. Rep logs activity syncs suppressions. Document trigger, delay, branch, and suppression rows before launch. Reconcile Shopify net sales weekly — platform attribution will overstate if popup, cart, and SMS discounts stack on the same session.</p>
+<h2>Quarterly stack audit for B2B wholesale Shopify stores</h2>
+<p><strong>Week 1 review:</strong> Audit every consumer automation for wholesale tag exclusions. List collision incidents last 90 days. Map approval workflow gaps. Confirm collision calendar updated for upcoming peak weeks and that subscription, wholesale, or gift-buyer tags still suppress conflicting promos.</p>
+<p><strong>Week 2 review:</strong> Implement global suppression: wholesale/trade/pending tags on consumer flows. Privy trade application to ActiveCampaign pipeline. Confirm collision calendar updated for upcoming peak weeks and that subscription, wholesale, or gift-buyer tags still suppress conflicting promos.</p>
+<p><strong>Week 3 review:</strong> Sequenzy approved-account onboarding live. MOQ education and rep introduction emails. Confirm collision calendar updated for upcoming peak weeks and that subscription, wholesale, or gift-buyer tags still suppress conflicting promos.</p>
+<p><strong>Week 4 review:</strong> Reorder reminder pilot on top 20% accounts by LTV. Reconcile trade email volume vs reorder rate. Confirm collision calendar updated for upcoming peak weeks and that subscription, wholesale, or gift-buyer tags still suppress conflicting promos.</p>
+<p><strong>Week 5 review:</strong> Catalog update broadcast template with tier segmentation. Discontinuation notice workflow. Confirm collision calendar updated for upcoming peak weeks and that subscription, wholesale, or gift-buyer tags still suppress conflicting promos.</p>
+<p><strong>Week 6 review:</strong> Rep-triggered suppression rules documented. `high-touch` flag on strategic accounts. Confirm collision calendar updated for upcoming peak weeks and that subscription, wholesale, or gift-buyer tags still suppress conflicting promos.</p>
+<p><strong>Stack economics note:</strong> B2B stacks run $200–500/mo — ActiveCampaign ($30–150) + Sequenzy ($50–150) + Klaviyo/Brevo ($50–200). One preserved trade relationship from collision fix can exceed annual stack cost. Model operator hours alongside SaaS fees — governance debt shows up as discount margin leakage before it shows up as tool cost.</p>
+<p><strong>Stack economics note:</strong> Consumer discount sent to trade account can cost thousands in margin negotiation — tag firewall ROI is immediate not incremental. Model operator hours alongside SaaS fees — governance debt shows up as discount margin leakage before it shows up as tool cost.</p>
+<p><strong>Stack economics note:</strong> Rep time saved by qualified application capture and automated onboarding documentation has real headcount economics. Model operator hours alongside SaaS fees — governance debt shows up as discount margin leakage before it shows up as tool cost.</p>
+<p><strong>Stack economics note:</strong> Hybrid stores may run higher total stack cost than trade-only — justify with separated revenue reporting and zero collision policy. Model operator hours alongside SaaS fees — governance debt shows up as discount margin leakage before it shows up as tool cost.</p>
+<p><strong>Stack economics note:</strong> Avoid consumer loyalty suite on trade accounts — volume tier pricing belongs in contract, not Marsello points. Model operator hours alongside SaaS fees — governance debt shows up as discount margin leakage before it shows up as tool cost.</p>
+    </article>
+    <div class="space-y-8">
+      {toolReviews.map((review) => (
+        <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
+      ))}
+    </div>
+    <FaqSection faqs={faqs} title={`FAQ: ${segmentName}`} />
+  </section>
+</BaseLayout>

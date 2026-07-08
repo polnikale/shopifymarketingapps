@@ -1,0 +1,53 @@
+---
+import type { UseCasePlaybookContent } from '../data/use-case-playbooks';
+import type { UseCase } from '../data/use-cases';
+
+export interface Props {
+  content: UseCasePlaybookContent;
+  useCase: UseCase;
+}
+
+const { content, useCase } = Astro.props;
+---
+
+<article class="prose-shopify mb-12 card">
+  <h2>Stack execution playbook</h2>
+  {content.intro.map((p) => <p>{p}</p>)}
+
+  <h2>Merchant scenarios</h2>
+  {content.scenarios.map((s) => (
+    <p><strong>{s.name}:</strong> {s.description}</p>
+  ))}
+
+  <h2>Stack checklist</h2>
+  <ul>{content.checklist.map((item) => <li>{item}</li>)}</ul>
+
+  <h3>Exclusions (non-negotiable)</h3>
+  <ul>{useCase.exclusions.map((e) => <li>{e}</li>)}</ul>
+
+  <h3>Metrics that prove quality</h3>
+  <ul>{useCase.metrics.map((m) => <li>{m}</li>)}</ul>
+
+  <h3>Common mistakes</h3>
+  <ul>{useCase.mistakes.map((m) => <li>{m}</li>)}</ul>
+
+  <h2>{content.stackMapTitle}</h2>
+  {content.stackLayers.map((layer) => (
+    <div>
+      <h3>{layer.name}: {layer.tools}</h3>
+      <p>{layer.role}</p>
+      <p>{layer.playbookFit}</p>
+      <p><strong>Failure mode:</strong> {layer.failureMode}</p>
+      <p><strong>Operator test:</strong> {layer.operatorTest}</p>
+    </div>
+  ))}
+
+  <h2>Timing and trigger governance</h2>
+  {content.timingGovernance.map((p) => <p>{p}</p>)}
+
+  <h2>Measurement across the stack</h2>
+  {content.measurement.map((p) => <p>{p}</p>)}
+
+  <h2>Related playbooks</h2>
+  {content.relatedPlaybooks.map((p) => <p set:html={p} />)}
+</article>

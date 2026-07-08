@@ -1,0 +1,247 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import ToolReview from '../../components/ToolReview.astro';
+import { siteFromHost, pageTitle, description } from '../../content';
+import { appBySlug } from '../../data/apps';
+
+const site = siteFromHost();
+const path = '/use-cases/discount-strategy';
+const title = pageTitle(site, 'use-cases/discount-strategy');
+const desc = description(site, 'use-cases/discount-strategy');
+const heroSubtitle = 'Discount strategy is stack-wide governance — Privy caps, Sequenzy flow incentives, Postscript SMS offers, Marsello double-points, and winback branches share one collision calendar defining max depth per segment, not independent 10% defaults in every tool.';
+const useCaseName = 'discount strategy';
+const trigger = 'Segment by discount sensitivity, order history, and engagement';
+const timing = 'Full-price first for engaged segments; graduated discounts for cold segments; never stack with active promos';
+const tldrPicks = [
+    { label: 'Governance', tool: 'Collision calendar', reason: 'One offer per intent window across layers' },
+    { label: 'Lifecycle', tool: 'Sequenzy', reason: 'Segment-tiered incentive branches' },
+    { label: 'Capture', tool: 'Privy', reason: 'Popup default depth sets training behavior' },
+    { label: 'Segmentation', tool: 'Klaviyo', reason: 'Discount sensitivity and full-price loyalist segments' },
+];
+const faqs = [
+  { question: 'Default 10% on all automations?', answer: 'No — trains discount waiting. Proof-first, segment-tiered incentives.' },
+  { question: 'Collision calendar what?', answer: 'Shared doc: which layers can offer what depth when — one offer per intent window.' },
+  { question: 'Full-price loyalist definition?', answer: 'Typically 3+ orders without code redemption — segment and exclude from promos.' },
+  { question: 'Popup discount strategy?', answer: 'Value exchange and quiz over sitewide 15% — improves LTV on consumables.' },
+  { question: 'BFCM deeper discounts OK?', answer: 'Yes with calendar rules — exclusions, VIP sequencing, post-peak reset.' },
+  { question: 'Loyalty + sale same day?', answer: 'Avoid — stacked incentive erodes margin and confuses.' },
+  { question: 'Measure discount strategy?', answer: 'Full-price ratio weekly, margin after incentives, repeat without discount.' },
+  { question: 'High-AOV discount?', answer: 'Restraint — financing/proof before discount. Max depth lower than impulse DTC.' },
+  { question: 'Replenishment discount?', answer: 'Full-price default — incentive only non-responders email two.' },
+  { question: 'Who owns calendar?', answer: 'Growth lead with lifecycle, capture, SMS owners — weekly review slot.' },
+  { question: 'Shopify automatic discounts?', answer: 'Sync with email codes — avoid surprise stacking at checkout.' },
+  { question: 'Biggest mistake?', answer: 'Independent 10% defaults in Privy, cart, winback, SMS same week — trains perpetual waiting.' },
+];
+const toolReviews = [
+    {
+      slug: 'sequenzy',
+      rank: 1,
+      paragraphs: [
+      'Sequenzy segment-tiered incentive branches.',
+      'Proof-first flow defaults.',
+      'Agent helps draft non-discount objection copy.',
+      ],
+    },
+    {
+      slug: 'privy',
+      rank: 2,
+      paragraphs: [
+      'Privy popup default sets discount training behavior.',
+      'Audit wheel vs quiz capture.',
+      'Offer state feeds collision calendar.',
+      ],
+    },
+    {
+      slug: 'klaviyo',
+      rank: 3,
+      paragraphs: [
+      'Klaviyo discount sensitivity segmentation.',
+      'Full-price loyalist RFM definitions.',
+      'Reporting on redemption rate.',
+      ],
+    },
+    {
+      slug: 'marsello',
+      rank: 4,
+      paragraphs: [
+      'Marsello promotional calendar sync.',
+      'Avoid double-points + sale collision.',
+      'Points as alternative to discount for loyalists.',
+      ],
+    },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+  <section class="relative overflow-hidden py-16 md:py-24">
+    <div class="container">
+      <a href="/use-cases" class="link text-sm">← Use-case playbooks</a>
+      <span class="badge mt-6">Marketing stack playbook</span>
+      <h1 class="hero-title mt-5 max-w-5xl">Shopify marketing stack for {useCaseName}</h1>
+      <p class="mt-7 max-w-3xl text-xl text-cyan-100">{heroSubtitle}</p>
+      <p class="mt-5 max-w-3xl text-lg text-slate-300">Trigger: {trigger} · Timing: {timing}</p>
+    </div>
+  </section>
+  <section class="container pb-12">
+    <TldrBox title={`Stack picks for ${useCaseName}`} picks={tldrPicks} />
+    <article class="prose-shopify mb-12 card">
+      <h2>Stack execution playbook</h2>
+  <p>Discount strategy on a marketing stack is not a coupon code generator — it is governance across capture, lifecycle, SMS, loyalty, and winback layers. When every tool defaults to 10–15% off, shoppers learn to never buy full price. Full-price purchase ratio is the leading indicator of stack health.</p>
+  <p>Segment by discount sensitivity: full-price loyalists (3+ orders no code), moderate (occasional code), cold (never purchased). Full-price loyalists get early access and proof — never same coupons as bargain hunters.</p>
+  <p>One offer per intent window documented in collision calendar: popup session → welcome → browse → cart → SMS → loyalty cannot stack same afternoon. Max depth per segment row in calendar.</p>
+  <p>Proof-first paths reduce discount dependency — browse and cart email one without code for consideration categories. Incentive only when proof path fails or segment is cold/discount-sensitive.</p>
+  <p>VIP and high-AOV segments: financing and warranty before discount. Jewelry, furniture, commercial equipment train wait-for-sale with aggressive cart incentives.</p>
+  <p>Replenishment full-price default — discounting every reminder destroys consumable margin. Winback education before incentive for 90–120 day lapsed.</p>
+  <p>BFCM exception planning: deeper discounts allowed but collision calendar still applies — VIP early access before sitewide, recent full-price buyer exclusions, sunset unengaged first.</p>
+  <p>Marsello double-points same day as 20% sale email = stacked incentive. Loyalty promotional calendar syncs with email promotional calendar.</p>
+  <p>Analytics: full-price order %, discount redemption rate, margin after all incentives, repeat purchase without discount. Weekly full-price ratio review.</p>
+  <p>Popup default is the training wheel — Privy 15% sitewide trains behavior before lifecycle even starts. Quiz and value-exchange popups outperform discount wheels for replenishment LTV.</p>
+
+      <h2>Merchant scenarios</h2>
+  <p><strong>Full-price loyalist:</strong> Early access, new arrivals, proof — zero discount in cart/browse/winback.</p>
+  <p><strong>Cold subscriber:</strong> Welcome modest incentive email three only if popup did not deliver. Cart tiered.</p>
+  <p><strong>High-AOV cart:</strong> Financing email one, 5% max email three discount-sensitive only.</p>
+  <p><strong>BFCM week:</strong> Calendar max depth 25% VIP early -24h, general 20%, exclude recent full-price 14d.</p>
+
+      <h2>Stack checklist</h2>
+      <ul>
+    <li>Collision calendar published with max depth per segment</li>
+    <li>Full-price loyalist segment defined and excluded from promos</li>
+    <li>Popup default audited — not 15% sitewide without strategy</li>
+    <li>One offer per intent window rule documented</li>
+    <li>Cart/browse proof-first for consideration categories</li>
+    <li>Replenishment full-price default</li>
+    <li>Loyalty promo sync with email calendar</li>
+    <li>VIP exclusion from sitewide blasts</li>
+    <li>Weekly full-price ratio tracked</li>
+    <li>Margin after discount on recovered carts</li>
+    <li>Winback education before incentive branch</li>
+    <li>BFCM exception rows in calendar</li>
+      </ul>
+
+      <h3>Exclusions (non-negotiable)</h3>
+      <ul>
+    <li>Recent discount redeemers</li>
+    <li>Full-price loyalists</li>
+    <li>Customers in other offer flows</li>
+      </ul>
+
+      <h3>Metrics that prove quality</h3>
+      <ul>
+    <li>Full-price order percentage</li>
+    <li>Discount redemption rate</li>
+    <li>Margin after all incentives</li>
+    <li>Repeat purchase without discount</li>
+      </ul>
+
+      <h3>Common mistakes</h3>
+      <ul>
+    <li>Default 10% on every automation</li>
+    <li>Stacking popup + cart + winback discounts</li>
+    <li>No full-price segment treatment</li>
+      </ul>
+
+      <h2>Discount governance across stack layers</h2>
+  <div>
+    <h3>Capture defaults: Privy</h3>
+    <p>Sets first-touch discount expectation.</p>
+    <p>Quiz/value exchange over sitewide 15%.</p>
+    <p><strong>Failure mode:</strong> Aggressive wheel trains coupon hunters.</p>
+    <p><strong>Operator test:</strong> 90-day LTV popup vs quiz source.</p>
+  </div>
+  <div>
+    <h3>Lifecycle incentives: Sequenzy</h3>
+    <p>Tiered branches by segment sensitivity.</p>
+    <p>Proof-first paths default.</p>
+    <p><strong>Failure mode:</strong> 10% on every automation touch.</p>
+    <p><strong>Operator test:</strong> Full-price ratio trend weekly.</p>
+  </div>
+  <div>
+    <h3>SMS offers: Postscript</h3>
+    <p>Same caps as email — no deeper SMS discount.</p>
+    <p>One offer per intent window.</p>
+    <p><strong>Failure mode:</strong> SMS 20% + email 15% same day.</p>
+    <p><strong>Operator test:</strong> SMS/email offer collision audit.</p>
+  </div>
+  <div>
+    <h3>Loyalty promos: Marsello</h3>
+    <p>Double-points days sync with email calendar.</p>
+    <p>No loyalty + sale email same day.</p>
+    <p><strong>Failure mode:</strong> Stacked loyalty and promo.</p>
+    <p><strong>Operator test:</strong> Collision calendar includes loyalty row.</p>
+  </div>
+  <div>
+    <h3>Analytics: Shopify</h3>
+    <p>Full-price %, margin after incentives.</p>
+    <p>Finance weekly review.</p>
+    <p><strong>Failure mode:</strong> Revenue up, full-price ratio down unnoticed.</p>
+    <p><strong>Operator test:</strong> Full-price ratio above target band.</p>
+  </div>
+
+      <h2>Timing and trigger governance</h2>
+  <p>Default: full-price first for engaged and loyalist segments.</p>
+  <p>Incentive escalation only on touch 3+ for cold segments.</p>
+  <p>BFCM: calendar overrides with documented max depth.</p>
+  <p>Post-peak: return to full-price-first within 7 days.</p>
+
+      <h2>Measurement across the stack</h2>
+  <p>Full-price order percentage weekly.</p>
+  <p>Discount redemption rate by segment.</p>
+  <p>Margin after all incentives.</p>
+  <p>Repeat purchase without discount within 90 days.</p>
+
+      <h2>Related playbooks</h2>
+  <p>Governance: <a class="link" href="/guides/cross-channel-coordination">cross-channel coordination</a>.</p>
+  <p>Flows: <a class="link" href="/use-cases/abandoned-cart">cart</a>, <a class="link" href="/use-cases/winback">winback</a>.</p>
+  <p>Vertical: <a class="link" href="/for/high-aov">high-AOV</a> discount restraint.</p>
+
+<h2>Stack coordination for discount strategy</h2>
+<p>discount strategy is not an email template problem — it is a stack handoff problem. Trigger: Segment by discount sensitivity, order history, and engagement Timing: Full-price first for engaged segments; graduated discounts for cold segments; never stack with active promos Every layer must read the same customer state: capture tags from Privy, lifecycle execution in Sequenzy, proof modules from Yotpo, loyalty tier from Marsello, SMS consent from Postscript. When use incentives without training every shopper to wait, margin after discount matters more than attributed revenue.</p>
+<p><strong>Capture defaults:</strong> Sets first-touch discount expectation. Playbook fit: Quiz/value exchange over sitewide 15%. Failure mode: Aggressive wheel trains coupon hunters. Operator test: 90-day LTV popup vs quiz source.</p>
+<p><strong>Lifecycle incentives:</strong> Tiered branches by segment sensitivity. Playbook fit: Proof-first paths default. Failure mode: 10% on every automation touch. Operator test: Full-price ratio trend weekly.</p>
+<p><strong>SMS offers:</strong> Same caps as email — no deeper SMS discount. Playbook fit: One offer per intent window. Failure mode: SMS 20% + email 15% same day. Operator test: SMS/email offer collision audit.</p>
+<p><strong>Loyalty promos:</strong> Double-points days sync with email calendar. Playbook fit: No loyalty + sale email same day. Failure mode: Stacked loyalty and promo. Operator test: Collision calendar includes loyalty row.</p>
+<p><strong>Analytics:</strong> Full-price %, margin after incentives. Playbook fit: Finance weekly review. Failure mode: Revenue up, full-price ratio down unnoticed. Operator test: Full-price ratio above target band.</p>
+<p><strong>Scenario — Full-price loyalist:</strong> Early access, new arrivals, proof — zero discount in cart/browse/winback. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — Cold subscriber:</strong> Welcome modest incentive email three only if popup did not deliver. Cart tiered. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — High-AOV cart:</strong> Financing email one, 5% max email three discount-sensitive only. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — BFCM week:</strong> Calendar max depth 25% VIP early -24h, general 20%, exclude recent full-price 14d. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<h2>Checklist execution notes</h2>
+<p>Collision calendar published with max depth per segment — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Full-price loyalist segment defined and excluded from promos — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Popup default audited — not 15% sitewide without strategy — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>One offer per intent window rule documented — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Cart/browse proof-first for consideration categories — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Replenishment full-price default — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Loyalty promo sync with email calendar — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>VIP exclusion from sitewide blasts — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Weekly full-price ratio tracked — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Margin after discount on recovered carts — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Winback education before incentive branch — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>BFCM exception rows in calendar — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<h2>FAQ deep dives</h2>
+<p><strong>Default 10% on all automations?</strong> No — trains discount waiting. Proof-first, segment-tiered incentives. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Collision calendar what?</strong> Shared doc: which layers can offer what depth when — one offer per intent window. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Full-price loyalist definition?</strong> Typically 3+ orders without code redemption — segment and exclude from promos. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Popup discount strategy?</strong> Value exchange and quiz over sitewide 15% — improves LTV on consumables. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>BFCM deeper discounts OK?</strong> Yes with calendar rules — exclusions, VIP sequencing, post-peak reset. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Loyalty + sale same day?</strong> Avoid — stacked incentive erodes margin and confuses. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Measure discount strategy?</strong> Full-price ratio weekly, margin after incentives, repeat without discount. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>High-AOV discount?</strong> Restraint — financing/proof before discount. Max depth lower than impulse DTC. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Replenishment discount?</strong> Full-price default — incentive only non-responders email two. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Who owns calendar?</strong> Growth lead with lifecycle, capture, SMS owners — weekly review slot. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Shopify automatic discounts?</strong> Sync with email codes — avoid surprise stacking at checkout. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Biggest mistake?</strong> Independent 10% defaults in Privy, cart, winback, SMS same week — trains perpetual waiting. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+    </article>
+    <div class="space-y-8">
+      {toolReviews.map((review) => (
+        <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
+      ))}
+    </div>
+    <FaqSection faqs={faqs} title={`FAQ: ${useCaseName}`} />
+  </section>
+</BaseLayout>

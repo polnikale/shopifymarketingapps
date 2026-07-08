@@ -1,0 +1,256 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import ToolReview from '../../components/ToolReview.astro';
+import { siteFromHost, pageTitle, description } from '../../content';
+import { appBySlug } from '../../data/apps';
+
+const site = siteFromHost();
+const path = '/for/food-and-beverage';
+const title = pageTitle(site, 'for/food-and-beverage');
+const desc = description(site, 'for/food-and-beverage');
+const heroSubtitle = 'Consumption windows, perishability deadlines, and subscription skips need a stack where Recharge gates every send — Sequenzy consumption replenishment, Omnisend launch urgency, Klaviyo flavor cohorts, and shipping-cutoff SMS, not fashion drop logic on 7-day yogurt cycles.';
+const buyingCycle = '1–4 week consumption; subscription-heavy; limited SKU availability';
+const segmentName = 'food and beverage brands';
+const tldrPicks = [
+    { label: 'Lifecycle', tool: 'Sequenzy', reason: 'Consumption reorder, flavor launches, perishability clarity' },
+    { label: 'Multichannel', tool: 'Omnisend', reason: 'Launch sell-through email+SMS for limited flavors' },
+    { label: 'Subscription', tool: 'Klaviyo', reason: 'Recharge sync, skip recovery, churn scoring' },
+    { label: 'Capture', tool: 'Privy', reason: 'Flavor waitlist and dietary preference tags' },
+];
+const faqs = [
+  { question: 'Best marketing stack for food and beverage Shopify?', answer: 'Privy flavor/dietary capture, Sequenzy consumption replenishment and shipping cutoffs, Klaviyo + Recharge subscription sync, Omnisend launch SMS, Yotpo taste proof.' },
+  { question: 'How set replenishment timing for food?', answer: 'By SKU consumption category — days to consume based on size and usage quiz. Trigger at 80% not calendar 30 days for all.' },
+  { question: 'Subscription vs one-time replenishment?', answer: 'Recharge active status suppresses replenishment on subscribed SKU. Separate flows. Collision audit monthly.' },
+  { question: 'Shipping cutoff emails?', answer: 'Dynamic content by region in Sequenzy — 72h and 24h cascade. SMS for opt-in. Gift and self branches differ.' },
+  { question: 'Limited flavor launches?', answer: 'Privy waitlist → Sequenzy ordered fulfillment → Omnisend SMS 48h sell-through. Full list blast wastes perishable inventory.' },
+  { question: 'Perishability post-purchase?', answer: 'Storage instructions day 1, freshness FAQ, support contact — reduces tickets and chargebacks on refrigerated SKUs.' },
+  { question: 'SMS for food brands?', answer: 'Shipping cutoff, delivery day, reorder window — not weekly promos. High value for perishable timing.' },
+  { question: 'Allergen segmentation?', answer: 'Capture dietary restrictions at quiz. Suppress allergen-conflict product promos. Compliance-critical.' },
+  { question: 'Margin after shipping promos?', answer: 'Track weekly in Shopify — free shipping on heavy cold-chain can erase contribution. Finance threshold on automated offers.' },
+  { question: 'Winback for food?', answer: 'New flavor and seasonal menu preview — not deep discount on near-code-date inventory.' },
+  { question: 'Metrics?', answer: 'Replenishment conversion, subscription retention, margin after shipping, launch 48h sell-through, cutoff campaign conversion.' },
+  { question: 'Biggest food stack mistake?', answer: '30-day universal replenishment across mixed consumption SKUs — wrong timing trains ignore of all food emails.' },
+];
+const toolReviews = [
+    {
+      slug: 'sequenzy',
+      rank: 1,
+      paragraphs: [
+      'Sequenzy food lifecycle — consumption replenishment, perishability education, shipping cutoff dynamic content, flavor launch fulfillment.',
+      'Agent content helps seasonal menu and storage instruction copy without compliance-heavy manual rebuilds.',
+      'Gift vs self branches and regional suppressions configured per market.',
+      ],
+    },
+    {
+      slug: 'klaviyo',
+      rank: 2,
+      paragraphs: [
+      'Klaviyo Recharge integration depth, churn scoring, and flavor cohort reporting for food subscription brands.',
+      'Market and dietary segmentation at scale. Subscription event suppressions on replenishment flows.',
+      'Reporting on margin-sensitive segments — pair with Shopify finance view.',
+      ],
+    },
+    {
+      slug: 'omnisend',
+      rank: 3,
+      paragraphs: [
+      'Omnisend launch email+SMS for limited flavor sell-through when lean team needs speed.',
+      'Replenishment automations need consumption customization — reject default 30-day.',
+      'Strong fit under $80k until Klaviyo subscription depth required.',
+      ],
+    },
+    {
+      slug: 'privy',
+      rank: 4,
+      paragraphs: [
+      'Privy flavor waitlist and dietary quiz capture — tags feed replenishment math and allergen suppressions.',
+      'Waitlist per limited SKU for ordered launch. Avoid deep discount wheels on perishable first purchase.',
+      'Handoff to Sequenzy within 5 minutes on opt-in.',
+      ],
+    },
+    {
+      slug: 'rejoiner',
+      rank: 5,
+      paragraphs: [
+      'Rejoiner cart recovery for one-time food gift purchases — inventory and perishability check before send.',
+      'Exclude subscription subscribers from DTC cart paths. Shipping cutoff in recovery email two.',
+      'Supplement to Sequenzy replenishment not replacement.',
+      ],
+    },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+  <section class="relative overflow-hidden py-16 md:py-24">
+    <div class="container">
+      <a href="/for" class="link text-sm">← Store types</a>
+      <span class="badge mt-6">{segmentName}</span>
+      <h1 class="hero-title mt-5 max-w-5xl">Shopify marketing stack for {segmentName}</h1>
+      <p class="mt-7 max-w-3xl text-xl text-cyan-100">{heroSubtitle}</p>
+      <p class="mt-5 max-w-3xl text-lg text-slate-300">Buying behavior: {buyingCycle}</p>
+    </div>
+  </section>
+  <section class="container pb-12">
+    <TldrBox title="Stack shortlist" picks={tldrPicks} />
+    <article class="prose-shopify mb-12 card">
+      <h2>Why {segmentName} need a different stack shape</h2>
+  <p>Food and beverage Shopify brands operate on consumption physics — 7-day yogurt, 30-day coffee, 90-day hot sauce, weekly meal kit delivery. The marketing stack must time replenishment at actual consumption rates, communicate perishability and shipping cutoffs clearly, and respect subscription state before any promotional send. Fashion drop calendars and 30-day universal replenishment destroy relevance and margin on perishable SKUs.</p>
+  <p>Limited-time flavors and seasonal releases are launch events, not evergreen promos. Privy waitlist by flavor, Sequenzy launch to waitlist, Omnisend SMS for 48h sell-through on opt-in list — same playbook as POD trend drops but with expiration date urgency instead of design virality.</p>
+  <p>Subscription-heavy food brands need Recharge/Skio as stack governor. Active subscribers suppress single-purchase replenishment; skip events trigger save branch with recipe content or flavor preview, not immediate 20% off that trains skip-for-deal behavior.</p>
+  <p>Shipping deadline modules belong in lifecycle layer — regional cutoff dates in email and SMS 72h and 24h before holiday windows. Gift and self-purchase branches differ; gift buyers need recipient delivery clarity not replenishment for themselves.</p>
+  <p>Perishability anxiety drives support tickets — post-purchase storage instructions, consumption timeline, and freshness guarantee in Sequenzy post-purchase reduce &quot;is it still good?&quot; contacts more than discount codes.</p>
+  <p>Compliance and allergen communication constrain copy — education sequences list ingredients and allergen warnings on first purchase of new SKU. Supplement-adjacent health claims need legal review; stack governance includes approved copy blocks version-controlled.</p>
+  <p>Margin after shipping promos is the real KPI — free shipping thresholds in email must reconcile with weight and cold-chain cost. Analytics layer tracks margin after shipping subsidy on email-driven orders weekly.</p>
+  <p>SMS excels at shipping cutoff and delivery day for perishables — Postscript or Omnisend when box ships and when reorder window opens. Not weekly promotional texts; food subscribers appreciate timely reorder, resent spam.</p>
+  <p>Yotpo reviews on taste and freshness supply social proof for consideration-heavy categories — craft hot sauce, specialty coffee. Photo reviews in browse abandonment before discount on gift sets.</p>
+  <p>Wholesale and café B2B accounts need tag separation from DTC replenishment — read b2b-wholesale guide if hybrid. Consumer winback with 25% off on trade accounts destroys pricing integrity.</p>
+  <p>Cold-chain and regional availability require market suppressions — West Coast subscribers do not receive East Coast-only fresh delivery promos. Shopify market tags flow into Klaviyo segments.</p>
+  <p>Winback for lapsed food buyers: new flavor announcement and seasonal menu preview, not deep discount on stale inventory approaching code date.</p>
+  <p>First stack fix: consumption replenishment by SKU category, Recharge suppressions, shipping deadline module for Q4, flavor launch waitlist handoff. Loyalty after repeat rate exceeds 25% on full-price.</p>
+  <p>Meal kit and perishable brands need temperature and delivery window clarity in every post-purchase and replenishment email — reduces chargebacks more than 10% off reorder incentive.</p>
+  <p>Café and restaurant wholesale hybrid stores must read b2b-wholesale guide — MOQ reorder for trade accounts separate from DTC consumption replenishment entirely.</p>
+  <p>Cold-chain SKUs need regional suppressions — subscribers outside serviceable zip codes must not receive fresh delivery promos that cannot fulfill.</p>
+  <p>Coffee subscription and one-time bag purchasers share Klaviyo account but different Sequenzy branches — collision audit monthly on promotional vs replenishment overlap.</p>
+  <p>Limited-run flavor launches coordinate with Privy waitlist and Omnisend 48h SMS — same architecture as POD trend drops with perishability cutoff overlay.</p>
+
+      <h2>Merchant stories from the field</h2>
+  <div>
+    <h3>Roast &amp; Route Coffee ($94k/mo specialty coffee)</h3>
+    <p>Roast &amp; Route set replenishment by bag size and household consumption quiz — 2-week vs 4-week cycles. Privy quiz at capture; Sequenzy reminder at 80% consumption; Recharge subscribers suppressed. Limited roast launches: waitlist → launch → 48h Omnisend SMS. Margin after free-shipping promos tracked weekly — reduced shipping subsidy depth 5% after audit. Subscription skip-save with brewing guide content outperformed 15% off.</p>
+  </div>
+  <div>
+    <h3>Ferment Kitchen ($52k/mo refrigerated ferments)</h3>
+    <p>Ferment Kitchen added shipping cutoff dynamic content by zip region in Sequenzy — holiday gift orders up 31% with fewer missed-cutoff support tickets. Perishability education post-purchase day 1. Cold-chain SKU suppressions for non-serviceable zips. Postscript delivery-day SMS only. No winback discount — seasonal flavor preview.</p>
+  </div>
+  <div>
+    <h3>SnackCrate Direct ($128k/mo snack subscription)</h3>
+    <p>SnackCrate merged box preview (day -7) with flavor reveal UGC from prior subscribers. Klaviyo churn score routes to Sequenzy save branch. Skip recovery leads with &quot;next box sneak peek&quot; not coupon. Referral in month 2. DTC one-time snack purchases separate flow from subscribers — collision incidents dropped to zero after tag audit.</p>
+  </div>
+
+      <h3>Priority plays for {segmentName}</h3>
+      <ul>
+    <li>Replenishment by consumption rate</li>
+    <li>New flavor launch alerts</li>
+    <li>Subscription box previews</li>
+    <li>Perishability and shipping clarity</li>
+      </ul>
+
+      <h3>Metrics to watch weekly</h3>
+      <ul>
+    <li>Reorder rate by product</li>
+    <li>Subscription skip recovery</li>
+    <li>Launch sell-through from email</li>
+    <li>Margin after shipping promos</li>
+      </ul>
+
+      <h2>Three stack scenarios for {segmentName}</h2>
+  <p><strong>Consumable DTC:</strong> Privy consumption quiz → Sequenzy SKU-timed replenishment → Recharge sync → shipping cutoff modules → Omnisend launch SMS for limited flavors.</p>
+  <p><strong>Subscription-first food:</strong> Recharge events → Klaviyo churn → Sequenzy preview/skip/churn → Yotpo taste UGC in preview → referral month 2.</p>
+  <p><strong>Seasonal and gift-heavy:</strong> Shipping deadline email+SMS cascade → gift buyer branch → self-purchase replenishment separate → flavor waitlist launches.</p>
+
+      <h2>Six-layer food and beverage stack architecture</h2>
+  <div>
+    <h3>Capture layer: Privy, Justuno</h3>
+    <p>Flavor waitlists, dietary preference and allergen tags, consumption quiz for reorder math at opt-in.</p>
+    <p>Food capture tags dietary restrictions, flavor preferences, and household consumption rate. Waitlist per limited SKU. No deep discount on perishable first-touch.</p>
+    <p><strong>Failure mode:</strong> Generic popup — nut-allergy subscriber receives peanut product promos.</p>
+    <p><strong>Operator test:</strong> Allergen/dietary tags present on 90%+ new subscribers from quiz popup.</p>
+  </div>
+  <div>
+    <h3>Lifecycle layer: Sequenzy</h3>
+    <p>Consumption replenishment, flavor launch fulfillment, perishability education, shipping cutoff campaigns, gift vs self branches.</p>
+    <p>Replenishment at 80% consumption by SKU category. Launch to waitlist in order. Shipping cutoff dynamic content by region. Post-purchase storage instructions day 1.</p>
+    <p><strong>Failure mode:</strong> 30-day universal reorder on 7-day and 90-day SKUs mixed in one flow.</p>
+    <p><strong>Operator test:</strong> Replenishment timing documented per product category — audit 3 SKUs.</p>
+  </div>
+  <div>
+    <h3>Subscription intelligence: Klaviyo + Recharge/Skio</h3>
+    <p>Subscription status, skip/churn events, box preview triggers, and replenishment suppressions.</p>
+    <p>Active subscribers skip single-purchase replenishment on subscribed SKU. Preview day -7. Skip-save content-first. Churn score &gt;0.7 proactive branch.</p>
+    <p><strong>Failure mode:</strong> Replenishment promo to active weekly meal kit subscriber.</p>
+    <p><strong>Operator test:</strong> Zero replenishment-to-subscriber collisions last billing cycle.</p>
+  </div>
+  <div>
+    <h3>Multichannel urgency: Omnisend, Postscript</h3>
+    <p>Limited flavor launch SMS, shipping cutoff reminders, delivery-day notification for perishables.</p>
+    <p>SMS 72h and 24h before regional shipping cutoff. Launch day waitlist opt-in only. Delivery-day confirm for cold-chain.</p>
+    <p><strong>Failure mode:</strong> Weekly SMS promos on perishable SKUs — opt-out and waste guilt.</p>
+    <p><strong>Operator test:</strong> Shipping cutoff SMS conversion vs email-only — measure incremental orders before cutoff.</p>
+  </div>
+  <div>
+    <h3>Proof layer: Yotpo</h3>
+    <p>Taste reviews, freshness testimonials, and unboxing photos in browse and gift-set consideration.</p>
+    <p>Gift set browse includes taste review quotes. Review request delivery +3 days for ambient, +1 day check-in for perishable quality.</p>
+    <p><strong>Failure mode:</strong> No proof on gift consideration — default to discounting premium baskets.</p>
+    <p><strong>Operator test:</strong> Gift set conversion with taste UGC module vs without.</p>
+  </div>
+  <div>
+    <h3>Analytics layer: Shopify</h3>
+    <p>Margin after shipping promos, replenishment conversion, subscription retention, launch sell-through, waste/return proxy via support tags.</p>
+    <p>Weekly margin on email orders including shipping subsidy. Cohort replenishment by consumption segment.</p>
+    <p><strong>Failure mode:</strong> Free shipping promo drives revenue negative on heavy cold-chain orders.</p>
+    <p><strong>Operator test:</strong> Finance margin line includes shipping subsidy impact monthly.</p>
+  </div>
+
+      <h2>90-day implementation roadmap</h2>
+  <p><strong>Week 1:</strong> Map SKU consumption windows. Audit Recharge suppressions. List allergen/dietary segmentation gaps.</p>
+  <p><strong>Week 2:</strong> Privy consumption quiz or flavor waitlist. Dietary tags on new subscribers.</p>
+  <p><strong>Week 3:</strong> Sequenzy replenishment by category at 80% consumption. Recharge suppressions live.</p>
+  <p><strong>Week 4:</strong> Post-purchase perishability education. Reconcile replenishment conversion.</p>
+  <p><strong>Week 5:</strong> Shipping cutoff dynamic content pilot for next holiday window.</p>
+  <p><strong>Week 6:</strong> Flavor launch waitlist → fulfillment sequence. Omnisend SMS opt-in branch.</p>
+  <p><strong>Week 7:</strong> Subscription preview day -7 if applicable. Skip-save content branch.</p>
+  <p><strong>Week 8:</strong> Yotpo taste reviews in gift browse. Regional market suppressions.</p>
+  <p><strong>Week 9:</strong> Gift vs self-purchase branch audit. Margin after shipping promo review.</p>
+  <p><strong>Week 10:</strong> Winback new flavor preview. Exclude recent purchasers.</p>
+  <p><strong>Week 11:</strong> Q4 shipping cutoff cascade tested. Collision calendar for promo + replenishment.</p>
+  <p><strong>Week 12:</strong> Retrospective: replenishment rate, subscription retention, margin after shipping, launch sell-through.</p>
+
+      <h2>Pricing and stack economics</h2>
+  <p>Food stacks $250–500/mo — Recharge + Klaviyo + Sequenzy + Omnisend/Postscript. Shipping subsidy mistakes cost more than tool fees.</p>
+  <p>Consumption accuracy prevents waste and churn — late coffee reminder loses to competitor; early yogurt promo wastes margin.</p>
+  <p>Limited flavor launches justify SMS cost — everyday replenishment may be email-only until opt-in list grows.</p>
+  <p>Cold-chain shipping promos need finance approval threshold — model per-order contribution before automating free shipping in cart recovery.</p>
+  <p>Subscription preview content investment reduces skip rate — often outperforms skip-save discounts on food boxes.</p>
+
+      <h2>Cross-links for stack due diligence</h2>
+  <p>Related: <a class="link" href="/for/subscription-boxes">subscription boxes</a>, <a class="link" href="/use-cases/replenishment">replenishment playbook</a>.</p>
+  <p>Seasonal: <a class="link" href="/use-cases/holiday-gifting">holiday gifting</a>, <a class="link" href="/guides/seasonal-campaigns">seasonal governance</a>.</p>
+  <p>Compare: <a class="link" href="/compare/omnisend-vs-klaviyo">Omnisend vs Klaviyo</a>.</p>
+
+<h2>Stack governance for food and beverage brands</h2>
+<p>Operating a food and beverage brands marketing stack means assigning layer owners before adding tools. Capture (Privy, Justuno) qualifies intent; Sequenzy executes lifecycle with suppressions; Postscript handles scarce SMS urgency; Yotpo injects proof into consideration; Marsello coordinates loyalty without promo collisions. When any layer sends without reading customer state from the others, repeat purchase windows, subscriptions, and limited-time flavors gets worse — not better.</p>
+<p><strong>Capture layer in practice:</strong> Flavor waitlists, dietary preference and allergen tags, consumption quiz for reorder math at opt-in. For food and beverage brands, Food capture tags dietary restrictions, flavor preferences, and household consumption rate. Waitlist per limited SKU. No deep discount on perishable first-touch. The failure mode to watch: Generic popup — nut-allergy subscriber receives peanut product promos. Monthly operator test: Allergen/dietary tags present on 90%+ new subscribers from quiz popup.</p>
+<p><strong>Lifecycle layer in practice:</strong> Consumption replenishment, flavor launch fulfillment, perishability education, shipping cutoff campaigns, gift vs self branches. For food and beverage brands, Replenishment at 80% consumption by SKU category. Launch to waitlist in order. Shipping cutoff dynamic content by region. Post-purchase storage instructions day 1. The failure mode to watch: 30-day universal reorder on 7-day and 90-day SKUs mixed in one flow. Monthly operator test: Replenishment timing documented per product category — audit 3 SKUs.</p>
+<p><strong>Subscription intelligence in practice:</strong> Subscription status, skip/churn events, box preview triggers, and replenishment suppressions. For food and beverage brands, Active subscribers skip single-purchase replenishment on subscribed SKU. Preview day -7. Skip-save content-first. Churn score &gt;0.7 proactive branch. The failure mode to watch: Replenishment promo to active weekly meal kit subscriber. Monthly operator test: Zero replenishment-to-subscriber collisions last billing cycle.</p>
+<p><strong>Multichannel urgency in practice:</strong> Limited flavor launch SMS, shipping cutoff reminders, delivery-day notification for perishables. For food and beverage brands, SMS 72h and 24h before regional shipping cutoff. Launch day waitlist opt-in only. Delivery-day confirm for cold-chain. The failure mode to watch: Weekly SMS promos on perishable SKUs — opt-out and waste guilt. Monthly operator test: Shipping cutoff SMS conversion vs email-only — measure incremental orders before cutoff.</p>
+<p><strong>Proof layer in practice:</strong> Taste reviews, freshness testimonials, and unboxing photos in browse and gift-set consideration. For food and beverage brands, Gift set browse includes taste review quotes. Review request delivery +3 days for ambient, +1 day check-in for perishable quality. The failure mode to watch: No proof on gift consideration — default to discounting premium baskets. Monthly operator test: Gift set conversion with taste UGC module vs without.</p>
+<p><strong>Analytics layer in practice:</strong> Margin after shipping promos, replenishment conversion, subscription retention, launch sell-through, waste/return proxy via support tags. For food and beverage brands, Weekly margin on email orders including shipping subsidy. Cohort replenishment by consumption segment. The failure mode to watch: Free shipping promo drives revenue negative on heavy cold-chain orders. Monthly operator test: Finance margin line includes shipping subsidy impact monthly.</p>
+<p><strong>Deploying the Consumable DTC scenario:</strong> Privy consumption quiz → Sequenzy SKU-timed replenishment → Recharge sync → shipping cutoff modules → Omnisend launch SMS for limited flavors. Document trigger, delay, branch, and suppression rows before launch. Reconcile Shopify net sales weekly — platform attribution will overstate if popup, cart, and SMS discounts stack on the same session.</p>
+<p><strong>Deploying the Subscription-first food scenario:</strong> Recharge events → Klaviyo churn → Sequenzy preview/skip/churn → Yotpo taste UGC in preview → referral month 2. Document trigger, delay, branch, and suppression rows before launch. Reconcile Shopify net sales weekly — platform attribution will overstate if popup, cart, and SMS discounts stack on the same session.</p>
+<p><strong>Deploying the Seasonal and gift-heavy scenario:</strong> Shipping deadline email+SMS cascade → gift buyer branch → self-purchase replenishment separate → flavor waitlist launches. Document trigger, delay, branch, and suppression rows before launch. Reconcile Shopify net sales weekly — platform attribution will overstate if popup, cart, and SMS discounts stack on the same session.</p>
+<h2>Quarterly stack audit for food and beverage brands</h2>
+<p><strong>Week 1 review:</strong> Map SKU consumption windows. Audit Recharge suppressions. List allergen/dietary segmentation gaps. Confirm collision calendar updated for upcoming peak weeks and that subscription, wholesale, or gift-buyer tags still suppress conflicting promos.</p>
+<p><strong>Week 2 review:</strong> Privy consumption quiz or flavor waitlist. Dietary tags on new subscribers. Confirm collision calendar updated for upcoming peak weeks and that subscription, wholesale, or gift-buyer tags still suppress conflicting promos.</p>
+<p><strong>Week 3 review:</strong> Sequenzy replenishment by category at 80% consumption. Recharge suppressions live. Confirm collision calendar updated for upcoming peak weeks and that subscription, wholesale, or gift-buyer tags still suppress conflicting promos.</p>
+<p><strong>Week 4 review:</strong> Post-purchase perishability education. Reconcile replenishment conversion. Confirm collision calendar updated for upcoming peak weeks and that subscription, wholesale, or gift-buyer tags still suppress conflicting promos.</p>
+<p><strong>Week 5 review:</strong> Shipping cutoff dynamic content pilot for next holiday window. Confirm collision calendar updated for upcoming peak weeks and that subscription, wholesale, or gift-buyer tags still suppress conflicting promos.</p>
+<p><strong>Week 6 review:</strong> Flavor launch waitlist → fulfillment sequence. Omnisend SMS opt-in branch. Confirm collision calendar updated for upcoming peak weeks and that subscription, wholesale, or gift-buyer tags still suppress conflicting promos.</p>
+<p><strong>Stack economics note:</strong> Food stacks $250–500/mo — Recharge + Klaviyo + Sequenzy + Omnisend/Postscript. Shipping subsidy mistakes cost more than tool fees. Model operator hours alongside SaaS fees — governance debt shows up as discount margin leakage before it shows up as tool cost.</p>
+<p><strong>Stack economics note:</strong> Consumption accuracy prevents waste and churn — late coffee reminder loses to competitor; early yogurt promo wastes margin. Model operator hours alongside SaaS fees — governance debt shows up as discount margin leakage before it shows up as tool cost.</p>
+<p><strong>Stack economics note:</strong> Limited flavor launches justify SMS cost — everyday replenishment may be email-only until opt-in list grows. Model operator hours alongside SaaS fees — governance debt shows up as discount margin leakage before it shows up as tool cost.</p>
+<p><strong>Stack economics note:</strong> Cold-chain shipping promos need finance approval threshold — model per-order contribution before automating free shipping in cart recovery. Model operator hours alongside SaaS fees — governance debt shows up as discount margin leakage before it shows up as tool cost.</p>
+<p><strong>Stack economics note:</strong> Subscription preview content investment reduces skip rate — often outperforms skip-save discounts on food boxes. Model operator hours alongside SaaS fees — governance debt shows up as discount margin leakage before it shows up as tool cost.</p>
+    </article>
+    <div class="space-y-8">
+      {toolReviews.map((review) => (
+        <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
+      ))}
+    </div>
+    <FaqSection faqs={faqs} title={`FAQ: ${segmentName}`} />
+  </section>
+</BaseLayout>

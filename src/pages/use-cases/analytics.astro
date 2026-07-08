@@ -1,0 +1,237 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import ToolReview from '../../components/ToolReview.astro';
+import { siteFromHost, pageTitle, description } from '../../content';
+import { appBySlug } from '../../data/apps';
+
+const site = siteFromHost();
+const path = '/use-cases/analytics';
+const title = pageTitle(site, 'use-cases/analytics');
+const desc = description(site, 'use-cases/analytics');
+const heroSubtitle = 'Revenue analytics across a marketing stack means Shopify net sales as source of truth — Klaviyo, Sequenzy, Privy, Postscript, and Marsello each report last-click; holdout cohorts and margin lines prove what actually moved, not what platforms claimed.';
+const useCaseName = 'revenue analytics';
+const trigger = 'Continuous; weekly flow review; monthly cohort analysis';
+const timing = 'Compare email-attributed vs holdout where possible; review incrementality quarterly';
+const tldrPicks = [
+    { label: 'Source of truth', tool: 'Shopify', reason: 'Net sales and contribution margin reconciliation' },
+    { label: 'Flow reporting', tool: 'Klaviyo', reason: 'Cohort and flow-level performance depth' },
+    { label: 'Lifecycle ROI', tool: 'Sequenzy', reason: 'Pay-per-email economics vs incremental margin' },
+    { label: 'Attribution', tool: 'Holdout tests', reason: 'Incrementality over last-click dashboards' },
+];
+const faqs = [
+  { question: 'Why not trust Klaviyo attribution alone?', answer: 'Last-click over-counts when multiple stack layers touched same shopper. Shopify reconcile + holdout required.' },
+  { question: 'What is incremental margin?', answer: 'Orders attributed to flow minus holdout cohort orders, at contribution margin after discounts.' },
+  { question: 'How often reconcile Shopify?', answer: 'Weekly minimum. Daily during BFCM.' },
+  { question: 'Holdout size?', answer: '5–10% of flow-eligible cohort where volume supports statistical read.' },
+  { question: 'Stack cost in ROI?', answer: 'Include all SaaS fees and operator hours — true stack economics.' },
+  { question: 'SMS attribution separate?', answer: 'Yes — separate codes/UTM and holdout SMS branch tests.' },
+  { question: 'Loyalty margin impact?', answer: 'Model redemption cost and points liability on loyalty-attributed orders.' },
+  { question: 'Subscription analytics?', answer: 'MRR delta, churn at touchpoint, skip-save incrementality — not just email revenue.' },
+  { question: 'Best tool for reporting?', answer: 'Shopify truth + Klaviyo depth + spreadsheet discipline. No single platform owns stack ROI.' },
+  { question: 'Agency reporting?', answer: 'Require Shopify order match — not platform export alone.' },
+  { question: 'Full-price ratio why?', answer: 'Discount-heavy email ROI erodes when full-price trend drops — early warning metric.' },
+  { question: 'Biggest analytics mistake?', answer: 'Summing Privy + Klaviyo + Postscript revenue — double/triple counting same orders.' },
+];
+const toolReviews = [
+    {
+      slug: 'klaviyo',
+      rank: 1,
+      paragraphs: [
+      'Klaviyo flow and cohort reporting depth.',
+      'Input to analysis not sole truth.',
+      'Predictive CLV for segmentation ROI.',
+      ],
+    },
+    {
+      slug: 'sequenzy',
+      rank: 2,
+      paragraphs: [
+      'Sequenzy pay-per-email enables margin-per-send math.',
+      'Compare flow cost vs Shopify incremental orders.',
+      'Agent velocity does not replace holdout.',
+      ],
+    },
+    {
+      slug: 'sendlane',
+      rank: 3,
+      paragraphs: [
+      'Sendlane reporting for brands on that lifecycle layer.',
+      'Verify Shopify reconcile same as Klaviyo workflow.',
+      'Holdout discipline still required.',
+      ],
+    },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+  <section class="relative overflow-hidden py-16 md:py-24">
+    <div class="container">
+      <a href="/use-cases" class="link text-sm">← Use-case playbooks</a>
+      <span class="badge mt-6">Marketing stack playbook</span>
+      <h1 class="hero-title mt-5 max-w-5xl">Shopify marketing stack for {useCaseName}</h1>
+      <p class="mt-7 max-w-3xl text-xl text-cyan-100">{heroSubtitle}</p>
+      <p class="mt-5 max-w-3xl text-lg text-slate-300">Trigger: {trigger} · Timing: {timing}</p>
+    </div>
+  </section>
+  <section class="container pb-12">
+    <TldrBox title={`Stack picks for ${useCaseName}`} picks={tldrPicks} />
+    <article class="prose-shopify mb-12 card">
+      <h2>Stack execution playbook</h2>
+  <p>Marketing analytics on a six-layer stack is not summing platform dashboards — Privy, Sequenzy, Klaviyo, Postscript, Yotpo, and Marsello each claim revenue that overlaps. Finance needs one incremental margin number reconciled in Shopify weekly, with holdout cohorts proving flows drive orders that would not happen otherwise.</p>
+  <p>Last-click attribution over-credits email when paid social drove the browse session. Stack analytics assigns incrementality tests per major flow: welcome, cart, replenishment, winback — 5–10% holdout monthly where volume allows.</p>
+  <p>Contribution margin after discounts, shipping subsidies, and loyalty redemptions is the KPI — not revenue per send. A cart recovery flow with 8% recovery rate and 15% average discount may destroy margin vs 4% recovery at full price.</p>
+  <p>Cohort LTV by acquisition source (popup vs quiz vs checkout) informs capture layer decisions — not vanity list growth. Influencer sources with low 90-day LTV should receive fewer replenishment resources regardless of welcome conversion.</p>
+  <p>Stack cost as percentage of attributed incremental margin — capture + lifecycle + SMS + reviews + loyalty + operator hours. $400/mo stack delivering $12k incremental margin beats $150/mo stack creating collision cleanup.</p>
+  <p>Weekly flow review ritual: top 3 flows by Shopify-attributed orders, bottom 3 by margin, one holdout result, one collision incident. Fifteen minutes with finance-aligned definitions.</p>
+  <p>Platform silo reporting hides SMS-cart-popup triple attribution. UTM discipline and exclusive discount codes per layer help untangle — but holdout remains gold standard.</p>
+  <p>Seasonal analytics: BFCM revenue per send vs unsubscribe spike vs January deliverability — peak week success is not peak month success if list burns.</p>
+  <p>Subscription brands add Recharge MRR impact — email-driven saves vs churn attribution. Replenishment incrementality without subscription churn context misleads.</p>
+  <p>Agency dashboards without Shopify reconciliation are theater. In-house analytics layer ownership means weekly order match, not monthly PDF.</p>
+
+      <h2>Merchant scenarios</h2>
+  <p><strong>Lean DTC:</strong> Shopify weekly reconcile vs Sequenzy + Privy claims. One holdout on cart monthly. Margin line in spreadsheet.</p>
+  <p><strong>Growth stack:</strong> Klaviyo cohort LTV by source. Holdout on winback quarterly. Stack cost % of incremental margin target under 8%.</p>
+  <p><strong>Subscription:</strong> Recharge MRR delta vs skip-save email. Replenishment holdout. Churn at touchpoint tracking.</p>
+
+      <h2>Stack checklist</h2>
+      <ul>
+    <li>Shopify net sales weekly reconcile to platform claims</li>
+    <li>Margin after discounts on email-driven orders</li>
+    <li>Holdout defined for top 3 flows</li>
+    <li>UTM/code per layer where possible</li>
+    <li>Stack cost line item monthly</li>
+    <li>Cohort LTV by capture source at day 90</li>
+    <li>BFCM post-peak deliverability review</li>
+    <li>Finance sign-off definition documented</li>
+    <li>Collision incidents logged with revenue impact</li>
+    <li>Full-price ratio tracked weekly</li>
+    <li>SMS attributed separately from email</li>
+    <li>Loyalty redemption margin impact modeled</li>
+      </ul>
+
+      <h3>Exclusions (non-negotiable)</h3>
+      <ul>
+    <li>Last-click only attribution</li>
+    <li>Ignoring margin</li>
+    <li>Counting would-have-purchased-anyway revenue</li>
+      </ul>
+
+      <h3>Metrics that prove quality</h3>
+      <ul>
+    <li>Incremental revenue per flow</li>
+    <li>Revenue per recipient</li>
+    <li>Contribution margin after discounts</li>
+    <li>Cohort LTV by email engagement</li>
+      </ul>
+
+      <h3>Common mistakes</h3>
+      <ul>
+    <li>Trusting platform attribution blindly</li>
+    <li>Ignoring margin in ROI calc</li>
+    <li>No holdout testing ever</li>
+      </ul>
+
+      <h2>Analytics across stack layers</h2>
+  <div>
+    <h3>Commerce truth: Shopify</h3>
+    <p>Orders, margin, returns, subscription revenue.</p>
+    <p>Weekly source of truth reconcile.</p>
+    <p><strong>Failure mode:</strong> Platform dashboards without order match.</p>
+    <p><strong>Operator test:</strong> Variance under agreed tolerance weekly.</p>
+  </div>
+  <div>
+    <h3>Lifecycle reporting: Klaviyo, Sequenzy</h3>
+    <p>Flow and cohort performance.</p>
+    <p>Input to holdout design not final ROI.</p>
+    <p><strong>Failure mode:</strong> Last-click accepted blindly.</p>
+    <p><strong>Operator test:</strong> Holdout run quarterly on top flow.</p>
+  </div>
+  <div>
+    <h3>Capture attribution: Privy</h3>
+    <p>Source-level welcome and LTV tracking.</p>
+    <p>Capture ROI = 90-day LTV not opt-in count.</p>
+    <p><strong>Failure mode:</strong> Celebrating popup conversion without LTV.</p>
+    <p><strong>Operator test:</strong> LTV by source ranking monthly.</p>
+  </div>
+  <div>
+    <h3>Incrementality: Holdout cohorts</h3>
+    <p>Prove orders would not happen anyway.</p>
+    <p>5–10% holdout on major flows.</p>
+    <p><strong>Failure mode:</strong> No holdout ever — folklore ROI.</p>
+    <p><strong>Operator test:</strong> Documented holdout result last quarter.</p>
+  </div>
+  <div>
+    <h3>Finance alignment: Spreadsheet/BI</h3>
+    <p>Stack cost, margin, incremental definition.</p>
+    <p>Shared metric definitions with finance.</p>
+    <p><strong>Failure mode:</strong> Marketing and finance use different ROI math.</p>
+    <p><strong>Operator test:</strong> Monthly joint review scheduled.</p>
+  </div>
+
+      <h2>Timing and trigger governance</h2>
+  <p>Weekly: Shopify reconcile and flow top/bottom review.</p>
+  <p>Monthly: cohort LTV update and stack cost audit.</p>
+  <p>Quarterly: holdout on winback or replenishment.</p>
+  <p>Post-BFCM: deliverability and margin retrospective within 14 days.</p>
+
+      <h2>Measurement across the stack</h2>
+  <p>Incremental margin per flow (holdout-adjusted where possible).</p>
+  <p>Revenue per recipient at margin not gross.</p>
+  <p>Stack cost as % incremental margin.</p>
+  <p>Cohort LTV by email engagement quartile.</p>
+  <p>Full-price order ratio trend.</p>
+
+      <h2>Related playbooks</h2>
+  <p>Guide: <a class="link" href="/guides/attribution">marketing attribution</a>.</p>
+  <p>All playbooks: holdout applies to each major flow.</p>
+  <p>Governance: <a class="link" href="/guides/tool-sprawl">tool sprawl</a> cost line.</p>
+
+<h2>Stack coordination for revenue analytics</h2>
+<p>revenue analytics is not an email template problem — it is a stack handoff problem. Trigger: Continuous; weekly flow review; monthly cohort analysis Timing: Compare email-attributed vs holdout where possible; review incrementality quarterly Every layer must read the same customer state: capture tags from Privy, lifecycle execution in Sequenzy, proof modules from Yotpo, loyalty tier from Marsello, SMS consent from Postscript. When measure incremental revenue, not only attributed clicks, margin after discount matters more than attributed revenue.</p>
+<p><strong>Commerce truth:</strong> Orders, margin, returns, subscription revenue. Playbook fit: Weekly source of truth reconcile. Failure mode: Platform dashboards without order match. Operator test: Variance under agreed tolerance weekly.</p>
+<p><strong>Lifecycle reporting:</strong> Flow and cohort performance. Playbook fit: Input to holdout design not final ROI. Failure mode: Last-click accepted blindly. Operator test: Holdout run quarterly on top flow.</p>
+<p><strong>Capture attribution:</strong> Source-level welcome and LTV tracking. Playbook fit: Capture ROI = 90-day LTV not opt-in count. Failure mode: Celebrating popup conversion without LTV. Operator test: LTV by source ranking monthly.</p>
+<p><strong>Incrementality:</strong> Prove orders would not happen anyway. Playbook fit: 5–10% holdout on major flows. Failure mode: No holdout ever — folklore ROI. Operator test: Documented holdout result last quarter.</p>
+<p><strong>Finance alignment:</strong> Stack cost, margin, incremental definition. Playbook fit: Shared metric definitions with finance. Failure mode: Marketing and finance use different ROI math. Operator test: Monthly joint review scheduled.</p>
+<p><strong>Scenario — Lean DTC:</strong> Shopify weekly reconcile vs Sequenzy + Privy claims. One holdout on cart monthly. Margin line in spreadsheet. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — Growth stack:</strong> Klaviyo cohort LTV by source. Holdout on winback quarterly. Stack cost % of incremental margin target under 8%. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — Subscription:</strong> Recharge MRR delta vs skip-save email. Replenishment holdout. Churn at touchpoint tracking. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<h2>Checklist execution notes</h2>
+<p>Shopify net sales weekly reconcile to platform claims — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Margin after discounts on email-driven orders — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Holdout defined for top 3 flows — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>UTM/code per layer where possible — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Stack cost line item monthly — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Cohort LTV by capture source at day 90 — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>BFCM post-peak deliverability review — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Finance sign-off definition documented — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Collision incidents logged with revenue impact — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Full-price ratio tracked weekly — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>SMS attributed separately from email — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Loyalty redemption margin impact modeled — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<h2>FAQ deep dives</h2>
+<p><strong>Why not trust Klaviyo attribution alone?</strong> Last-click over-counts when multiple stack layers touched same shopper. Shopify reconcile + holdout required. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>What is incremental margin?</strong> Orders attributed to flow minus holdout cohort orders, at contribution margin after discounts. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>How often reconcile Shopify?</strong> Weekly minimum. Daily during BFCM. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Holdout size?</strong> 5–10% of flow-eligible cohort where volume supports statistical read. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Stack cost in ROI?</strong> Include all SaaS fees and operator hours — true stack economics. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>SMS attribution separate?</strong> Yes — separate codes/UTM and holdout SMS branch tests. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Loyalty margin impact?</strong> Model redemption cost and points liability on loyalty-attributed orders. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Subscription analytics?</strong> MRR delta, churn at touchpoint, skip-save incrementality — not just email revenue. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Best tool for reporting?</strong> Shopify truth + Klaviyo depth + spreadsheet discipline. No single platform owns stack ROI. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Agency reporting?</strong> Require Shopify order match — not platform export alone. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Full-price ratio why?</strong> Discount-heavy email ROI erodes when full-price trend drops — early warning metric. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Biggest analytics mistake?</strong> Summing Privy + Klaviyo + Postscript revenue — double/triple counting same orders. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+    </article>
+    <div class="space-y-8">
+      {toolReviews.map((review) => (
+        <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
+      ))}
+    </div>
+    <FaqSection faqs={faqs} title={`FAQ: ${useCaseName}`} />
+  </section>
+</BaseLayout>

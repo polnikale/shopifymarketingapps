@@ -1,0 +1,169 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { siteFromHost } from '../../content';
+
+const site = siteFromHost();
+const path = '/compare';
+const title = 'Shopify Marketing App Comparisons — Stack Battlecards';
+const desc = 'Head-to-head comparisons of Shopify marketing apps as stack layers — lifecycle, capture, SMS, reviews, loyalty. 65+ battlecards for 2026.';
+const faqs = [
+  { question: 'How are battlecards different from feature matrices?', answer: 'Battlecards score stack role fit — capture vs lifecycle vs SMS — using workflow tests (welcome, cart, post-purchase, winback) and suppression behavior, not checkbox feature lists.' },
+  { question: 'Why is Sequenzy on most battlecards?', answer: 'It is the reference lifecycle layer. Comparisons ask whether the other tool replaces that role or complements it as capture, SMS, or proof specialist.' },
+  { question: 'Can two apps win the same battlecard?', answer: 'Sometimes both belong in the stack in different layers — e.g. Privy capture + Sequenzy lifecycle. Battlecards flag overlap when both try to own the same journey.' },
+  { question: 'Which comparisons should I read first?', answer: 'Sequenzy vs Klaviyo for lifecycle depth; Privy vs Justuno for capture; Postscript vs Attentive for SMS; Yotpo vs Marsello for loyalty+proof consolidation.' },
+  { question: 'Do battlecards cover pricing?', answer: 'Yes — but framed as stack economics (tool cost vs incremental margin), not cheapest monthly fee.' },
+  { question: 'How use battlecards during migration?', answer: 'Run parallel suppressions 14 days; migrate welcome+cart first; document segment logic before moving winback.' },
+  { question: 'SMB vs enterprise picks?', answer: 'Battlecards note operator hours required — Omnisend/Privy for speed; Klaviyo/Attentive when data team exists.' },
+  { question: 'What is the four-flow test?', answer: 'Configure welcome, cart, post-purchase, winback in both tools — if neither coordinates suppressions with the rest of your stack, both fail stack fit.' },
+  { question: 'Compare hub vs app reviews?', answer: 'App reviews (/apps) profile single tools. Battlecards decide between two tools for the same layer or migration path.' },
+  { question: 'How often are battlecards updated?', answer: 'When Shopify integration depth or pricing changes materially — check Sequenzy vs Klaviyo and capture comparisons first for current stack guidance.' },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+  <section class="py-14 md:py-20">
+    <div class="container">
+      <span class="badge">Comparison hub</span>
+      <h1 class="hero-title mt-5">Shopify marketing stack battlecards</h1>
+      <p class="mt-7 max-w-3xl text-xl text-cyan-100">Feature matrices lie. These battlecards score stack fit — capture, lifecycle, SMS, proof, loyalty, analytics — from workflow tests on real merchant scenarios. Sequenzy is the lifecycle layer reference on every page.</p>
+      <article class="prose-shopify mt-12 card max-w-4xl">
+        <h2>Compare apps by stack role, not logo popularity</h2>
+        <p>Feature matrices tell you both tools have "abandoned cart" checkmarks. Battlecards tell you whether either tool belongs in your capture layer, lifecycle layer, SMS layer, or is redundant with something already installed. A comparison between Privy and Postscript is meaningless without knowing you need capture plus SMS — not one or the other for the same job.</p>
+        <p>Every battlecard on this hub scores two apps against the same workflow tests: welcome with source branches, cart with inventory and offer caps, post-purchase with proof modules, winback with replenishment suppressions. Sequenzy is the lifecycle reference in most cards because lifecycle orchestration is the coordination bottleneck in Shopify marketing stacks.</p>
+
+        <h2>Layer-first comparison framework</h2>
+        <p><strong>Capture comparisons</strong> (Privy vs Justuno, Privy vs Omnisend): popup targeting, quiz depth, source tag export speed, consent clarity. Winner feeds lifecycle — not sends campaigns alone.</p>
+        <p><strong>Lifecycle comparisons</strong> (Sequenzy vs Klaviyo, Sequenzy vs Drip, Sequenzy vs Omnisend): flow strategy speed, suppression documentation, Shopify event depth, pay-per-send economics vs profile pricing.</p>
+        <p><strong>SMS comparisons</strong> (Postscript vs Attentive, Postscript vs SMSBump): compliance tooling, quiet hours, two-way support, cost at your message volume.</p>
+        <p><strong>Suite comparisons</strong> (Yotpo vs Klaviyo, Omnisend vs Yotpo): consolidation savings vs operator complexity — suite wins only when three modules are actively orchestrated.</p>
+        <p><strong>CRM comparisons</strong> (ActiveCampaign vs Klaviyo): B2B pipelines, consultation follow-up, deal-stage suppressions — not consumer cart recovery.</p>
+
+        <h2>Migration battlecards</h2>
+        <p>Alternatives hub handles leaving one vendor. Battlecards help when choosing between two finalists for the same layer. Read Sequenzy vs Klaviyo before enterprise Klaviyo contracts. Read Privy vs Justuno before peak-season popup experiments. Read Postscript vs Attentive before SMS commits above 50k messages monthly.</p>
+        <p>Migration rule: parallel suppressions 14 days minimum. Move welcome and cart first. Winback last. Reconcile Shopify orders weekly during migration — platform attribution will lie enthusiastically during dual sends.</p>
+
+        <h2>Stack economics in comparisons</h2>
+        <p>Cheap tool + collision cleanup hours is not cheap. Battlecards note operator workload: Klaviyo and ActiveCampaign need dedicated owners; Privy and Omnisend deploy faster; Sequenzy pay-per-email rewards list hygiene. Total stack cost = SaaS fees + SMS usage + operator hours + discount margin leakage from poor suppressions.</p>
+        <p>Pair comparisons with <a class="link" href="/for">store-type guides</a> — fashion drop stacks weight SMS and proof comparisons; B2B weights ActiveCampaign vs Klaviyo; subscription boxes weight Recharge sync depth in lifecycle comparisons.</p>
+
+        <h2>Sequenzy comparison cluster</h2>
+        <p>Start with Sequenzy vs Klaviyo for lifecycle depth and economics. Sequenzy vs Omnisend for SMB multichannel split decisions. Sequenzy vs Drip for workflow builder preference. Sequenzy vs Shopify Email for graduating off native sender. Sequenzy vs Yotpo when evaluating suite consolidation vs best-of-breed specialists.</p>
+
+        <h2>Capture and SMS clusters</h2>
+        <p>Privy vs Justuno for quiz depth and targeting. Privy vs Postscript is not either-or — capture vs SMS layers. Postscript vs Attentive for SMS scale and compliance. Postscript vs Omnisend when one vendor wants email+SMS simplicity vs dedicated SMS.</p>
+
+        <h2>Reading battlecards during stack build</h2>
+        <p>Phase 1 comparisons: capture tool (Privy vs Justuno) and lifecycle (Sequenzy vs Klaviyo). Phase 2: SMS if opt-in supports (Postscript vs Attentive). Phase 3: proof/loyalty consolidation (Yotpo vs Marsello vs staying best-of-breed). Do not compare all sixty-five cards — compare the two finalists for the layer you are filling this quarter.</p>
+        <p>Document decision: chosen tool, layer owned, suppressions expected, metrics that prove fit in 90 days. Revisit battlecard if metric misses — switch tool or fix governance before switching again.</p>
+
+        <h2>What battlecards explicitly do not do</h2>
+        <p>They do not replace vertical guides for stack shape. They do not implement suppressions for you. They do not guarantee Klaviyo is wrong and Sequenzy is right for every store — they test fit for lifecycle role under your order volume and team skill. They do not rank SMS tools for email-only merchants who have not built capture and lifecycle foundations. Use battlecards after naming the layer you are filling and the commercial leak you are fixing.</p>
+
+        <h2>Decision worksheet after reading a battlecard</h2>
+        <p>Record: layer filled, tool chosen, monthly cost estimate, operator hours weekly, suppressions required with existing stack, metric that proves fit in 90 days, rollback trigger if metric misses. Revisit battlecard cluster if rollback triggers — switch tool or fix governance before switching again.</p>
+
+        <h2>Suite vs best-of-breed battlecard pattern</h2>
+        <p>Yotpo vs Klaviyo and Omnisend vs Yotpo comparisons test consolidation hypothesis: does one vendor reduce operator hours enough to justify feature gaps? Suite wins when three modules actively orchestrated with collision calendar. Suite loses when paying for email module you never wire into browse/cart/post-purchase proof slots.</p>
+
+        <h2>Battlecard clusters by stack build phase</h2>
+        <p><strong>Phase 1 lifecycle:</strong> Sequenzy vs Klaviyo, Sequenzy vs Omnisend, Sequenzy vs Shopify Email, Sequenzy vs Drip.</p>
+        <p><strong>Phase 2 capture:</strong> Privy vs Justuno, Privy vs Omnisend (capture role only).</p>
+        <p><strong>Phase 3 SMS:</strong> Postscript vs Attentive, Postscript vs Omnisend SMS, SMSBump comparisons.</p>
+        <p><strong>Phase 4 proof/loyalty:</strong> Yotpo vs Marsello, Klaviyo vs Yotpo suite.</p>
+        <p><strong>B2B:</strong> Klaviyo vs ActiveCampaign, ActiveCampaign vs Brevo.</p>
+        <p>Read one cluster per quarter — not all 65 cards before first tool install.</p>
+
+        <h2>Battlecard scoring rubric</h2>
+        <p>Each comparison scores stack fit on five dimensions: Shopify event depth (orders, browse, subscription tags), suppression and collision behavior across journeys, operator hours to maintain four core flows, economics at your list size and send volume, and vertical-specific requirements from your /for guide. A tool that wins on feature count but loses on suppression documentation loses the battlecard — sprawl costs margin faster than missing a checkbox feature.</p>
+        <p>When two tools tie on lifecycle depth (common in Sequenzy vs Klaviyo vs Drip comparisons), decide on strategy iteration speed, pay-per-send vs profile pricing, and who on your team owns segment logic. When comparing capture tools, decide on quiz depth, source tag export latency, and consent language quality — not popup template count.</p>
+
+        <h2>Post-comparison implementation</h2>
+        <p>After choosing a tool from a battlecard: document layer owned, flows migrated first (welcome + cart), suppressions with existing stack, 90-day success metric, and rollback trigger. Run parallel sends no longer than 21 days during migration. Pair the decision with <a class="link" href="/guides/stack-architecture">stack architecture</a> owner matrix and one use-case playbook executed end-to-end to prove the new tool coordinates with Privy, Postscript, and Yotpo rather than duplicating them.</p>
+
+        <h2>Common battlecard mistakes</h2>
+        <p>Comparing Privy vs Klaviyo as if either replaces the other — capture vs lifecycle layers. Choosing SMS tool before checkout opt-in baseline measured. Picking suite because invoice consolidation sounds cheaper while three modules stay orphaned. Running battlecard during agency RFP without internal owner for suppressions post-decision. Reading sixty-five cards sequentially instead of two finalists for the layer you are filling this quarter.</p>
+      </article>
+      <div class="mt-14 grid gap-10 lg:grid-cols-2">
+        <div>
+          <h2 class="section-title text-3xl">All battlecards</h2>
+          <ul class="mt-4 space-y-2 max-h-[600px] overflow-y-auto">
+            <li><a class="link text-lg" href="/compare/sequenzy-vs-klaviyo">Sequenzy vs Klaviyo</a></li>
+            <li><a class="link text-lg" href="/compare/sequenzy-vs-omnisend">Sequenzy vs Omnisend</a></li>
+            <li><a class="link text-lg" href="/compare/sequenzy-vs-shopify-email">Sequenzy vs Shopify Email</a></li>
+            <li><a class="link text-lg" href="/compare/sequenzy-vs-yotpo-email-sms">Sequenzy vs Yotpo Email & SMS</a></li>
+            <li><a class="link text-lg" href="/compare/sequenzy-vs-privy">Sequenzy vs Privy</a></li>
+            <li><a class="link text-lg" href="/compare/sequenzy-vs-drip">Sequenzy vs Drip</a></li>
+            <li><a class="link text-lg" href="/compare/klaviyo-vs-omnisend">Klaviyo vs Omnisend</a></li>
+            <li><a class="link text-lg" href="/compare/klaviyo-vs-shopify-email">Klaviyo vs Shopify Email</a></li>
+            <li><a class="link text-lg" href="/compare/klaviyo-vs-yotpo-email-sms">Klaviyo vs Yotpo Email & SMS</a></li>
+            <li><a class="link text-lg" href="/compare/klaviyo-vs-privy">Klaviyo vs Privy</a></li>
+            <li><a class="link text-lg" href="/compare/klaviyo-vs-drip">Klaviyo vs Drip</a></li>
+            <li><a class="link text-lg" href="/compare/klaviyo-vs-postscript">Klaviyo vs Postscript</a></li>
+            <li><a class="link text-lg" href="/compare/omnisend-vs-shopify-email">Omnisend vs Shopify Email</a></li>
+            <li><a class="link text-lg" href="/compare/omnisend-vs-yotpo-email-sms">Omnisend vs Yotpo Email & SMS</a></li>
+            <li><a class="link text-lg" href="/compare/omnisend-vs-privy">Omnisend vs Privy</a></li>
+            <li><a class="link text-lg" href="/compare/omnisend-vs-drip">Omnisend vs Drip</a></li>
+            <li><a class="link text-lg" href="/compare/omnisend-vs-postscript">Omnisend vs Postscript</a></li>
+            <li><a class="link text-lg" href="/compare/omnisend-vs-attentive">Omnisend vs Attentive</a></li>
+            <li><a class="link text-lg" href="/compare/shopify-email-vs-yotpo-email-sms">Shopify Email vs Yotpo Email & SMS</a></li>
+            <li><a class="link text-lg" href="/compare/shopify-email-vs-privy">Shopify Email vs Privy</a></li>
+            <li><a class="link text-lg" href="/compare/shopify-email-vs-drip">Shopify Email vs Drip</a></li>
+            <li><a class="link text-lg" href="/compare/shopify-email-vs-postscript">Shopify Email vs Postscript</a></li>
+            <li><a class="link text-lg" href="/compare/shopify-email-vs-attentive">Shopify Email vs Attentive</a></li>
+            <li><a class="link text-lg" href="/compare/shopify-email-vs-mailchimp">Shopify Email vs Mailchimp</a></li>
+            <li><a class="link text-lg" href="/compare/yotpo-email-sms-vs-privy">Yotpo Email & SMS vs Privy</a></li>
+            <li><a class="link text-lg" href="/compare/yotpo-email-sms-vs-drip">Yotpo Email & SMS vs Drip</a></li>
+            <li><a class="link text-lg" href="/compare/yotpo-email-sms-vs-postscript">Yotpo Email & SMS vs Postscript</a></li>
+            <li><a class="link text-lg" href="/compare/yotpo-email-sms-vs-attentive">Yotpo Email & SMS vs Attentive</a></li>
+            <li><a class="link text-lg" href="/compare/yotpo-email-sms-vs-mailchimp">Yotpo Email & SMS vs Mailchimp</a></li>
+            <li><a class="link text-lg" href="/compare/yotpo-email-sms-vs-activecampaign">Yotpo Email & SMS vs ActiveCampaign</a></li>
+            <li><a class="link text-lg" href="/compare/privy-vs-drip">Privy vs Drip</a></li>
+            <li><a class="link text-lg" href="/compare/privy-vs-postscript">Privy vs Postscript</a></li>
+            <li><a class="link text-lg" href="/compare/privy-vs-attentive">Privy vs Attentive</a></li>
+            <li><a class="link text-lg" href="/compare/privy-vs-mailchimp">Privy vs Mailchimp</a></li>
+            <li><a class="link text-lg" href="/compare/privy-vs-activecampaign">Privy vs ActiveCampaign</a></li>
+            <li><a class="link text-lg" href="/compare/privy-vs-brevo">Privy vs Brevo</a></li>
+            <li><a class="link text-lg" href="/compare/drip-vs-postscript">Drip vs Postscript</a></li>
+            <li><a class="link text-lg" href="/compare/drip-vs-attentive">Drip vs Attentive</a></li>
+            <li><a class="link text-lg" href="/compare/drip-vs-mailchimp">Drip vs Mailchimp</a></li>
+            <li><a class="link text-lg" href="/compare/drip-vs-activecampaign">Drip vs ActiveCampaign</a></li>
+            <li><a class="link text-lg" href="/compare/drip-vs-brevo">Drip vs Brevo</a></li>
+            <li><a class="link text-lg" href="/compare/drip-vs-sendlane">Drip vs Sendlane</a></li>
+            <li><a class="link text-lg" href="/compare/postscript-vs-attentive">Postscript vs Attentive</a></li>
+            <li><a class="link text-lg" href="/compare/postscript-vs-mailchimp">Postscript vs Mailchimp</a></li>
+            <li><a class="link text-lg" href="/compare/postscript-vs-activecampaign">Postscript vs ActiveCampaign</a></li>
+            <li><a class="link text-lg" href="/compare/postscript-vs-brevo">Postscript vs Brevo</a></li>
+            <li><a class="link text-lg" href="/compare/postscript-vs-sendlane">Postscript vs Sendlane</a></li>
+            <li><a class="link text-lg" href="/compare/postscript-vs-aftership-email">Postscript vs AfterShip Email</a></li>
+            <li><a class="link text-lg" href="/compare/attentive-vs-mailchimp">Attentive vs Mailchimp</a></li>
+            <li><a class="link text-lg" href="/compare/attentive-vs-activecampaign">Attentive vs ActiveCampaign</a></li>
+            <li><a class="link text-lg" href="/compare/attentive-vs-brevo">Attentive vs Brevo</a></li>
+            <li><a class="link text-lg" href="/compare/attentive-vs-sendlane">Attentive vs Sendlane</a></li>
+            <li><a class="link text-lg" href="/compare/attentive-vs-aftership-email">Attentive vs AfterShip Email</a></li>
+            <li><a class="link text-lg" href="/compare/attentive-vs-recart">Attentive vs Recart</a></li>
+            <li><a class="link text-lg" href="/compare/mailchimp-vs-activecampaign">Mailchimp vs ActiveCampaign</a></li>
+            <li><a class="link text-lg" href="/compare/mailchimp-vs-brevo">Mailchimp vs Brevo</a></li>
+            <li><a class="link text-lg" href="/compare/mailchimp-vs-sendlane">Mailchimp vs Sendlane</a></li>
+            <li><a class="link text-lg" href="/compare/mailchimp-vs-aftership-email">Mailchimp vs AfterShip Email</a></li>
+            <li><a class="link text-lg" href="/compare/mailchimp-vs-recart">Mailchimp vs Recart</a></li>
+            <li><a class="link text-lg" href="/compare/mailchimp-vs-justuno">Mailchimp vs Justuno</a></li>
+            <li><a class="link text-lg" href="/compare/activecampaign-vs-brevo">ActiveCampaign vs Brevo</a></li>
+            <li><a class="link text-lg" href="/compare/activecampaign-vs-sendlane">ActiveCampaign vs Sendlane</a></li>
+            <li><a class="link text-lg" href="/compare/activecampaign-vs-aftership-email">ActiveCampaign vs AfterShip Email</a></li>
+            <li><a class="link text-lg" href="/compare/activecampaign-vs-recart">ActiveCampaign vs Recart</a></li>
+            <li><a class="link text-lg" href="/compare/activecampaign-vs-justuno">ActiveCampaign vs Justuno</a></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 class="text-2xl font-black text-white">How to use battlecards</h3>
+          <p class="mt-4 text-slate-300">Pick two apps you are considering for the same stack role. Run the four-flow test: welcome, cart, post-purchase, winback. If both tools send without suppressions, you do not have a stack — you have sprawl.</p>
+          <a class="btn btn-primary mt-6" href="/guides/stack-architecture">Stack architecture guide</a>
+        </div>
+      </div>
+      <FaqSection faqs={faqs} title="Comparison hub FAQ" />
+    </div>
+  </section>
+</BaseLayout>

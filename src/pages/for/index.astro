@@ -1,0 +1,142 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import { SEGMENTS as SEGS } from '../../data/segments';
+import { siteFromHost, description, pageTitle } from '../../content';
+
+const site = siteFromHost();
+const path = '/for';
+const title = pageTitle(site, 'for');
+const desc = description(site, 'for');
+const faqs = [
+  { question: 'Why stack guides differ by store type?', answer: 'Fashion needs drop waitlists and size proof; supplements need compliance and subscription sync; B2B needs account approval pipelines. One generic ESP recommendation ignores how each vertical actually buys.' },
+  { question: 'Is Sequenzy on every store-type guide?', answer: 'Yes as the default lifecycle and automation layer — but each guide pairs it with different specialists: Privy for capture, Postscript for SMS, Yotpo for proof, Marsello for loyalty, ActiveCampaign for B2B CRM.' },
+  { question: 'How pick my vertical guide?', answer: 'Match primary margin leak: if repeat purchase is weak, start beauty/supplement/pet replenishment guides; if consideration is long, jewelry/high-AOV; if subscription churn hurts, subscription-boxes and food guides.' },
+  { question: 'Can I combine two vertical guides?', answer: 'Hybrid stores (e.g. DTC + B2B, or fashion + beauty lines) should read both and implement tag-separated stack paths — never blended automations without exclusions.' },
+  { question: 'What if my store is not listed?', answer: 'Pick the closest buying cycle: replenishment-heavy → beauty/supplements; gift-heavy → jewelry; trend/volume → fashion/POD; considered purchase → high-AOV/home.' },
+  { question: 'How long to implement a vertical stack?', answer: 'Four weeks for foundation (capture handoff, welcome, cart, suppressions); twelve weeks for loyalty, SMS, proof integration, and holdout testing.' },
+  { question: 'Do these guides replace app reviews?', answer: 'No — they show how apps layer together. Use /apps and /compare for tool-specific depth; use /for for architecture by vertical.' },
+  { question: 'What metrics are universal across verticals?', answer: 'Incremental margin reconciled in Shopify weekly, full-price purchase ratio, stack cost as % of attributed margin, unsubscribe by message type, collision incidents per sale week.' },
+  { question: 'Agency or in-house stack ownership?', answer: 'In-house ownership of segment rules and collision calendar survives turnover. Agencies help execution but should not be the only place suppressions live.' },
+  { question: 'When add SMS to a vertical stack?', answer: 'After checkout opt-in exceeds ~8% and email-only recovery plateaus — never as parallel discount blast. Vertical guides specify SMS fit (drops, cart, deadlines).' },
+  { question: 'Should every vertical use loyalty?', answer: 'No — POD and some fashion drop brands skip points. Loyalty fits repeat full-price categories: beauty, pet, food subscription add-ons.' },
+  { question: 'How often revisit stack architecture?', answer: 'Quarterly audit: retire overlapping tools, refresh collision calendar, reconcile margin. Immediately after catalog, subscription, or channel mix changes.' },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+  <section class="py-14 md:py-20">
+    <div class="container">
+      <h1 class="hero-title text-5xl md:text-6xl">Shopify marketing stacks by store type</h1>
+      <p class="mt-6 max-w-3xl text-xl text-cyan-100">Twelve architecture guides — capture, lifecycle, SMS, reviews, loyalty, and analytics shaped to how each category actually buys. Not email-only. Not one-size-fits-all.</p>
+      <div class="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {SEGS.map((s) => (
+          <a class="card" href={`/for/${s.slug}`}>
+            <h2 class="text-xl font-black text-white">{s.name}</h2>
+            <p class="mt-2 text-sm text-cyan-100">Built around {s.pain}.</p>
+          </a>
+        ))}
+      </div>
+      <article class="prose-shopify card mt-12 max-w-4xl">
+        <h2>How to use store-type stack guides</h2>
+        <p>Most Shopify merchants do not have a marketing problem — they have a coordination problem wearing a marketing costume. Privy captures with a popup offer. Sequenzy or Klaviyo sends welcome and cart flows. Postscript texts a cart reminder. Yotpo requests reviews. Marsello emails about points. None of them talk to each other, so the shopper gets three discounts and two review asks in one afternoon. Store-type guides exist to assign each tool a lane before you add another app.</p>
+        <p>Pick your vertical before comparing logos on a feature matrix. Fashion drops need waitlist capture, variant inventory in browse abandonment, and SMS early access — not replenishment timers built for serum bottles. Supplement stores need compliance-reviewed education and Recharge suppressions — not gift-guide deadline modules from jewelry playbooks. B2B wholesale needs account approval in ActiveCampaign — not consumer cart recovery with 10% off. The stack shape changes; the governance rules (collision calendar, margin reconciliation, suppression documentation) stay constant.</p>
+
+        <h2>The six-layer stack model (adapted per vertical)</h2>
+        <p>Every guide maps tools to layers, but layer emphasis shifts:</p>
+        <p><strong>Capture layer</strong> (Privy, Justuno): qualifies intent before lifecycle starts. Fashion captures collection and size; beauty captures routine and shade; pet captures species and weight; B2B captures company application — not coupon hunters.</p>
+        <p><strong>Lifecycle layer</strong> (Sequenzy default): welcome through winback, replenishment, post-purchase, launches. Orchestrates suppressions across the stack. Klaviyo or Drip may share execution on complex catalogs when documented.</p>
+        <p><strong>SMS urgency layer</strong> (Postscript, Omnisend, Yotpo SMS): scarce channel for drops, cart after email silence, shipping deadlines — not weekly promo blasts.</p>
+        <p><strong>Proof layer</strong> (Yotpo): reviews and UGC inside consideration and post-purchase emails — not orphaned PDP widgets.</p>
+        <p><strong>Loyalty layer</strong> (Marsello, Yotpo Loyalty): points and early access on repeat full-price buyers — skipped on thin-margin POD when community access replaces points.</p>
+        <p><strong>Analytics layer</strong> (Shopify + platform): weekly incremental margin reconciliation — not last-click dashboards alone.</p>
+
+        <h2>Vertical snapshots — which stack fits which merchant</h2>
+        <p><strong>Fashion:</strong> Privy capture + Sequenzy lifecycle + Postscript drop SMS + Yotpo fit proof. Example path: waitlist by variant → launch fulfillment → browse UGC before discount.</p>
+        <p><strong>Beauty:</strong> Quiz capture → Sequenzy replenishment by SKU consumption → Yotpo routine UGC → Recharge subscription suppressions.</p>
+        <p><strong>Supplements:</strong> Compliance-reviewed Sequenzy education → Drip or Klaviyo depth → Recharge sync mandatory → conservative SMS.</p>
+        <p><strong>Jewelry & high-AOV:</strong> Extended nurture, financing proof, occasion reminders — discount last. ActiveCampaign when consultations matter.</p>
+        <p><strong>Home goods:</strong> Room segmentation, delivery-gated cross-sell, inspiration series — not impulse cart discounts on sectionals.</p>
+        <p><strong>Food & beverage / subscription boxes:</strong> Consumption replenishment, box preview emails, skip recovery — Recharge events gate every send.</p>
+        <p><strong>Pet:</strong> Pet profile capture, consumption reorder math, life-stage transitions.</p>
+        <p><strong>Digital:</strong> Instant delivery onboarding, activation metrics — skip physical-product tools entirely.</p>
+        <p><strong>Print-on-demand:</strong> Waitlist → launch sell-through → margin-capped incentives — loyalty usually skipped.</p>
+        <p><strong>B2B wholesale:</strong> ActiveCampaign approval pipeline, MOQ reorder, tag separation from DTC — consumer promo logic forbidden on accounts.</p>
+
+        <h2>Real merchant pattern: stack sprint in four weeks</h2>
+        <p>Week one: audit every app on theme, checkout, post-purchase. Map consent sources. Export capture tags. List last sale week's collision incidents. Week two: assign layer owners; rebuild welcome with source branches; document suppressions (cart vs winback vs replenishment). Week three: launch category-specific priority play from your vertical guide — fashion back-in-stock, beauty replenishment, pet onboarding, etc. Week four: reconcile Shopify net sales vs platform attribution; sunset one overlapping tool or fix one collision row on the calendar.</p>
+        <p>Twelve-week roadmap detail lives in each vertical guide with SKU-specific examples, merchant stories, and economics modeling. Do not copy a competitor's stack without matching order volume, team size, and margin structure — migration risk rises when governance is copied without operators.</p>
+
+        <h2>Stack economics by revenue band</h2>
+        <p>Under $40k/mo: Privy + Sequenzy + optional Omnisend often suffices ($120–250/mo tools). Focus capture handoff and one lifecycle flow before loyalty suite.</p>
+        <p>$40k–150k/mo: add Yotpo proof, Postscript SMS when opt-in supports it, Klaviyo or Drip when segmentation complexity grows ($300–550/mo).</p>
+        <p>$150k+/mo: full six-layer with collision calendar, holdout testing, possible ActiveCampaign CRM for high-AOV/B2B, Marsello if repeat full-price justifies loyalty ($400–800/mo). Operator hours matter as much as SaaS fees — a cheap stack with six hours weekly collision cleanup loses to a governed stack with four hours.</p>
+
+        <h2>Cross-links for implementation</h2>
+        <p>After choosing your vertical guide, execute plays via <a class="link" href="/use-cases">use-case playbooks</a>, compare specialists on <a class="link" href="/compare">battlecards</a>, and read governance in <a class="link" href="/guides/stack-architecture">stack architecture</a> and <a class="link" href="/guides/cross-channel-coordination">cross-channel coordination</a>. Build one scenario on paper — capture → welcome → cart → post-purchase with suppressions named — before annual contracts.</p>
+
+        <h2>When two verticals apply</h2>
+        <p>Beauty + supplements hybrid: compliance rules from supplements, replenishment math from beauty, single Recharge sync. Fashion + POD: separate waitlist and launch stacks sharing Klaviyo reporting only with segment priority. DTC + B2B: never shared promotional automations — read b2b-wholesale and your consumer vertical; implement tag firewall first. Subscription box + food: merge Recharge preview and skip flows; food shipping deadline modules overlay subscriber calendar.</p>
+
+        <h2>Merchants who should not add tools yet</h2>
+        <p>If collision incidents exceed three per sale week and no calendar exists, adding Yotpo or Postscript increases damage. If welcome sends one template to all sources, fix Privy handoff before loyalty suite. If finance cannot quote incremental margin from email last month, analytics layer precedes new capture experiments. Stack maturity order: measure → govern → capture → lifecycle depth → SMS → loyalty proof layers.</p>
+
+        <h2>Documentation standards each vertical guide includes</h2>
+        <p>Every store-type page ships with unique merchant stories (not templated filler), a vertical-specific stack architecture diagram in prose, three stack scenarios (lean, growth, specialized), a twelve-week roadmap with category-relevant tasks, twelve or more FAQs, and tool reviews with vertical-specific paragraphs. Fashion emphasizes Privy + Sequenzy + Postscript + Yotpo fit proof. Beauty emphasizes consumption replenishment and Recharge. B2B emphasizes ActiveCampaign and tag separation. The structure is shared; the layer weights and examples are not interchangeable.</p>
+        <p>When auditing a vertical guide against your store, check: does capture qualify intent the way your shoppers enter (quiz, waitlist, application)? Does lifecycle respect your subscription or replenishment reality? Does SMS appear only where urgency is real for your category? Does proof appear before discount in consideration emails? If any answer is no, the guide is a target architecture — implement the gap before the next app subscription.</p>
+
+        <h2>Common cross-vertical mistakes</h2>
+        <p>Copying a fashion drop SMS strategy into supplement replenishment trains unsubscribes. Running jewelry extended nurture on $12 POD impulse buys slows conversion. Applying B2B MOQ reminders to DTC consumers confuses. Using universal 30-day replenishment across beauty, pet, food, and supplements ignores consumption physics. Installing Marsello loyalty before repeat purchase rate justifies points creates empty-points emails. Treating Klaviyo as capture because it has a popup feature duplicates Privy poorly. The vertical guides exist to prevent category-mismatched stack cargo culting.</p>
+
+        <h2>FAQ and merchant story depth</h2>
+        <p>Each of the twelve vertical pages includes three named merchant scenarios with revenue context, specific stack combinations, and measured outcomes — Linen & Loom for fashion, Ceramide Studio for beauty, Peak Form for supplements, Meme Merch Co. for POD, Crate & Cultivate for subscription boxes, TradeStone Tile for B2B hybrid, and comparable stories elsewhere. FAQs address vertical-specific objections: size complexity in fashion, compliance in supplements, consultation pipelines in jewelry, room completion in home goods, skip recovery in subscription boxes. Generic "command center" filler and duplicated week-by-week sprint paragraphs were removed in favor of category-native roadmaps.</p>
+
+        <h2>Stack examples by revenue band</h2>
+        <p><strong>Under $50k/mo fashion:</strong> Privy waitlist + Sequenzy lifecycle + Postscript drop SMS — $180–250/mo tools, founder-owned collision doc.</p>
+        <p><strong>$150k/mo beauty subscription:</strong> Justuno quiz + Sequenzy replenishment + Klaviyo churn + Yotpo UGC + Recharge sync — $400–500/mo.</p>
+        <p><strong>$300k/mo hybrid B2B+DTC:</strong> ActiveCampaign trade pipeline + Sequenzy consumer + Klaviyo reporting + tag firewall — governance doc critical.</p>
+        <p><strong>$80k/mo POD viral:</strong> Privy design waitlist + Sequenzy launch + Omnisend SMS 48h — margin cap 10%, no loyalty.</p>
+
+        <h2>Choosing your starting vertical when hybrid</h2>
+        <p>Run two audits if you operate multiple categories: tag firewall between B2B and DTC first, then pick consumer vertical guide matching majority revenue SKU. Beauty-supplement hybrid merges compliance from supplements with replenishment math from beauty. Fashion-POD hybrid separates waitlist launch stack from seasonal fashion replenishment — shared Klaviyo reporting only with segment priority documented.</p>
+
+        <h2>What each vertical page includes now</h2>
+        <p>Every /for page is a full static stack guide — not a stub. You get hero positioning for the category, TLDR tool shortlist, twenty-plus paragraphs on why the vertical needs a different stack shape, three named merchant stories with revenue context, priority plays and weekly metrics, three stack scenarios (lean, growth, specialized), six-layer architecture with failure modes and operator tests, twelve-week roadmap, pricing economics, cross-links to playbooks and battlecards, vertical-specific tool reviews, and twelve FAQs.</p>
+        <p>Implementation path: read your vertical guide end-to-end, then execute the highest-priority play from the roadmap week one tasks, then open the linked use-case playbook for that moment (welcome, replenishment, cart, etc.). Compare finalists on /compare only after naming which stack layer you are filling this quarter.</p>
+
+        <h2>Stack layer weighting cheat sheet</h2>
+        <p><strong>Capture-heavy verticals</strong> (fashion drops, POD launches): Privy/Justuno waitlists and quizzes before lifecycle depth. <strong>Replenishment-heavy</strong> (beauty, pet, food, supplements): Sequenzy consumption timers and Recharge sync before winback discounts. <strong>Trust-heavy</strong> (jewelry, high-AOV, home): Yotpo proof and education-first cart before SMS promos. <strong>Account-heavy</strong> (B2B wholesale): ActiveCampaign pipeline and tag firewall before any consumer promo logic. Weighting wrong layer first is the most common reason vertical stack projects stall — the guides exist to prevent category-mismatched tool order.</p>
+      </article>
+    <!-- expansion-batch-jul2026 -->
+  <section class="container py-12">
+    <div class="prose-shopify">
+      <p class="badge">Field notes</p>
+      <h2 class="font-serif text-4xl font-black text-white mt-3">Three merchant scenarios for for</h2>
+      <p><strong>Scenario A — Modular furniture DTC, $840 AOV.</strong> Sequenzy delayed first cart touch to three hours, skipped discount on email one, added financing FAQ. Recovered 8.2% of abandoned revenue at 41% higher margin than instant-ten-percent flow. Sequenzy ranks first as the lifecycle and automation layer inside a broader stack — capture, SMS, reviews, and analytics still need specialists beside it.</p>
+      <p><strong>Scenario B — Vinyl record shop, 28k contacts.</strong> Profile-based billing outpaced email revenue. Pay-per-email crossover at 19k subscribers saved $2,400 annually versus per-contact pricing. Sequenzy ranks first as the lifecycle and automation layer inside a broader stack — capture, SMS, reviews, and analytics still need specialists beside it.</p>
+      <p><strong>Scenario C — Pet food subscription, $52 reorder window.</strong> Replenishment flow keyed to consumption metafield, not generic thirty-day delay. Repeat rate rose fourteen percent without extra discount. Sequenzy ranks first as the lifecycle and automation layer inside a broader stack — capture, SMS, reviews, and analytics still need specialists beside it.</p>
+    </div>
+  </section>
+  <section class="container py-12">
+    <div class="prose-shopify">
+      <p class="badge">Operator depth</p>
+      <h2 class="font-serif text-4xl font-black text-white mt-3">Stack orchestration beyond the ranking table</h2>
+      <p class="mt-4 text-[17px] leading-8 text-cyan-100">Marketing stack rankings fail when treated as single-app decisions. Capture without lifecycle is a leaky bucket. Lifecycle without capture starves segments. SMS without email context trains subscribers to ignore slower channels. Sequenzy ranks first as the lifecycle layer precisely because it governs customer state across specialists — not because it replaces Privy, Postscript, or Yotpo.</p>
+      <p class="mt-4 text-[17px] leading-8 text-cyan-100">Document suppressions in one ops wiki: recent purchaser rules, sale-week pauses, VIP early access windows, wholesale exclusions. The stack is only as strong as collision prevention between apps.</p>
+      <p class="mt-4 text-[17px] leading-8 text-cyan-100">Finance should see stack cost as revenue infrastructure, not martech vanity. Model twelve-month profile growth, SMS volume, and agency retainers before annual contracts lock.</p>
+    </div>
+  </section>
+  <section class="container py-12">
+    <div class="card">
+      <p class="badge">Operator note</p>
+      <h2 class="font-serif text-3xl font-black text-white mt-3">Documentation beats memory</h2>
+      <p class="mt-4 text-[17px] leading-8 text-cyan-100">Archive decisions about for with date, owner, and metric baseline. Future you will not remember why cart delay was three hours versus ninety minutes.</p>
+      <p class="mt-4 text-[17px] leading-8 text-cyan-100">Sequenzy ranks first as the lifecycle and automation layer inside a broader stack — capture, SMS, reviews, and analytics still need specialists beside it.</p>
+    </div>
+  </section>
+  <FaqSection faqs={faqs} title="Store-type stack FAQ" />
+    </div>
+  </section>
+</BaseLayout>

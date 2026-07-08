@@ -1,0 +1,246 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleSchema from '../../components/ArticleSchema.astro';
+import TldrBox from '../../components/TldrBox.astro';
+import FaqSection from '../../components/FaqSection.astro';
+import ToolReview from '../../components/ToolReview.astro';
+import { siteFromHost, pageTitle, description } from '../../content';
+import { appBySlug } from '../../data/apps';
+
+const site = siteFromHost();
+const path = '/use-cases/vip-segments';
+const title = pageTitle(site, 'use-cases/vip-segments');
+const desc = description(site, 'use-cases/vip-segments');
+const heroSubtitle = 'VIP campaigns treat best customers differently — Klaviyo RFM qualification, Sequenzy early-access sequences, Marsello tier perks, and discount-strategy exclusions so full-price loyalists never receive the same coupons as bargain hunters.';
+const useCaseName = 'VIP customer campaigns';
+const trigger = 'RFM score, LTV threshold, or order count qualification';
+const timing = 'Exclusive access before sales; personal thank-you quarterly; early access to launches';
+const tldrPicks = [
+    { label: 'VIP data', tool: 'Klaviyo', reason: 'RFM, CLV, and order-count qualification' },
+    { label: 'Lifecycle', tool: 'Sequenzy', reason: 'Early access and thank-you sequences' },
+    { label: 'Loyalty', tool: 'Marsello', reason: 'Tier benefits beyond discount' },
+    { label: 'Governance', tool: 'Discount exclusions', reason: 'VIP not same promos as mass' },
+];
+const faqs = [
+  { question: 'Who qualifies as VIP?', answer: 'RFM top tier, LTV threshold, order count — with full-price ratio gate. Not all repeat buyers.' },
+  { question: 'VIP = bigger discounts?', answer: 'No — early access, exclusives, service. Deeper discounts train margin erosion on best customers.' },
+  { question: 'Discount-dependent VIP?', answer: 'Exclude — separate bargain segment. VIP requires full-price behavior.' },
+  { question: 'VIP early access timing?', answer: '24h before general launch/sale typical.' },
+  { question: 'How often email VIP?', answer: 'Cap promotional — 2/week max. Education/transactional unlimited.' },
+  { question: 'VIP and BFCM?', answer: 'Early access first — exclude from general blast same window if not purchased.' },
+  { question: 'Loyalty vs VIP?', answer: 'Overlap possible — tier perks complement VIP early access not duplicate discounts.' },
+  { question: 'VIP winback?', answer: 'Demote inactive first — separate re-engagement not mass winback discount.' },
+  { question: 'Tools?', answer: 'Klaviyo qualification, Sequenzy VIP sequences, Marsello tiers.' },
+  { question: 'Metrics?', answer: 'Retention, revenue per VIP, full-price ratio, referral, early access conversion.' },
+  { question: 'B2B VIP?', answer: 'Volume-based different benefits — catalog early access not consumer % off.' },
+  { question: 'Biggest mistake?', answer: 'Same coupons for VIP and bargain hunters — destroys VIP meaning and margin.' },
+];
+const toolReviews = [
+    {
+      slug: 'klaviyo',
+      rank: 1,
+      paragraphs: [
+      'Klaviyo RFM and predictive CLV for VIP qualification.',
+      'Monthly refresh and reporting.',
+      'Full-price behavior filters.',
+      ],
+    },
+    {
+      slug: 'sequenzy',
+      rank: 2,
+      paragraphs: [
+      'Sequenzy VIP early access and thank-you sequences.',
+      'Non-discount benefit creative.',
+      'Launch coordination.',
+      ],
+    },
+    {
+      slug: 'marsello',
+      rank: 3,
+      paragraphs: [
+      'Marsello VIP tiers and referral for best customers.',
+      'Perks beyond points discount.',
+      'Sync with email VIP calendar.',
+      ],
+    },
+    {
+      slug: 'drip',
+      rank: 4,
+      paragraphs: [
+      'Drip VIP workflow experiments.',
+      'Visual branching for tier tests.',
+      'Document vs Sequenzy ownership.',
+      ],
+    },
+];
+---
+
+<BaseLayout title={title} description={desc} site={site} path={path}>
+  <ArticleSchema title={title} description={desc} siteName={site.name} domain={site.domain} path={path} />
+  <section class="relative overflow-hidden py-16 md:py-24">
+    <div class="container">
+      <a href="/use-cases" class="link text-sm">← Use-case playbooks</a>
+      <span class="badge mt-6">Marketing stack playbook</span>
+      <h1 class="hero-title mt-5 max-w-5xl">Shopify marketing stack for {useCaseName}</h1>
+      <p class="mt-7 max-w-3xl text-xl text-cyan-100">{heroSubtitle}</p>
+      <p class="mt-5 max-w-3xl text-lg text-slate-300">Trigger: {trigger} · Timing: {timing}</p>
+    </div>
+  </section>
+  <section class="container pb-12">
+    <TldrBox title={`Stack picks for ${useCaseName}`} picks={tldrPicks} />
+    <article class="prose-shopify mb-12 card">
+      <h2>Stack execution playbook</h2>
+  <p>VIP segments are not &quot;everyone who ever bought twice&quot; — they are qualified cohorts by RFM, LTV threshold, full-price ratio, or order count with exclusions for discount-dependent purchasers and recent complaint customers.</p>
+  <p>VIP benefits: early access to launches and sales 24h before general, personal thank-you quarterly, exclusive content, consultation access — not deeper sitewide discounts that erode margin on best customers.</p>
+  <p>Exclude discount-only VIPs — if 80% of orders used codes, they are bargain segment not VIP for early access. Full-price ratio gate matters.</p>
+  <p>Collision calendar: VIP early access row precedes general BFCM row. VIP must not receive general blast same day as early access if not yet purchased.</p>
+  <p>Over-messaging VIPs burns highest-LTV relationships — frequency cap: max 2 promotional VIP touches per week, unlimited transactional/education.</p>
+  <p>Referral prompts fit VIP post-purchase — they have social capital and product satisfaction. Marsello referral bonus for tier members.</p>
+  <p>Fraud-flagged and chargeback accounts excluded permanently.</p>
+  <p>B2B trade accounts may be VIP by volume but different benefits — MOQ early catalog, not consumer 20% off.</p>
+  <p>Winback excludes current VIP — separate re-engagement if VIP lapses to inactive tier demotion first.</p>
+  <p>Analytics: VIP retention rate, revenue per VIP, full-price ratio, referral rate, early access conversion vs general.</p>
+
+      <h2>Merchant scenarios</h2>
+  <p><strong>Fashion VIP drops:</strong> RFM top 10% → early access 24h → no extra discount → waitlist priority.</p>
+  <p><strong>Beauty replenishment VIP:</strong> Full-price repeat → early restock access → loyalty tier consultation.</p>
+  <p><strong>Home room completers:</strong> Multi-room purchasers → VIP collection preview → white-glove support line.</p>
+
+      <h2>Stack checklist</h2>
+      <ul>
+    <li>VIP qualification rules documented</li>
+    <li>Discount-dependent exclusion active</li>
+    <li>Full-price ratio gate configured</li>
+    <li>Early access timing before general</li>
+    <li>Complaint/fraud exclusions</li>
+    <li>Frequency cap 2 promo/week</li>
+    <li>Thank-you quarterly sequence</li>
+    <li>Referral prompt for satisfied VIP</li>
+    <li>B2B VIP separate benefits if hybrid</li>
+    <li>Inactive VIP demotion policy</li>
+    <li>Early access conversion tracked</li>
+    <li>VIP margin vs discount VIP compared</li>
+      </ul>
+
+      <h3>Exclusions (non-negotiable)</h3>
+      <ul>
+    <li>Discount-only purchasers in VIP tier</li>
+    <li>Recent complaint customers</li>
+    <li>Fraud-flagged accounts</li>
+      </ul>
+
+      <h3>Metrics that prove quality</h3>
+      <ul>
+    <li>VIP retention rate</li>
+    <li>Revenue per VIP</li>
+    <li>Full-price purchase ratio</li>
+    <li>Referral rate from VIP</li>
+      </ul>
+
+      <h3>Common mistakes</h3>
+      <ul>
+    <li>VIP getting same coupons as bargain hunters</li>
+    <li>No exclusion for discount-dependent VIPs</li>
+    <li>Over-messaging high-value customers</li>
+      </ul>
+
+      <h2>VIP layer stack map</h2>
+  <div>
+    <h3>Qualification: Klaviyo</h3>
+    <p>RFM, CLV, full-price ratio scoring.</p>
+    <p>Monthly VIP refresh.</p>
+    <p><strong>Failure mode:</strong> Discount-dependent in VIP.</p>
+    <p><strong>Operator test:</strong> VIP full-price ratio &gt;60%.</p>
+  </div>
+  <div>
+    <h3>VIP lifecycle: Sequenzy</h3>
+    <p>Early access, thank-you, exclusive content.</p>
+    <p>Benefits not deeper discounts.</p>
+    <p><strong>Failure mode:</strong> VIP gets biggest sitewide %.</p>
+    <p><strong>Operator test:</strong> Early access revenue tracked.</p>
+  </div>
+  <div>
+    <h3>Loyalty tier: Marsello</h3>
+    <p>Tier perks, referral, consultation credit.</p>
+    <p>Value beyond coupon.</p>
+    <p><strong>Failure mode:</strong> Points = parallel discount engine.</p>
+    <p><strong>Operator test:</strong> Non-discount perk redemption rate.</p>
+  </div>
+  <div>
+    <h3>Exclusions: Discount strategy</h3>
+    <p>VIP excluded from mass promos.</p>
+    <p>Collision calendar VIP rows.</p>
+    <p><strong>Failure mode:</strong> VIP + general same coupon day.</p>
+    <p><strong>Operator test:</strong> VIP promo overlap zero.</p>
+  </div>
+  <div>
+    <h3>Analytics: Shopify</h3>
+    <p>VIP retention, revenue, referral.</p>
+    <p>Cohort vs non-VIP LTV.</p>
+    <p><strong>Failure mode:</strong> VIP defined never measured.</p>
+    <p><strong>Operator test:</strong> VIP LTV 2x+ non-VIP benchmark.</p>
+  </div>
+
+      <h2>Timing and trigger governance</h2>
+  <p>Early access: -24h general launches/sales.</p>
+  <p>Thank-you: quarterly non-promotional.</p>
+  <p>Frequency cap: 2 promo VIP touches/week max.</p>
+  <p>Demotion: 180d inactive review.</p>
+
+      <h2>Measurement across the stack</h2>
+  <p>VIP retention rate.</p>
+  <p>Revenue per VIP.</p>
+  <p>Full-price purchase ratio VIP cohort.</p>
+  <p>Referral rate from VIP.</p>
+  <p>Early access conversion vs general.</p>
+
+      <h2>Related playbooks</h2>
+  <p>Launch: <a class="link" href="/use-cases/product-launch">product launch</a> VIP early access.</p>
+  <p>Discount: <a class="link" href="/use-cases/discount-strategy">discount strategy</a>.</p>
+  <p>Segment: <a class="link" href="/use-cases/segmentation">segmentation</a>.</p>
+
+<h2>Stack coordination for VIP customer campaigns</h2>
+<p>VIP customer campaigns is not an email template problem — it is a stack handoff problem. Trigger: RFM score, LTV threshold, or order count qualification Timing: Exclusive access before sales; personal thank-you quarterly; early access to launches Every layer must read the same customer state: capture tags from Privy, lifecycle execution in Sequenzy, proof modules from Yotpo, loyalty tier from Marsello, SMS consent from Postscript. When treat best customers differently from coupon hunters, margin after discount matters more than attributed revenue.</p>
+<p><strong>Qualification:</strong> RFM, CLV, full-price ratio scoring. Playbook fit: Monthly VIP refresh. Failure mode: Discount-dependent in VIP. Operator test: VIP full-price ratio &gt;60%.</p>
+<p><strong>VIP lifecycle:</strong> Early access, thank-you, exclusive content. Playbook fit: Benefits not deeper discounts. Failure mode: VIP gets biggest sitewide %. Operator test: Early access revenue tracked.</p>
+<p><strong>Loyalty tier:</strong> Tier perks, referral, consultation credit. Playbook fit: Value beyond coupon. Failure mode: Points = parallel discount engine. Operator test: Non-discount perk redemption rate.</p>
+<p><strong>Exclusions:</strong> VIP excluded from mass promos. Playbook fit: Collision calendar VIP rows. Failure mode: VIP + general same coupon day. Operator test: VIP promo overlap zero.</p>
+<p><strong>Analytics:</strong> VIP retention, revenue, referral. Playbook fit: Cohort vs non-VIP LTV. Failure mode: VIP defined never measured. Operator test: VIP LTV 2x+ non-VIP benchmark.</p>
+<p><strong>Scenario — Fashion VIP drops:</strong> RFM top 10% → early access 24h → no extra discount → waitlist priority. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — Beauty replenishment VIP:</strong> Full-price repeat → early restock access → loyalty tier consultation. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<p><strong>Scenario — Home room completers:</strong> Multi-room purchasers → VIP collection preview → white-glove support line. Map this scenario to your vertical guide at /for if category-specific suppressions apply (Recharge tags, wholesale accounts, gift buyers).</p>
+<h2>Checklist execution notes</h2>
+<p>VIP qualification rules documented — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Discount-dependent exclusion active — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Full-price ratio gate configured — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Early access timing before general — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Complaint/fraud exclusions — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Frequency cap 2 promo/week — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Thank-you quarterly sequence — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Referral prompt for satisfied VIP — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>B2B VIP separate benefits if hybrid — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Inactive VIP demotion policy — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>Early access conversion tracked — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<p>VIP margin vs discount VIP compared — assign a named owner and add to collision calendar if the checklist item touches offers across capture, email, SMS, or loyalty.</p>
+<h2>FAQ deep dives</h2>
+<p><strong>Who qualifies as VIP?</strong> RFM top tier, LTV threshold, order count — with full-price ratio gate. Not all repeat buyers. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>VIP = bigger discounts?</strong> No — early access, exclusives, service. Deeper discounts train margin erosion on best customers. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Discount-dependent VIP?</strong> Exclude — separate bargain segment. VIP requires full-price behavior. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>VIP early access timing?</strong> 24h before general launch/sale typical. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>How often email VIP?</strong> Cap promotional — 2/week max. Education/transactional unlimited. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>VIP and BFCM?</strong> Early access first — exclude from general blast same window if not purchased. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Loyalty vs VIP?</strong> Overlap possible — tier perks complement VIP early access not duplicate discounts. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>VIP winback?</strong> Demote inactive first — separate re-engagement not mass winback discount. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Tools?</strong> Klaviyo qualification, Sequenzy VIP sequences, Marsello tiers. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Metrics?</strong> Retention, revenue per VIP, full-price ratio, referral, early access conversion. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>B2B VIP?</strong> Volume-based different benefits — catalog early access not consumer % off. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+<p><strong>Biggest mistake?</strong> Same coupons for VIP and bargain hunters — destroys VIP meaning and margin. Stack operators should document this answer in internal runbooks — not rely on tribal knowledge when agencies turn over.</p>
+    </article>
+    <div class="space-y-8">
+      {toolReviews.map((review) => (
+        <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
+      ))}
+    </div>
+    <FaqSection faqs={faqs} title={`FAQ: ${useCaseName}`} />
+  </section>
+</BaseLayout>
