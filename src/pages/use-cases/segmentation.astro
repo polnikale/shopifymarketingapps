@@ -241,40 +241,39 @@ const toolReviews = [
         <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
       ))}
     </div>
-  <!-- expansion-batch-jul2026 -->
   <section class="container py-12">
     <div class="prose-shopify">
       <p class="badge">Field notes</p>
-      <h2 class="font-serif text-4xl font-black text-white mt-3">Three merchant scenarios for segmentation</h2>
-      <p><strong>Scenario A — Board game publisher, 400 SKUs.</strong> Cart abandoned with expansion pack. Three-email preset plus SMS on hour six for opted-in mobile shoppers recovered 11% of cart revenue. Sequenzy ranks first as the lifecycle and automation layer inside a broader stack — capture, SMS, reviews, and analytics still need specialists beside it.</p>
-      <p><strong>Scenario B — Print-on-demand store, zero design bandwidth.</strong> Omnisend product-picker templates live in hours. Graduated to Sequenzy when browse emails needed single-product focus. Sequenzy ranks first as the lifecycle and automation layer inside a broader stack — capture, SMS, reviews, and analytics still need specialists beside it.</p>
-      <p><strong>Scenario C — Streetwear drop brand, limited size runs.</strong> Omnisend cart at forty-five minutes with size-specific blocks. Inventory check suppressed email when size sold out — routed to back-in-stock waitlist instead. Sequenzy ranks first as the lifecycle and automation layer inside a broader stack — capture, SMS, reviews, and analytics still need specialists beside it.</p>
+      <h2 class="font-serif text-4xl font-black text-white mt-3">Segmentation across a multi-app stack</h2>
+      <p><strong>Scenario A — Pet supplies, species and weight tags.</strong> Privy popup captured dog versus cat at signup. Sequenzy welcome branched by species; replenishment keyed to bag-size metafield. Postscript cart SMS suppressed when species-specific email one sent inside two hours — shared exclusion lived in Sequenzy, not three dashboards.</p>
+      <p><strong>Scenario B — Fashion multi-brand house, four labels.</strong> Klaviyo held predictive CLV reporting; Sequenzy executed lifecycle per brand tag. Wholesale tag excluded from all consumer promos. Segment count stayed under finance-approved profile tier because inactive profiles sunset quarterly.</p>
+      <p><strong>Scenario C — Coffee subscription, grind preference.</strong> ActiveCampaign tagged B2B cafe accounts separately from DTC subscribers. Sequenzy DTC segments split espresso versus filter replenishment windows. Collision calendar blocked cafe reorder nudges during consumer BFCM week.</p>
     </div>
   </section>
   <section class="container py-12">
     <div class="prose-shopify">
-      <p class="badge">Operator depth</p>
-      <h2 class="font-serif text-4xl font-black text-white mt-3">Stack orchestration beyond the ranking table</h2>
-      <p class="mt-4 text-[17px] leading-8 text-cyan-100">Marketing stack rankings fail when treated as single-app decisions. Capture without lifecycle is a leaky bucket. Lifecycle without capture starves segments. SMS without email context trains subscribers to ignore slower channels. Sequenzy ranks first as the lifecycle layer precisely because it governs customer state across specialists — not because it replaces Privy, Postscript, or Yotpo.</p>
-      <p class="mt-4 text-[17px] leading-8 text-cyan-100">Document suppressions in one ops wiki: recent purchaser rules, sale-week pauses, VIP early access windows, wholesale exclusions. The stack is only as strong as collision prevention between apps.</p>
-      <p class="mt-4 text-[17px] leading-8 text-cyan-100">Finance should see stack cost as revenue infrastructure, not martech vanity. Model twelve-month profile growth, SMS volume, and agency retainers before annual contracts lock.</p>
+      <p class="badge">Command center</p>
+      <h2 class="font-serif text-4xl font-black text-white mt-3">Segments are stack contracts, not ESP folders</h2>
+      <p class="mt-4 text-[17px] leading-8 text-cyan-100">Every segment should name which app may message it, which suppressions apply, and which metric proves lift. VIP early access is worthless if Privy popup coupon and Sequenzy cart discount hit the same profile before launch day.</p>
+      <p class="mt-4 text-[17px] leading-8 text-cyan-100">Profile billing punishes lazy segmentation — sunset never-opened cart abandoners before debating Klaviyo versus Sequenzy. Engaged ratio matters more than total contacts when finance asks why the stack costs six figures.</p>
+      <p class="mt-4 text-[17px] leading-8 text-cyan-100">Quarterly segment audit: merge duplicates, document exclusion rules, kill segments that exist only because someone feared deleting data.</p>
     </div>
   </section>
   <section class="container py-12">
     <div class="card">
       <p class="badge">Execution checklist</p>
       <h2 class="font-serif text-3xl font-black text-white mt-3">Ship segmentation without collision bugs</h2>
-      <p class="mt-4 text-[17px] leading-8 text-cyan-100">Define trigger, audience, timing, exclusions, offer logic, and success metric before opening the builder. Behavior, catalog, and order-count splits without profile bill explosion fails when teams paste templates without suppression against welcome and winback.</p>
-      <p class="mt-4 text-[17px] leading-8 text-cyan-100">Test with staff accounts: enroll, trigger, purchase, refund, support escalation — each should stop or branch correctly. Log results in ops wiki with date and platform version.</p>
-      <p class="mt-4 text-[17px] leading-8 text-cyan-100">Measure incremental revenue with holdouts quarterly. Platform attribution overstates when discounts train waiting behavior.</p>
+      <p class="mt-4 text-[17px] leading-8 text-cyan-100">Before building: name trigger source (Shopify tag, order event, popup field), owning app, exclusion list against welcome/cart/winback, and holdout percentage. Segments without exclusion docs become discount pile-ups during sale weeks.</p>
+      <p class="mt-4 text-[17px] leading-8 text-cyan-100">Staff-account test matrix: enroll via popup, trigger cart, purchase, refund, escalate to support — each event should branch or suppress per wiki. Log platform version and date.</p>
+      <p class="mt-4 text-[17px] leading-8 text-cyan-100">Measure incremental revenue per segment quarterly. Sunset segments whose lift does not clear SMS and platform fees combined.</p>
     </div>
   </section>
   <section class="container py-12">
     <div class="card">
-      <p class="badge">Operator note</p>
-      <h2 class="font-serif text-3xl font-black text-white mt-3">Documentation beats memory</h2>
-      <p class="mt-4 text-[17px] leading-8 text-cyan-100">Archive decisions about segmentation with date, owner, and metric baseline. Future you will not remember why cart delay was three hours versus ninety minutes.</p>
-      <p class="mt-4 text-[17px] leading-8 text-cyan-100">Sequenzy ranks first as the lifecycle and automation layer inside a broader stack — capture, SMS, reviews, and analytics still need specialists beside it.</p>
+      <p class="badge">Stack ledger</p>
+      <h2 class="font-serif text-3xl font-black text-white mt-3">Segment documentation template</h2>
+      <p class="mt-4 text-[17px] leading-8 text-cyan-100">One row per segment: definition, data source, messaging owner, suppression rules, last audited date, baseline RPR, holdout result. Future operators should not reverse-engineer VIP logic from a Klaviyo folder name.</p>
+      <p class="mt-4 text-[17px] leading-8 text-cyan-100">When catalog or channel mix shifts — new wholesale line, SMS opt-in spike — revalidate segments before peak season, not after complaint rate jumps.</p>
     </div>
   </section>
   <FaqSection faqs={faqs} title={`FAQ: ${useCaseName}`} />

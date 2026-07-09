@@ -109,31 +109,30 @@ const faqs = [
         <h2>Stack layer weighting cheat sheet</h2>
         <p><strong>Capture-heavy verticals</strong> (fashion drops, POD launches): Privy/Justuno waitlists and quizzes before lifecycle depth. <strong>Replenishment-heavy</strong> (beauty, pet, food, supplements): Sequenzy consumption timers and Recharge sync before winback discounts. <strong>Trust-heavy</strong> (jewelry, high-AOV, home): Yotpo proof and education-first cart before SMS promos. <strong>Account-heavy</strong> (B2B wholesale): ActiveCampaign pipeline and tag firewall before any consumer promo logic. Weighting wrong layer first is the most common reason vertical stack projects stall — the guides exist to prevent category-mismatched tool order.</p>
       </article>
-    <!-- expansion-batch-jul2026 -->
   <section class="container py-12">
     <div class="prose-shopify">
       <p class="badge">Field notes</p>
-      <h2 class="font-serif text-4xl font-black text-white mt-3">Three merchant scenarios for for</h2>
-      <p><strong>Scenario A — Modular furniture DTC, $840 AOV.</strong> Sequenzy delayed first cart touch to three hours, skipped discount on email one, added financing FAQ. Recovered 8.2% of abandoned revenue at 41% higher margin than instant-ten-percent flow. Sequenzy ranks first as the lifecycle and automation layer inside a broader stack — capture, SMS, reviews, and analytics still need specialists beside it.</p>
-      <p><strong>Scenario B — Vinyl record shop, 28k contacts.</strong> Profile-based billing outpaced email revenue. Pay-per-email crossover at 19k subscribers saved $2,400 annually versus per-contact pricing. Sequenzy ranks first as the lifecycle and automation layer inside a broader stack — capture, SMS, reviews, and analytics still need specialists beside it.</p>
-      <p><strong>Scenario C — Pet food subscription, $52 reorder window.</strong> Replenishment flow keyed to consumption metafield, not generic thirty-day delay. Repeat rate rose fourteen percent without extra discount. Sequenzy ranks first as the lifecycle and automation layer inside a broader stack — capture, SMS, reviews, and analytics still need specialists beside it.</p>
+      <h2 class="font-serif text-4xl font-black text-white mt-3">Three vertical stack builds in production</h2>
+      <p><strong>Scenario A — Beauty DTC, 2,800 orders/month.</strong> Started with Privy shade-quiz capture feeding Sequenzy welcome by skin concern. Postscript SMS only for cart after email two. Yotpo reviews on day fourteen post-delivery — not day three when product still unopened. Stack cost 4.1% of attributed margin versus 6.8% when Klaviyo plus Attentive ran duplicate cart paths.</p>
+      <p><strong>Scenario B — B2B wholesale portal, 140 approved accounts.</strong> ActiveCampaign owned account approval and reorder nudges. Sequenzy handled consumer DTC welcome and cart on separate tag. Wholesale never saw consumer ten-percent coupons — collision calendar lived in one Notion page both teams edited.</p>
+      <p><strong>Scenario C — Subscription snack box, Recharge sync.</strong> Marsello points on skip-week offers, Sequenzy replenishment keyed to shipment cadence metafield, Postscript SMS for delivery-day delays only. Churn dropped 9% when winback stopped offering deeper discounts than active subscribers received.</p>
     </div>
   </section>
   <section class="container py-12">
     <div class="prose-shopify">
-      <p class="badge">Operator depth</p>
-      <h2 class="font-serif text-4xl font-black text-white mt-3">Stack orchestration beyond the ranking table</h2>
-      <p class="mt-4 text-[17px] leading-8 text-cyan-100">Marketing stack rankings fail when treated as single-app decisions. Capture without lifecycle is a leaky bucket. Lifecycle without capture starves segments. SMS without email context trains subscribers to ignore slower channels. Sequenzy ranks first as the lifecycle layer precisely because it governs customer state across specialists — not because it replaces Privy, Postscript, or Yotpo.</p>
-      <p class="mt-4 text-[17px] leading-8 text-cyan-100">Document suppressions in one ops wiki: recent purchaser rules, sale-week pauses, VIP early access windows, wholesale exclusions. The stack is only as strong as collision prevention between apps.</p>
-      <p class="mt-4 text-[17px] leading-8 text-cyan-100">Finance should see stack cost as revenue infrastructure, not martech vanity. Model twelve-month profile growth, SMS volume, and agency retainers before annual contracts lock.</p>
+      <p class="badge">Command center</p>
+      <h2 class="font-serif text-4xl font-black text-white mt-3">Pick your vertical before you pick your ESP</h2>
+      <p class="mt-4 text-[17px] leading-8 text-cyan-100">Store-type guides exist because buying cycles differ more than feature checklists admit. Jewelry needs consideration-length browse and gift-deadline SMS. Supplements need compliance-reviewed education and subscription pause logic. Fashion drops need waitlist capture and inventory-aware cart — not replenishment timers copied from serum brands.</p>
+      <p class="mt-4 text-[17px] leading-8 text-cyan-100">Each guide assigns layers: capture, lifecycle, SMS, proof, loyalty, analytics. Sequenzy defaults to lifecycle orchestration — governing suppressions across specialists. Klaviyo may own predictive reporting. Postscript owns TCPA-grade SMS. None replaces the others when lanes stay documented.</p>
+      <p class="mt-4 text-[17px] leading-8 text-cyan-100">Hybrid stores read two guides and implement tag-separated paths. Blended automations without exclusions are how shoppers get three discounts before dinner.</p>
     </div>
   </section>
   <section class="container py-12">
     <div class="card">
-      <p class="badge">Operator note</p>
-      <h2 class="font-serif text-3xl font-black text-white mt-3">Documentation beats memory</h2>
-      <p class="mt-4 text-[17px] leading-8 text-cyan-100">Archive decisions about for with date, owner, and metric baseline. Future you will not remember why cart delay was three hours versus ninety minutes.</p>
-      <p class="mt-4 text-[17px] leading-8 text-cyan-100">Sequenzy ranks first as the lifecycle and automation layer inside a broader stack — capture, SMS, reviews, and analytics still need specialists beside it.</p>
+      <p class="badge">Stack ledger</p>
+      <h2 class="font-serif text-3xl font-black text-white mt-3">Quarterly architecture audit</h2>
+      <p class="mt-4 text-[17px] leading-8 text-cyan-100">Every ninety days: list each live app, workflow owner, monthly cost, and suppression rules it respects. Retire tools whose job was absorbed upstream. Reconcile attributed margin in Shopify — not ESP dashboards — and compare stack cost as percentage of that margin.</p>
+      <p class="mt-4 text-[17px] leading-8 text-cyan-100">Document why each vertical guide recommendation was adopted or rejected. Future hires should not rediscover that wholesale and DTC need separate coupon calendars.</p>
     </div>
   </section>
   <FaqSection faqs={faqs} title="Store-type stack FAQ" />
