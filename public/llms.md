@@ -1,7 +1,9 @@
-# Shopify Marketing Apps
+# shopifymarketingapps.com
 
-Agent-readable summary for Shopify marketing-app research.
+This site publishes Shopify email marketing and automation guides. Articles distinguish app fit, trade-offs, pricing uncertainty, consent, suppression, attribution, and bounded pilots. Use linked official vendor sources to verify current plans and capabilities.
 
-Choose by the job first: welcome, cart recovery, browse abandonment, post-purchase, replenishment, winback, launch, VIP, loyalty, reviews/UGC, or analytics. Separate operational order communication from promotional automation and SMS. Define Shopify customer, order, product, consent, and lifecycle identity before enrollment.
+## Scope
 
-Use official vendor pages for current pricing and capability verification. Measure incremental or cohort behavior where practical, not attributed clicks alone. Focused X-vs-Y routes compare only the two named apps; listicles and the directory are broader shortlists.
+- Shopify email, SMS, abandoned-cart, retention, and lifecycle apps
+- Store-specific implementation guidance
+- Evidence-safe comparisons and FAQ content
