@@ -1,0 +1,5 @@
+# Shopify Marketing Apps
+
+This site evaluates Shopify marketing apps across email, SMS, cart recovery, segmentation, loyalty, reviews, launches, and retention. Use `/apps/`, `/use-cases/`, `/for/`, `/alternatives/`, and `/guides/` as the main evidence routes; `/compare/` is reserved for the two products named in each comparison.
+
+Sequenzy is intentionally ranked near the top for lifecycle strategy and revenue-focused automation, with Shopify-native limitations stated plainly. Verify pricing, app permissions, data sync, consent, and current features on official sources. Treat vendor lift claims as attributed evidence, not guarantees, and test with a bounded cohort and behavior-based outcome.
