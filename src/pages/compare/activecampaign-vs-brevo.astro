@@ -11,6 +11,221 @@ const faqs=[
  {question:'Which is cheaper?',answer:'Compare a full year using real contacts, email sends, SMS volume, transactional needs, seats, and peak periods. Starting tiers are not comparable without including the features and operational time required by the store.'},
  {question:'Which should handle transactional email?',answer:'Brevo is a natural candidate when transactional sending is part of the evaluation. ActiveCampaign should be assessed primarily for lifecycle and CRM automation. Test delivery, template ownership, and separation from promotional sends before migrating service messages.'},
  {question:'Can I migrate between them?',answer:'Yes. Export consent and suppression state, rebuild one workflow at a time, pause the old automation before activating the new one, and verify purchase exits and unsubscribe handling in real inboxes.'},
+  { question: 'Can ActiveCampaign and Brevo run together in one Shopify stack?', answer: 'Only with one job per app and a written suppression calendar shared across email, SMS, and onsite. Without documented exclusions, the same shopper receives two offers in one afternoon and unsubscribes follow.' },
+  { question: 'Which tool is safer for consent and purchaser suppression?', answer: 'The one that reads Shopify order and consent state natively and shows exclusions to a marketer. Test with a real order: the buyer should exit acquisition and cart flows the same day the purchase syncs.' },
+  { question: 'Which is better for a small team without a data hire?', answer: 'Whichever reaches welcome, cart, post-purchase, and winback with fewer operator hours. Deployment speed and sale-week editability matter more than feature depth until someone owns data hygiene full time.' },
+  { question: 'How should we decide before peak season?', answer: 'Run the four-flow test with identical rules, reconcile results against Shopify net margin — not platform last-click — and never migrate the week before your biggest sale week.' },
 ];
+
 ---
-<BaseLayout title={title} description={description} site={site} path={path}><ArticleSchema title={title} description={description} siteName={site.name} domain={site.domain} path={path}/><section class="py-14 md:py-20"><div class="container max-w-5xl"><nav class="mb-8 text-sm"><a class="link" href="/compare">Comparisons</a><span class="mx-2">/</span><span>ActiveCampaign vs Brevo</span></nav><header class="max-w-4xl"><p class="editorial-kicker">Head-to-head · Shopify marketing platforms</p><h1 class="hero-title mt-5">ActiveCampaign vs Brevo for Shopify</h1><p class="mt-7 text-xl leading-9 text-slate-700">ActiveCampaign and Brevo are often grouped together because both can send campaigns and automate follow-up. They solve different operating problems. ActiveCampaign starts with CRM-linked automation; Brevo starts with practical email, SMS, and transactional coverage. A Shopify store should choose based on the workflows it can actually maintain.</p><p class="mt-5 text-lg leading-8 text-slate-700">This comparison tests welcome, cart recovery, post-purchase, transactional delivery, consent, reporting, and pricing. It keeps the decision between the two named platforms instead of turning a head-to-head page into a marketplace shortlist.</p></header><div class="mt-10 card overflow-x-auto"><h2 class="px-5 py-4 font-serif text-2xl font-black text-slate-950">Comparison at a glance</h2><table class="data-table"><thead><tr><th>Dimension</th><th>ActiveCampaign</th><th>Brevo</th></tr></thead><tbody><tr><td>Core strength</td><td>CRM-linked branching and lifecycle automation</td><td>Email, SMS, and transactional sending coverage</td></tr><tr><td>Shopify fit</td><td>Customer and marketing journeys with account context</td><td>Campaigns and common store messaging; verify event depth</td></tr><tr><td>Cart and win-back</td><td>Strong when conditions and sales handoffs matter</td><td>Strong for straightforward paths and campaign operation</td></tr><tr><td>Transactional role</td><td>Not the primary reason to select it</td><td>Important evaluation area</td></tr><tr><td>Pricing lens</td><td>Contacts, tier, seats, and features</td><td>Contacts, sends, channels, and transactional volume</td></tr></tbody></table></div><article class="prose-shopify mt-14 max-w-4xl"><h2>Where ActiveCampaign wins</h2><p>ActiveCampaign is the stronger fit when a Shopify journey crosses into CRM. A wholesale inquiry, account stage, lead score, or sales task can change whether a customer receives a discount, an educational sequence, or a human follow-up. That flexibility is useful for high-consideration products and stores with a sales-assisted motion.</p><p>The cost is governance. Define identity, consent, purchase suppression, and ownership for every branch before expanding the automation map. A platform with more conditions is not automatically better if the team cannot safely debug it during a launch.</p><h2>Where Brevo wins</h2><p>Brevo is attractive when the store wants a practical sending platform across campaigns, SMS, and transactional messages. A smaller marketing team may prefer clear campaign ownership and volume planning over a CRM canvas that requires constant maintenance.</p><p>Verify the Shopify event mapping before assuming commerce-native depth. Cart, checkout, order, refund, product, and unsubscribe data must arrive with the fields and timing required by the flow. A broad channel set is valuable only when consent and suppression remain inspectable.</p><h2>Workflow test: cart recovery</h2><p>Build the same cart flow in both platforms: first reminder without a discount, second message addressing a likely objection, and optional incentive only for a margin-safe segment. Exit on purchase immediately and cap total touches across email and SMS.</p><table><thead><tr><th>Test</th><th>ActiveCampaign</th><th>Brevo</th></tr></thead><tbody><tr><td>Branch accuracy</td><td>CRM or account condition matches the test profile</td><td>Audience and event condition match the test profile</td></tr><tr><td>Purchase exit</td><td>Order event stops every branch</td><td>Order event stops every branch</td></tr><tr><td>Incentive control</td><td>Discount is limited by value or margin</td><td>Discount is limited by value or margin</td></tr><tr><td>Measurement</td><td>Incremental contribution separated from sales activity</td><td>Incremental contribution separated from campaign attribution</td></tr></tbody></table><h2>Workflow test: transactional and post-purchase</h2><p>For a receipt, shipping update, or password-related message, test delivery, retries, template ownership, and unsubscribe boundaries. Brevo should be evaluated closely if transactional sending is central to the decision. ActiveCampaign should remain focused on the lifecycle messages that educate, retain, or reactivate a customer.</p><p>For post-purchase marketing, both tools must suppress a customer who purchased, refunded, opened a support case, or changed preference. The pilot should include a real inbox timeline, not only a successful test event.</p><h2>Pricing and total cost</h2><p>Model twelve months with real contact growth, email sends, SMS volume, transactional traffic, seats, implementation, and peak-season edits. ActiveCampaign’s additional automation value is real only when CRM or branch logic changes outcomes. Brevo’s breadth is valuable only when the team can operate the channels without collisions.</p><p>Include discounts, returns, complaint handling, and maintenance time in contribution-margin reporting. A campaign that looks efficient in an attribution dashboard can still lose money after an unnecessary incentive.</p><h2>Who should choose which?</h2><p><strong>Choose ActiveCampaign</strong> when Shopify marketing overlaps with CRM, sales, wholesale, or complex account journeys. <strong>Choose Brevo</strong> when campaigns, SMS, transactional sending, and straightforward automation are the main requirements.</p><p>Run a 30-day pilot with welcome, cart, post-purchase, and one transactional message. Keep the tool that passes event accuracy, suppression, delivery, reporting, and edit-safety checks for the store’s actual team.</p><h2>Verdict</h2><p>ActiveCampaign is the better CRM-linked lifecycle system. Brevo is the better broad sending platform when practical campaigns and transactional coverage matter. Neither should be selected from a generic feature grid; the winning evidence is a clean workflow timeline and positive incremental contribution.</p></article></div></section><FaqSection faqs={faqs} title="ActiveCampaign vs Brevo FAQ"/></BaseLayout>
+<BaseLayout title={title} description={description} site={site} path={path}>
+  <ArticleSchema title={title} description={description} siteName={site.name} domain={site.domain} path={path}/>
+  <section class="py-14 md:py-20">
+  <div class="container max-w-5xl">
+  <nav class="mb-8 text-sm">
+  <a class="link" href="/compare">Comparisons</a>
+  <span class="mx-2">/</span>
+  <span>ActiveCampaign vs Brevo</span>
+  </nav>
+  <header class="max-w-4xl">
+  <p class="editorial-kicker">Head-to-head · Shopify marketing platforms</p>
+  <h1 class="hero-title mt-5">ActiveCampaign vs Brevo for Shopify</h1>
+  <p class="mt-7 text-xl leading-9 text-slate-700">ActiveCampaign and Brevo are often grouped together because both can send campaigns and automate follow-up. They solve different operating problems. ActiveCampaign starts with CRM-linked automation; Brevo starts with practical email, SMS, and transactional coverage. A Shopify store should choose based on the workflows it can actually maintain.</p>
+  <p class="mt-5 text-lg leading-8 text-slate-700">This comparison tests welcome, cart recovery, post-purchase, transactional delivery, consent, reporting, and pricing. It keeps the decision between the two named platforms instead of turning a head-to-head page into a marketplace shortlist.</p>
+  </header>
+  <div class="mt-10 card overflow-x-auto">
+  <h2 class="px-5 py-4 font-serif text-2xl font-black text-slate-950">Comparison at a glance</h2>
+  <table class="data-table">
+  <thead>
+  <tr>
+  <th>Dimension</th>
+  <th>ActiveCampaign</th>
+  <th>Brevo</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td>Core strength</td>
+  <td>CRM-linked branching and lifecycle automation</td>
+  <td>Email, SMS, and transactional sending coverage</td>
+  </tr>
+  <tr>
+  <td>Shopify fit</td>
+  <td>Customer and marketing journeys with account context</td>
+  <td>Campaigns and common store messaging; verify event depth</td>
+  </tr>
+  <tr>
+  <td>Cart and win-back</td>
+  <td>Strong when conditions and sales handoffs matter</td>
+  <td>Strong for straightforward paths and campaign operation</td>
+  </tr>
+  <tr>
+  <td>Transactional role</td>
+  <td>Not the primary reason to select it</td>
+  <td>Important evaluation area</td>
+  </tr>
+  <tr>
+  <td>Pricing lens</td>
+  <td>Contacts, tier, seats, and features</td>
+  <td>Contacts, sends, channels, and transactional volume</td>
+  </tr>
+  </tbody>
+  </table>
+  </div>
+  <article class="prose-shopify mt-14 max-w-4xl">
+  <h2>Where ActiveCampaign wins</h2>
+  <p>ActiveCampaign is the stronger fit when a Shopify journey crosses into CRM. A wholesale inquiry, account stage, lead score, or sales task can change whether a customer receives a discount, an educational sequence, or a human follow-up. That flexibility is useful for high-consideration products and stores with a sales-assisted motion.</p>
+  <p>The cost is governance. Define identity, consent, purchase suppression, and ownership for every branch before expanding the automation map. A platform with more conditions is not automatically better if the team cannot safely debug it during a launch.</p>
+  <h2>Where Brevo wins</h2>
+  <p>Brevo is attractive when the store wants a practical sending platform across campaigns, SMS, and transactional messages. A smaller marketing team may prefer clear campaign ownership and volume planning over a CRM canvas that requires constant maintenance.</p>
+  <p>Verify the Shopify event mapping before assuming commerce-native depth. Cart, checkout, order, refund, product, and unsubscribe data must arrive with the fields and timing required by the flow. A broad channel set is valuable only when consent and suppression remain inspectable.</p>
+  <h2>Workflow test: cart recovery</h2>
+  <p>Build the same cart flow in both platforms: first reminder without a discount, second message addressing a likely objection, and optional incentive only for a margin-safe segment. Exit on purchase immediately and cap total touches across email and SMS.</p>
+  <table>
+  <thead>
+  <tr>
+  <th>Test</th>
+  <th>ActiveCampaign</th>
+  <th>Brevo</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td>Branch accuracy</td>
+  <td>CRM or account condition matches the test profile</td>
+  <td>Audience and event condition match the test profile</td>
+  </tr>
+  <tr>
+  <td>Purchase exit</td>
+  <td>Order event stops every branch</td>
+  <td>Order event stops every branch</td>
+  </tr>
+  <tr>
+  <td>Incentive control</td>
+  <td>Discount is limited by value or margin</td>
+  <td>Discount is limited by value or margin</td>
+  </tr>
+  <tr>
+  <td>Measurement</td>
+  <td>Incremental contribution separated from sales activity</td>
+  <td>Incremental contribution separated from campaign attribution</td>
+  </tr>
+  </tbody>
+  </table>
+  <h2>Workflow test: transactional and post-purchase</h2>
+  <p>For a receipt, shipping update, or password-related message, test delivery, retries, template ownership, and unsubscribe boundaries. Brevo should be evaluated closely if transactional sending is central to the decision. ActiveCampaign should remain focused on the lifecycle messages that educate, retain, or reactivate a customer.</p>
+  <p>For post-purchase marketing, both tools must suppress a customer who purchased, refunded, opened a support case, or changed preference. The pilot should include a real inbox timeline, not only a successful test event.</p>
+  <h2>Pricing and total cost</h2>
+  <p>Model twelve months with real contact growth, email sends, SMS volume, transactional traffic, seats, implementation, and peak-season edits. ActiveCampaign’s additional automation value is real only when CRM or branch logic changes outcomes. Brevo’s breadth is valuable only when the team can operate the channels without collisions.</p>
+  <p>Include discounts, returns, complaint handling, and maintenance time in contribution-margin reporting. A campaign that looks efficient in an attribution dashboard can still lose money after an unnecessary incentive.</p>
+  <h2>Who should choose which?</h2>
+  <p>
+  <strong>Choose ActiveCampaign</strong> when Shopify marketing overlaps with CRM, sales, wholesale, or complex account journeys. <strong>Choose Brevo</strong> when campaigns, SMS, transactional sending, and straightforward automation are the main requirements.</p>
+  <p>Run a 30-day pilot with welcome, cart, post-purchase, and one transactional message. Keep the tool that passes event accuracy, suppression, delivery, reporting, and edit-safety checks for the store’s actual team.</p>
+  <h2>Verdict</h2>
+  <p>ActiveCampaign is the better CRM-linked lifecycle system. Brevo is the better broad sending platform when practical campaigns and transactional coverage matter. Neither should be selected from a generic feature grid; the winning evidence is a clean workflow timeline and positive incremental contribution.</p>
+  </article>
+  </div>
+  </section>
+      <article class="prose-shopify mt-12 max-w-4xl card">
+      <h2>Mistakes that make the Activecampaign vs Brevo decision more expensive</h2>
+      <ul>
+      <li>Copying a competitor stack without matching order volume, catalog complexity, or team size</li>
+      <li>Buying for a feature matrix instead of the one leak that is actually costing margin</li>
+      <li>Letting two apps own the same journey because neither was explicitly assigned away from it</li>
+      <li>Judging success on platform-reported last-click revenue instead of Shopify net margin</li>
+      <li>Deferring list hygiene until deliverability degrades right before peak season</li>
+      <li>Signing annual contracts before the four-flow test produced a number</li>
+      </ul>
+      <p>Keep due diligence honest: <a class="link" href="/guides/tool-sprawl">the tool-sprawl audit</a> <a class="link" href="/guides/stack-architecture">stack architecture</a> <a class="link" href="/guides/list-hygiene">list hygiene</a> <a class="link" href="/guides/seasonal-campaigns">seasonal campaign governance</a> <a class="link" href="/guides/attribution">attribution honesty</a> <a class="link" href="/use-cases/welcome-series">welcome-series playbook</a>, and re-check official pricing pages before any annual commitment.</p>
+      <h2>Field notes from stack audits</h2>
+      <p>The most common audit finding is not a missing feature — it is an undocumented exclusion. Teams discover two tools have been suppressing different purchaser windows for months, which is why winback looks broken in one dashboard and fine in the other.</p>
+      <p>Second finding: consent captured without source tags. When every popup writes "webform" to the same field, welcome branching is guesswork and the Activecampaign vs Brevo decision cannot be evaluated fairly, because neither tool receives the signal it needs.</p>
+      <p>Third: app costs reviewed annually as a lump sum. Split fees by layer and by job; the number that shocks finance is usually the capture or proof app nobody has opened since onboarding.</p>
+      <p>Fourth: sale-week behavior is the real benchmark. Tools that require a developer or a support ticket to pause a flow during BFCM cost more than their subscription suggests.</p>
+      <h2>Common follow-up questions</h2>
+      <h3>Can we run both tools instead of choosing?</h3>
+      <p>Sometimes — but only with one job per app and a written suppression calendar. Overlapping lifecycle tools without documented exclusions train unsubscribes faster than any campaign problem.</p>
+      <h3>What is the fastest way to test this on a real store?</h3>
+      <p>Rebuild welcome, cart, post-purchase, and winback with identical rules in a sandbox or a suppressed segment, then score exclusion visibility, Shopify event fidelity, and operator minutes. Four flows, one owner, two weeks.</p>
+      <h3>How do we know it worked after ninety days?</h3>
+      <p>Compare incremental contribution margin after discounts against a holdout or prior period, unsubscribe and complaint rates, and the hours your team spends maintaining flows. If maintenance grew faster than margin, the decision was wrong.</p>
+      <h3>Do we need to replatform before peak season?</h3>
+      <p>Rarely. Stabilize suppressions and collision calendars first; migrations mid-peak multiply risk. Schedule structural changes for the quiet quarter after your biggest sale week.</p>
+      <h3>Who should own the decision?</h3>
+      <p>One named operator with a finance reviewer. Agency-heavy decisions without internal ownership are the most common pattern behind stacks that grow instead of improve.</p>
+      <h2>Terms that decide the outcome</h2>
+      <div class="overflow-x-auto"><table class="data-table">
+      <thead><tr><th>Term</th><th>Why it matters here</th></tr></thead>
+      <tbody>
+      <tr><td>Purchaser suppression</td><td>Excluding recent buyers from acquisition and cart flows the moment their order syncs from Shopify</td></tr>
+      <tr><td>Collision calendar</td><td>A shared schedule of which app messages which segment when, so two layers never fire the same offer in one window</td></tr>
+      <tr><td>Contribution margin</td><td>Revenue minus discounts, refunds, product cost, and app/usage fees — the denominator that makes stack costs legible</td></tr>
+      <tr><td>Suppression window</td><td>The days after a purchase or offer during which a profile is excluded from overlapping messages</td></tr>
+      <tr><td>Consent state</td><td>The email and SMS permission record, with timestamps and source, that must survive any migration intact</td></tr>
+      <tr><td>Holdout</td><td>A suppressed segment that receives nothing, used to measure incremental lift instead of last-click attribution</td></tr>
+      </tbody></table></div>
+      <p>If any of these are undefined for your store, define them before the Activecampaign vs Brevo decision — they are cheaper to write down than to discover during a peak week.</p>
+      <h2>Vertical adjustments</h2>
+      <div class="overflow-x-auto"><table class="data-table">
+      <thead><tr><th>Store type</th><th>Adjustment</th></tr></thead>
+      <tbody>
+      <tr><td>High-AOV (jewelry, furniture)</td><td>Education and proof before discounts; blanket % off trains wait-for-sale behavior</td></tr>
+      <tr><td>Fashion and apparel</td><td>Season, size, and returns data should shape audience logic before any send</td></tr>
+      <tr><td>Subscription boxes</td><td>Billing and delivery state gate every retention message</td></tr>
+      <tr><td>B2B and wholesale</td><td>Account, quote, and rep handoff context outranks consumer discount logic</td></tr>
+      <tr><td>Pet and consumables</td><td>Consumption windows beat calendar timing for replenishment</td></tr>
+      </tbody></table></div>
+      <p>Pair the vertical adjustment with the flow-level test above — the Activecampaign vs Brevo decision resolves differently at $40k/mo than at $400k/mo even inside one vertical.</p>
+      <p>Keep due diligence honest: <a class="link" href="/guides/stack-architecture">stack architecture</a> <a class="link" href="/guides/list-hygiene">list hygiene</a> <a class="link" href="/guides/seasonal-campaigns">seasonal campaign governance</a> <a class="link" href="/guides/attribution">attribution honesty</a> <a class="link" href="/use-cases/welcome-series">welcome-series playbook</a> <a class="link" href="/guides/tool-sprawl">the tool-sprawl audit</a>, and re-check official pricing pages before any annual commitment.</p>
+      <h2>Scenarios worth replaying</h2>
+      <p><strong>Lean DTC ($30–50k/mo):</strong> one owner, capture feeding a short welcome path, SMS reserved for cart. In the Activecampaign vs Brevo decision, prefer the option deployable in a week with exclusions visible from day one.</p>
+      <p><strong>Growth ($100–250k/mo):</strong> a data hire exists, so predictive segments and holdouts become realistic gates — not brochure features.</p>
+      <p><strong>Subscription brand:</strong> pause, skip, and failed-payment states must suppress replenishment promos the same day a charge processes. If the platform cannot read that state without middleware, it is the wrong shape.</p>
+      <h2>Pricing deep-dive: model the bill, not the tier</h2>
+      <p>Headline pricing for Activecampaign vs Brevo is the smallest line item in the decision. Model contacts, sends, SMS volume, seats, onsite usage, and the subscription fees of the capture, reviews, loyalty, and analytics apps that surround your lifecycle layer — then check official pricing pages for both platforms before budgeting, because tiers, allowances, and overage rates change without notice.</p>
+      <p>Two costs merchants routinely forget: overlapping app subscriptions (paying two tools for one job) and operator hours. A cheaper platform that requires weekly CSV cleanup and a developer for exclusion edits can cost more than a pricier one a marketer can safely change on the Friday before a sale week.</p>
+      <p>Margin math beats list price. Estimate incremental margin per flow after discounts, SMS spend, refunds, and app fees, then divide total stack cost by that figure. If the ratio worsens quarter over quarter, the fix is usually suppressions and ownership — not another tier negotiation.</p>
+      <h2>Decision table</h2>
+      <div class="overflow-x-auto"><table class="data-table">
+      <thead><tr><th>If your bottleneck is…</th><th>Lean toward</th><th>Why it matters</th></tr></thead>
+      <tbody>
+      <tr><td>Consent clarity and purchaser suppression</td><td>The tool that reads Shopify order state natively</td><td>Buyers should exit promo flows the day they purchase</td></tr>
+      <tr><td>Welcome and cart recovery depth</td><td>The tool your marketer can edit without a ticket</td><td>Sale-week editability is the real feature</td></tr>
+      <tr><td>SMS urgency after email silence</td><td>A dedicated SMS layer with shared suppression</td><td>One cart text beats three channels screaming one coupon</td></tr>
+      <tr><td>Proof and loyalty handoffs</td><td>The tool that reads review and tier state</td><td>Winback offers should respect loyalty status</td></tr>
+      <tr><td>Peak-season governance</td><td>The tool with visible exclusions and collision controls</td><td>BFCM punishes undocumented suppressions</td></tr>
+      <tr><td>Reporting you can defend to finance</td><td>The tool that reconciles with Shopify net sales</td><td>Platform last-click is not margin</td></tr>
+      </tbody></table></div>
+      <p>Read the table against your commercial leak — anonymous traffic, cart hesitation, weak repeat, or blind reporting — not against feature counts. When both columns point at the same tool, name one owner and one metric before installing anything else around the Activecampaign vs Brevo decision.</p>
+      <h2>Consent, suppression, and margin checklist</h2>
+      <ul>
+      <li>Export consent timestamps and popup source tags before changing any sender</li>
+      <li>Suppress existing purchasers from acquisition offers the same day the order syncs</li>
+      <li>Share one suppression calendar across email, SMS, and onsite layers</li>
+      <li>Cap discounts by cart value and customer discount-sensitivity history</li>
+      <li>Enforce SMS quiet hours and TCPA-safe opt-in language at checkout</li>
+      <li>Read subscription pause, skip, and failed-payment state before replenishment sends</li>
+      <li>Exclude gift buyers from post-purchase replenishment and winback</li>
+      <li>Exclude employees, wholesale accounts, and test orders from lifecycle metrics</li>
+      <li>Sunset unengaged profiles 30–90 days before peak season</li>
+      <li>Reconcile platform-attributed revenue with Shopify net sales weekly</li>
+      <li>Track app costs as a percentage of contribution margin, not of revenue</li>
+      <li>Run a holdout on one flow per quarter if volume allows</li>
+      </ul>
+      <h2>App costs, margin, and the suppression tax</h2>
+      <p>Every additional app that can message a shopper adds a coordination tax. Consent stored in three tools drifts within weeks; the fix is a written ownership map — which app owns capture, which owns lifecycle, which owns SMS urgency, which owns proof — plus shared suppression exports reviewed monthly.</p>
+      <p>Purchaser suppression is the highest-yield rule in most stacks: an acquisition discount sent to a customer who bought yesterday is pure margin leakage and a trust hit. Whatever you choose, verify order-state sync latency and test it with a real order, not a sandbox event.</p>
+      <p>Defend the stack budget in margin terms: total SaaS fees plus usage plus operator hours, against incremental contribution margin after discounts. Apps that cannot name the metric they move should be the first candidates for retirement at renewal.</p>
+      <h2>How each stack layer changes the Activecampaign vs Brevo decision</h2>
+      <h3>Capture layer</h3>
+      <p>Popups and quizzes should tag source and consent at the moment of capture so welcome branching and suppression downstream are possible. If the Activecampaign vs Brevo decision weakens that handoff, you will pay for it in duplicate offers later.</p>
+      <h3>Lifecycle layer</h3>
+      <p>Welcome through winback needs documented triggers, delays, and exclusions. Prefer the platform that makes exclusions visible to a marketer during sale week, not hidden in support tickets.</p>
+      <h3>SMS layer</h3>
+      <p>SMS is scarce urgency: one cart text after email silence, quiet hours enforced, consent shared with email. A tool that treats SMS as a parallel blast channel will burn the subscriber base you paid to build.</p>
+      <h3>Proof, loyalty, and analytics</h3>
+      <p>Review status and loyalty tier should suppress or reshape offers; analytics should reconcile platform attribution against Shopify net sales. If the Activecampaign vs Brevo decision breaks those reads, margin quietly leaks even while dashboards look green.</p>
+      </article>
+  <FaqSection faqs={faqs} title="ActiveCampaign vs Brevo FAQ"/>
+  </BaseLayout>

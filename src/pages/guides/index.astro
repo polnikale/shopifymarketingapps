@@ -20,6 +20,7 @@ const faqs = [
   { question: 'Attribution guide for Shopify?', answer: 'Incremental margin vs last-click across email, SMS, popups, loyalty — finance-readable method.' },
   { question: 'Tool sprawl guide trigger?', answer: 'When three+ tools touch same shopper without collision calendar — audit before adding another app.' },
 ];
+
 ---
 
 <BaseLayout title={title} description={desc} site={site} path={path}>
@@ -126,6 +127,105 @@ const faqs = [
         <a class="card" href="/guides/cross-channel-coordination"><h3 class="text-xl font-black text-white">Cross-channel coordination</h3><p class="mt-2 text-sm text-slate-300">email, SMS, push, and onsite messaging without duplicate offers</p></a>
         <a class="card" href="/guides/list-hygiene"><h3 class="text-xl font-black text-white">List hygiene across the stack</h3><p class="mt-2 text-sm text-slate-300">sunset rules, consent mapping, and deliverability protection</p></a>
       </div>
+      <article class="prose-shopify mt-12 max-w-4xl card">
+      <h2>Terms that decide the outcome</h2>
+      <div class="overflow-x-auto"><table class="data-table">
+      <thead><tr><th>Term</th><th>Why it matters here</th></tr></thead>
+      <tbody>
+      <tr><td>Purchaser suppression</td><td>Excluding recent buyers from acquisition and cart flows the moment their order syncs from Shopify</td></tr>
+      <tr><td>Collision calendar</td><td>A shared schedule of which app messages which segment when, so two layers never fire the same offer in one window</td></tr>
+      <tr><td>Contribution margin</td><td>Revenue minus discounts, refunds, product cost, and app/usage fees — the denominator that makes stack costs legible</td></tr>
+      <tr><td>Suppression window</td><td>The days after a purchase or offer during which a profile is excluded from overlapping messages</td></tr>
+      <tr><td>Consent state</td><td>The email and SMS permission record, with timestamps and source, that must survive any migration intact</td></tr>
+      <tr><td>Holdout</td><td>A suppressed segment that receives nothing, used to measure incremental lift instead of last-click attribution</td></tr>
+      </tbody></table></div>
+      <p>If any of these are undefined for your store, define them before the operator guide library — they are cheaper to write down than to discover during a peak week.</p>
+      <h2>Vertical adjustments</h2>
+      <div class="overflow-x-auto"><table class="data-table">
+      <thead><tr><th>Store type</th><th>Adjustment</th></tr></thead>
+      <tbody>
+      <tr><td>High-AOV (jewelry, furniture)</td><td>Education and proof before discounts; blanket % off trains wait-for-sale behavior</td></tr>
+      <tr><td>Fashion and apparel</td><td>Season, size, and returns data should shape audience logic before any send</td></tr>
+      <tr><td>Subscription boxes</td><td>Billing and delivery state gate every retention message</td></tr>
+      <tr><td>B2B and wholesale</td><td>Account, quote, and rep handoff context outranks consumer discount logic</td></tr>
+      <tr><td>Pet and consumables</td><td>Consumption windows beat calendar timing for replenishment</td></tr>
+      </tbody></table></div>
+      <p>Pair the vertical adjustment with the flow-level test above — the operator guide library resolves differently at $40k/mo than at $400k/mo even inside one vertical.</p>
+      <p>Keep due diligence honest: <a class="link" href="/guides/stack-architecture">stack architecture</a> <a class="link" href="/guides/list-hygiene">list hygiene</a> <a class="link" href="/guides/seasonal-campaigns">seasonal campaign governance</a> <a class="link" href="/guides/attribution">attribution honesty</a> <a class="link" href="/use-cases/welcome-series">welcome-series playbook</a> <a class="link" href="/guides/tool-sprawl">the tool-sprawl audit</a>, and re-check official pricing pages before any annual commitment.</p>
+      <h2>Scenarios worth replaying</h2>
+      <p><strong>Lean DTC ($30–50k/mo):</strong> one owner, capture feeding a short welcome path, SMS reserved for cart. In the operator guide library, prefer the option deployable in a week with exclusions visible from day one.</p>
+      <p><strong>Growth ($100–250k/mo):</strong> a data hire exists, so predictive segments and holdouts become realistic gates — not brochure features.</p>
+      <p><strong>Subscription brand:</strong> pause, skip, and failed-payment states must suppress replenishment promos the same day a charge processes. If the platform cannot read that state without middleware, it is the wrong shape.</p>
+      <h2>What this actually costs at your volume</h2>
+      <p>Pricing pages are a starting quote, not a contract. Build a twelve-month model with your real contact growth, send calendar, SMS volume, and seat count, and include the app fees of every layer that touches the same shopper. Verify current numbers on official pricing pages — this page deliberately does not quote figures that age badly.</p>
+      <p>Include failure costs: duplicate messages from missing suppressions, discount leakage to existing purchasers, and the hours your team spends reconciling platform attribution against Shopify net sales. Those line items routinely exceed the difference between two headline tiers.</p>
+      <h2>Decision table</h2>
+      <div class="overflow-x-auto"><table class="data-table">
+      <thead><tr><th>If your bottleneck is…</th><th>Lean toward</th><th>Why it matters</th></tr></thead>
+      <tbody>
+      <tr><td>Consent clarity and purchaser suppression</td><td>The tool that reads Shopify order state natively</td><td>Buyers should exit promo flows the day they purchase</td></tr>
+      <tr><td>Welcome and cart recovery depth</td><td>The tool your marketer can edit without a ticket</td><td>Sale-week editability is the real feature</td></tr>
+      <tr><td>SMS urgency after email silence</td><td>A dedicated SMS layer with shared suppression</td><td>One cart text beats three channels screaming one coupon</td></tr>
+      <tr><td>Proof and loyalty handoffs</td><td>The tool that reads review and tier state</td><td>Winback offers should respect loyalty status</td></tr>
+      <tr><td>Peak-season governance</td><td>The tool with visible exclusions and collision controls</td><td>BFCM punishes undocumented suppressions</td></tr>
+      <tr><td>Reporting you can defend to finance</td><td>The tool that reconciles with Shopify net sales</td><td>Platform last-click is not margin</td></tr>
+      </tbody></table></div>
+      <p>Read the table against your commercial leak — anonymous traffic, cart hesitation, weak repeat, or blind reporting — not against feature counts. When both columns point at the same tool, name one owner and one metric before installing anything else around the operator guide library.</p>
+      <h2>Consent, suppression, and margin checklist</h2>
+      <ul>
+      <li>Export consent timestamps and popup source tags before changing any sender</li>
+      <li>Suppress existing purchasers from acquisition offers the same day the order syncs</li>
+      <li>Share one suppression calendar across email, SMS, and onsite layers</li>
+      <li>Cap discounts by cart value and customer discount-sensitivity history</li>
+      <li>Enforce SMS quiet hours and TCPA-safe opt-in language at checkout</li>
+      <li>Read subscription pause, skip, and failed-payment state before replenishment sends</li>
+      <li>Exclude gift buyers from post-purchase replenishment and winback</li>
+      <li>Exclude employees, wholesale accounts, and test orders from lifecycle metrics</li>
+      <li>Sunset unengaged profiles 30–90 days before peak season</li>
+      <li>Reconcile platform-attributed revenue with Shopify net sales weekly</li>
+      <li>Track app costs as a percentage of contribution margin, not of revenue</li>
+      <li>Run a holdout on one flow per quarter if volume allows</li>
+      </ul>
+      <h2>App costs, margin, and the suppression tax</h2>
+      <p>Every additional app that can message a shopper adds a coordination tax. Consent stored in three tools drifts within weeks; the fix is a written ownership map — which app owns capture, which owns lifecycle, which owns SMS urgency, which owns proof — plus shared suppression exports reviewed monthly.</p>
+      <p>Purchaser suppression is the highest-yield rule in most stacks: an acquisition discount sent to a customer who bought yesterday is pure margin leakage and a trust hit. Whatever you choose, verify order-state sync latency and test it with a real order, not a sandbox event.</p>
+      <p>Defend the stack budget in margin terms: total SaaS fees plus usage plus operator hours, against incremental contribution margin after discounts. Apps that cannot name the metric they move should be the first candidates for retirement at renewal.</p>
+      <h2>How each stack layer changes the operator guide library</h2>
+      <h3>Capture layer</h3>
+      <p>Popups and quizzes should tag source and consent at the moment of capture so welcome branching and suppression downstream are possible. If the operator guide library weakens that handoff, you will pay for it in duplicate offers later.</p>
+      <h3>Lifecycle layer</h3>
+      <p>Welcome through winback needs documented triggers, delays, and exclusions. Prefer the platform that makes exclusions visible to a marketer during sale week, not hidden in support tickets.</p>
+      <h3>SMS layer</h3>
+      <p>SMS is scarce urgency: one cart text after email silence, quiet hours enforced, consent shared with email. A tool that treats SMS as a parallel blast channel will burn the subscriber base you paid to build.</p>
+      <h3>Proof, loyalty, and analytics</h3>
+      <p>Review status and loyalty tier should suppress or reshape offers; analytics should reconcile platform attribution against Shopify net sales. If the operator guide library breaks those reads, margin quietly leaks even while dashboards look green.</p>
+      <h2>90-day comparison plan</h2>
+      <div class="overflow-x-auto"><table class="data-table">
+      <thead><tr><th>Weeks</th><th>Test</th><th>Gate</th></tr></thead>
+      <tbody>
+      <tr><td>1–2</td><td>Audit live tools, map consent, rebuild welcome and cart in both the incumbent and the challenger</td><td>Identical rules reproduce in both; exclusions visible</td></tr>
+      <tr><td>3–6</td><td>Post-purchase and winback with purchaser and gift-buyer suppressions</td><td>No duplicate touches in one intent window</td></tr>
+      <tr><td>7–10</td><td>Peak-season dry run: edit an exclusion during a simulated sale week</td><td>Marketer completes the edit without developer help</td></tr>
+      <tr><td>11–12</td><td>Reconcile Shopify orders vs platform attribution; holdout if volume allows</td><td>Incremental margin — not last-click — decides the winner</td></tr>
+      </tbody></table></div>
+      <p>Never migrate the week before peak season. If the calendar forces it, run parallel suppressions for fourteen days and move welcome and cart first, winback last.</p>
+      <h2>Common follow-up questions</h2>
+      <h3>Can we run both tools instead of choosing?</h3>
+      <p>Sometimes — but only with one job per app and a written suppression calendar. Overlapping lifecycle tools without documented exclusions train unsubscribes faster than any campaign problem.</p>
+      <h3>What is the fastest way to test this on a real store?</h3>
+      <p>Rebuild welcome, cart, post-purchase, and winback with identical rules in a sandbox or a suppressed segment, then score exclusion visibility, Shopify event fidelity, and operator minutes. Four flows, one owner, two weeks.</p>
+      <h3>How do we know it worked after ninety days?</h3>
+      <p>Compare incremental contribution margin after discounts against a holdout or prior period, unsubscribe and complaint rates, and the hours your team spends maintaining flows. If maintenance grew faster than margin, the decision was wrong.</p>
+      <h2>Mistakes that make the operator guide library more expensive</h2>
+      <ul>
+      <li>Copying a competitor stack without matching order volume, catalog complexity, or team size</li>
+      <li>Buying for a feature matrix instead of the one leak that is actually costing margin</li>
+      <li>Letting two apps own the same journey because neither was explicitly assigned away from it</li>
+      <li>Judging success on platform-reported last-click revenue instead of Shopify net margin</li>
+      <li>Deferring list hygiene until deliverability degrades right before peak season</li>
+      <li>Signing annual contracts before the four-flow test produced a number</li>
+      </ul>
+      </article>
       <FaqSection faqs={faqs} title="Guides hub FAQ" />
     </div>
   </section>

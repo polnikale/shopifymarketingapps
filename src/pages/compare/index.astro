@@ -20,6 +20,7 @@ const faqs = [
   { question: 'Compare hub vs app reviews?', answer: 'App reviews (/apps) profile single tools. Battlecards decide between two tools for the same layer or migration path.' },
   { question: 'How often are battlecards updated?', answer: 'When Shopify integration depth or pricing changes materially — check Sequenzy vs Klaviyo and capture comparisons first for current stack guidance.' },
 ];
+
 ---
 
 <BaseLayout title={title} description={desc} site={site} path={path}>
@@ -163,6 +164,72 @@ const faqs = [
           <a class="btn btn-primary mt-6" href="/guides/stack-architecture">Stack architecture guide</a>
         </div>
       </div>
+      <article class="prose-shopify mt-12 max-w-4xl card">
+      <h2>How each stack layer changes stack battlecards</h2>
+      <h3>Capture layer</h3>
+      <p>Popups and quizzes should tag source and consent at the moment of capture so welcome branching and suppression downstream are possible. If stack battlecards weakens that handoff, you will pay for it in duplicate offers later.</p>
+      <h3>Lifecycle layer</h3>
+      <p>Welcome through winback needs documented triggers, delays, and exclusions. Prefer the platform that makes exclusions visible to a marketer during sale week, not hidden in support tickets.</p>
+      <h3>SMS layer</h3>
+      <p>SMS is scarce urgency: one cart text after email silence, quiet hours enforced, consent shared with email. A tool that treats SMS as a parallel blast channel will burn the subscriber base you paid to build.</p>
+      <h3>Proof, loyalty, and analytics</h3>
+      <p>Review status and loyalty tier should suppress or reshape offers; analytics should reconcile platform attribution against Shopify net sales. If stack battlecards breaks those reads, margin quietly leaks even while dashboards look green.</p>
+      <h2>90-day comparison plan</h2>
+      <div class="overflow-x-auto"><table class="data-table">
+      <thead><tr><th>Weeks</th><th>Test</th><th>Gate</th></tr></thead>
+      <tbody>
+      <tr><td>1–2</td><td>Audit live tools, map consent, rebuild welcome and cart in both the incumbent and the challenger</td><td>Identical rules reproduce in both; exclusions visible</td></tr>
+      <tr><td>3–6</td><td>Post-purchase and winback with purchaser and gift-buyer suppressions</td><td>No duplicate touches in one intent window</td></tr>
+      <tr><td>7–10</td><td>Peak-season dry run: edit an exclusion during a simulated sale week</td><td>Marketer completes the edit without developer help</td></tr>
+      <tr><td>11–12</td><td>Reconcile Shopify orders vs platform attribution; holdout if volume allows</td><td>Incremental margin — not last-click — decides the winner</td></tr>
+      </tbody></table></div>
+      <p>Never migrate the week before peak season. If the calendar forces it, run parallel suppressions for fourteen days and move welcome and cart first, winback last.</p>
+      <h2>Common follow-up questions</h2>
+      <h3>Can we run both tools instead of choosing?</h3>
+      <p>Sometimes — but only with one job per app and a written suppression calendar. Overlapping lifecycle tools without documented exclusions train unsubscribes faster than any campaign problem.</p>
+      <h3>What is the fastest way to test this on a real store?</h3>
+      <p>Rebuild welcome, cart, post-purchase, and winback with identical rules in a sandbox or a suppressed segment, then score exclusion visibility, Shopify event fidelity, and operator minutes. Four flows, one owner, two weeks.</p>
+      <h3>How do we know it worked after ninety days?</h3>
+      <p>Compare incremental contribution margin after discounts against a holdout or prior period, unsubscribe and complaint rates, and the hours your team spends maintaining flows. If maintenance grew faster than margin, the decision was wrong.</p>
+      <h2>Mistakes that make stack battlecards more expensive</h2>
+      <ul>
+      <li>Copying a competitor stack without matching order volume, catalog complexity, or team size</li>
+      <li>Buying for a feature matrix instead of the one leak that is actually costing margin</li>
+      <li>Letting two apps own the same journey because neither was explicitly assigned away from it</li>
+      <li>Judging success on platform-reported last-click revenue instead of Shopify net margin</li>
+      <li>Deferring list hygiene until deliverability degrades right before peak season</li>
+      <li>Signing annual contracts before the four-flow test produced a number</li>
+      </ul>
+      <p>Keep due diligence honest: <a class="link" href="/guides/tool-sprawl">the tool-sprawl audit</a> <a class="link" href="/guides/stack-architecture">stack architecture</a> <a class="link" href="/guides/list-hygiene">list hygiene</a> <a class="link" href="/guides/seasonal-campaigns">seasonal campaign governance</a> <a class="link" href="/guides/attribution">attribution honesty</a> <a class="link" href="/use-cases/welcome-series">welcome-series playbook</a>, and re-check official pricing pages before any annual commitment.</p>
+      <h2>Field notes from stack audits</h2>
+      <p>The most common audit finding is not a missing feature — it is an undocumented exclusion. Teams discover two tools have been suppressing different purchaser windows for months, which is why winback looks broken in one dashboard and fine in the other.</p>
+      <p>Second finding: consent captured without source tags. When every popup writes "webform" to the same field, welcome branching is guesswork and stack battlecards cannot be evaluated fairly, because neither tool receives the signal it needs.</p>
+      <p>Third: app costs reviewed annually as a lump sum. Split fees by layer and by job; the number that shocks finance is usually the capture or proof app nobody has opened since onboarding.</p>
+      <p>Fourth: sale-week behavior is the real benchmark. Tools that require a developer or a support ticket to pause a flow during BFCM cost more than their subscription suggests.</p>
+      <h2>Common follow-up questions</h2>
+      <h3>Can we run both tools instead of choosing?</h3>
+      <p>Sometimes — but only with one job per app and a written suppression calendar. Overlapping lifecycle tools without documented exclusions train unsubscribes faster than any campaign problem.</p>
+      <h3>What is the fastest way to test this on a real store?</h3>
+      <p>Rebuild welcome, cart, post-purchase, and winback with identical rules in a sandbox or a suppressed segment, then score exclusion visibility, Shopify event fidelity, and operator minutes. Four flows, one owner, two weeks.</p>
+      <h3>How do we know it worked after ninety days?</h3>
+      <p>Compare incremental contribution margin after discounts against a holdout or prior period, unsubscribe and complaint rates, and the hours your team spends maintaining flows. If maintenance grew faster than margin, the decision was wrong.</p>
+      <h3>Do we need to replatform before peak season?</h3>
+      <p>Rarely. Stabilize suppressions and collision calendars first; migrations mid-peak multiply risk. Schedule structural changes for the quiet quarter after your biggest sale week.</p>
+      <h3>Who should own the decision?</h3>
+      <p>One named operator with a finance reviewer. Agency-heavy decisions without internal ownership are the most common pattern behind stacks that grow instead of improve.</p>
+      <h2>Terms that decide the outcome</h2>
+      <div class="overflow-x-auto"><table class="data-table">
+      <thead><tr><th>Term</th><th>Why it matters here</th></tr></thead>
+      <tbody>
+      <tr><td>Purchaser suppression</td><td>Excluding recent buyers from acquisition and cart flows the moment their order syncs from Shopify</td></tr>
+      <tr><td>Collision calendar</td><td>A shared schedule of which app messages which segment when, so two layers never fire the same offer in one window</td></tr>
+      <tr><td>Contribution margin</td><td>Revenue minus discounts, refunds, product cost, and app/usage fees — the denominator that makes stack costs legible</td></tr>
+      <tr><td>Suppression window</td><td>The days after a purchase or offer during which a profile is excluded from overlapping messages</td></tr>
+      <tr><td>Consent state</td><td>The email and SMS permission record, with timestamps and source, that must survive any migration intact</td></tr>
+      <tr><td>Holdout</td><td>A suppressed segment that receives nothing, used to measure incremental lift instead of last-click attribution</td></tr>
+      </tbody></table></div>
+      <p>If any of these are undefined for your store, define them before stack battlecards — they are cheaper to write down than to discover during a peak week.</p>
+      </article>
       <FaqSection faqs={faqs} title="Comparison hub FAQ" />
     </div>
   </section>
