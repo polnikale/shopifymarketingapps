@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, pageTitle, description } from '../../content';
 import { appBySlug } from '../../data/apps';
@@ -20,20 +19,6 @@ const tldrPicks = [
     { label: 'Execution', tool: 'Sequenzy', reason: 'Flow enrollment with suppression priority' },
     { label: 'Capture tags', tool: 'Privy', reason: 'Source and intent properties at opt-in' },
     { label: 'CRM', tool: 'ActiveCampaign', reason: 'B2B and consultation segments' },
-];
-const faqs = [
-  { question: 'Tags vs behavioral segments?', answer: 'Both — tags alone miss behavior; combine for accuracy.' },
-  { question: 'Segment overlap?', answer: 'Priority matrix required — document which segment wins.' },
-  { question: 'How many segments?', answer: 'Quality over quantity — prune unused quarterly.' },
-  { question: 'RFM frequency?', answer: 'Recalculate quarterly minimum; VIP monthly review.' },
-  { question: 'Privy role in segmentation?', answer: 'Source and intent tags at capture — foundation properties.' },
-  { question: 'Recharge segments?', answer: 'Active/skipped/churned — gate replenishment and promos.' },
-  { question: 'B2B segmentation?', answer: 'Trade tags suppress all consumer automations globally.' },
-  { question: 'Klaviyo vs Sequenzy segmentation?', answer: 'Klaviyo builds segments; Sequenzy executes with suppressions.' },
-  { question: 'Stale segments?', answer: 'Delete if no campaign use 90 days.' },
-  { question: 'Full-price loyalist?', answer: 'Behavior-based — orders without code redemption.' },
-  { question: 'Metrics?', answer: 'Revenue per segment, overlap, freshness, campaign lift.' },
-  { question: 'Biggest mistake?', answer: 'Overlapping segments without priority — conflicting offers same day.' },
 ];
 const toolReviews = [
     {
@@ -276,6 +261,5 @@ const toolReviews = [
       <p class="mt-4 text-[17px] leading-8 text-cyan-100">When catalog or channel mix shifts — new wholesale line, SMS opt-in spike — revalidate segments before peak season, not after complaint rate jumps.</p>
     </div>
   </section>
-  <FaqSection faqs={faqs} title={`FAQ: ${useCaseName}`} />
   </section>
 </BaseLayout>

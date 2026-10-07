@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, pageTitle, description } from '../../content';
 import { appBySlug } from '../../data/apps';
@@ -19,20 +18,6 @@ const tldrPicks = [
     { label: 'Capture', tool: 'Privy', reason: 'Collection-specific popups with size-preference tags' },
     { label: 'SMS drops', tool: 'Postscript', reason: 'VIP early access texts 2h before email list' },
     { label: 'Proof', tool: 'Yotpo', reason: 'Fit reviews and UGC in browse abandonment' },
-];
-const faqs = [
-  { question: 'What is the best Shopify marketing stack for fashion stores?', answer: 'Privy or Justuno for capture with collection and size tags, Sequenzy for lifecycle (drops, fit education, winback), Postscript for drop and cart SMS urgency, Yotpo for fit reviews and UGC. Klaviyo adds predictive segmentation at scale. The stack shape matters more than any single logo.' },
-  { question: 'Should fashion brands use SMS for every sale?', answer: 'No. SMS is for scarce urgency — VIP drop access, cart after email silence, waitlist restock. Blasting every promotion trains opt-outs and duplicates email discounts. One text per intent window, with quiet hours enforced.' },
-  { question: 'How do fashion stores handle size complexity in email?', answer: 'Capture size preference at popup or quiz, store as profile property, filter browse and cart recommendations by variant inventory, and use Yotpo fit reviews in consideration emails before discounting.' },
-  { question: 'When should fashion run winback vs clearance email?', answer: 'Winback with new arrivals and UGC first for 90–120 day lapsed buyers. Clearance incentives only for discount-sensitive segments after full-price attempts. Never overlap winback with active cart recovery.' },
-  { question: 'Does Sequenzy replace Klaviyo for fashion?', answer: 'Sequenzy owns lifecycle strategy and execution; Klaviyo remains valuable for deep predictive segmentation and catalog-scale reporting. Many fashion merchants run Sequenzy for flows and Klaviyo for VIP analytics — with documented suppressions between them.' },
-  { question: 'How do drop-based brands structure waitlists?', answer: 'Privy waitlist tags by SKU/colorway/size, Sequenzy fulfillment on restock in waitlist order, Postscript for VIP early access 2h before general email. Never email the full list for six units back in stock.' },
-  { question: 'What metrics prove a fashion stack works?', answer: 'Second purchase within 60 days, full-price vs discount ratio, return rate by email segment, revenue per recipient by collection, SMS opt-out rate during drops, incremental margin reconciled in Shopify weekly.' },
-  { question: 'How long does fashion stack implementation take?', answer: 'Four weeks for foundation (welcome, cart, suppressions, proof in browse). Eight to twelve weeks for VIP tiers, winback branches, loyalty, and holdout testing. Peak season is for execution, not experiments.' },
-  { question: 'Should fashion brands add loyalty early?', answer: 'Only after repeat rate exceeds ~25% and you can offer early access or styling value — not double coupons on clearance. Points on full-price repeat purchases only; exclude exit inventory collections.' },
-  { question: 'How do fashion merchants prevent BFCM list burnout?', answer: 'Collision calendar: pause winback, suppress cart for recent purchasers, VIP early access before general blast, sunset unengaged 30 days before, one SMS per 72h cap. Measure unsubscribe spike daily during peak.' },
-  { question: 'Can Shopify Email alone run a fashion stack?', answer: 'Shopify Email handles basic newsletters and sale announcements. It lacks production-grade variant inventory automation, cross-channel suppressions, SMS coordination, and review integration for a full fashion retention stack.' },
-  { question: 'How do returns affect fashion email ROI?', answer: 'Track return rate by acquisition source and email segment. High returns on size-driven categories mean fit education and proof layers need investment before more discount-heavy sends. Margin after returns is the real KPI.' },
 ];
 const toolReviews = [
     {
@@ -241,6 +226,5 @@ const toolReviews = [
         <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
       ))}
     </div>
-    <FaqSection faqs={faqs} title={`FAQ: ${segmentName}`} />
   </section>
 </BaseLayout>

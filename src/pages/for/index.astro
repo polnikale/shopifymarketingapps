@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import { SEGMENTS as SEGS } from '../../data/segments';
 import { siteFromHost, description, pageTitle } from '../../content';
 
@@ -9,20 +8,6 @@ const site = siteFromHost();
 const path = '/for';
 const title = pageTitle(site, 'for');
 const desc = description(site, 'for');
-const faqs = [
-  { question: 'Why stack guides differ by store type?', answer: 'Fashion needs drop waitlists and size proof; supplements need compliance and subscription sync; B2B needs account approval pipelines. One generic ESP recommendation ignores how each vertical actually buys.' },
-  { question: 'Is Sequenzy on every store-type guide?', answer: 'Yes as the default lifecycle and automation layer — but each guide pairs it with different specialists: Privy for capture, Postscript for SMS, Yotpo for proof, Marsello for loyalty, ActiveCampaign for B2B CRM.' },
-  { question: 'How pick my vertical guide?', answer: 'Match primary margin leak: if repeat purchase is weak, start beauty/supplement/pet replenishment guides; if consideration is long, jewelry/high-AOV; if subscription churn hurts, subscription-boxes and food guides.' },
-  { question: 'Can I combine two vertical guides?', answer: 'Hybrid stores (e.g. DTC + B2B, or fashion + beauty lines) should read both and implement tag-separated stack paths — never blended automations without exclusions.' },
-  { question: 'What if my store is not listed?', answer: 'Pick the closest buying cycle: replenishment-heavy → beauty/supplements; gift-heavy → jewelry; trend/volume → fashion/POD; considered purchase → high-AOV/home.' },
-  { question: 'How long to implement a vertical stack?', answer: 'Four weeks for foundation (capture handoff, welcome, cart, suppressions); twelve weeks for loyalty, SMS, proof integration, and holdout testing.' },
-  { question: 'Do these guides replace app reviews?', answer: 'No — they show how apps layer together. Use /apps and /compare for tool-specific depth; use /for for architecture by vertical.' },
-  { question: 'What metrics are universal across verticals?', answer: 'Incremental margin reconciled in Shopify weekly, full-price purchase ratio, stack cost as % of attributed margin, unsubscribe by message type, collision incidents per sale week.' },
-  { question: 'Agency or in-house stack ownership?', answer: 'In-house ownership of segment rules and collision calendar survives turnover. Agencies help execution but should not be the only place suppressions live.' },
-  { question: 'When add SMS to a vertical stack?', answer: 'After checkout opt-in exceeds ~8% and email-only recovery plateaus — never as parallel discount blast. Vertical guides specify SMS fit (drops, cart, deadlines).' },
-  { question: 'Should every vertical use loyalty?', answer: 'No — POD and some fashion drop brands skip points. Loyalty fits repeat full-price categories: beauty, pet, food subscription add-ons.' },
-  { question: 'How often revisit stack architecture?', answer: 'Quarterly audit: retire overlapping tools, refresh collision calendar, reconcile margin. Immediately after catalog, subscription, or channel mix changes.' },
-];
 
 ---
 
@@ -227,7 +212,6 @@ const faqs = [
       <h3>How do we know it worked after ninety days?</h3>
       <p>Compare incremental contribution margin after discounts against a holdout or prior period, unsubscribe and complaint rates, and the hours your team spends maintaining flows. If maintenance grew faster than margin, the decision was wrong.</p>
       </article>
-  <FaqSection faqs={faqs} title="Store-type stack FAQ" />
     </div>
   </section>
 </BaseLayout>

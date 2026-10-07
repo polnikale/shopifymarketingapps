@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, pageTitle, description } from '../../content';
 import { appBySlug } from '../../data/apps';
@@ -19,20 +18,6 @@ const tldrPicks = [
     { label: 'Lifecycle', tool: 'Sequenzy', reason: 'Trend launch, personalization recovery, production timeline' },
     { label: 'Launch urgency', tool: 'Omnisend', reason: '48h sell-through email+SMS for lean POD operators' },
     { label: 'Niche segments', tool: 'Klaviyo', reason: 'Design-line and community cohort reporting at scale' },
-];
-const faqs = [
-  { question: 'What is the best Shopify marketing stack for print-on-demand?', answer: 'Privy for design waitlist capture with design-ID tags, Sequenzy for launch fulfillment and personalization recovery, Omnisend for launch-day email+SMS urgency, Klaviyo for niche segmentation at scale. Margin caps on all incentives. Skip loyalty until repeat full-price rate justifies it.' },
-  { question: 'How should POD stores handle viral trend traffic?', answer: 'Waitlist capture during spike with Privy, launch to waitlist in signup order via Sequenzy, SMS to opt-in at go-live only, no deep discount on high-velocity designs. Scale paid only after waitlist handoff tested.' },
-  { question: 'What about personalization cart recovery?', answer: 'Email one must include personalized product preview image and complete-design CTA — generic cart emails underperform 15–20% on customized products. Trigger within 1h of abandoned design session.' },
-  { question: 'Should print-on-demand brands use loyalty programs?', answer: 'Rarely at thin margins. Community content, early access to drops, and waitlist priority outperform Marsello points unless repeat full-price rate exceeds 30%. Points on 35% margin SKUs often destroy economics.' },
-  { question: 'What discount strategy works for POD?', answer: 'Hard cap 10% on cart recovery; no popup+cart stack same session; full-price on trend launches when sell-through likely in 48h. Document margin floor before BFCM — viral weeks tempt destructive discounting.' },
-  { question: 'When does SMS make sense for POD?', answer: 'Launch day waitlist opt-in only, one text per design per 72h, quiet hours enforced. Not weekly promo texts. Requires checkout SMS opt-in investment — below 6% opt-in, skip SMS layer.' },
-  { question: 'When should POD add Klaviyo?', answer: 'When multiple niches or design lines need cohort reporting and operator manual splits exceed 2h/week — often $70–80k+ monthly revenue. Prune profiles after viral spikes.' },
-  { question: 'How should POD winback work?', answer: 'New design announcements and waitlist re-invites for lapsed buyers — not 25% off old inventory. Branch winback by last purchased niche tag. Lapsed meme buyers want fresh trends, not clearance.' },
-  { question: 'What metrics prove a POD stack works?', answer: '48h sell-through rate, margin per email-attributed order, discount dependency percentage, waitlist-to-purchase conversion, SMS opt-out on launch weeks, incremental margin reconciled in Shopify weekly.' },
-  { question: 'What post-purchase emails do POD stores need?', answer: 'Production timeline at order +1 day, shipping at fulfillment, expectation-setting on custom production time — reduces chargebacks and support tickets. Cross-sell only after delivery on non-custom add-ons.' },
-  { question: 'How fast can a POD stack be implemented?', answer: 'Two weeks for waitlist + ordered launch; four weeks for personalization recovery, margin rules, and post-purchase production timeline. Six to eight weeks for Klaviyo niche segmentation and SMS launch branch.' },
-  { question: 'What is the biggest POD stack mistake?', answer: 'Aggressive sitewide discounts on viral traffic — high revenue, negative margin. Second biggest: blasting full list on launch instead of waitlist order, burning trust with true fans.' },
 ];
 const toolReviews = [
     {
@@ -208,7 +193,7 @@ const toolReviews = [
 
       <h2>Cross-links for stack due diligence</h2>
   <p>Execute plays via <a class="link" href="/use-cases/product-launch">product launch</a> and <a class="link" href="/use-cases/discount-strategy">discount strategy</a> playbooks.</p>
-  <p>Compare capture tools on <a class="link" href="/compare/privy-vs-omnisend">Privy vs Omnisend</a> and lifecycle on <a class="link" href="/compare/sequenzy-vs-omnisend">Sequenzy vs Omnisend</a>.</p>
+  <p>Compare capture tools on <a class="link" href="/compare/omnisend-vs-privy">Privy vs Omnisend</a> and lifecycle on <a class="link" href="/compare/sequenzy-vs-omnisend">Sequenzy vs Omnisend</a>.</p>
   <p>Governance: <a class="link" href="/guides/tool-sprawl">tool sprawl remediation</a> and <a class="link" href="/guides/attribution">marketing attribution</a>.</p>
 
 <h2>Stack governance for print-on-demand stores</h2>
@@ -239,6 +224,5 @@ const toolReviews = [
         <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
       ))}
     </div>
-    <FaqSection faqs={faqs} title={`FAQ: ${segmentName}`} />
   </section>
 </BaseLayout>

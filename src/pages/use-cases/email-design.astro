@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, pageTitle, description } from '../../content';
 import { appBySlug } from '../../data/apps';
@@ -20,20 +19,6 @@ const tldrPicks = [
     { label: 'Lifecycle', tool: 'Sequenzy', reason: 'Consistent module system across flows' },
     { label: 'SMB templates', tool: 'Omnisend', reason: 'Mobile-first prebuilt ecommerce layouts' },
     { label: 'Native simple', tool: 'Shopify Email', reason: 'Basic product grids for lean teams' },
-];
-const faqs = [
-  { question: 'Is email design just templates?', answer: 'On a full stack it is the presentation layer connecting proof, loyalty, offers, and product data from multiple tools — module system required.' },
-  { question: 'How many products per mobile email?', answer: 'Two per row maximum; often one hero product outperforms dense grids on consideration purchases.' },
-  { question: 'Klaviyo vs Sequenzy for design?', answer: 'Klaviyo dynamic product feeds at scale; Sequenzy consistent lifecycle modules with faster iteration. Share module library across both if using both.' },
-  { question: 'Dark mode email design?', answer: 'Test logos and buttons in dark clients; provide bordered button fallback; avoid pure white text on transparent PNG logos.' },
-  { question: 'Yotpo in email design?', answer: 'Designed fixed-ratio UGC slots — not embed widget HTML that breaks responsive layout.' },
-  { question: 'Plain-text email still needed?', answer: 'Yes — human-reviewed plain-text for accessibility and deliverability; not auto-generated from HTML.' },
-  { question: 'Shopify Email design limits?', answer: 'Fine for simple product newsletters; insufficient module depth for multi-layer stack with proof and loyalty conditionals.' },
-  { question: 'Design affect deliverability?', answer: 'Image-heavy low-text emails hurt placement. Balance content; sunset unengaged regardless of design quality.' },
-  { question: 'Who owns design in the stack?', answer: 'Shared doc between lifecycle owner and creative; capture and loyalty modules need approval before install.' },
-  { question: 'How often refresh templates?', answer: 'Quarterly module performance review; full rebrand only with A/B baseline captured first.' },
-  { question: 'SMS and email design relationship?', answer: 'SMS links to mobile-optimized landing matching email visual language — continuity improves conversion.' },
-  { question: 'B2B email design differences?', answer: 'Table/card SKU layouts, MOQ modules, no consumer coupon creative patterns.' },
 ];
 const toolReviews = [
     {
@@ -248,6 +233,5 @@ const toolReviews = [
         <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
       ))}
     </div>
-    <FaqSection faqs={faqs} title={`FAQ: ${useCaseName}`} />
   </section>
 </BaseLayout>

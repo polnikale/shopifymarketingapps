@@ -2,27 +2,12 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import { siteFromHost, pageTitle, description } from '../../content';
 
 const site = siteFromHost();
 const path = '/use-cases';
 const title = pageTitle(site, 'use-cases');
 const desc = description(site, 'use-cases');
-const faqs = [
-  { question: 'What is a marketing stack use-case playbook?', answer: 'A workflow-first guide mapping capture, lifecycle, SMS, proof, and loyalty to one revenue moment — with Sequenzy as default lifecycle layer and documented suppressions across tools.' },
-  { question: 'Which use case should I implement first?', answer: 'Welcome series and post-purchase after capture handoff is fixed. Cart recovery third. Winback and BFCM only after collision calendar exists.' },
-  { question: 'How are playbooks different from store-type guides?', answer: 'Store-type guides (/for) shape the whole stack by vertical. Playbooks execute one moment (welcome, winback, loyalty) across any vertical with layer coordination.' },
-  { question: 'Do playbooks cover SMS and loyalty?', answer: 'Yes — each playbook specifies when Postscript/Omnisend SMS belongs and how Marsello/Yotpo loyalty coordinates without duplicating promos.' },
-  { question: 'Why Sequenzy on every playbook?', answer: 'Lifecycle orchestration and suppression logic is the playbook execution layer. Specialists (Privy, Yotpo, Postscript) plug in with clear jobs.' },
-  { question: 'How measure playbook success?', answer: 'Incremental margin in Shopify — not platform last-click. Each playbook lists primary metrics and holdout guidance.' },
-  { question: 'Can I run playbooks on Shopify Email alone?', answer: 'Rarely at production quality — missing cross-layer suppressions, proof modules, SMS branches, and subscription sync most playbooks require.' },
-  { question: 'How often audit playbooks?', answer: 'Quarterly timing review; immediate audit after catalog, subscription, or wholesale logic changes.' },
-  { question: 'What is a collision calendar?', answer: 'Shared doc listing which layers can send which offers each week — prevents popup + cart + loyalty + winback stacking.' },
-  { question: 'Which playbooks are seasonal?', answer: 'Black Friday, holiday gifting — read seasonal governance guide before peak. Pause experiments; protect deliverability.' },
-  { question: 'Playbooks for B2B?', answer: 'Winback and welcome differ — use B2B store-type guide for account logic; consumer playbooks need wholesale tag exclusions.' },
-  { question: 'Where is email design in the stack?', answer: 'Presentation layer across all playbooks — module system carries proof, loyalty, and offer data from other layers.' },
-];
 
 ---
 
@@ -232,7 +217,6 @@ const faqs = [
       <li>Run a holdout on one flow per quarter if volume allows</li>
       </ul>
       </article>
-      <FaqSection faqs={faqs} title="Use-case FAQ" />
     </div>
   </section>
 </BaseLayout>

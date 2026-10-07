@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, pageTitle, description } from '../../content';
 import { appBySlug } from '../../data/apps';
@@ -20,20 +19,6 @@ const tldrPicks = [
     { label: 'Capture', tool: 'Privy', reason: 'Gift intent quiz and guide opt-ins' },
     { label: 'Multichannel', tool: 'Omnisend', reason: 'Deadline email+SMS for SMB' },
     { label: 'Segmentation', tool: 'Klaviyo', reason: 'Gift buyer vs self-purchase splits' },
-];
-const faqs = [
-  { question: 'Best stack for holiday gifting campaigns?', answer: 'Privy gift capture, Sequenzy guide and deadline orchestration, Klaviyo gift/self segments, Omnisend/Postscript final SMS, Yotpo gift UGC, collision calendar mandatory.' },
-  { question: 'When start holiday gift emails?', answer: 'Gift guide ~4 weeks before primary holiday; deadline series intensifies final 14 days.' },
-  { question: 'Gift vs self-purchase segmentation?', answer: 'Separate flows with suppressions — replenishment and self-promo off for gift-tagged profiles during peak.' },
-  { question: 'Shipping deadline emails?', answer: 'Dynamic by zone; too-late branches show gift card; test dates before Dec 1.' },
-  { question: 'SMS holiday gifting?', answer: 'Final 48h once per opted-in gift intender — not daily marketing texts.' },
-  { question: 'VIP holiday treatment?', answer: 'Early gift guide access 48h — not necessarily bigger discounts.' },
-  { question: 'Subscription boxes holiday?', answer: 'Gift subscription offer on separate calendar from subscriber renewal preview.' },
-  { question: 'International gifting?', answer: 'Geo suppress when regional cutoff passed; separate deadline content.' },
-  { question: 'Post-holiday gift buyer emails?', answer: 'Thank-you and Jan nurture — not immediate winback discount.' },
-  { question: 'Metrics for holiday gifting?', answer: 'Gift revenue %, gift card sales, deadline conversion, gift return rate.' },
-  { question: 'BFCM vs gift guide collision?', answer: 'Collision calendar — VIP early access sequenced before general BFCM; gift guide can parallel if segments distinct.' },
-  { question: 'Biggest holiday gifting mistake?', answer: 'Same replenishment and gift messaging to one subscriber — confuses and unsubscribes.' },
 ];
 const toolReviews = [
     {
@@ -257,6 +242,5 @@ const toolReviews = [
         <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
       ))}
     </div>
-    <FaqSection faqs={faqs} title={`FAQ: ${useCaseName}`} />
   </section>
 </BaseLayout>

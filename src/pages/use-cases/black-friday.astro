@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, pageTitle, description } from '../../content';
 import { appBySlug } from '../../data/apps';
@@ -20,20 +19,6 @@ const tldrPicks = [
     { label: 'Lifecycle', tool: 'Sequenzy', reason: 'VIP early access and teaser sequences' },
     { label: 'Scale', tool: 'Klaviyo', reason: 'Segment sends and deliverability at volume' },
     { label: 'Capture', tool: 'Privy', reason: 'Pause non-essential popups during VIP access' },
-];
-const faqs = [
-  { question: 'How many BFCM emails?', answer: 'Calendar-driven waves — not daily blasts 14 days. Quality segments over volume.' },
-  { question: 'VIP early access required?', answer: 'Yes for margin — loyalists first, not deepest discount to everyone.' },
-  { question: 'Sunset before BFCM?', answer: '30–90 day unengaged sunset 4–6 weeks before peak.' },
-  { question: 'Pause winback?', answer: 'Yes peak week — conflicting offers and list fatigue.' },
-  { question: 'SMS BFCM rules?', answer: '72h cap, quiet hours, no email+SMS same discount hour.' },
-  { question: 'Recent purchaser exclusion?', answer: '7–14 days full-price buyers excluded from sitewide.' },
-  { question: 'Deliverability prep?', answer: 'Auth check, avoid cold volume spike, post-peak audit.' },
-  { question: 'Privy during BFCM?', answer: 'Pause non-essential capture — focus sends not popups.' },
-  { question: 'Metrics?', answer: 'Revenue per send, daily unsub, margin, Jan reactivation.' },
-  { question: 'Replenishment during BFCM?', answer: 'Pause or merge into BFCM calendar — no collision.' },
-  { question: 'When freeze changes?', answer: 'Segment logic frozen 1 week before; experiments paused 2 weeks.' },
-  { question: 'Biggest BFCM mistake?', answer: 'No collision calendar — stack layers independently discount same shoppers daily.' },
 ];
 const toolReviews = [
     {
@@ -242,6 +227,5 @@ const toolReviews = [
         <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
       ))}
     </div>
-    <FaqSection faqs={faqs} title={`FAQ: ${useCaseName}`} />
   </section>
 </BaseLayout>

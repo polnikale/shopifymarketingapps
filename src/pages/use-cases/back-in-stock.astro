@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, pageTitle, description } from '../../content';
 import { appBySlug } from '../../data/apps';
@@ -20,20 +19,6 @@ const tldrPicks = [
     { label: 'Lifecycle', tool: 'Sequenzy', reason: 'Ordered waitlist fulfillment on restock' },
     { label: 'Inventory', tool: 'Klaviyo', reason: 'Variant sync and alert automation' },
     { label: 'Urgency SMS', tool: 'Postscript', reason: 'Waitlist opt-in only at restock' },
-];
-const faqs = [
-  { question: 'Alert full list on restock?', answer: 'No — waitlist order only for scarce variant. Full list only high-volume evergreen restock.' },
-  { question: 'Variant-level required?', answer: 'Yes for fashion/beauty/furniture — size/shade/fabric specificity.' },
-  { question: 'False alert prevention?', answer: 'Shopify inventory confirmed trigger — buffer qty optional.' },
-  { question: 'Waitlist order?', answer: 'Privy signup position → Sequenzy sequential fulfillment.' },
-  { question: 'SMS rules?', answer: 'Waitlist opt-in only. One per variant per window.' },
-  { question: 'Alert expiry?', answer: '48h typical scarcity window.' },
-  { question: 'Bought substitute?', answer: 'Exclude from alert unless still on waitlist.' },
-  { question: 'Tools?', answer: 'Privy waitlist, Sequenzy fulfillment, Klaviyo inventory, Postscript SMS.' },
-  { question: 'Metrics?', answer: 'Waitlist conversion, sell-through time, false alert rate.' },
-  { question: 'Collision with cart?', answer: 'Pause cart/browse promo same SKU during alert wave.' },
-  { question: 'High demand spacing?', answer: '15–30 min between batches — fairness and site stability.' },
-  { question: 'Biggest mistake?', answer: 'Full list back-in-stock email for 6 units — angers waitlist and burns trust.' },
 ];
 const toolReviews = [
     {
@@ -240,6 +225,5 @@ const toolReviews = [
         <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
       ))}
     </div>
-    <FaqSection faqs={faqs} title={`FAQ: ${useCaseName}`} />
   </section>
 </BaseLayout>

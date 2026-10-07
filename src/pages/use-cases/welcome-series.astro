@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, pageTitle, description } from '../../content';
 import { appBySlug } from '../../data/apps';
@@ -20,20 +19,6 @@ const tldrPicks = [
     { label: 'Capture', tool: 'Privy', reason: 'Popup source tags feeding welcome within 5 minutes' },
     { label: 'Data depth', tool: 'Klaviyo', reason: 'Complex source and catalog branching' },
     { label: 'SMB speed', tool: 'Omnisend', reason: 'Prebuilt welcome live in days' },
-];
-const faqs = [
-  { question: 'What is the best stack for Shopify welcome series?', answer: 'Privy/Justuno capture with source tags, Sequenzy branched welcome execution, Klaviyo for complex segmentation, Yotpo proof in email two, Postscript SMS only with opt-in after email silence.' },
-  { question: 'Should welcome lead with discount?', answer: 'Only for cold giveaway sources — and only if popup did not already deliver same offer. High-intent sources get proof and education first.' },
-  { question: 'How fast should welcome email one send?', answer: 'Within 5 minutes. Delays beyond 15 minutes measurably hurt conversion.' },
-  { question: 'Existing customers re-subscribed?', answer: 'Branch to VIP or replenishment path — never first-order welcome discount.' },
-  { question: 'SMS in welcome series?', answer: 'Optional branch at 2h if checkout SMS opt-in and email one unopened. Same offer rules as email — no stacking.' },
-  { question: 'How many welcome emails?', answer: 'Three minimum for most stores; five for high-AOV or education-heavy categories.' },
-  { question: 'Welcome vs abandoned cart overlap?', answer: 'Suppress welcome promo if subscriber entered from cart capture and is in active cart flow.' },
-  { question: 'Measure welcome success how?', answer: 'First purchase 14 days, margin after discount, conversion by source, holdout incrementality.' },
-  { question: 'Shopify Email for welcome?', answer: 'Insufficient branching, suppressions, and capture handoff for production welcome at scale.' },
-  { question: 'When audit welcome flows?', answer: 'Quarterly; immediately after new popup, catalog, or subscription logic changes.' },
-  { question: 'Loyalty in welcome?', answer: 'No — conflicts with first purchase CTA. Enroll on second order or post-purchase.' },
-  { question: 'B2B welcome separate?', answer: 'Yes — wholesale applicants and approved accounts use CRM onboarding, not DTC welcome.' },
 ];
 const toolReviews = [
     {
@@ -249,6 +234,5 @@ const toolReviews = [
         <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
       ))}
     </div>
-    <FaqSection faqs={faqs} title={`FAQ: ${useCaseName}`} />
   </section>
 </BaseLayout>

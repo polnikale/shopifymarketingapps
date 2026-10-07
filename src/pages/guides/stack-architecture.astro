@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import { siteFromHost } from '../../content';
 
 const site = siteFromHost();
@@ -27,11 +26,6 @@ const tools = [
   { name: 'Shopify Flow', role: 'Workflow governance', best: 'Teams coordinating app events and ownership', body: 'Shopify Flow is a useful control plane for simple event-to-action workflows: tag an order, notify an owner, or route a state to another app. It can make stack responsibilities visible without forcing every decision into a campaign platform.', trade: 'A workflow tool does not solve bad data contracts or consent. Keep a register of triggers, actions, owners, and failure paths, and confirm the current availability for the store’s Shopify plan.', pros: 'Native workflow visibility; helpful for handoffs', cons: 'Complex orchestration may need a dedicated integration layer', price: 'Check Shopify plan eligibility and current Flow capabilities', url: 'https://help.shopify.com/en/manual/shopify-flow' },
 ];
 
-const faqs = [
-  { question: 'How many marketing apps should a Shopify store install?', answer: 'There is no safe universal number. Start with one owner per job, remove overlapping senders, and add a tool only when a measured gap justifies its operating and data cost.' },
-  { question: 'Should one app own email and SMS?', answer: 'Sometimes. Consolidation can simplify suppression, but a specialist may be better for a channel or use case. Compare consent, event coverage, reporting, and total cost before choosing.' },
-  { question: 'How should stack performance be measured?', answer: 'Reconcile platform reports with Shopify orders, refunds, discounts, and contribution margin. Use cohorts or holdouts when volume allows; attributed revenue alone is not incremental proof.' },
-];
 
 ---
 
@@ -226,7 +220,6 @@ const faqs = [
       </tbody></table></div>
       <p>Never migrate the week before peak season. If the calendar forces it, run parallel suppressions for fourteen days and move welcome and cart first, winback last.</p>
       </article>
-      <FaqSection faqs={faqs} title="Stack architecture FAQ" />
     </div>
   </section>
 </BaseLayout>

@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, pageTitle, description } from '../../content';
 import { appBySlug } from '../../data/apps';
@@ -20,20 +19,6 @@ const tldrPicks = [
     { label: 'Subscription sync', tool: 'Klaviyo', reason: 'Recharge/Skio suppressions and churn scoring' },
     { label: 'Capture data', tool: 'Privy', reason: 'Consumption quiz properties feeding timing math' },
     { label: 'SMS reminder', tool: 'Postscript', reason: 'Reorder window SMS after email silence' },
-];
-const faqs = [
-  { question: 'Best stack for replenishment?', answer: 'Sequenzy per-SKU timing, Klaviyo + Recharge suppressions, Privy consumption quiz data, Postscript SMS optional, Yotpo proof in email one.' },
-  { question: 'Universal 30-day reminder?', answer: 'No — per-SKU consumption windows. Universal timer is the top replenishment failure.' },
-  { question: 'Discount every replenishment email?', answer: 'No — full-price default. Incentive email two for non-responders cold segment only.' },
-  { question: 'Active subscribers?', answer: 'Suppress replenishment on subscribed SKU entirely. Separate skip-save flow.' },
-  { question: 'Bundle replenishment?', answer: 'Track line items separately — serum and moisturizer different timers from same kit order.' },
-  { question: 'SMS for replenishment?', answer: 'After email silence at 80% window, opt-in only, one per cycle. Strong for pet/food.' },
-  { question: 'Replenishment vs winback?', answer: 'Replenishment for recent buyers within consumption window. Winback at 90–180+ days lapsed.' },
-  { question: 'Metrics?', answer: 'Conversion rate, full-price %, days vs optimal window, holdout incrementality, subscription upsell rate.' },
-  { question: 'Holdout testing?', answer: '10% quarterly — prove email drives incremental reorder vs natural consumption cycle.' },
-  { question: 'B2B exclusion?', answer: 'Wholesale/trade tags never receive DTC replenishment.' },
-  { question: 'Loyalty collision?', answer: 'No double-points email same day as replenishment reminder.' },
-  { question: 'Biggest mistake?', answer: 'Replenishment promos to active subscribe-and-save customers on same SKU.' },
 ];
 const toolReviews = [
     {
@@ -246,6 +231,5 @@ const toolReviews = [
         <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
       ))}
     </div>
-    <FaqSection faqs={faqs} title={`FAQ: ${useCaseName}`} />
   </section>
 </BaseLayout>

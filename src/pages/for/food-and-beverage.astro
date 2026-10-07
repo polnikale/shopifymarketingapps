@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, pageTitle, description } from '../../content';
 import { appBySlug } from '../../data/apps';
@@ -19,20 +18,6 @@ const tldrPicks = [
     { label: 'Multichannel', tool: 'Omnisend', reason: 'Launch sell-through email+SMS for limited flavors' },
     { label: 'Subscription', tool: 'Klaviyo', reason: 'Recharge sync, skip recovery, churn scoring' },
     { label: 'Capture', tool: 'Privy', reason: 'Flavor waitlist and dietary preference tags' },
-];
-const faqs = [
-  { question: 'Best marketing stack for food and beverage Shopify?', answer: 'Privy flavor/dietary capture, Sequenzy consumption replenishment and shipping cutoffs, Klaviyo + Recharge subscription sync, Omnisend launch SMS, Yotpo taste proof.' },
-  { question: 'How set replenishment timing for food?', answer: 'By SKU consumption category — days to consume based on size and usage quiz. Trigger at 80% not calendar 30 days for all.' },
-  { question: 'Subscription vs one-time replenishment?', answer: 'Recharge active status suppresses replenishment on subscribed SKU. Separate flows. Collision audit monthly.' },
-  { question: 'Shipping cutoff emails?', answer: 'Dynamic content by region in Sequenzy — 72h and 24h cascade. SMS for opt-in. Gift and self branches differ.' },
-  { question: 'Limited flavor launches?', answer: 'Privy waitlist → Sequenzy ordered fulfillment → Omnisend SMS 48h sell-through. Full list blast wastes perishable inventory.' },
-  { question: 'Perishability post-purchase?', answer: 'Storage instructions day 1, freshness FAQ, support contact — reduces tickets and chargebacks on refrigerated SKUs.' },
-  { question: 'SMS for food brands?', answer: 'Shipping cutoff, delivery day, reorder window — not weekly promos. High value for perishable timing.' },
-  { question: 'Allergen segmentation?', answer: 'Capture dietary restrictions at quiz. Suppress allergen-conflict product promos. Compliance-critical.' },
-  { question: 'Margin after shipping promos?', answer: 'Track weekly in Shopify — free shipping on heavy cold-chain can erase contribution. Finance threshold on automated offers.' },
-  { question: 'Winback for food?', answer: 'New flavor and seasonal menu preview — not deep discount on near-code-date inventory.' },
-  { question: 'Metrics?', answer: 'Replenishment conversion, subscription retention, margin after shipping, launch 48h sell-through, cutoff campaign conversion.' },
-  { question: 'Biggest food stack mistake?', answer: '30-day universal replenishment across mixed consumption SKUs — wrong timing trains ignore of all food emails.' },
 ];
 const toolReviews = [
     {
@@ -220,7 +205,7 @@ const toolReviews = [
       <h2>Cross-links for stack due diligence</h2>
   <p>Related: <a class="link" href="/for/subscription-boxes">subscription boxes</a>, <a class="link" href="/use-cases/replenishment">replenishment playbook</a>.</p>
   <p>Seasonal: <a class="link" href="/use-cases/holiday-gifting">holiday gifting</a>, <a class="link" href="/guides/seasonal-campaigns">seasonal governance</a>.</p>
-  <p>Compare: <a class="link" href="/compare/omnisend-vs-klaviyo">Omnisend vs Klaviyo</a>.</p>
+  <p>Compare: <a class="link" href="/compare/klaviyo-vs-omnisend">Omnisend vs Klaviyo</a>.</p>
 
 <h2>Stack governance for food and beverage brands</h2>
 <p>Operating a food and beverage brands marketing stack means assigning layer owners before adding tools. Capture (Privy, Justuno) qualifies intent; Sequenzy executes lifecycle with suppressions; Postscript handles scarce SMS urgency; Yotpo injects proof into consideration; Marsello coordinates loyalty without promo collisions. When any layer sends without reading customer state from the others, repeat purchase windows, subscriptions, and limited-time flavors gets worse — not better.</p>
@@ -251,6 +236,5 @@ const toolReviews = [
         <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
       ))}
     </div>
-    <FaqSection faqs={faqs} title={`FAQ: ${segmentName}`} />
   </section>
 </BaseLayout>

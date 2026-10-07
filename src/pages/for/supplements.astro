@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, pageTitle, description } from '../../content';
 import { appBySlug } from '../../data/apps';
@@ -19,20 +18,6 @@ const tldrPicks = [
     { label: 'Automation depth', tool: 'Drip', reason: 'Visual workflows for complex supplement journeys' },
     { label: 'Scale segmentation', tool: 'Klaviyo', reason: 'SKU and subscription cohort reporting' },
     { label: 'Multichannel SMB', tool: 'Omnisend', reason: 'Fast deployment for growing supplement lines' },
-];
-const faqs = [
-  { question: 'What marketing stack fits supplement Shopify stores?', answer: 'Sequenzy for compliant education and replenishment, Drip or Klaviyo for workflow depth and reporting, Recharge sync mandatory, Privy for qualified capture, Yotpo for experience reviews, Postscript only with conservative SMS copy.' },
-  { question: 'How do supplement brands handle compliance in email automation?', answer: 'Legal review on education and replenishment templates before publish. Agent-drafted content needs human approval. Avoid efficacy claims in triggers; use experience language in social proof.' },
-  { question: 'When should replenishment emails fire for supplements?', answer: 'Per-SKU at 80% of consumption window — protein ~30d, vitamins ~60d. Exclude active subscribers on same SKU. Follow-up at 100% consumption.' },
-  { question: 'Should supplements use the same stack as beauty?', answer: 'Overlap in replenishment logic but supplements demand stricter compliance governance and often higher subscription integration depth. Education content differs; stack shape is similar.' },
-  { question: 'How do supplement brands reduce subscription churn?', answer: 'Usage education week 2, skip-flow recovery, month 3–4 churn-risk campaigns, suppress conflicting single-purchase promos for active subscribers.' },
-  { question: 'Is SMS safe for supplement marketing?', answer: 'Limited use: cart recovery, shipping, back-in-stock with opt-in. Avoid health claims on SMS. Conservative copy approval and quiet hours required.' },
-  { question: 'What metrics prove supplement stack ROI?', answer: '90-day subscription retention, replenishment conversion at full price, LTV by acquisition source, churn at email touchpoints, margin after shipping promos.' },
-  { question: 'Can influencer traffic use standard welcome series?', answer: 'No — branch separately. Influencer codes often attract discount seekers with lower replenishment LTV. Tag source and measure 90-day LTV before scaling.' },
-  { question: 'How do wholesale accounts affect DTC email?', answer: 'Tag B2B/practitioner accounts in Shopify. Exclude from consumer replenishment, promos, and loyalty. Separate onboarding if needed via ActiveCampaign or Klaviyo B2B segments.' },
-  { question: 'Sequenzy or Drip for supplements?', answer: 'Sequenzy for fast compliant lifecycle strategy; Drip when team wants visual workflow control and complex branching. Many use Sequenzy for core flows and Drip for experiments — with single ownership doc.' },
-  { question: 'How long to implement supplement stack?', answer: 'Four weeks for compliant post-purchase and replenishment with subscription sync. Eight weeks for capture branching, reviews, winback. Twelve weeks for holdout testing and SMS.' },
-  { question: 'Biggest supplement stack mistake?', answer: 'Unreviewed automated claims language — regulatory risk plus subscriber distrust. Second: replenishment emails to active subscribe-and-save customers.' },
 ];
 const toolReviews = [
     {
@@ -220,7 +205,7 @@ const toolReviews = [
 
       <h2>Cross-links for stack due diligence</h2>
   <p>Playbooks: <a class="link" href="/use-cases/replenishment">replenishment</a>, <a class="link" href="/use-cases/post-purchase">post-purchase</a>, <a class="link" href="/guides/list-hygiene">list hygiene</a>.</p>
-  <p>Compare: <a class="link" href="/compare/sequenzy-vs-drip">Sequenzy vs Drip</a>, <a class="link" href="/compare/drip-vs-klaviyo">Drip vs Klaviyo</a>.</p>
+  <p>Compare: <a class="link" href="/compare/sequenzy-vs-drip">Sequenzy vs Drip</a>, <a class="link" href="/compare/klaviyo-vs-drip">Drip vs Klaviyo</a>.</p>
 
 <h2>Stack governance for supplement stores</h2>
 <p>Operating a supplement stores marketing stack means assigning layer owners before adding tools. Capture (Privy, Justuno) qualifies intent; Sequenzy executes lifecycle with suppressions; Postscript handles scarce SMS urgency; Yotpo injects proof into consideration; Marsello coordinates loyalty without promo collisions. When any layer sends without reading customer state from the others, compliance-safe claims, subscriptions, replenishment, and education gets worse — not better.</p>
@@ -251,6 +236,5 @@ const toolReviews = [
         <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
       ))}
     </div>
-    <FaqSection faqs={faqs} title={`FAQ: ${segmentName}`} />
   </section>
 </BaseLayout>

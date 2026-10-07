@@ -1,25 +1,12 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import { siteFromHost, pageTitle, description } from '../../content';
 
 const site = siteFromHost();
 const path = '/guides';
 const title = pageTitle(site, 'guides');
 const desc = description(site, 'guides');
-const faqs = [
-  { question: 'How are guides different from use-case playbooks?', answer: 'Guides cover cross-cutting governance — stack architecture, attribution, tool sprawl — that applies to every vertical. Playbooks execute one lifecycle moment.' },
-  { question: 'Which guide should I read first?', answer: 'Stack architecture, then popup-to-email handoff, then cross-channel coordination before peak season.' },
-  { question: 'Do guides assume Sequenzy?', answer: 'Yes as default lifecycle layer — but principles apply if Klaviyo or Drip owns lifecycle with documented suppressions.' },
-  { question: 'Are guides about email only?', answer: 'No — full stack: capture, lifecycle, SMS, reviews, loyalty, analytics coordination.' },
-  { question: 'Who owns guide implementation?', answer: 'Growth lead owns collision calendar; lifecycle owner owns flow docs; finance owns margin reconciliation weekly.' },
-  { question: 'How guides relate to /for vertical pages?', answer: 'Vertical guides apply architecture to category-specific examples; these guides are category-agnostic governance.' },
-  { question: 'Seasonal guides when to read?', answer: 'Seasonal campaign governance and list hygiene 6–8 weeks before BFCM.' },
-  { question: 'Agency vs in-house guide?', answer: 'Read before hiring retention agency — decide what must stay in-house (segments, suppressions, margin math).' },
-  { question: 'Attribution guide for Shopify?', answer: 'Incremental margin vs last-click across email, SMS, popups, loyalty — finance-readable method.' },
-  { question: 'Tool sprawl guide trigger?', answer: 'When three+ tools touch same shopper without collision calendar — audit before adding another app.' },
-];
 
 ---
 
@@ -226,7 +213,6 @@ const faqs = [
       <li>Signing annual contracts before the four-flow test produced a number</li>
       </ul>
       </article>
-      <FaqSection faqs={faqs} title="Guides hub FAQ" />
     </div>
   </section>
 </BaseLayout>

@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, pageTitle, description } from '../../content';
 import { appBySlug } from '../../data/apps';
@@ -20,20 +19,6 @@ const tldrPicks = [
     { label: 'Segmentation', tool: 'Klaviyo', reason: 'RFM and lapsed cohort analytics' },
     { label: 'Workflows', tool: 'Drip', reason: 'Visual winback experiments' },
     { label: 'Multichannel', tool: 'Omnisend', reason: 'SMB winback deployment' },
-];
-const faqs = [
-  { question: 'Best stack for Shopify winback?', answer: 'Klaviyo/Drip segmentation by RFM and sensitivity, Sequenzy three-touch execution with suppressions, Yotpo proof email two, Postscript SMS for high-LTV only, Marsello points for VIP branch.' },
-  { question: 'Should winback lead with discount?', answer: 'No — new arrivals and proof first; incentive only email three for discount-sensitive segment.' },
-  { question: 'Winback vs replenishment conflict?', answer: 'Suppress winback if in active replenishment or subscription flow — most common stack bug.' },
-  { question: 'Lapse window by category?', answer: 'Food 90d, fashion 120d, jewelry 180d typical — tune from your reorder data.' },
-  { question: 'Winback during BFCM?', answer: 'Pause incentive branches; optional new arrivals content without stacking discounts.' },
-  { question: 'Former VIP winback?', answer: 'Early access and points redemption — not same coupon as bargain segment.' },
-  { question: 'SMS winback?', answer: 'High-LTV opted-in only, after email two silence, one text max.' },
-  { question: 'Holdout testing winback?', answer: 'Quarterly 10% holdout — if <50% incremental, reduce incentive depth or audience.' },
-  { question: 'Gift buyer winback?', answer: 'Exclude or separate branch — gift-only buyers often wrong audience for self-purchase winback.' },
-  { question: 'Unengaged lapsed?', answer: 'Sunset before winback discount — try re-engagement without incentive first or suppress entirely.' },
-  { question: 'Metrics for winback?', answer: 'Reactivation rate, margin after discount, LTV recovery, holdout incrementality, unsubscribe by branch.' },
-  { question: 'Biggest winback mistake?', answer: 'Blasting 25% to full inactive list including subscribers and VIPs — burns margin and list health.' },
 ];
 const toolReviews = [
     {
@@ -256,6 +241,5 @@ const toolReviews = [
         <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
       ))}
     </div>
-    <FaqSection faqs={faqs} title={`FAQ: ${useCaseName}`} />
   </section>
 </BaseLayout>

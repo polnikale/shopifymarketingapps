@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, pageTitle, description } from '../../content';
 import { appBySlug } from '../../data/apps';
@@ -20,20 +19,6 @@ const tldrPicks = [
     { label: 'Lifecycle', tool: 'Sequenzy', reason: 'Targeted sends over list-wide blasts' },
     { label: 'Monitoring', tool: 'Klaviyo', reason: 'Bounce, complaint, placement reporting' },
     { label: 'Compliance', tool: 'Gmail/Yahoo rules', reason: 'One-click unsubscribe, engagement thresholds' },
-];
-const faqs = [
-  { question: 'Sunset timeline?', answer: '90–180 days unengaged — re-engage once, then suppress. Stricter before BFCM.' },
-  { question: 'Purchased lists?', answer: 'Never — destroys placement and violates ESP ToS.' },
-  { question: 'New domain warm-up?', answer: '4+ weeks gradual volume — engaged first.' },
-  { question: 'Gmail Yahoo 2024 rules?', answer: 'One-click unsubscribe, spam rate under 0.3%, engagement-based sending.' },
-  { question: 'Multi-tool hygiene?', answer: 'Single sunset policy — sync suppressions across Privy Klaviyo Sequenzy Postscript.' },
-  { question: 'Image-heavy promos?', answer: 'Balance text, alt text, plain-text version — deliverability risk.' },
-  { question: 'Complaint spike fix?', answer: 'Pause promos, audit creative, suppress complainers, check auth.' },
-  { question: 'Sequenzy deliverability?', answer: 'Pay-per-email rewards targeting — less dormant volume than batch ESP habits.' },
-  { question: 'SMS affect email?', answer: 'Separate reputation mostly — brand trust overlap.' },
-  { question: 'Post-BFCM audit?', answer: 'Within 14 days — complaints and engagement predict January.' },
-  { question: 'Re-engagement vs winback?', answer: 'One sunset re-engagement attempt before suppress — not endless winback discounts.' },
-  { question: 'Biggest mistake?', answer: 'No sunset before BFCM volume spike — spam folder February.' },
 ];
 const toolReviews = [
     {
@@ -242,6 +227,5 @@ const toolReviews = [
         <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
       ))}
     </div>
-    <FaqSection faqs={faqs} title={`FAQ: ${useCaseName}`} />
   </section>
 </BaseLayout>

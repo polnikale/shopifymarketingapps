@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, pageTitle, description } from '../../content';
 import { appBySlug } from '../../data/apps';
@@ -20,20 +19,6 @@ const tldrPicks = [
     { label: 'Lifecycle', tool: 'Sequenzy', reason: 'VIP early access and waitlist fulfillment order' },
     { label: 'VIP data', tool: 'Klaviyo', reason: 'RFM-qualified early access segments' },
     { label: 'Drop SMS', tool: 'Postscript', reason: 'VIP text 2h before email general list' },
-];
-const faqs = [
-  { question: 'Launch to full list?', answer: 'No for scarce SKU — waitlist order and VIP early access. Full list only broad availability launches.' },
-  { question: 'VIP early access timing?', answer: '24h before general typical; drop brands SMS 2h before email.' },
-  { question: 'Inventory check?', answer: 'Mandatory pre-send — variant-level Shopify sync.' },
-  { question: 'Waitlist order?', answer: 'Privy signup order via Sequenzy — not simultaneous blast.' },
-  { question: 'Recent buyers?', answer: 'Suppress launch promo if purchased same/adjacent SKU recently.' },
-  { question: 'Best launch stack?', answer: 'Privy waitlist, Sequenzy fulfillment, Klaviyo VIP, Postscript drop SMS, Yotpo proof.' },
-  { question: 'POD launch specifics?', answer: '48h sell-through, margin cap, waitlist only, community content.' },
-  { question: 'Collision calendar?', answer: 'Pause winback and conflicting promos launch week.' },
-  { question: 'Metrics?', answer: '48h sell-through, waitlist conversion, VIP split, false alerts.' },
-  { question: 'Sold out mid-launch?', answer: 'Pause sends, update creative, waitlist for next restock — no false urgency.' },
-  { question: 'Shopify Email launches?', answer: 'Insufficient VIP branching, waitlist order, inventory gates.' },
-  { question: 'Biggest mistake?', answer: 'Full list blast on limited restock — burns list and VIP trust.' },
 ];
 const toolReviews = [
     {
@@ -244,6 +229,5 @@ const toolReviews = [
         <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
       ))}
     </div>
-    <FaqSection faqs={faqs} title={`FAQ: ${useCaseName}`} />
   </section>
 </BaseLayout>

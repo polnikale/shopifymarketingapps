@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, pageTitle, description } from '../../content';
 import { appBySlug } from '../../data/apps';
@@ -20,20 +19,6 @@ const tldrPicks = [
     { label: 'Delivery sync', tool: 'AfterShip', reason: 'Delivered-event triggers for bulky goods' },
     { label: 'Proof', tool: 'Yotpo', reason: 'Review requests timed post-delivery' },
     { label: 'Loyalty', tool: 'Marsello', reason: 'Second-order enrollment not day-zero pitch' },
-];
-const faqs = [
-  { question: 'When post-purchase cross-sell?', answer: 'After delivery +14 days bulky goods; day 14 consumables; never before customer has product for furniture.' },
-  { question: 'Gift order handling?', answer: 'Separate branch — packaging/care for gift buyer, no recipient cross-sell to purchaser.' },
-  { question: 'Review request timing?', answer: 'Delivery +5 to +14 depending category; after return window for high-return SKUs.' },
-  { question: 'Loyalty in post-purchase?', answer: 'Enroll on second order or email three — not day zero.' },
-  { question: 'Subscription first order?', answer: 'Onboarding education — not cross-sell conflicting with subscription shipment.' },
-  { question: 'Best stack tools?', answer: 'Sequenzy sequences, AfterShip triggers, Yotpo reviews, Marsello loyalty timing.' },
-  { question: 'Digital post-purchase?', answer: 'Activation not shipping — access immediate, progress check-ins.' },
-  { question: 'SMS post-purchase?', answer: 'Delivery notification perishables only — not cross-sell SMS.' },
-  { question: 'Metrics?', answer: 'Review rate, second order 60d, support tickets, cross-sell attach, returns.' },
-  { question: 'Biggest mistake?', answer: 'Cross-sell before delivery on bulky goods — increases returns and support load.' },
-  { question: 'AfterShip required?', answer: 'High ROI for furniture/home — optional for small parcel consumables.' },
-  { question: 'Education content who owns?', answer: 'Ops/product with compliance review supplements — Sequenzy executes approved blocks.' },
 ];
 const toolReviews = [
     {
@@ -244,6 +229,5 @@ const toolReviews = [
         <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
       ))}
     </div>
-    <FaqSection faqs={faqs} title={`FAQ: ${useCaseName}`} />
   </section>
 </BaseLayout>

@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, pageTitle, description } from '../../content';
 import { appBySlug } from '../../data/apps';
@@ -19,20 +18,6 @@ const tldrPicks = [
     { label: 'Segmentation', tool: 'Klaviyo', reason: 'Species, breed, weight, and life-stage cohorts' },
     { label: 'Capture', tool: 'Privy', reason: 'Pet profile quiz with species and weight tags' },
     { label: 'Proof', tool: 'Yotpo', reason: 'Pet UGC and vet-trusted reviews in consideration' },
-];
-const faqs = [
-  { question: 'Best marketing stack for pet Shopify stores?', answer: 'Privy pet profile capture, Sequenzy consumption reorder and life-stage flows, Klaviyo species segmentation, Recharge sync, Yotpo pet UGC, Postscript for reorder SMS when opted in.' },
-  { question: 'How calculate pet food reorder timing?', answer: 'By pet weight, product calories/serving, and bag size — trigger at 80% consumption not calendar 30 days. Store weight as profile property.' },
-  { question: 'Why segment by species?', answer: 'Dog owners ignore cat emails and unsubscribe. Species tag at capture is non-negotiable for multi-species catalogs.' },
-  { question: 'New pet onboarding?', answer: '21-day education series after first pet product purchase or quiz completion — nutrition, sizing, life-stage preview. High LTV moment.' },
-  { question: 'Life-stage transitions?', answer: 'Automated at puppy→adult, adult→senior thresholds per species. Product recommendations update in Sequenzy branches.' },
-  { question: 'Subscription and replenishment collision?', answer: 'Recharge/Skio active status suppresses replenishment on subscribed SKU. Separate skip-save branch.' },
-  { question: 'SMS for pet products?', answer: 'Consumption-window reminders and flea due dates after email silence — not weekly promos. Checkout opt-in prerequisite.' },
-  { question: 'Pet loyalty programs?', answer: 'Second full-price order enrollment. Points on food and consumable repeat — not first-order popup hunters.' },
-  { question: 'Multi-pet households?', answer: 'Per-pet properties or consolidated household reminder listing SKUs per pet. Klaviyo supports multiple custom properties.' },
-  { question: 'Gift purchases?', answer: 'Suppress replenishment to gift buyer — recipient data rarely available. Gift confirmation branch only.' },
-  { question: 'Metrics for pet stack?', answer: 'Reorder rate by segment, life-stage transition revenue, subscription retention, species campaign RPR, SMS reorder conversion.' },
-  { question: 'Biggest pet stack mistake?', answer: 'Universal 30-day reorder without species or consumption math — wrong product, wrong timing, churn to Chewy subscription.' },
 ];
 const toolReviews = [
     {
@@ -249,6 +234,5 @@ const toolReviews = [
         <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
       ))}
     </div>
-    <FaqSection faqs={faqs} title={`FAQ: ${segmentName}`} />
   </section>
 </BaseLayout>

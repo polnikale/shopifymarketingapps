@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, pageTitle, description } from '../../content';
 import { appBySlug } from '../../data/apps';
@@ -20,20 +19,6 @@ const tldrPicks = [
     { label: 'Data depth', tool: 'Klaviyo', reason: 'Variant inventory and CLV-tiered incentives' },
     { label: 'SMS urgency', tool: 'Postscript', reason: 'Cart nudge after email silence only' },
     { label: 'Proof', tool: 'Yotpo', reason: 'UGC in cart email one before discount' },
-];
-const faqs = [
-  { question: 'Best stack for Shopify cart recovery?', answer: 'Sequenzy lifecycle execution with Privy offer awareness, Klaviyo inventory/CLV depth, Postscript SMS after silence, Yotpo proof in email one. Governance doc mandatory.' },
-  { question: 'When should cart recovery email fire?', answer: 'Email one at 1h, email two at 24h, SMS at 4h after email one unopened if opted in. Adjust for high-AOV — slower incentive.' },
-  { question: 'Should cart recovery always discount?', answer: 'No. Email one proof-first for consideration categories. Tier incentive by cart value and segment. Popup collision check always.' },
-  { question: 'How prevent popup + cart double discount?', answer: 'Collision calendar + Privy offer state in lifecycle trigger. Cart email one skips code if popup already delivered.' },
-  { question: 'SMS cart recovery rules?', answer: 'After email silence, same offer cap, quiet hours, opt-in only. One SMS per cart intent window.' },
-  { question: 'Out-of-stock cart items?', answer: 'Pause send or recommend in-stock substitute — never email OOS variant.' },
-  { question: 'Cart vs welcome overlap?', answer: 'Suppress cart promo if subscriber in welcome with same offer. Priority: welcome completes or offer cap applies.' },
-  { question: 'Measure cart recovery how?', answer: 'Recovery rate, margin after discount, holdout incrementality, Shopify-reconciled revenue.' },
-  { question: 'Shopify Email enough?', answer: 'No production-grade suppressions, inventory checks, SMS coordination, or popup collision handling.' },
-  { question: 'B2B cart recovery?', answer: 'Suppress consumer recovery on trade accounts — notify rep instead for MOQ carts.' },
-  { question: 'Subscription cart abandon?', answer: 'Recover one-time add-ons; suppress if cart duplicates active subscription SKU.' },
-  { question: 'Audit frequency?', answer: 'Quarterly timing and discount review; immediately after popup, catalog, or subscription logic changes.' },
 ];
 const toolReviews = [
     {
@@ -267,6 +252,5 @@ const toolReviews = [
         <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
       ))}
     </div>
-    <FaqSection faqs={faqs} title={`FAQ: ${useCaseName}`} />
   </section>
 </BaseLayout>

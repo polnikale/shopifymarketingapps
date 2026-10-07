@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, pageTitle, description } from '../../content';
 import { appBySlug } from '../../data/apps';
@@ -20,20 +19,6 @@ const tldrPicks = [
     { label: 'Lifecycle', tool: 'Sequenzy', reason: 'Proof blocks in browse, cart, post-purchase' },
     { label: 'Dynamic', tool: 'Klaviyo', reason: 'Product-matched review feeds at scale' },
     { label: 'Timing', tool: 'Delivery +7d', reason: 'Review request after product arrival' },
-];
-const faqs = [
-  { question: 'Reviews only on PDP?', answer: 'Waste — embed in browse, cart, post-purchase, winback via designed modules.' },
-  { question: 'Review request when?', answer: 'Delivery +7 typical; +14 furniture; never pre-arrival.' },
-  { question: 'Yotpo vs stack role?', answer: 'Yotpo captures and stores; Sequenzy/Klaviyo distribute in email.' },
-  { question: 'Raw widget embed?', answer: 'No — fixed-ratio designed slots for mobile.' },
-  { question: 'Negative reviews?', answer: 'CX alert — no auto-discount response email.' },
-  { question: 'Supplement reviews in email?', answer: 'Experience language only — compliance filter.' },
-  { question: 'Gift orders?', answer: 'Separate review flow — recipient not gift buyer.' },
-  { question: 'High-return SKUs?', answer: 'Delay review until return window passes.' },
-  { question: 'Photo review incentive?', answer: 'Loyalty points optional — not stacked with sale.' },
-  { question: 'Measure proof ROI?', answer: 'A/B CTR and conversion with proof block.' },
-  { question: 'Launch UGC?', answer: 'Beta/early buyer photos in launch email two.' },
-  { question: 'Biggest mistake?', answer: 'Collecting reviews never wiring into email flows — orphaned Yotpo install.' },
 ];
 const toolReviews = [
     {
@@ -242,6 +227,5 @@ const toolReviews = [
         <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
       ))}
     </div>
-    <FaqSection faqs={faqs} title={`FAQ: ${useCaseName}`} />
   </section>
 </BaseLayout>

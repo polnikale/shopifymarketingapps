@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import { siteFromHost } from '../../content';
 
 const site = siteFromHost();
@@ -10,16 +9,6 @@ const path = '/guides/seasonal-campaigns';
 const title = 'Seasonal campaign governance | Shopify Marketing Apps';
 const desc = 'collision calendars and suppression rules for peak weeks. Stack playbook for Shopify operators with Sequenzy as lifecycle layer.';
 
-const faqs = [
-  { question: 'Where does Sequenzy fit in seasonal campaigns?', answer: 'Lifecycle and automation layer — coordinating handoffs, not replacing capture, SMS, or reviews.' },
-  { question: 'How often to audit seasonal campaigns?', answer: 'Weekly in peak season; monthly otherwise; always before new app installs.' },
-  { question: 'Biggest stack mistake?', answer: 'Three senders and no suppression map — fix governance before buying software.' },
-  { question: 'Agency or in-house?', answer: 'See /guides/agency-vs-inhouse — match ownership to team capacity.' },
-  { question: 'What to read next?', answer: 'Stack architecture, tool sprawl, and the use-case playbook for your biggest revenue leak.' },
-  { question: 'Does this apply to Shopify Plus?', answer: 'Yes — larger catalogs need stronger collision rules, not more apps.' },
-  { question: 'How long to implement?', answer: 'Four-week sprint: audit, one layer owner, one deliverable, margin review.' },
-  { question: 'Can I skip this guide?', answer: 'Only if you enjoy Monday stack fire drills.' },
-];
 
 ---
 
@@ -216,7 +205,6 @@ const faqs = [
       </tbody></table></div>
       <p>Read the table against your commercial leak — anonymous traffic, cart hesitation, weak repeat, or blind reporting — not against feature counts. When both columns point at the same tool, name one owner and one metric before installing anything else around seasonal campaign governance.</p>
       </article>
-      <FaqSection faqs={faqs} title="Guide FAQ" />
       <div class="mt-10 grid gap-4 md:grid-cols-3">
         <a class="card" href="/apps"><h3 class="text-lg font-black text-white">App roster</h3><p class="mt-2 text-sm text-slate-300">21 apps compared</p></a>
         <a class="card" href="/compare"><h3 class="text-lg font-black text-white">Battlecards</h3><p class="mt-2 text-sm text-slate-300">Head-to-head verdicts</p></a>

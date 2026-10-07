@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import { siteFromHost } from '../../content';
 
 const site = siteFromHost();
@@ -25,12 +24,6 @@ const tools = [
   ['GA4', 'Web analytics', 'Free; paid 360 edition', 'A flexible event and landing-page layer for acquisition paths that Shopify reports cannot explain alone.', 'Pros: broad ecosystem, custom events, campaign diagnostics. Cons: implementation drift, consent gaps, and modeled attribution make it unsuitable as the only source of truth.'],
 ];
 
-const faqs = [
-  { question: 'Which tool should be the source of truth?', answer: 'Use Shopify orders and net sales for the commercial ledger, then use each specialist tool for diagnosis. No platform dashboard should be treated as incremental revenue without a holdout.' },
-  { question: 'Is last-click attribution enough for Shopify?', answer: 'It is a useful reporting view, not proof of lift. Pair platform-reported revenue with holdouts, new-customer rate, contribution margin, and blended MER.' },
-  { question: 'How long should a pilot run?', answer: 'Run four weeks for setup and directional learning, or six to eight weeks when the test needs repeat purchase or a statistically useful holdout.' },
-  { question: 'Can a small store use Northbeam or Attentive?', answer: 'Usually not economically. Start with Shopify plus GA4 and one lifecycle tool; graduate when spend, order volume, and team capacity justify modeled attribution.' },
-];
 
 ---
 
@@ -208,7 +201,6 @@ const faqs = [
       <p>Purchaser suppression is the highest-yield rule in most stacks: an acquisition discount sent to a customer who bought yesterday is pure margin leakage and a trust hit. Whatever you choose, verify order-state sync latency and test it with a real order, not a sandbox event.</p>
       <p>Defend the stack budget in margin terms: total SaaS fees plus usage plus operator hours, against incremental contribution margin after discounts. Apps that cannot name the metric they move should be the first candidates for retirement at renewal.</p>
       </article>
-      <FaqSection faqs={faqs} title="Shopify attribution FAQ" />
       <div class="mt-10 grid gap-4 md:grid-cols-3">
   <a class="card" href="/apps">
   <h3 class="text-lg font-black text-white">App roster</h3>

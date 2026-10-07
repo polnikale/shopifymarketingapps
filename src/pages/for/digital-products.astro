@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, pageTitle, description } from '../../content';
 import { appBySlug } from '../../data/apps';
@@ -19,20 +18,6 @@ const tldrPicks = [
     { label: 'Course CRM', tool: 'ActiveCampaign', reason: 'Module progress and certification pipelines' },
     { label: 'Behavioral', tool: 'Klaviyo', reason: 'Usage events and upgrade segmentation' },
     { label: 'Capture', tool: 'Privy', reason: 'Lead magnets and webinar opt-in with intent tags' },
-];
-const faqs = [
-  { question: 'What is the best marketing stack for digital Shopify products?', answer: 'Sequenzy for activation and cross-sell lifecycle, ActiveCampaign for course progress CRM, Klaviyo for behavioral segmentation, Privy for lead capture. Skip physical-product tools.' },
-  { question: 'Should digital stores use cart abandonment?', answer: 'Lightweight for checkout-started-but-not-completed on high-consideration products — but many digital purchases are impulse post-nurture. No SMS cart recovery. Lead with access anxiety resolution not discount.' },
-  { question: 'Do digital products need Yotpo reviews?', answer: 'No for SKU reviews. Use outcome testimonials and completion stories in email modules instead.' },
-  { question: 'How fast should access email send?', answer: 'Immediately on purchase confirmation — within 2 minutes. Plain-text backup with link. Deliverability testing non-negotiable.' },
-  { question: 'What is activation rate?', answer: 'Percentage of buyers completing first meaningful action (download, login, module 1) within 48h. Target 85%+. Low activation drives refunds.' },
-  { question: 'When does ActiveCampaign beat Klaviyo for digital?', answer: 'Course and membership products with module progress triggers and certification pipelines. Klaviyo strong for template/download behavioral segmentation.' },
-  { question: 'Should digital use SMS?', answer: 'Only webinar/live cohort reminders with explicit opt-in. Not for download delivery or cross-sell.' },
-  { question: 'How handle renewals?', answer: 'Sequenzy 30/14/7 day sequence with curriculum value recap before any discount. Segment never-activated separately — different winback.' },
-  { question: 'Lead magnet vs buyer paths?', answer: 'Separate tags and automations from opt-in. Nurture 7–14 days before pitch. Never merge into purchaser onboarding.' },
-  { question: 'Metrics for digital stack?', answer: 'Activation 48h, cross-sell within 14 days, renewal rate, refund rate, support tickets per 100 sales, deliverability on access emails.' },
-  { question: 'Implementation timeline?', answer: 'One week activation sequence. Three weeks cross-sell and progress integration. Six weeks renewal and lead nurture if applicable.' },
-  { question: 'Biggest digital stack mistake?', answer: 'Copying physical ecommerce automations — shipping emails, back-in-stock, review requests on products that deliver instantly online.' },
 ];
 const toolReviews = [
     {
@@ -204,7 +189,7 @@ const toolReviews = [
       <h2>Cross-links for stack due diligence</h2>
   <p>Playbooks: <a class="link" href="/use-cases/welcome-series">welcome series</a> (lead vs buyer paths), <a class="link" href="/use-cases/post-purchase">post-purchase</a>.</p>
   <p>Governance: <a class="link" href="/use-cases/deliverability">deliverability</a>, <a class="link" href="/guides/list-hygiene">list hygiene</a>.</p>
-  <p>Compare: <a class="link" href="/compare/sequenzy-vs-activecampaign">Sequenzy vs ActiveCampaign</a>.</p>
+  <p>Compare: <a class="link" href="/compare/sequenzy-vs-klaviyo">Sequenzy vs ActiveCampaign</a>.</p>
 
 <h2>Stack governance for digital product shops</h2>
 <p>Operating a digital product shops marketing stack means assigning layer owners before adding tools. Capture (Privy, Justuno) qualifies intent; Sequenzy executes lifecycle with suppressions; Postscript handles scarce SMS urgency; Yotpo injects proof into consideration; Marsello coordinates loyalty without promo collisions. When any layer sends without reading customer state from the others, delivery, onboarding, cross-sells, and low-inventory constraints gets worse — not better.</p>
@@ -233,6 +218,5 @@ const toolReviews = [
         <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
       ))}
     </div>
-    <FaqSection faqs={faqs} title={`FAQ: ${segmentName}`} />
   </section>
 </BaseLayout>

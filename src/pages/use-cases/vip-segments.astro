@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, pageTitle, description } from '../../content';
 import { appBySlug } from '../../data/apps';
@@ -20,20 +19,6 @@ const tldrPicks = [
     { label: 'Lifecycle', tool: 'Sequenzy', reason: 'Early access and thank-you sequences' },
     { label: 'Loyalty', tool: 'Marsello', reason: 'Tier benefits beyond discount' },
     { label: 'Governance', tool: 'Discount exclusions', reason: 'VIP not same promos as mass' },
-];
-const faqs = [
-  { question: 'Who qualifies as VIP?', answer: 'RFM top tier, LTV threshold, order count — with full-price ratio gate. Not all repeat buyers.' },
-  { question: 'VIP = bigger discounts?', answer: 'No — early access, exclusives, service. Deeper discounts train margin erosion on best customers.' },
-  { question: 'Discount-dependent VIP?', answer: 'Exclude — separate bargain segment. VIP requires full-price behavior.' },
-  { question: 'VIP early access timing?', answer: '24h before general launch/sale typical.' },
-  { question: 'How often email VIP?', answer: 'Cap promotional — 2/week max. Education/transactional unlimited.' },
-  { question: 'VIP and BFCM?', answer: 'Early access first — exclude from general blast same window if not purchased.' },
-  { question: 'Loyalty vs VIP?', answer: 'Overlap possible — tier perks complement VIP early access not duplicate discounts.' },
-  { question: 'VIP winback?', answer: 'Demote inactive first — separate re-engagement not mass winback discount.' },
-  { question: 'Tools?', answer: 'Klaviyo qualification, Sequenzy VIP sequences, Marsello tiers.' },
-  { question: 'Metrics?', answer: 'Retention, revenue per VIP, full-price ratio, referral, early access conversion.' },
-  { question: 'B2B VIP?', answer: 'Volume-based different benefits — catalog early access not consumer % off.' },
-  { question: 'Biggest mistake?', answer: 'Same coupons for VIP and bargain hunters — destroys VIP meaning and margin.' },
 ];
 const toolReviews = [
     {
@@ -241,6 +226,5 @@ const toolReviews = [
         <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
       ))}
     </div>
-    <FaqSection faqs={faqs} title={`FAQ: ${useCaseName}`} />
   </section>
 </BaseLayout>

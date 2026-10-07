@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, pageTitle, description } from '../../content';
 import { appBySlug } from '../../data/apps';
@@ -19,20 +18,6 @@ const tldrPicks = [
     { label: 'Segmentation', tool: 'Klaviyo', reason: 'Catalog-scale browse and collection segments' },
     { label: 'Workflows', tool: 'Drip', reason: 'Visual journeys for multi-room cross-sell' },
     { label: 'Capture', tool: 'Privy', reason: 'Style quiz and room intent popups' },
-];
-const faqs = [
-  { question: 'Best stack for home goods Shopify stores?', answer: 'Justuno/Privy room capture, Sequenzy room-series and cross-sell, Klaviyo or Drip segmentation, AfterShip delivery triggers, Yotpo photo reviews, Postscript for high-AOV cart SMS.' },
-  { question: 'When should home goods cross-sell fire?', answer: 'After delivery +14 days for bulky items; sooner for small decor if fulfillment fast. Never before customer has product.' },
-  { question: 'How to segment home goods email?', answer: 'By room, style aesthetic, browse collection, and project completion stage — not one list for entire catalog.' },
-  { question: 'Should home goods cart recovery discount immediately?', answer: 'Education and dimensions first for AOV >$300. Graduated incentive on later touches only.' },
-  { question: 'Does Mailchimp work for home goods?', answer: 'Acceptable for simple decor under $40k. Large catalogs and room logic need Klaviyo, Drip, or Sequenzy depth.' },
-  { question: 'How does seasonality affect home stacks?', answer: 'Outdoor spring, holiday decor Q4 — collision calendar and seasonal capture popups. Pause conflicting winback during peak category weeks.' },
-  { question: 'SMS for furniture ecommerce?', answer: 'High-AOV cart after email silence, delivery updates if opted in. Not weekly promo texts.' },
-  { question: 'Metrics for home goods marketing?', answer: 'Room completion rate, cross-sell revenue, browse-to-purchase window, margin after shipping promos, full-price %.' },
-  { question: 'Sequenzy vs Drip for home?', answer: 'Sequenzy for strategy and room-series content speed; Drip for visual multi-branch room completion workflows. Document ownership.' },
-  { question: 'How long home goods consideration?', answer: '4–16 weeks for furniture; shorter for decor. Match nurture length to category — don\'t use 3-day urgency on sectionals.' },
-  { question: 'Trade account email handling?', answer: 'Shopify B2B/trade tags exclude from consumer room campaigns and promos.' },
-  { question: 'Biggest home goods stack mistake?', answer: 'Cross-sell and review asks before delivery — increases returns and support tickets.' },
 ];
 const toolReviews = [
     {
@@ -252,6 +237,5 @@ const toolReviews = [
         <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
       ))}
     </div>
-    <FaqSection faqs={faqs} title={`FAQ: ${segmentName}`} />
   </section>
 </BaseLayout>

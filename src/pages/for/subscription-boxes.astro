@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, pageTitle, description } from '../../content';
 import { appBySlug } from '../../data/apps';
@@ -19,20 +18,6 @@ const tldrPicks = [
     { label: 'Subscription sync', tool: 'Klaviyo', reason: 'Recharge/Skio event depth and churn scoring' },
     { label: 'Multichannel', tool: 'Omnisend', reason: 'Box preview email+SMS for lean box brands' },
     { label: 'Proof', tool: 'Yotpo', reason: 'Unboxing UGC in preview and referral campaigns' },
-];
-const faqs = [
-  { question: 'What is the best marketing stack for subscription box Shopify stores?', answer: 'Recharge/Skio sync to Klaviyo for subscription intelligence, Sequenzy for preview/skip/churn lifecycle, Omnisend or Postscript for ship and deadline SMS, Yotpo for unboxing UGC in preview. Privy for gift capture. Subscription state gates every send.' },
-  { question: 'Why do subscribers churn at month 3–4?', answer: 'Novelty fade — preview content and month-3 churn prevention branches address this before discounting. Box preview engagement correlates with retention; invest in preview creative not promo blasts.' },
-  { question: 'How should skip recovery work?', answer: 'Content save first (sneak peek, bonus recipe, exclusive digital content) on day -3 after skip. Discount only on email two for high churn-score cohort. Never train skip-to-wait-for-deal.' },
-  { question: 'Should box brands send cart abandonment emails?', answer: 'Not to active subscribers — they are not cart shoppers. One-time add-on abandonment is separate flow with subscription status check. DTC cart logic on subscribers causes collision and confusion.' },
-  { question: 'When does SMS make sense for subscription boxes?', answer: 'Box shipped notification, skip deadline 48h warning, gift shipping cutoff — not weekly promos. Requires checkout opt-in. One billing-cycle cap on promotional-adjacent SMS.' },
-  { question: 'How handle gift subscriptions in the stack?', answer: 'Privy gift capture tags gift buyers. Separate confirmation and reminder flows from subscriber preview. Gift recipients never receive skip-recovery. Q4 collision calendar mandatory.' },
-  { question: 'Does Sequenzy replace Klaviyo for box brands?', answer: 'Sequenzy owns lifecycle execution (preview, skip, churn); Klaviyo owns subscription event depth, churn scoring, and reporting. Most box brands need both with documented sync.' },
-  { question: 'What metrics prove box stack ROI?', answer: 'Skip-to-active recovery rate, churn by subscriber month, preview email engagement vs retention correlation, referral MRR from email, incremental saves on holdout tests.' },
-  { question: 'How should winback work for churned subscribers?', answer: 'Missed-box preview content showing what they lost, flexible restart without deep discount first. Branch by stated cancellation reason if collected. Not generic DTC winback.' },
-  { question: 'Should box brands run BFCM discounts?', answer: 'Gift subscription campaigns and annual plan upgrades — not sitewide discounts cannibalizing monthly ARPU. Existing subscribers get gift bundle early access, not 30% off their own subscription.' },
-  { question: 'How fast implement subscription box stack?', answer: 'Two weeks for Recharge sync and preview sequence. Four weeks for skip-recovery and gift segmentation. Eight weeks for churn scoring, referral, and holdout testing.' },
-  { question: 'Biggest subscription box stack mistake?', answer: 'Treating subscribers like DTC email list — promotional blasts, cart recovery, and replenishment emails to active paying subscribers. Second: skip-recovery leading with discount instead of content save.' },
 ];
 const toolReviews = [
     {
@@ -247,6 +232,5 @@ const toolReviews = [
         <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
       ))}
     </div>
-    <FaqSection faqs={faqs} title={`FAQ: ${segmentName}`} />
   </section>
 </BaseLayout>

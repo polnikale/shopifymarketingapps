@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, pageTitle, description } from '../../content';
 import { appBySlug } from '../../data/apps';
@@ -19,20 +18,6 @@ const tldrPicks = [
     { label: 'Catalog lifecycle', tool: 'Sequenzy', reason: 'MOQ reorder, catalog updates, onboarding' },
     { label: 'Segmentation', tool: 'Klaviyo', reason: 'Account-based reporting and catalog depth' },
     { label: 'Capture', tool: 'Privy', reason: 'Trade application and company qualification forms' },
-];
-const faqs = [
-  { question: 'What is the best marketing stack for B2B wholesale Shopify?', answer: 'ActiveCampaign for approval and rep pipelines, Sequenzy for onboarding and MOQ reorder, Klaviyo or Brevo for catalog segmentation, Privy for trade application capture. Hard firewall from consumer automations.' },
-  { question: 'Can wholesale and DTC share one Klaviyo account?', answer: 'Possible with strict tag suppressions on every consumer flow — but collision risk is high. Separate reporting views minimum; many hybrids split execution layers. Audit monthly.' },
-  { question: 'Should B2B stores run cart abandonment?', answer: 'Not for trade accounts using quick reorder portal. DTC cart recovery must exclude all wholesale tags. Trade buyers do not respond to 10% off cart emails.' },
-  { question: 'How does account approval work in the stack?', answer: 'Privy/form capture → ActiveCampaign deal stage → rep review → approved tag → Sequenzy onboarding. No promotional email until `approved` status synced.' },
-  { question: 'What are MOQ reorder reminders?', answer: 'Sequenzy triggers based on case-pack consumption interval and account history — not 30-day DTC replenishment. Content includes MOQ compliance and rep contact.' },
-  { question: 'Does SMS fit B2B wholesale?', answer: 'Rarely for promotional use. Shipping notification with explicit opt-in only. Reps handle reorder urgency for key accounts.' },
-  { question: 'Should trade accounts get loyalty points?', answer: 'No — volume pricing tiers and contract terms replace consumer loyalty. Marsello-style points create pricing expectation conflicts.' },
-  { question: 'What metrics prove B2B stack ROI?', answer: 'Account activation rate, bulk reorder frequency, MOQ compliance from prompts, rep-attributed revenue, collision incident count (target zero), trade account LTV.' },
-  { question: 'How handle catalog updates?', answer: 'Segmented broadcast by product permission and region. Discontinuation notices with replacement SKU suggestions. Never consumer promotional styling on trade catalog emails.' },
-  { question: 'Biggest B2B stack mistake?', answer: 'Consumer promotional automations hitting trade accounts — BFCM discounts to net-30 buyers destroys pricing integrity and rep relationships.' },
-  { question: 'ActiveCampaign vs Klaviyo for B2B?', answer: 'ActiveCampaign for approval pipelines and rep workflows. Klaviyo for catalog depth and reporting when product lines are complex. Trade-only may use Brevo for broadcasts plus ActiveCampaign CRM.' },
-  { question: 'Implementation timeline?', answer: 'Two weeks tag firewall and approval pipeline. Four weeks onboarding and MOQ reorder. Eight weeks full catalog broadcast and at-risk account workflows.' },
 ];
 const toolReviews = [
     {
@@ -209,7 +194,7 @@ const toolReviews = [
       <h2>Cross-links for stack due diligence</h2>
   <p>Hybrid stores: read consumer <a class="link" href="/for/high-aov">high-AOV</a> guide with tag firewall.</p>
   <p>Governance: <a class="link" href="/guides/stack-architecture">stack architecture</a>, <a class="link" href="/guides/cross-channel-coordination">cross-channel coordination</a>.</p>
-  <p>Compare: <a class="link" href="/compare/klaviyo-vs-activecampaign">Klaviyo vs ActiveCampaign</a>, <a class="link" href="/compare/activecampaign-vs-brevo">ActiveCampaign vs Brevo</a>.</p>
+  <p>Compare: <a class="link" href="/compare/drip-vs-activecampaign">Klaviyo vs ActiveCampaign</a>, <a class="link" href="/compare/activecampaign-vs-brevo">ActiveCampaign vs Brevo</a>.</p>
 
 <h2>Stack governance for B2B wholesale Shopify stores</h2>
 <p>Operating a B2B wholesale Shopify stores marketing stack means assigning layer owners before adding tools. Capture (Privy, Justuno) qualifies intent; Sequenzy executes lifecycle with suppressions; Postscript handles scarce SMS urgency; Yotpo injects proof into consideration; Marsello coordinates loyalty without promo collisions. When any layer sends without reading customer state from the others, account approvals, bulk ordering, and rep follow-up gets worse — not better.</p>
@@ -239,6 +224,5 @@ const toolReviews = [
         <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
       ))}
     </div>
-    <FaqSection faqs={faqs} title={`FAQ: ${segmentName}`} />
   </section>
 </BaseLayout>

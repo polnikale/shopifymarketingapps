@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, pageTitle, description } from '../../content';
 import { appBySlug } from '../../data/apps';
@@ -19,20 +18,6 @@ const tldrPicks = [
     { label: 'Lifecycle', tool: 'Sequenzy', reason: 'Extended education, financing proof, warranty content' },
     { label: 'Segmentation', tool: 'Klaviyo', reason: 'Predictive CLV and consideration-stage scoring' },
     { label: 'Proof', tool: 'Yotpo', reason: 'High-ticket reviews, installation UGC, case studies' },
-];
-const faqs = [
-  { question: 'What is the best marketing stack for high-AOV Shopify stores?', answer: 'Privy for intent/consultation capture, Sequenzy for extended education and proof-heavy cart, ActiveCampaign for consultation pipelines, Klaviyo for CLV segmentation, Yotpo for installation proof. Discount last, segment-specific.' },
-  { question: 'Should high-AOV stores use cart recovery discounts?', answer: 'Not in email one or two. Lead with financing, delivery proof, and Yotpo installation UGC. Discount only in email three for identified discount-sensitive cohort after 7+ days consideration.' },
-  { question: 'When does ActiveCampaign beat Klaviyo for high-AOV?', answer: 'When sales team manages consultation pipelines and deal stages over 30 days. Klaviyo remains strong for behavioral segmentation and reporting. Many stores use both with clear ownership.' },
-  { question: 'Does SMS work for high-AOV?', answer: 'Service-adjacent only — appointment confirm, delivery scheduling, long-lead back-in-stock. Promotional cart SMS on $4k purchases drives opt-outs.' },
-  { question: 'How long should nurture sequences run?', answer: 'Match consideration window — furniture 14–21 days, commercial equipment 30–45 days. Measure path conversion before shortening.' },
-  { question: 'How handle financing in email?', answer: 'Financing calculator module and Shop Pay/Affirm badge in browse and cart email one — reduces hesitation more than 5% off for many cohorts.' },
-  { question: 'What metrics prove high-AOV stack ROI?', answer: 'Full-price purchase ratio, consideration-to-purchase window, consultation-to-sale rate, financing attach rate, return rate by email segment, incremental margin in Shopify.' },
-  { question: 'Should high-AOV run loyalty programs?', answer: 'When repeat purchase exists — consultation credit, early access, white-glove perks beat points. Marsello on second full-price order, not first-order discount hunters.' },
-  { question: 'How prevent discount training on big-ticket?', answer: 'Collision calendar, full-price-first paths, VIP early access instead of sitewide, suppress winback during active consultation. Document max discount depth by segment.' },
-  { question: 'Winback for high-AOV?', answer: 'New collection preview and case studies at 120+ days. Incentive only for discount-sensitive RFM quartile. Never 25% blast to full inactive list.' },
-  { question: 'Implementation timeline?', answer: 'Four weeks foundation (capture, proof browse, financing cart). Eight to twelve weeks for consultation pipeline, extended nurture, holdout testing.' },
-  { question: 'Biggest high-AOV stack mistake?', answer: 'Copying fashion DTC discount escalation on cart recovery — trains wait-for-sale and destroys full-price margin on every major purchase.' },
 ];
 const toolReviews = [
     {
@@ -216,7 +201,7 @@ const toolReviews = [
       <h2>Cross-links for stack due diligence</h2>
   <p>Related verticals: <a class="link" href="/for/jewelry">jewelry</a>, <a class="link" href="/for/home-goods">home goods</a>.</p>
   <p>Playbooks: <a class="link" href="/use-cases/browse-abandonment">browse abandonment</a>, <a class="link" href="/use-cases/vip-segments">VIP segments</a>.</p>
-  <p>Compare: <a class="link" href="/compare/klaviyo-vs-activecampaign">Klaviyo vs ActiveCampaign</a>.</p>
+  <p>Compare: <a class="link" href="/compare/drip-vs-activecampaign">Klaviyo vs ActiveCampaign</a>.</p>
 
 <h2>Stack governance for high-AOV stores</h2>
 <p>Operating a high-AOV stores marketing stack means assigning layer owners before adding tools. Capture (Privy, Justuno) qualifies intent; Sequenzy executes lifecycle with suppressions; Postscript handles scarce SMS urgency; Yotpo injects proof into consideration; Marsello coordinates loyalty without promo collisions. When any layer sends without reading customer state from the others, longer consideration, trust, financing, and expert proof gets worse — not better.</p>
@@ -247,6 +232,5 @@ const toolReviews = [
         <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
       ))}
     </div>
-    <FaqSection faqs={faqs} title={`FAQ: ${segmentName}`} />
   </section>
 </BaseLayout>

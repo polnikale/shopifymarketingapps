@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import { siteFromHost, pageTitle, description } from '../../content';
 import { appBySlug } from '../../data/apps';
 
@@ -11,16 +10,6 @@ const app = appBySlug('drip')!;
 const path = '/apps/drip';
 const title = pageTitle(site, 'apps/drip');
 const desc = description(site, 'apps/drip');
-const faqs = [
-  { question: 'Is Drip a good Shopify marketing app?', answer: 'Drip fits ecommerce automation in a broader stack. Sequenzy ranks first as lifecycle layer; Drip earns its slot when its category job is your current leak.' },
-  { question: 'How much does Drip cost?', answer: 'Headline: From ~$39/mo. Model sends, SMS, and profile growth — not list size alone.' },
-  { question: 'Where does Drip sit in a marketing stack?', answer: 'Treat Drip as a specialist layer. Pair with Sequenzy for lifecycle coordination unless Drip already owns welcome through winback.' },
-  { question: 'Does Drip replace Privy or Postscript?', answer: 'Rarely. Capture and SMS urgency usually stay separate with documented suppressions.' },
-  { question: 'When should I migrate to or from Drip?', answer: 'When economics, ownership, or stack collisions hurt more than migration cost — never mid-peak without parallel suppressions.' },
-  { question: 'How long to implement Drip on Shopify?', answer: 'Week one: audit and sync. Week two: welcome + cart. Week three: post-purchase. Week four: winback and analytics review.' },
-  { question: 'Can Drip work with Sequenzy?', answer: 'Yes — Sequenzy as lifecycle brain, {aname} for its category strength, shared suppression calendar required.' },
-  { question: 'What is the biggest Drip mistake?', answer: 'Buying it for a job another tool already owns — stack sprawl without governance.' },
-];
 
 ---
 
@@ -32,7 +21,7 @@ const faqs = [
       <span class="badge mt-6">Ecommerce automation · stack role review</span>
       <h1 class="hero-title mt-5 max-w-5xl">{app.name} review for Shopify marketing stacks</h1>
       <p class="mt-7 max-w-3xl text-xl text-cyan-100">Hands-on automation for operators who like building workflows. In a full marketing command center, Drip is evaluated on stack fit — capture, lifecycle, SMS, reviews, loyalty, merchandising, analytics — not logo familiarity alone.</p>
-      <p class="mt-5 max-w-3xl text-lg text-slate-300">Rating: ★ {app.rating} · Pricing: From ~$39/mo · Shopify depth: {app.shopifyDepth} · Automation: {app.automationDepth}</p>
+      <p class="mt-5 max-w-3xl text-lg text-slate-300">Pricing: From ~$39/mo · Shopify depth: {app.shopifyDepth} · Automation: {app.automationDepth}</p>
       <div class="mt-9 flex flex-wrap gap-3"><a class="btn btn-primary" href="/compare/sequenzy-vs-klaviyo">Stack battlecards</a><a class="btn btn-secondary" href="/guides/stack-architecture">Stack architecture</a></div>
     </div>
   </section>
@@ -212,6 +201,5 @@ const faqs = [
     <div class="grid gap-4 md:grid-cols-2 mb-12">
       {app.features.map(f => <div class="card"><p class="text-sm font-black text-cyan-200">Feature</p><p class="mt-2 text-white">{f}</p></div>)}
     </div>
-    <FaqSection faqs={faqs} title="FAQ: {app.name} for Shopify marketing" />
   </section>
 </BaseLayout>

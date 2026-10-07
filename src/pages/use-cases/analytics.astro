@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, pageTitle, description } from '../../content';
 import { appBySlug } from '../../data/apps';
@@ -20,20 +19,6 @@ const tldrPicks = [
     { label: 'Flow reporting', tool: 'Klaviyo', reason: 'Cohort and flow-level performance depth' },
     { label: 'Lifecycle ROI', tool: 'Sequenzy', reason: 'Pay-per-email economics vs incremental margin' },
     { label: 'Attribution', tool: 'Holdout tests', reason: 'Incrementality over last-click dashboards' },
-];
-const faqs = [
-  { question: 'Why not trust Klaviyo attribution alone?', answer: 'Last-click over-counts when multiple stack layers touched same shopper. Shopify reconcile + holdout required.' },
-  { question: 'What is incremental margin?', answer: 'Orders attributed to flow minus holdout cohort orders, at contribution margin after discounts.' },
-  { question: 'How often reconcile Shopify?', answer: 'Weekly minimum. Daily during BFCM.' },
-  { question: 'Holdout size?', answer: '5–10% of flow-eligible cohort where volume supports statistical read.' },
-  { question: 'Stack cost in ROI?', answer: 'Include all SaaS fees and operator hours — true stack economics.' },
-  { question: 'SMS attribution separate?', answer: 'Yes — separate codes/UTM and holdout SMS branch tests.' },
-  { question: 'Loyalty margin impact?', answer: 'Model redemption cost and points liability on loyalty-attributed orders.' },
-  { question: 'Subscription analytics?', answer: 'MRR delta, churn at touchpoint, skip-save incrementality — not just email revenue.' },
-  { question: 'Best tool for reporting?', answer: 'Shopify truth + Klaviyo depth + spreadsheet discipline. No single platform owns stack ROI.' },
-  { question: 'Agency reporting?', answer: 'Require Shopify order match — not platform export alone.' },
-  { question: 'Full-price ratio why?', answer: 'Discount-heavy email ROI erodes when full-price trend drops — early warning metric.' },
-  { question: 'Biggest analytics mistake?', answer: 'Summing Privy + Klaviyo + Postscript revenue — double/triple counting same orders.' },
 ];
 const toolReviews = [
     {
@@ -232,6 +217,5 @@ const toolReviews = [
         <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
       ))}
     </div>
-    <FaqSection faqs={faqs} title={`FAQ: ${useCaseName}`} />
   </section>
 </BaseLayout>

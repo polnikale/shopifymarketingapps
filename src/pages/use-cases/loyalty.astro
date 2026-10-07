@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, pageTitle, description } from '../../content';
 import { appBySlug } from '../../data/apps';
@@ -20,20 +19,6 @@ const tldrPicks = [
     { label: 'Suite loyalty', tool: 'Yotpo Email & SMS', reason: 'Reviews + loyalty consolidation' },
     { label: 'Lifecycle', tool: 'Sequenzy', reason: 'Enrollment and expiry orchestration' },
     { label: 'Segmentation', tool: 'Klaviyo', reason: 'Tier-based campaign coordination' },
-];
-const faqs = [
-  { question: 'Best loyalty stack for Shopify?', answer: 'Marsello or Yotpo Loyalty as engine, Sequenzy for enrollment/expiry orchestration, Klaviyo tier segments, collision calendar with promotional layer.' },
-  { question: 'When enroll customers in loyalty?', answer: 'Second full-price order typical — not first-order discount seekers or one-time buyers.' },
-  { question: 'Loyalty vs promotional email?', answer: 'Collision calendar prevents same-day loyalty and sitewide promo. VIP gets early access not deeper discounts.' },
-  { question: 'Marsello vs Yotpo Loyalty?', answer: 'Marsello for POS omnichannel; Yotpo when already on reviews suite. Both need Sequenzy orchestration.' },
-  { question: 'Points expiry emails?', answer: '30d, 7d, 1d sequence via Sequenzy; suppress if redeemed or conflicting peak promo.' },
-  { question: 'SMS for loyalty?', answer: 'Expiry urgency only, opted-in VIPs, max quarterly frequency.' },
-  { question: 'Review-for-points?', answer: 'Single coordinated email — Yotpo event triggers Sequenzy announcement with bonus.' },
-  { question: 'Loyalty for subscription boxes?', answer: 'Often redundant — subscription is loyalty. Add-on shop may use points.' },
-  { question: 'Exclude wholesale from loyalty?', answer: 'Yes — B2B uses volume pricing not points.' },
-  { question: 'Metrics for loyalty campaigns?', answer: 'Enrollment rate, repeat frequency, redemption, enrolled LTV vs holdout.' },
-  { question: 'POD and loyalty?', answer: 'Thin margin often skips points — early access list instead.' },
-  { question: 'Biggest loyalty stack mistake?', answer: 'Launching points without collision governance — duplicates promos and confuses subscribers.' },
 ];
 const toolReviews = [
     {
@@ -256,6 +241,5 @@ const toolReviews = [
         <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
       ))}
     </div>
-    <FaqSection faqs={faqs} title={`FAQ: ${useCaseName}`} />
   </section>
 </BaseLayout>

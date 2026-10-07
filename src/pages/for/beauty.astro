@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, pageTitle, description } from '../../content';
 import { appBySlug } from '../../data/apps';
@@ -19,20 +18,6 @@ const tldrPicks = [
     { label: 'Data depth', tool: 'Klaviyo', reason: 'Shade and SKU-level segmentation at scale' },
     { label: 'Retention suite', tool: 'Yotpo Email & SMS', reason: 'Reviews, loyalty, and SMS in one ecosystem' },
     { label: 'Capture', tool: 'Privy', reason: 'Routine quiz popups with product tags' },
-];
-const faqs = [
-  { question: 'What is the best marketing stack for beauty brands on Shopify?', answer: 'Privy or Justuno for routine quiz capture, Sequenzy for education and SKU-level replenishment, Klaviyo or Yotpo for segmentation and reviews at scale, Postscript or Yotpo SMS for restock urgency. Subscription sync via Recharge/Skio is non-negotiable for subscription-heavy brands.' },
-  { question: 'How should beauty brands time replenishment emails?', answer: 'At 80% of expected consumption per SKU — serum ~42 days, moisturizer ~65 days, not universal 30 days. Follow up at 100%; offer subscription upsell at 120% only for non-subscribers.' },
-  { question: 'Should beauty subscribers get the same welcome as popup leads?', answer: 'No. Branch by source and quiz outcome. PR and giveaway lists need education without aggressive first-order discount; high-intent product page subscribers get routine path and shade-matched content.' },
-  { question: 'How do beauty brands reduce subscription churn?', answer: 'Skip-flow recovery in Sequenzy, upcoming shipment preview content, churn-risk segmentation in Klaviyo at month 3–4, and suppress replenishment promos that conflict with active subscriptions.' },
-  { question: 'When should beauty brands add loyalty?', answer: 'After second-order repeat rate exceeds ~22%. Points on full-price replenishment; exclude first-order discount hunters from enrollment.' },
-  { question: 'Can Yotpo replace a separate ESP for beauty?', answer: 'Yotpo Email & SMS works for brands already on Yotpo reviews wanting consolidation. Sequenzy or Klaviyo often remain stronger for complex replenishment logic — choose based on operator skill and subscription complexity.' },
-  { question: 'How do shade variants affect email personalization?', answer: 'Store shade as profile property from quiz or purchase. Filter recommendations and creative to matching shades; never email 2N swatches to 4W buyers.' },
-  { question: 'What metrics matter for beauty email stacks?', answer: 'Replenishment conversion, 90-day subscription retention, bundle attach from email, full-price replenishment rate, unsubscribe on education vs promo sends.' },
-  { question: 'Should beauty use SMS for replenishment?', answer: 'SMS works for back-in-stock on viral SKUs and cart recovery after email silence — not routine replenishment reminders that feel spammy. Opt-in rate and quiet hours govern scale.' },
-  { question: 'How do beauty brands handle compliance in automations?', answer: 'Legal review on education and replenishment copy; avoid medical claims in triggers; document approved templates; agent-drafted content needs human approval before publish.' },
-  { question: 'How long to implement a beauty marketing stack?', answer: 'Four weeks for post-purchase and replenishment foundation; eight weeks for subscription sync, quiz capture, and reviews in browse; twelve weeks for loyalty and holdout testing.' },
-  { question: 'What is the biggest beauty stack mistake?', answer: 'Sending replenishment promos to active subscribers on the same SKU — erodes trust and trains skip behavior. Subscription status must gate every retention send.' },
 ];
 const toolReviews = [
     {
@@ -244,6 +229,5 @@ const toolReviews = [
         <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
       ))}
     </div>
-    <FaqSection faqs={faqs} title={`FAQ: ${segmentName}`} />
   </section>
 </BaseLayout>

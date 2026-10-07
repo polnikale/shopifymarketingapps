@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, pageTitle, description } from '../../content';
 import { appBySlug } from '../../data/apps';
@@ -19,20 +18,6 @@ const tldrPicks = [
     { label: 'CRM depth', tool: 'ActiveCampaign', reason: 'High-touch follow-up for custom orders' },
     { label: 'Segmentation', tool: 'Klaviyo', reason: 'Gift buyer vs self-purchase branching' },
     { label: 'Capture', tool: 'Privy', reason: 'Occasion quiz and gift guide opt-ins' },
-];
-const faqs = [
-  { question: 'Best marketing stack for jewelry Shopify stores?', answer: 'Privy occasion capture, Sequenzy extended nurture and anniversary reminders, Klaviyo gift segmentation, Yotpo curated UGC, Postscript sparing SMS, ActiveCampaign if custom consultation volume is high.' },
-  { question: 'Should jewelry cart recovery offer discounts?', answer: 'Education and financing proof first; incentive only on third touch for discount-sensitive segment. Leading with % off trains wait-for-sale on emotional high-AOV purchases.' },
-  { question: 'How do jewelry brands handle gift buyers in email?', answer: 'Branch post-purchase, cross-sell, and winback. Gift buyers get care and packaging content, not "buy another for yourself" immediately. Tag via quiz or Shopify gift order properties.' },
-  { question: 'What are anniversary reminders in jewelry stacks?', answer: 'Date-based triggers from purchase date or capture quiz — reminder 30 days before anniversary with gift suggestions. Jewelry\'s version of replenishment.' },
-  { question: 'When should jewelry add SMS?', answer: 'Consultation reminders, cart after 48h email silence, order ready. Not promotional blasts on luxury brands.' },
-  { question: 'Klaviyo or Sequenzy for jewelry?', answer: 'Sequenzy for nurture strategy and occasion flows; Klaviyo for gift segmentation depth and reporting. Many run both with clear flow ownership.' },
-  { question: 'How long is jewelry consideration in email?', answer: '2–12 weeks. Extended nurture sequences with proof and education outperform short welcome-to-discount paths.' },
-  { question: 'Should jewelry use loyalty points?', answer: 'Referral and VIP early access often fit better than points for infrequent high-AOV purchase. If loyalty, enroll repeat gift buyers only.' },
-  { question: 'Metrics for jewelry marketing stacks?', answer: 'Gift attribution, full-price %, consideration-to-purchase days, consultation conversion, return rate by segment, margin on recovered carts.' },
-  { question: 'How to prepare jewelry stack for Valentine\'s/Mother\'s Day?', answer: 'Gift guide 4 weeks out, shipping deadline emails, VIP early access, pause winback, suppress recent gift purchasers from promo blasts.' },
-  { question: 'Can Shopify Email run jewelry lifecycle?', answer: 'Insufficient for gift branching, extended nurture, consultation CRM handoff, and cross-channel suppressions on high-AOV paths.' },
-  { question: 'Biggest jewelry stack mistake?', answer: 'Popup discount training bargain behavior on luxury positioning — destroys full-price conversion for months.' },
 ];
 const toolReviews = [
     {
@@ -222,7 +207,7 @@ const toolReviews = [
 
       <h2>Cross-links for stack due diligence</h2>
   <p>Related: <a class="link" href="/for/high-aov">high-AOV stack guide</a>, <a class="link" href="/use-cases/holiday-gifting">holiday gifting playbook</a>.</p>
-  <p>Compare: <a class="link" href="/compare/sequenzy-vs-activecampaign">Sequenzy vs ActiveCampaign</a>.</p>
+  <p>Compare: <a class="link" href="/compare/sequenzy-vs-klaviyo">Sequenzy vs ActiveCampaign</a>.</p>
 
 <h2>Stack governance for jewelry stores</h2>
 <p>Operating a jewelry stores marketing stack means assigning layer owners before adding tools. Capture (Privy, Justuno) qualifies intent; Sequenzy executes lifecycle with suppressions; Postscript handles scarce SMS urgency; Yotpo injects proof into consideration; Marsello coordinates loyalty without promo collisions. When any layer sends without reading customer state from the others, gift timing, high-consideration purchases, and trust-building gets worse — not better.</p>
@@ -253,6 +238,5 @@ const toolReviews = [
         <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
       ))}
     </div>
-    <FaqSection faqs={faqs} title={`FAQ: ${segmentName}`} />
   </section>
 </BaseLayout>

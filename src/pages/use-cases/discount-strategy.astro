@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, pageTitle, description } from '../../content';
 import { appBySlug } from '../../data/apps';
@@ -20,20 +19,6 @@ const tldrPicks = [
     { label: 'Lifecycle', tool: 'Sequenzy', reason: 'Segment-tiered incentive branches' },
     { label: 'Capture', tool: 'Privy', reason: 'Popup default depth sets training behavior' },
     { label: 'Segmentation', tool: 'Klaviyo', reason: 'Discount sensitivity and full-price loyalist segments' },
-];
-const faqs = [
-  { question: 'Default 10% on all automations?', answer: 'No — trains discount waiting. Proof-first, segment-tiered incentives.' },
-  { question: 'Collision calendar what?', answer: 'Shared doc: which layers can offer what depth when — one offer per intent window.' },
-  { question: 'Full-price loyalist definition?', answer: 'Typically 3+ orders without code redemption — segment and exclude from promos.' },
-  { question: 'Popup discount strategy?', answer: 'Value exchange and quiz over sitewide 15% — improves LTV on consumables.' },
-  { question: 'BFCM deeper discounts OK?', answer: 'Yes with calendar rules — exclusions, VIP sequencing, post-peak reset.' },
-  { question: 'Loyalty + sale same day?', answer: 'Avoid — stacked incentive erodes margin and confuses.' },
-  { question: 'Measure discount strategy?', answer: 'Full-price ratio weekly, margin after incentives, repeat without discount.' },
-  { question: 'High-AOV discount?', answer: 'Restraint — financing/proof before discount. Max depth lower than impulse DTC.' },
-  { question: 'Replenishment discount?', answer: 'Full-price default — incentive only non-responders email two.' },
-  { question: 'Who owns calendar?', answer: 'Growth lead with lifecycle, capture, SMS owners — weekly review slot.' },
-  { question: 'Shopify automatic discounts?', answer: 'Sync with email codes — avoid surprise stacking at checkout.' },
-  { question: 'Biggest mistake?', answer: 'Independent 10% defaults in Privy, cart, winback, SMS same week — trains perpetual waiting.' },
 ];
 const toolReviews = [
     {
@@ -242,6 +227,5 @@ const toolReviews = [
         <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
       ))}
     </div>
-    <FaqSection faqs={faqs} title={`FAQ: ${useCaseName}`} />
   </section>
 </BaseLayout>

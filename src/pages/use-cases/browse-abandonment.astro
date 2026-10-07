@@ -2,7 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleSchema from '../../components/ArticleSchema.astro';
 import TldrBox from '../../components/TldrBox.astro';
-import FaqSection from '../../components/FaqSection.astro';
 import ToolReview from '../../components/ToolReview.astro';
 import { siteFromHost, pageTitle, description } from '../../content';
 import { appBySlug } from '../../data/apps';
@@ -20,20 +19,6 @@ const tldrPicks = [
     { label: 'Segmentation', tool: 'Klaviyo', reason: 'Browse depth and product affinity scoring' },
     { label: 'Proof', tool: 'Yotpo', reason: 'SKU-matched UGC in browse email one' },
     { label: 'Capture', tool: 'Privy', reason: 'Offer cap awareness from popup state' },
-];
-const faqs = [
-  { question: 'Browse vs cart recovery difference?', answer: 'Browse is lower intent — proof-first, lighter incentive, longer education. Cart gets urgency and tiered recovery. Never duplicate offers same day.' },
-  { question: 'Discount on browse email one?', answer: 'Avoid on consideration categories. Proof and education first. Incentive email three for cold segment only if policy allows.' },
-  { question: 'Best tools for browse abandonment?', answer: 'Sequenzy execution, Klaviyo depth scoring, Yotpo proof, Privy collision awareness.' },
-  { question: 'OOS product browsed?', answer: 'Pause or show back-in-stock waitlist CTA — never recommend unavailable variant.' },
-  { question: 'SMS for browse?', answer: 'Rare — high-AOV only, 72h after email silence, opt-in required.' },
-  { question: 'Measure browse success?', answer: 'Browse-to-cart rate, full-price conversion, proof email CTR, holdout incrementality.' },
-  { question: 'Overlap with welcome?', answer: 'New subscriber browsing — welcome takes priority; suppress browse promo if welcome active with offer.' },
-  { question: 'Fashion browse specifics?', answer: 'Fit UGC, size guide, variant inventory — see fashion vertical guide.' },
-  { question: 'B2B browse?', answer: 'Route high-MOQ browse to rep notification — not consumer browse discount.' },
-  { question: 'Audit frequency?', answer: 'Quarterly; after catalog or popup offer changes.' },
-  { question: 'Shopify Email browse?', answer: 'Insufficient proof integration, suppressions, and depth scoring.' },
-  { question: 'Biggest browse mistake?', answer: 'Same discount creative as cart — trains abandon-before-cart behavior.' },
 ];
 const toolReviews = [
     {
@@ -245,6 +230,5 @@ const toolReviews = [
         <ToolReview app={appBySlug(review.slug)!} rank={review.rank} paragraphs={review.paragraphs} />
       ))}
     </div>
-    <FaqSection faqs={faqs} title={`FAQ: ${useCaseName}`} />
   </section>
 </BaseLayout>
